@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Son 2 testini yan yana koy — profilin nasıl değişti, hangi öneriler değişti, hangi öneriler stabil kaldı. Eski Beni'nle yeni Beni arasındaki fark." />
+  <title>Test Karşılaştır — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Test Karşılaştır — Gelecek Bul" />
+  <meta property="og:description" content="Eski Beni'nle yeni Beni arasında ne değişti?" />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="test-karsilastir">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  HERO / SUBHEAD  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">SON 2 TEST · DIFF</span>
+        <h1 class="heading-lg">Test <span class="text-aurora">Karşılaştır</span></h1>
+        <p class="lead mt-16">
+          Son iki testini yan yana koy — eski Beni'nle yeni Beni arasında ne değişti?
+          Profilin gelişir; hangi önerinin sabit kaldığını, hangisinin kaydığını gör.
+        </p>
+        <div class="button-row button-row--center">
+          <a class="btn btn-white" href="test.html">Yeni Test Çek</a>
+          <a class="btn btn-dark" href="#" data-action="login">Geçmişe Giriş</a>
+        </div>
+        <p class="hero-fine" style="color:var(--color-fog);margin-top:var(--spacing-20);">Karşılaştırma için en az 2 testin olmalı · aşağıdaki örnek demo verisidir</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  KARŞILAŞTIRMA (DEMO)  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">YAN YANA</span>
+        <h2 class="heading">Eski Beni · Yeni Beni</h2>
+        <p class="section-lead">Örnek bir karşılaştırma. Kendi testlerin için giriş yapıp en az 2 test çek.</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- ESKİ BENİM -->
+        <article class="card">
+          <div class="chip-row" style="margin-top:0;justify-content:space-between;">
+            <span class="eyebrow" style="margin-bottom:0;">ESKİ BENİM</span>
+            <span class="badge">12 ŞUB 2026</span>
+          </div>
+          <h3 class="card-title mt-16">Araştırmacı Tip
+            <span class="badge badge--mint" style="margin-left:8px;">%78</span>
+          </h3>
+          <p class="card-body" style="margin-top:var(--spacing-4);">Bilgi toplamadan karar vermeyen, analiz odaklı arketip.</p>
+          <div class="chip-row">
+            <span class="code-chip">Analitik</span>
+            <span class="code-chip">İçe dönük</span>
+            <span class="code-chip">Detaycı</span>
+            <span class="code-chip">Temkinli</span>
+            <span class="code-chip">Bağımsız</span>
+          </div>
+          <p class="fine mt-16">Hızlı Test · 30 soru</p>
+        </article>
+
+        <!-- YENİ BENİM -->
+        <article class="card card--featured">
+          <div class="chip-row" style="margin-top:0;justify-content:space-between;">
+            <span class="eyebrow eyebrow--signal" style="margin-bottom:0;">YENİ BENİM</span>
+            <span class="badge badge--blue">10 HAZ 2026</span>
+          </div>
+          <h3 class="card-title mt-16">Araştırmacı Tip
+            <span class="badge badge--mint" style="margin-left:8px;">%86</span>
+          </h3>
+          <p class="card-body" style="margin-top:var(--spacing-4);">Aynı çekirdek, daha net sınırlar: liderlik eğilimi belirginleşti.</p>
+          <div class="chip-row">
+            <span class="code-chip">Analitik</span>
+            <span class="code-chip">Stratejik</span>
+            <span class="code-chip">Detaycı</span>
+            <span class="code-chip">Girişken</span>
+            <span class="code-chip">Bağımsız</span>
+          </div>
+          <p class="fine mt-16">Adaptif Test · 44 soru</p>
+        </article>
+      </div>
+
+      <!-- DIFF SUMMARY -->
+      <article class="card mt-24">
+        <h3 class="card-title" style="font-size:var(--text-body-lg);">Neler değişti?</h3>
+        <table class="cmp-table mt-16">
+          <tbody>
+            <tr>
+              <td>Önerilen bölüm</td>
+              <td class="yes" style="text-align:right;">Aynı kaldı ✓ — Bilgisayar Mühendisliği</td>
+            </tr>
+            <tr>
+              <td>Karar arketipi</td>
+              <td class="yes" style="text-align:right;">Stabil ✓ — Araştırmacı</td>
+            </tr>
+            <tr>
+              <td>Eşleşme yüzdesi</td>
+              <td class="yes" style="text-align:right;">+%8 ↑</td>
+            </tr>
+            <tr>
+              <td>Test derinliği</td>
+              <td class="yes" style="text-align:right;">+14 soru daha</td>
+            </tr>
+            <tr>
+              <td>2. öneri</td>
+              <td style="text-align:right;">Değişti: İstatistik → Yapay Zeka Mühendisliği</td>
+            </tr>
+            <tr>
+              <td>Yükselen özellik</td>
+              <td class="yes" style="text-align:right;">Girişkenlik ↑</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <div class="button-row button-row--center mt-32">
+        <a class="btn btn-white" href="test.html">Yeni Test Çek
+          <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-dark" href="karsilastir.html">Planları Karşılaştır</a>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  NASIL ÇALIŞIR  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">NASIL ÇALIŞIR</span>
+        <h2 class="heading">Üç adımda diff</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">01</span>
+          <h3 class="step-title">İki test çek</h3>
+          <p class="step-body">Farklı zamanlarda en az iki test tamamla; sistem otomatik olarak son ikisini alır.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">02</span>
+          <h3 class="step-title">Yan yana koy</h3>
+          <p class="step-body">Arketip, eşleşme yüzdesi ve özelliklerin yan yana hizalanır.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">03</span>
+          <h3 class="step-title">Farkı oku</h3>
+          <p class="step-body">Hangi öneri sabit, hangisi kaydı, hangi özellik yükseldi — net bir diff.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ════════════════════════════  FINAL CTA  ════════════════════════════ -->
+    <section class="cta">
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="badge badge--white" style="margin-bottom:20px;">Profilin gelişir</span>
+          <h2 class="heading-lg">Eski Beni'nle yeni<br />Beni'ni karşılaştır.</h2>
+          <p class="cta-sub">İkinci testini çek, değişimi gör. Karar zamanla netleşir.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="test.html">
+              Teste Başla
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-dark" href="meslekler.html">200 Mesleği Keşfet</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
