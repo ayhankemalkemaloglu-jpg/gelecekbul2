@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gelecek Bul KVKK Aydınlatma Metni — 6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca işlenen veriler, amaçlar, aktarım, saklama süreleri ve veri sahibi hakları." />
+  <title>KVKK Aydınlatma Metni — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="KVKK Aydınlatma Metni — Gelecek Bul" />
+  <meta property="og:description" content="Kişisel verilerinizin işlenmesine ilişkin aydınlatma metni." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="yasal">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <div class="subhead">
+      <span class="eyebrow eyebrow--signal">YASAL</span>
+      <h1 class="heading-lg">KVKK Aydınlatma Metni</h1>
+      <p class="lead">Son güncelleme: 13 Mayıs 2026 · 6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca hazırlanmıştır.</p>
+    </div>
+
+    <div class="prose" style="margin:0 auto;">
+      <h2>1. Veri Sorumlusu</h2>
+      <p><strong>Gelecekbul Eğitim Teknolojileri A.Ş.</strong><br/>
+      Mersis No: <strong>[Avukatla netleştirilecek — MERSİS no]</strong><br/>
+      Vergi No / Dairesi: <strong>[VKN ve Vergi Dairesi — Avukatla doldurulacak]</strong><br/>
+      Adres: <strong>[Tam ticari adres — Avukatla doldurulacak]</strong><br/>
+      KEP: <strong>gelecekbul@hs01.kep.tr [Doğrula]</strong><br/>
+      İletişim: kvkk@gelecekbul.com</p>
+
+      <h2>2. İşlenen Kişisel Veriler</h2>
+      <ul>
+        <li><strong>Kimlik:</strong> ad-soyad (opsiyonel), kullanıcı adı, doğum yılı.</li>
+        <li><strong>İletişim:</strong> e-posta adresi, isteğe bağlı veli e-postası.</li>
+        <li><strong>Müşteri işlem:</strong> üyelik planı, ödeme geçmişi (Stripe/Iyzico aracılığıyla — bizde kart bilgisi saklanmaz).</li>
+        <li><strong>Eğitim/yatkınlık verisi:</strong> psikometrik envanter cevapları (Big Five, Holland, RIASEC), deneme sınav puanı (kullanıcı manuel girer).</li>
+        <li><strong>Kullanım/Log:</strong> IP adresi, çerez, oturum geçmişi, sayfa görüntüleme.</li>
+        <li><strong>Açık metin (opsiyonel):</strong> karar günlüğü girdileri, Atlas AI sohbet metinleri — kullanıcı serbest girer.</li>
+      </ul>
+
+      <h2>3. İşleme Amaçları</h2>
+      <ul>
+        <li>Sözleşmesel yükümlülüğün ifası (üyelik hizmeti, test sonucu, kariyer öneri raporları).</li>
+        <li>Hizmet kalitesini ölçme ve geliştirme.</li>
+        <li>Yasal yükümlülükleri yerine getirme (faturalama, vergi).</li>
+        <li>Veli onayı varsa: aile raporu üretimi ve velinin yorumlanmış özet erişimi.</li>
+        <li>Açık rıza varsa: anonim akademik araştırma, ürün geliştirme.</li>
+      </ul>
+
+      <h2>4. Hukuki Sebepler (Madde 5/6)</h2>
+      <ul>
+        <li>Sözleşmenin kurulması/ifası için zorunlu olması (m.5/2-c).</li>
+        <li>Hukuki yükümlülüğün yerine getirilmesi (m.5/2-ç).</li>
+        <li>Meşru menfaat (m.5/2-f) — temel haklar zedelenmediğinde.</li>
+        <li>Açık rıza (m.5/1) — pazarlama, anonim araştırma katılımı, hassas veri.</li>
+      </ul>
+
+      <h2>5. Aktarım</h2>
+      <p>Verileriniz <strong>üçüncü taraflara satılmaz, kiralanmaz.</strong> Yalnızca hizmetin sunulması için zorunlu durumlarda aşağıdaki tedarikçilerle paylaşılır:</p>
+      <ul>
+        <li><strong>Ödeme:</strong> Stripe Payments Europe, Iyzico A.Ş. (yalnızca ödeme verisi)</li>
+        <li><strong>E-posta:</strong> SendGrid/Resend/Mailgun (yalnızca e-posta adresi + bülten içeriği)</li>
+        <li><strong>Sunucu:</strong> Render (AB/ABD) — barındırma altyapısı</li>
+        <li><strong>AI yorum katmanı:</strong> Anthropic Claude API — yalnızca anonimleştirilmiş test cevapları</li>
+        <li><strong>Hata izleme:</strong> Sentry — hata ayıklama amacıyla teknik veri</li>
+        <li><strong>Yetkili kamu kurumu:</strong> Mahkeme/savcılık kararı olması halinde</li>
+      </ul>
+      <p>Yurt dışı aktarım Madde 9 kapsamında gerçekleşir; standart sözleşme hükümleri ve teknik tedbirler uygulanır.</p>
+
+      <h2>6. Saklama Süreleri</h2>
+      <ul>
+        <li>Üyelik verisi: aktif üyelik + 10 yıl (TBK m.146 zamanaşımı)</li>
+        <li>Fatura/muhasebe: 10 yıl (VUK)</li>
+        <li>Test cevapları: hesap aktifken; silme talebinde 30 gün içinde kalıcı silinir</li>
+        <li>Atlas hafıza: plan'a göre 3-12 ay; kullanıcı self-servis silebilir</li>
+        <li>Çerezler: 1 gün – 1 yıl arası (<a href="cerez.html">Çerez Politikası</a>'na bkz.)</li>
+      </ul>
+
+      <h2>7. Veri Sahibi Hakları (Madde 11)</h2>
+      <p>Aşağıdaki haklarınızı <strong>kvkk@gelecekbul.com</strong> adresine yazılı başvuruyla kullanabilirsiniz:</p>
+      <ul>
+        <li>İşlenip işlenmediğini öğrenme</li>
+        <li>İşlenmişse bilgi talep etme</li>
+        <li>Amacına uygun kullanılıp kullanılmadığını öğrenme</li>
+        <li>Aktarıldığı tarafları öğrenme</li>
+        <li>Eksik/yanlış işlenmişse düzeltilmesini isteme</li>
+        <li>Silme/yok etme isteme (m.7)</li>
+        <li>Düzeltme/silme işlemlerinin aktarıldığı taraflara bildirilmesini isteme</li>
+        <li>Otomatik sistemler aracılığıyla aleyhinize sonuç doğurması halinde itiraz hakkı</li>
+        <li>Zararın giderilmesini talep etme</li>
+      </ul>
+      <p>Başvuruyu 30 gün içinde ücretsiz olarak yanıtlarız (KVKK Tebliği uyarınca).</p>
+
+      <h2>8. 18 Yaş Altı Kullanıcılar</h2>
+      <p>Hizmetimiz 13 yaş ve üstüne yöneliktir. 18 yaş altı kullanıcılar için <strong>veli açık rızası</strong> zorunludur. Veli onayı olmadan hassas veri (örn. psikolojik veriler) işlenmez. Veli onayını dilediği zaman geri çekebilir. Detaylar için <a href="cocuk-veri.html">18 Yaş Altı Veri Politikası</a>.</p>
+
+      <h2>9. Hassas Veri</h2>
+      <p>Psikometrik test sonuçları KVKK m.6 anlamında <strong>özel nitelikli kişisel veri</strong> kategorisinde değildir; ancak hassasiyetinin farkındayız ve gerekli güvenlik tedbirlerini (TLS 1.3, AES-256 at-rest, erişim logu) uyguluyoruz.</p>
+
+      <h2>10. Açık Rıza Geri Çekme</h2>
+      <p>Verdiğiniz açık rızayı dilediğiniz zaman <em>gelecekteki işlemler için</em> geri çekebilirsiniz. Geri çekme, daha önce gerçekleşmiş yasal işlemleri etkilemez.</p>
+
+      <h2>11. Veri İhlali Bildirimi</h2>
+      <p>Veri ihlali tespit ettiğimizde <strong>72 saat içinde</strong> Kişisel Verileri Koruma Kurulu'na ve etkilenen veri sahiplerine bildiririz.</p>
+
+      <h2>12. Değişiklik ve İletişim</h2>
+      <p>Bu metin değiştirilebilir. Önemli değişiklikler kayıtlı e-postanıza bildirilir. Sorularınız için <strong>kvkk@gelecekbul.com</strong> veya KEP üzerinden ulaşabilirsiniz.</p>
+
+      <div class="callout callout--info" style="margin-top:var(--spacing-40);">
+        Şikayet hakkı: Veri sorumlusu tarafından çözüm sağlanamaması halinde 30 gün veya 60 gün içinde <a href="https://www.kvkk.gov.tr" target="_blank" rel="noopener">Kişisel Verileri Koruma Kurulu</a>'na şikayet hakkınız saklıdır.
+      </div>
+
+      <p class="fine" style="margin-top:var(--spacing-24);"><a href="yasal.html">Tüm yasal metinler</a></p>
+    </div>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

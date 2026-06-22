@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gelecek Bul 18 Yaş Altı Veri Politikası — yaş sınırı, veli açık rızası akışı, mahremiyet sınırları, hassas konu müdahalesi ve veli hakları." />
+  <title>18 Yaş Altı Veri Politikası — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="18 Yaş Altı Veri Politikası — Gelecek Bul" />
+  <meta property="og:description" content="Veli açık rızası ve çocuk verisi mahremiyet sınırları." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="yasal">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <div class="subhead">
+      <span class="eyebrow eyebrow--signal">YASAL</span>
+      <h1 class="heading-lg">18 Yaş Altı Veri Politikası</h1>
+      <p class="lead">Çocuk Hakları Sözleşmesi · 6698 KVKK · MEB Rehberlik Mevzuatı uyarınca.</p>
+    </div>
+
+    <div class="prose" style="margin:0 auto;">
+      <h2>1. Yaş Sınırı</h2>
+      <p>Gelecekbul, lise ve üniversite hazırlık öğrencilerine yönelik bir hizmettir. Asgari kullanım yaşı <strong>13</strong>'tür. 13 yaş altı kullanıcılara hizmet sunulmaz.</p>
+
+      <h2>2. 13–17 Yaş Arası Kullanıcılar</h2>
+      <p>13-17 yaş arası kullanıcılar için <strong>veli açık rızası zorunludur</strong>. Veli onayı olmadan:</p>
+      <ul>
+        <li>Hassas test sonuçları kayıt altına alınmaz</li>
+        <li>Atlas AI hafızası 7 günü aşamaz</li>
+        <li>Aile alanı / veli paneli etkinleştirilemez</li>
+        <li>Ücretli abonelik satın alınamaz</li>
+      </ul>
+
+      <h2>3. Veli Açık Rızası — Akış</h2>
+      <ul>
+        <li>Öğrenci kayıt sırasında doğum yılını bildirir.</li>
+        <li>18 yaş altıysa "veli e-postası" alanı zorunlu olur.</li>
+        <li>Veli e-postasına onay maili gider (token ile).</li>
+        <li>Veli linki açar, KVKK + Üyelik Sözleşmesi'ni okur, "Çocuğum adına onaylıyorum" kutusunu işaretler.</li>
+        <li>Onay kayıt altına alınır (timestamp + IP).</li>
+        <li>Veli, açık rızayı dilediği an geri çekebilir.</li>
+      </ul>
+
+      <h2>4. Mahremiyet Sınırları</h2>
+      <p>Veli onayı alındığında dahi <strong>çocuğun bazı verileri veliyle paylaşılmaz</strong>:</p>
+      <ul>
+        <li>Karar günlüğü ham metni</li>
+        <li>Atlas AI özel sohbet detayı</li>
+        <li>Hassas konu tespitleri (kendine zarar verme, depresyon sinyalleri)</li>
+        <li>Arkadaş/öğretmen hakkında yazılanlar</li>
+      </ul>
+      <p>Veli yalnızca <strong>yorumlanmış aylık aile raporu</strong> görür.</p>
+
+      <h2>5. Hassas Konu Müdahalesi</h2>
+      <p>Sistemde kendine zarar verme, intihar düşüncesi, ciddi depresyon ifadesi tespit edildiğinde:</p>
+      <ul>
+        <li>Sohbet otomatik yönlendirme metniyle kesilir: "Bu konuda profesyonel destek almanı öneririm."</li>
+        <li>Türkiye'de erişilebilir destek hatları gösterilir:
+          <ul>
+            <li><strong>184 Sağlık Bakanlığı Halk Sağlığı Hattı</strong></li>
+            <li><strong>182 SABİM</strong></li>
+            <li><strong>112 Acil Sağlık</strong></li>
+            <li><strong>183 Aile, Sosyal Politikalar Hattı</strong> (çocuk istismar / aile içi şiddet)</li>
+          </ul>
+        </li>
+        <li>AI terapi sunmaz; insan profesyoneline yönlendirir.</li>
+      </ul>
+
+      <h2>6. Reklam ve Pazarlama</h2>
+      <p>18 yaş altı kullanıcılara <strong>davranışsal reklam yapılmaz</strong>. Ücretli plan satın almaları için baskı kurucu pop-up'lar gösterilmez.</p>
+
+      <h2>7. Eğitim ve Rehberlik Sınırları</h2>
+      <div class="callout callout--amber">Gelecekbul <strong>MEB rehberlik mevzuatı kapsamında tanımlanan psikolojik danışmanlık hizmeti sunmaz</strong>. Çıktılar genel yön ve fikir verme niteliğindedir. Profesyonel rehberlik için okulun PDR servisine veya bağımsız psikolojik danışmana başvurulması önerilir.</div>
+
+      <h2>8. Veli Hakları</h2>
+      <p>Veli aşağıdaki haklara sahiptir:</p>
+      <ul>
+        <li>Çocuğunun verileri hakkında bilgi alma</li>
+        <li>Verilerin silinmesini isteme</li>
+        <li>Onayı geri çekme (gelecek işlemler için)</li>
+        <li>Aile bağı kurmuş veliyse aile raporlarını görme</li>
+      </ul>
+
+      <h2>9. İletişim</h2>
+      <p>Veli onay süreciyle ilgili sorular: <strong>veli@gelecekbul.com</strong></p>
+      <p>Çocuk verisi konusunda KVKK başvurusu: <strong>kvkk@gelecekbul.com</strong></p>
+
+      <p class="fine" style="margin-top:var(--spacing-40);">Bu metin <a href="kvkk.html">KVKK Aydınlatma Metni</a> ile birlikte değerlendirilmelidir. <a href="yasal.html">Tüm yasal metinler</a></p>
+    </div>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

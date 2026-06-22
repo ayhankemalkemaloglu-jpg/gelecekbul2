@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Veli Onay & Rapor — çocuğunuzun davetini onaylayın, veli rolünüzü ve mahremiyet sınırlarını görün, sade dille hazırlanmış aile raporunu okuyun. KVKK uyumlu." />
+  <title>Veli Onay &amp; Rapor — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Veli Onay &amp; Rapor — Gelecek Bul" />
+  <meta property="og:description" content="Daveti onaylayın, raporu sade bir dille okuyun." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="veli-panel">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  SUBHEAD  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">VELİ ONAY &amp; RAPOR</span>
+        <h1 class="heading-lg">Bir öğrenci sizi <span class="text-aurora">veli paneline</span> davet etti.</h1>
+        <p class="lead mt-16">
+          Onayladığınızda çocuğunuzun aile raporunu görebilirsiniz. Sürpriz takip
+          değil — şeffaf bir ortaklık. Aşağıda veli rolünüzü, mahremiyet sınırlarını
+          ve onay formunu bulacaksınız.
+        </p>
+        <p class="fine mt-16">📋 Bu sayfa örnek (demo) veriyle gösterilmektedir · Onay gerçek panelde çocuğunuzun verisine bağlanır</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  VELİ ROLÜ  ════════════════════════════ -->
+    <section id="rol">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">VELİ ROLÜNÜZ</span>
+        <h2 class="heading">Ne görürsünüz, ne görmezsiniz.</h2>
+        <p class="section-lead">
+          Aile Alanı çocuğunuzun verisinden beslenir ama yalnızca yorumlanmış
+          özetleri sizinle paylaşır. Bu sınır, onun güveni için kritiktir.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card card--navy">
+          <span class="badge badge--mint">SİZE AÇIK</span>
+          <h3 class="card-title mt-16">Yorumlanmış rapor</h3>
+          <ul class="check-list mt-16">
+            <li>Aylık aile raporu (profil, Plan A/B/C, akademik trend)</li>
+            <li>En uygun bölüm önerileri ve uyum oranı</li>
+            <li>Konuşma rehberi — bu hafta sorulacak / kaçınılacak sorular</li>
+            <li>Bilimsel PDF rapor (rehber öğretmenle paylaşılabilir)</li>
+          </ul>
+        </article>
+        <article class="card card--indigo">
+          <span class="badge badge--amber">SİZE KAPALI</span>
+          <h3 class="card-title mt-16">Çocuğunuzun mahremi</h3>
+          <ul class="check-list mt-16">
+            <li class="is-off">Ham test cevapları</li>
+            <li class="is-off">Atlas ile özel sohbetleri</li>
+            <li class="is-off">Karar günlüğünün ham içeriği</li>
+            <li class="is-off">Hassas notlar ve kişisel kayıtlar</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ONAY FORMU  ════════════════════════════ -->
+    <section id="onay">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">DAVETİ ONAYLA</span>
+        <h2 class="heading">Veli onay formu</h2>
+        <p class="section-lead">Bilgileriniz çocuğunuzun panelindeki bağı kurmak için kullanılır. Onay, çocuğunuzun bilgisi dahilinde gerçekleşir.</p>
+      </div>
+
+      <form class="form-card" id="consent-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label" for="parent-name">Adınız Soyadınız</label>
+            <input class="input" type="text" id="parent-name" name="parent-name" placeholder="Örn: Selma Yılmaz" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label class="field-label" for="parent-email">E-posta</label>
+            <input class="input" type="email" id="parent-email" name="parent-email" placeholder="ornek@eposta.com" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="parent-role">Yakınlık</label>
+          <select class="select" id="parent-role" name="parent-role">
+            <option value="anne">Anne</option>
+            <option value="baba">Baba</option>
+            <option value="vasi">Vasi / Yasal temsilci</option>
+            <option value="diger">Diğer aile büyüğü</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="invite-code">Davet kodu</label>
+          <input class="input" type="text" id="invite-code" name="invite-code" placeholder="Çocuğunuzun gönderdiği koddan otomatik gelir" value="GB-AYSE-2026" />
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" name="consent-relation" required />
+          <span>Bu öğrencinin velisi / yasal temsilcisi olduğumu ve onun bilgisi dahilinde panele bağlandığımı onaylıyorum.</span>
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" name="consent-privacy" required />
+          <span>Yalnızca yorumlanmış raporları göreceğimi, çocuğumun ham verisinin bana kapalı olduğunu anladım. <a href="iletisim.html">KVKK ve gizlilik</a> şartlarını kabul ediyorum.</span>
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" name="consent-notify" />
+          <span>Yalnızca önemli değişikliklerde bildirim almak istiyorum (haftada en fazla bir).</span>
+        </label>
+
+        <button class="btn btn-white btn-block" type="submit">
+          Daveti onayla ve bağlan
+          <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </button>
+
+        <!-- Inline success / error target -->
+        <div id="consent-success" class="callout callout--mint" role="status" hidden></div>
+        <p class="form-note">Onay sonrası rapor aşağıda açılır. İstediğiniz an bağı kaldırabilirsiniz.</p>
+      </form>
+    </section>
+
+    <!-- ════════════════════════════  RAPOR ÖNİZLEME  ════════════════════════════ -->
+    <section id="rapor">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">AİLE RAPORU ÖNİZLEME</span>
+        <h2 class="heading">Çocuğunuzla birlikte okumak için.</h2>
+        <p class="section-lead">Onayladığınızda gördüğünüz rapor bu sade dille yazılır.</p>
+      </div>
+
+      <div class="card card--featured">
+        <div class="plan-head" style="justify-content:space-between;">
+          <span class="badge badge--white">AİLE RAPORU</span>
+          <span class="fine">Nisan 2026 tarihli kariyer testi</span>
+        </div>
+        <h3 class="card-title mt-16">Araştırmacı Stratejist</h3>
+        <p class="card-body">
+          Çocuğunuz analiz etmeyi, derine inmeyi ve karar vermeden önce seçenekleri
+          tartmayı seviyor. Sayısal motivasyonu güçlü; baskı altında aceleci değil,
+          ölçülü davranıyor. Bu rapor çocuğunuzla birlikte okumak içindir.
+        </p>
+
+        <div class="grid-2 mt-24">
+          <div class="card card--navy">
+            <span class="eyebrow" style="margin-bottom:8px;">EN UYGUN BÖLÜM</span>
+            <div class="plan-price" style="margin-top:8px;">
+              <span class="plan-amount" style="font-size:var(--text-subheading);">Biyomedikal Müh.</span>
+            </div>
+            <span class="badge badge--mint mt-16">Uyum %92</span>
+            <p class="card-body" style="margin-top:12px;">Diğer uygun bölümler: Endüstri Mühendisliği (%88), Veri Bilimi (%85).</p>
+          </div>
+          <div class="card card--navy">
+            <span class="eyebrow" style="margin-bottom:8px;">NASIL DESTEK OLABİLİRSİNİZ?</span>
+            <ul class="check-list" style="margin-top:8px;">
+              <li>Süreci sorun, kararı değil.</li>
+              <li>İlgisini merakla karşılayın.</li>
+              <li>Karşılaştırmadan kaçının.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout--amber mt-24">
+          <strong>Önemli:</strong> Bu test bir tavsiye aracıdır, kesin bir karar değil. Çocuğunuzla birlikte okuyup açıkça konuşmak, sonuçların değerini iki katına çıkarır.
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  GİZLİLİK  ════════════════════════════ -->
+    <section id="gizlilik">
+      <div class="callout callout--info">
+        <strong>🔒 Gizlilik:</strong> Çocuğunuzun ham test cevapları, Atlas sohbetleri ve karar günlüğü size kapalıdır. Burada görünen yorumlanmış aylık özettir. Çocuğunuzun mahremiyetine saygıyla.
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Page-local: onay formu inline başarı mesajı (backend yok, demo) -->
+  <script>
+    (function () {
+      var form = document.getElementById('consent-form');
+      var box = document.getElementById('consent-success');
+      if (!form || !box) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var relation = form.querySelector('[name="consent-relation"]');
+        var privacy = form.querySelector('[name="consent-privacy"]');
+        if (!relation.checked || !privacy.checked) {
+          box.className = 'callout callout--amber';
+          box.textContent = 'Devam etmek için velilik ve gizlilik onaylarını işaretleyin.';
+          box.hidden = false;
+          return;
+        }
+        box.className = 'callout callout--mint';
+        box.textContent = '✓ Onayınız alındı, bağ kuruldu (demo). Aşağıdaki aile raporu artık size açık.';
+        box.hidden = false;
+        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    })();
+  </script>
+</body>
+</html>

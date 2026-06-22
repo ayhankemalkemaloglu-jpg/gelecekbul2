@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gelecek Bul'a eklenen yeni özellikler, iyileştirmeler ve düzeltmeler. Bu hafta yenilenenler ve sürüm notları." />
+  <title>Yenilikler — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Yenilikler — Gelecek Bul" />
+  <meta property="og:description" content="Bu hafta yenilenenler ve sürüm notları." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="yenilikler">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  HERO / SUBHEAD  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">SÜRÜM NOTLARI</span>
+        <h1 class="heading-lg"><span class="text-aurora">Yenilikler</span></h1>
+        <p class="lead mt-16">
+          Gelecek Bul sürekli yenilenen bir araç. Yeni özellikler, iyileştirmeler ve
+          düzeltmeler — en yeniden eskiye doğru. Bu hafta neler değişti, aşağıda.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  BU HAFTA YENİLENDİ  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">BU HAFTA YENİLENDİ · 14 MAYIS HAFTASI</span>
+        <h2 class="heading">Taze değişiklikler</h2>
+      </div>
+      <div class="grid-2">
+        <article class="card card--sm">
+          <span class="badge badge--blue" style="align-self:flex-start;">📊 Güncelleme</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Sıralama eşikleri güncellendi</h3>
+          <p class="card-body">Top 10 Tıp Fakültesi için sıralama eşiği 2.400 → 2.180. 220 sıra düştü — şansını yeniden hesapla.</p>
+          <a class="card-link" href="tercih.html">Yeniden hesapla
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+        <article class="card card--sm">
+          <span class="badge badge--mint" style="align-self:flex-start;">🎓 Yeni</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">5 yeni meslek vektörü eklendi</h3>
+          <p class="card-body">Yapay Zeka Araştırmacısı, Quant Analist, Ürün Operasyon, Veri Mühendisi, Climate Tech Mühendisi. Profiline otomatik dahil.</p>
+          <a class="card-link" href="meslekler.html">Profili gör
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+        <article class="card card--sm">
+          <span class="badge badge--amber" style="align-self:flex-start;">🌍 Pro Max</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Yeni What-If senaryosu</h3>
+          <p class="card-body">Pro Max'a özel: "Türkiye'de kalmak vs Yurt Dışı Yüksek Lisans". Slider'ı oynat, gelecek senin elinde.</p>
+          <a class="card-link" href="index.html#planlar">Pro Max'e bak
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+        <article class="card card--sm">
+          <span class="badge badge--blue" style="align-self:flex-start;">📅 Güncelleme</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">ÖSYM tercih takvimi güncellendi</h3>
+          <p class="card-body">YKS sonuçları açıklanma tarihi: 25 Temmuz. Tercih başvurusu: 31 Temmuz–9 Ağustos. Önemli tarihleri kaçırma.</p>
+          <a class="card-link" href="sinav-takvimi.html">Takvime bak
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  TÜM SÜRÜM NOTLARI  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">TÜM SÜRÜM NOTLARI</span>
+        <h2 class="heading">Değişiklik geçmişi</h2>
+        <p class="section-lead">Her geliştirme sonrası güncellenen kronolojik liste — en yeniden eskiye.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card card--sm">
+          <div class="chip-row" style="margin-top:0;">
+            <span class="badge badge--mint">Yeni</span>
+            <span class="badge badge--blue">Herkese</span>
+            <span class="fine">22 Mayıs 2026</span>
+          </div>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Meslekler Keşif Sayfası</h3>
+          <p class="card-body">200 meslek kartı, arama, 8 kategori filtresi, animasyonlu sayaçlar ve mesleğe özel "Ne İş Yapar, Neden Önemli?" anlatımı.</p>
+          <a class="card-link" href="meslekler.html">Meslekleri aç
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="card card--sm">
+          <div class="chip-row" style="margin-top:0;">
+            <span class="badge badge--amber">Yeni</span>
+            <span class="badge badge--amber">Pro Max</span>
+            <span class="fine">22 Mayıs 2026</span>
+          </div>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">En Çok Kazandıran Ülkeler + Kariyer Merdiveni</h3>
+          <p class="card-body">Her meslek için en çok ödeyen 6 ülke ve yeni başlayandan lidere kariyer merdiveni — yıllık $ rakamlarıyla.</p>
+          <a class="card-link" href="maas-rotalari.html">Rotaları gör
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="card card--sm">
+          <div class="chip-row" style="margin-top:0;">
+            <span class="badge">İyileştirme</span>
+            <span class="badge badge--blue">Herkese</span>
+            <span class="fine">22 Mayıs 2026</span>
+          </div>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Mobil menü &amp; plan kartları</h3>
+          <p class="card-body">Hamburger menüye Meslekler eklendi; mobilde plan kartları artık alt alta dikey yığılıyor, fiyatlar daha net.</p>
+        </article>
+
+        <article class="card card--sm">
+          <div class="chip-row" style="margin-top:0;">
+            <span class="badge badge--mint">Yeni</span>
+            <span class="badge badge--blue">Herkese</span>
+            <span class="fine">14 Mayıs 2026</span>
+          </div>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Göçebe &amp; Maaş Haritası</h3>
+          <p class="card-body">60+ ülke, 3D interaktif küre. Gelir, yaşam maliyeti, internet, göçebe vizesi ve net kazanç bir arada — ücretsiz.</p>
+          <a class="card-link" href="nomad-harita.html">Haritayı aç
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="card card--sm">
+          <div class="chip-row" style="margin-top:0;">
+            <span class="badge badge--mint">Yeni</span>
+            <span class="badge">Sistem</span>
+            <span class="fine">14 Mayıs 2026</span>
+          </div>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Haftalık Rota Bülteni</h3>
+          <p class="card-body">Pazartesi 09:00 — sıralama hareketleri, yeni meslekler ve tercih ipuçları kutuna düşer.</p>
+        </article>
+
+        <article class="card card--sm">
+          <div class="chip-row" style="margin-top:0;">
+            <span class="badge badge--amber">Yeni</span>
+            <span class="badge badge--amber">Pro Max</span>
+            <span class="fine">14 Mayıs 2026</span>
+          </div>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">AI Mock Mülakat (alpha)</h3>
+          <p class="card-body">5 soruluk yapay zeka mülakat provası, anında geri bildirim. Pro Max üyelere özel alpha sürümü.</p>
+          <a class="card-link" href="mock-mulakat.html">Provaya başla
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="card card--sm">
+          <div class="chip-row" style="margin-top:0;">
+            <span class="badge badge--mint">Yeni</span>
+            <span class="badge">Okul</span>
+            <span class="fine">14 Mayıs 2026</span>
+          </div>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Sınıf Pilotu (B2B)</h3>
+          <p class="card-body">Okullar için 50 öğrenci, 4 hafta ücretsiz pilot. Rehber öğretmen paneli dahil.</p>
+          <a class="card-link" href="sinif-pilot.html">Okul başvurusu
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="card card--sm">
+          <div class="chip-row" style="margin-top:0;">
+            <span class="badge">İyileştirme</span>
+            <span class="badge badge--amber">Pro Max</span>
+            <span class="fine">12 Mayıs 2026</span>
+          </div>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Sinematik sonuç ekranı</h3>
+          <p class="card-body">Pro Max sonuçlarında akıcı scroll, kademeli açılan kartlar ve paylaşım bölümü. Profil grafikleri yenilendi.</p>
+        </article>
+
+        <article class="card card--sm">
+          <div class="chip-row" style="margin-top:0;">
+            <span class="badge">Düzeltme</span>
+            <span class="badge badge--blue">Herkese</span>
+            <span class="fine">12 Mayıs 2026</span>
+          </div>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">"Burada Bitir" + boş ekran düzeltmesi</h3>
+          <p class="card-body">5/15/30 soru kademelerinde erken bitirme + kısmi sonuç. Uzun testte takılan soru tipi düzeltildi.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  FINAL CTA  ════════════════════════════ -->
+    <section class="cta">
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="badge badge--white" style="margin-bottom:20px;">Sürekli yenileniyor</span>
+          <h2 class="heading-lg">Yeni özellikleri<br />ilk sen dene.</h2>
+          <p class="cta-sub">Bültene katıl, her hafta neyin değiştiğini kaçırma.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="test.html">
+              Teste Başla
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-dark" href="meslekler.html">200 Mesleği Keşfet</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

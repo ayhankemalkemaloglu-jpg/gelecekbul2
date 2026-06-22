@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Okul Demo Talebi — Rehber öğretmenin yıllık iş yükünü %40 azaltın. Sınıf panosu, otomatik veli raporu, tercih modülü ve API erişimi. 15 dakikalık demo planlayalım." />
+  <title>Okul Demo — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Okul Demo — Gelecek Bul" />
+  <meta property="og:description" content="500 öğrenciye kişiselleştirilmiş kariyer rehberliği, otomatik veli raporu ve panel. 15 dk demo planlayalım." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="okul-demo">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">B2B · OKUL LİSANSI</span>
+        <h1 class="heading">Rehber öğretmenin <span class="text-aurora">yıllık iş yükünü %40 azaltın</span></h1>
+        <p class="lead mt-16">
+          500 öğrenciye kişiselleştirilmiş kariyer rehberliği, otomatik veli raporu ve panel.
+        </p>
+      </div>
+
+      <div class="grid-2" style="align-items:start;">
+        <!-- Sol: değer önerisi -->
+        <div>
+          <ul class="check-list">
+            <li><strong style="color:var(--color-white);">Sınıf panosu:</strong> rehber öğretmen tüm öğrencileri tek ekranda görür</li>
+            <li><strong style="color:var(--color-white);">Aylık veli raporu:</strong> otomatik, mahremiyet sınırları korunarak</li>
+            <li><strong style="color:var(--color-white);">Tercih dönemi modülü:</strong> 24 slot simülasyon + risk renkleri</li>
+            <li><strong style="color:var(--color-white);">API erişimi:</strong> okul yönetim sistemine entegrasyon</li>
+            <li><strong style="color:var(--color-white);">SLA:</strong> %99.9 uptime + Türkiye veri merkezi opsiyonu</li>
+          </ul>
+
+          <div class="card card--navy card--sm mt-32">
+            <span class="eyebrow eyebrow--signal">PAKET BAŞLANGICI</span>
+            <div class="heading" style="color:var(--color-white);">₺24.000<span style="font-size:var(--text-body-sm);font-weight:var(--font-weight-regular);color:var(--color-ash);">/yıl</span></div>
+            <div class="fine" style="margin-top:var(--spacing-8);">500 öğrenci dahil · KDV hariç</div>
+            <div class="mt-16" style="font-size:var(--text-caption);color:var(--color-mist);">Daha büyük okullar için <strong style="color:var(--color-white);">özel fiyatlandırma</strong>.</div>
+          </div>
+        </div>
+
+        <!-- Sağ: form -->
+        <form class="form-card" id="demo-form" novalidate>
+          <div>
+            <h2 class="subheading">15 dk demo planlayalım</h2>
+            <p class="fine" style="margin-top:4px;">24 saat içinde size dönüş yaparız.</p>
+          </div>
+          <div class="field">
+            <label class="field-label" for="school_name">Okul adı *</label>
+            <input class="input" id="school_name" name="school_name" required placeholder="örn. Özel ABC Lisesi" />
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="contact_name">Adınız *</label>
+              <input class="input" id="contact_name" name="contact_name" required />
+            </div>
+            <div class="field">
+              <label class="field-label" for="contact_role">Göreviniz</label>
+              <input class="input" id="contact_role" name="contact_role" placeholder="Müdür / Rehber" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="contact_email">E-posta *</label>
+            <input class="input" id="contact_email" name="contact_email" type="email" required />
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="contact_phone">Telefon</label>
+              <input class="input" id="contact_phone" name="contact_phone" type="tel" placeholder="+90" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="student_count">Öğrenci sayısı</label>
+              <input class="input" id="student_count" name="student_count" type="number" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="city">Şehir</label>
+            <input class="input" id="city" name="city" />
+          </div>
+          <div class="field">
+            <label class="field-label" for="package_interest">İlgilendiğiniz paket</label>
+            <select class="select" id="package_interest" name="package_interest">
+              <option value="">Belirsiz</option>
+              <option value="basic">500 öğrenci · Başlangıç</option>
+              <option value="pro">1.500 öğrenci · Pro</option>
+              <option value="enterprise">5.000+ · Kurumsal</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="message">Notunuz</label>
+            <textarea class="textarea" id="message" name="message" rows="3" placeholder="Özel ihtiyaçlarınız varsa…"></textarea>
+          </div>
+          <label class="checkbox-row">
+            <input type="checkbox" name="consent_kvkk" required />
+            <span><a href="kvkk.html" target="_blank" rel="noopener">KVKK Aydınlatma</a>'yı okudum, iletişim için bilgilerimin işlenmesini kabul ediyorum.</span>
+          </label>
+
+          <p class="callout callout--amber" id="demo-error" hidden></p>
+
+          <button class="btn btn-white btn-block" type="submit" id="demo-submit">
+            Demo Talebi Gönder
+            <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <!-- Inline success (revealed on submit) -->
+        <div class="card card--navy" id="demo-success" hidden style="text-align:center;align-items:center;">
+          <span class="icon-chip icon-chip--lg" aria-hidden="true" style="border-radius:var(--radius-full);font-size:24px;">✓</span>
+          <h3 class="subheading">Talebiniz kaydedildi</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">24 saat içinde size döneceğiz. Acilse <a href="mailto:sales@gelecekbul.com" style="color:var(--color-sky-wash);text-decoration:underline;">sales@gelecekbul.com</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Defensive, no-backend: validate required fields then show inline success.
+    (function () {
+      var form = document.getElementById("demo-form");
+      if (!form) return;
+      var success = document.getElementById("demo-success");
+      var error = document.getElementById("demo-error");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          if (error) {
+            error.textContent = "Lütfen zorunlu alanları (okul adı, adınız, e-posta, KVKK onayı) doldur.";
+            error.hidden = false;
+          }
+          form.reportValidity();
+          return;
+        }
+        if (error) error.hidden = true;
+        form.hidden = true;
+        if (success) {
+          success.hidden = false;
+          success.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

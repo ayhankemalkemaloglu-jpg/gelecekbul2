@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Veli Paneli — çocuğunuzun test özeti, sade dille raporu, onay durumu ve görev takibi tek panelde. Aylık aile raporu ve konuşma rehberiyle." />
+  <title>Veli Paneli — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Veli Paneli — Gelecek Bul" />
+  <meta property="og:description" content="Çocuğunuzun aile alanı, raporları ve görev takibi tek panelde." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="veli-dashboard">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  SUBHEAD  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">VELİ PANELİ</span>
+        <h1 class="heading-lg">Merhaba 👋 İşte <span class="text-aurora">Ayşe'nin</span> bu ayki paneli.</h1>
+        <p class="lead mt-16">
+          Çocuğunuzun test özeti, sade dille raporu, görev takibi ve onay
+          durumu tek panelde. Ham veri değil — yorumlanmış özet.
+        </p>
+        <p class="fine mt-16">📋 Bu sayfa örnek (demo) verilerle gösterilmektedir · Gerçek panel hesabınıza bağlanır</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ÖZET KARTLAR (STAT)  ════════════════════════════ -->
+    <section class="section-tight" aria-label="Panel özeti">
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">Ayşe</div>
+          <div class="stat-label">Bağlı öğrenci · 12. sınıf</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Nisan</div>
+          <div class="stat-label">Son test · 6 gün önce</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">%92</div>
+          <div class="stat-label">En yüksek eşleşme</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Onaylı</div>
+          <div class="stat-label">Aile bağı durumu ✓</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ÇOCUĞUNUN PROFİLİ  ════════════════════════════ -->
+    <section id="profil">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">ÇOCUĞUNUZUN PROFİLİ</span>
+        <h2 class="heading">Araştırmacı Stratejist</h2>
+        <p class="section-lead">
+          Analiz etmeyi, derine inmeyi ve karar vermeden önce seçenekleri tartmayı
+          seviyor. Sayısal motivasyonu güçlü; baskı altında aceleci değil, ölçülü.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card card--navy">
+          <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+          <h3 class="card-title">İlgi alanları &amp; değerleri</h3>
+          <div class="chip-row mt-16">
+            <span class="code-chip"><b>Araştırma</b></span>
+            <span class="code-chip"><b>Analitik</b></span>
+            <span class="code-chip"><b>Teknoloji</b></span>
+            <span class="code-chip"><b>Tasarım</b></span>
+          </div>
+          <p class="card-body">Önem verdiği değerler: özerklik, başarı ve güvenlik. Kendi başına çalışabildiği, ölçülebilir hedeflerin olduğu ortamlarda parlıyor.</p>
+        </article>
+
+        <article class="card card--navy">
+          <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+          <h3 class="card-title">Bu ay büyüdüğü alanlar</h3>
+          <ul class="check-list mt-16">
+            <li>Karar netliği belirgin arttı</li>
+            <li>Sayısal motivasyon yükseldi</li>
+            <li>TYT denemesi: 88 → 92</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  SADELEŞTİRİLMİŞ RAPOR  ════════════════════════════ -->
+    <section id="rapor">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">BU AYIN AİLE RAPORU</span>
+        <h2 class="heading">Üç dakikada okunan özet.</h2>
+        <p class="section-lead">En uygun bölüm önerisi ve çocuğunuza nasıl destek olabileceğiniz — sade bir dille.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card card--featured">
+          <span class="badge badge--white">EN UYGUN BÖLÜM</span>
+          <div class="plan-price">
+            <span class="plan-amount">Biyomedikal Müh.</span>
+          </div>
+          <span class="badge badge--mint mt-16">Uyum %92</span>
+          <ul class="check-list mt-24">
+            <li>Endüstri Mühendisliği — uyum %88</li>
+            <li>Veri Bilimi — uyum %85</li>
+            <li>Yazılım Mühendisliği — uyum %81</li>
+          </ul>
+          <p class="card-body">Bu öneriler bir tavsiyedir, kesin karar değil. Çocuğunuzla birlikte konuşmak değerini artırır.</p>
+        </article>
+
+        <article class="card">
+          <span class="icon-chip" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-6 0v4M5 9h14l1 12H4z"/></svg></span>
+          <h3 class="card-title">Nasıl destek olabilirsiniz?</h3>
+          <ul class="check-list mt-16">
+            <li>"Karar verdin mi?" yerine "bu hafta seni en çok ne yordu?" diye sorun.</li>
+            <li>İlgisini ciddiye alın; meraklı sorular kapı açar, sorgu kapatır.</li>
+            <li>Bölüm değil süreç konuşun — puan ve fikir aylar içinde evrilir.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="callout callout--amber mt-16">
+        <strong>Kaçınılması iyi olan:</strong> "Halamların oğlu…" gibi karşılaştırmalar ve "neden hâlâ karar vermedin?" baskısı. Bu cümleler genelde sohbeti değil, savunmayı tetikler.
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  KONUŞMA REHBERİ  ════════════════════════════ -->
+    <section id="konusma">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">KONUŞMA REHBERİ</span>
+        <h2 class="heading">Bu hafta sormaya değer 3 soru.</h2>
+      </div>
+      <div class="grid-3">
+        <div class="callout callout--mint">"Bu hafta seni en çok ne yordu?"</div>
+        <div class="callout callout--mint">"Plan A hâlâ ilk tercihin mi?"</div>
+        <div class="callout callout--mint">"Birlikte bakmak istediğin bir alan var mı?"</div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ONAY DURUMU + AKSİYONLAR  ════════════════════════════ -->
+    <section id="aksiyonlar">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">ONAY &amp; AKSİYONLAR</span>
+        <h2 class="heading">Sıradaki adımlar</h2>
+        <p class="section-lead">Raporu indirin, çocuğunuzun rota planını onaylayın veya Aile Alanı'na geçin.</p>
+      </div>
+
+      <div class="card card--indigo">
+        <div class="plan-head" style="justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <span class="subheading">Aile bağı durumu</span>
+          <span class="badge badge--mint">✓ Onaylı · Ayşe ile bağlı</span>
+        </div>
+        <p class="card-body">Çocuğunuz sizi panele davet etti ve bağ kuruldu. Aşağıdaki işlemleri yapabilirsiniz.</p>
+
+        <!-- Inline success target -->
+        <div id="action-success" class="callout callout--mint mt-16" role="status" hidden></div>
+
+        <div class="button-row">
+          <button class="btn btn-white" type="button" data-vd-action="download">
+            <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Raporu indir (PDF)
+          </button>
+          <button class="btn btn-dark" type="button" data-vd-action="approve">
+            <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            Rota planını onayla
+          </button>
+          <a class="btn btn-dark" href="aile.html">Aile Alanı'na geç</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  GİZLİLİK  ════════════════════════════ -->
+    <section id="gizlilik">
+      <div class="callout callout--info">
+        <strong>🔒 Gizlilik:</strong> Çocuğunuzun ham test cevapları, Atlas sohbetleri ve karar günlüğü size kapalıdır. Burada görünen yorumlanmış aylık özettir. Çocuğunuzun mahremiyetine saygıyla.
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Page-local: demo aksiyon butonları için inline başarı mesajı -->
+  <script>
+    (function () {
+      var box = document.getElementById('action-success');
+      if (!box) return;
+      var messages = {
+        download: '📥 Demo raporu hazır — gerçek panelde PDF cihazınıza iner.',
+        approve: '✓ Rota planı onaylandı. Çocuğunuz bilgilendirildi (demo).'
+      };
+      document.querySelectorAll('[data-vd-action]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var key = btn.getAttribute('data-vd-action');
+          box.textContent = messages[key] || 'İşlem tamamlandı.';
+          box.hidden = false;
+          box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

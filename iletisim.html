@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gelecek Bul ekibine ulaş — genel destek, KVKK/veri talepleri, basın ve işbirliği. 24 saat içinde dönüş yapıyoruz." />
+  <title>İletişim — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="İletişim — Gelecek Bul" />
+  <meta property="og:description" content="Bize ulaş — genel destek, KVKK/veri talepleri, basın ve işbirliği." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="iletisim">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  BAŞLIK  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">İLETİŞİM</span>
+        <h1 class="heading-lg">Bize ulaş</h1>
+        <p class="lead">
+          Hangi konuda destek istediğini seç. <strong style="color:var(--color-white);">24 saat içinde</strong>
+          dönüş yapıyoruz; hafta sonu gecikme olabilir.
+        </p>
+      </div>
+
+      <!-- Contact wrapper: topic selector + form, centered -->
+      <div id="contact-wrap" style="max-width:680px;margin:0 auto;">
+        <!-- Topic selector -->
+        <div class="topic-grid" data-topic-input="#contact-topic" style="margin-bottom:var(--spacing-32);">
+          <button type="button" class="topic-card is-active" data-topic="general" aria-pressed="true">
+            <span class="topic-emoji">💬</span>
+            <span class="topic-title">Genel destek</span>
+            <span class="topic-desc">Hesap, ödeme, test sonuçları, hata bildirimi</span>
+          </button>
+          <button type="button" class="topic-card" data-topic="data" aria-pressed="false">
+            <span class="topic-emoji">🔐</span>
+            <span class="topic-title">Veri / KVKK</span>
+            <span class="topic-desc">Veri silme, erişim, taşıma talepleri</span>
+          </button>
+          <button type="button" class="topic-card" data-topic="press" aria-pressed="false">
+            <span class="topic-emoji">📰</span>
+            <span class="topic-title">Basın &amp; İşbirliği</span>
+            <span class="topic-desc">Röportaj, içerik ortaklığı, iş geliştirme</span>
+          </button>
+        </div>
+
+        <!-- Contact form -->
+        <form class="form-card" id="contact-form" novalidate>
+          <input type="hidden" name="topic" id="contact-topic" value="general" data-topic-value />
+
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="cf-name">Adın *</label>
+              <input class="input" id="cf-name" name="name" maxlength="200" required />
+            </div>
+            <div class="field">
+              <label class="field-label" for="cf-email">E-posta *</label>
+              <input class="input" id="cf-email" name="email" type="email" maxlength="200" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="cf-subject">Başlık</label>
+            <input class="input" id="cf-subject" name="subject" maxlength="200" placeholder="Kısa konu özeti (opsiyonel)" />
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="cf-message">Mesaj *</label>
+            <textarea class="textarea" id="cf-message" name="message" rows="6" maxlength="4000" required
+              placeholder="Konuyu mümkün olduğunca açık yaz; hızlı dönüş için yardımcı olur."></textarea>
+            <div class="fine" id="cf-counter" style="text-align:right;">0 / 4000</div>
+          </div>
+
+          <label class="checkbox-row">
+            <input type="checkbox" name="consent_kvkk" id="cf-consent" required />
+            <span>
+              <a href="kvkk.html" target="_blank" rel="noopener">KVKK Aydınlatma</a>'yı okudum, iletişim için
+              bilgilerimin işlenmesini kabul ediyorum.
+            </span>
+          </label>
+
+          <p class="callout callout--amber" id="cf-error" hidden></p>
+
+          <button type="submit" class="btn btn-white btn-block">
+            Mesajı Gönder
+            <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </button>
+
+          <p class="form-note">
+            Direkt e-posta:
+            <a href="mailto:psakml1233@gmail.com?subject=Gelecek%20Bul%20%E2%80%94%20%C4%B0leti%C5%9Fim">psakml1233@gmail.com</a>
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Page-specific: char counter + inline success on submit -->
+  <script>
+    (function () {
+      var form = document.getElementById("contact-form");
+      if (!form) return;
+      var msg = document.getElementById("cf-message");
+      var counter = document.getElementById("cf-counter");
+      var errBox = document.getElementById("cf-error");
+
+      if (msg && counter) {
+        msg.addEventListener("input", function () {
+          counter.textContent = msg.value.length + " / 4000";
+        });
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var name = (form.elements["name"].value || "").trim();
+        var email = (form.elements["email"].value || "").trim();
+        var message = (form.elements["message"].value || "").trim();
+        var consent = form.elements["consent_kvkk"].checked;
+
+        if (!name || !email || !message || !consent) {
+          if (errBox) {
+            errBox.textContent =
+              "Lütfen ad, e-posta ve mesaj alanlarını doldur ve KVKK'yı onayla.";
+            errBox.hidden = false;
+          }
+          return;
+        }
+        if (errBox) errBox.hidden = true;
+
+        var wrap = document.getElementById("contact-wrap");
+        if (!wrap) return;
+        wrap.innerHTML =
+          '<div class="card card--navy center" style="max-width:680px;margin:0 auto;">' +
+          '  <span class="icon-chip" style="margin:0 auto var(--spacing-16);">' +
+          '    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' +
+          "  </span>" +
+          '  <h3 class="subheading">Mesajın bize ulaştı</h3>' +
+          '  <p class="card-body" style="text-align:center;">24 saat içinde <strong style="color:var(--color-white);">' +
+          email.replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+          "</strong> adresine dönüş yapacağız.</p>" +
+          '  <a class="btn btn-dark" href="index.html" style="margin:var(--spacing-24) auto 0;">Ana sayfaya dön</a>' +
+          "</div>";
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sıralama Snapshot — ₺19/ay mikro abonelik. YKS sıralama hedeflerin için günlük snapshot. 4 hafta önce hangi eşikteydin, şimdi nerede? Otomatik karşılaştırma." />
+  <title>Sıralama Snapshot — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Sıralama Snapshot — Gelecek Bul" />
+  <meta property="og:description" content="₺19/ay · YKS sıralama hedeflerin için günlük snapshot." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="snapshot">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  HERO  ════════════════════════════ -->
+    <section class="subhead" style="margin-top:0;">
+      <span class="eyebrow eyebrow--signal">MİKRO ABONELİK</span>
+      <h1 class="heading-lg">Sıralama <span class="text-aurora">Snapshot</span></h1>
+      <p class="lead mt-16">
+        YKS sıralama hedeflerin için günlük snapshot. 4 hafta önce hangi
+        eşikteydin, şimdi nerede — otomatik karşılaştırma.
+      </p>
+    </section>
+
+    <!-- ════════════════════════════  PRICE CARD  ════════════════════════════ -->
+    <section class="section-tight" style="max-width:420px;margin-left:auto;margin-right:auto;">
+      <div class="card card--featured center">
+        <span class="eyebrow eyebrow--signal">AYLIK</span>
+        <div class="display" style="font-size:var(--text-display);line-height:1;">₺19</div>
+        <p class="card-body" style="margin-top:8px;">/ ay · istediğin zaman iptal</p>
+        <p class="fine" style="margin-top:8px;">İlk 7 gün ücretsiz · taahhüt yok</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  WHAT YOU GET  ════════════════════════════ -->
+    <section class="section-tight" style="max-width:520px;margin-left:auto;margin-right:auto;">
+      <ul class="check-list">
+        <li>Her gün sıralama eşik takibi (top 1K / 5K / 10K / 25K)</li>
+        <li>Profiline uygun 3 hedef bölüm için otomatik karşılaştırma</li>
+        <li>Haftalık değişim grafiği (4 hafta geriye dönük)</li>
+        <li>Eşik değişimi büyükse anında push bildirim</li>
+        <li>Aile e-postasına opsiyonel haftalık özet</li>
+        <li>İstediğin zaman tek tıkla iptal — başka soru sormuyoruz</li>
+      </ul>
+
+      <!-- CTA -->
+      <div class="button-row button-row--center" style="margin-top:36px;flex-direction:column;align-items:center;">
+        <a class="btn btn-white btn-block" href="index.html#planlar" data-action="pay" data-plan="promax" style="max-width:360px;">
+          Aboneliği Başlat — 7 gün ücretsiz
+          <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="card-link" href="index.html#planlar" style="margin-top:16px;color:var(--color-sky-wash);">
+          Pro Max ile karşılaştır
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Pricing note -->
+      <div class="callout callout--info mt-24" style="text-align:center;">
+        💎 <strong style="color:var(--color-white);">Pro Max'a dahil değil</strong> — ayrı mikro abonelik, sadece sıralama takibi ile sınırlı.
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

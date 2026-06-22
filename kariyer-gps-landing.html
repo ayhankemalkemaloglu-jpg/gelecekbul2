@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kariyer GPS — Bir test değil, bir rota. Sen değişirsen rotan da değişir. 9 aylık YKS yolculuğuna 9 aylık akıl. Her hafta için en doğru bir sonraki adım." />
+  <title>Kariyer GPS — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Kariyer GPS — Gelecek Bul" />
+  <meta property="og:description" content="Bir test değil. Bir kariyer GPS'i. Sen değişirsen, rotan da değişir." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="kariyer-gps-landing">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  HERO  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal" style="display:inline-flex;align-items:center;gap:8px;">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--color-vivid-mint);"></span>
+          CANLI KARİYER ROTASI
+        </span>
+        <h1 class="display">Bir test değil.<br /><span class="text-aurora">Bir kariyer GPS'i.</span></h1>
+        <p class="lead mt-24">
+          Sen değişirsen, rotan da değişir. Puan dalgalanır, hedef evrilir, aile fikri kayar —
+          Gelecek Bul her hafta sana <b style="color:var(--color-white);">"şu an en doğru bir sonraki adım ne?"</b>
+          sorusuna yeni cevap verir.
+        </p>
+        <div class="button-row button-row--center">
+          <a class="btn btn-white" href="test.html">
+            Ücretsiz başla
+            <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn-dark" href="#demo">Örnek panele bak</a>
+        </div>
+        <p class="fine mt-24">14 gün ücretsiz Pro · Kredi kartı gerekmez · İptal tek tıkla</p>
+      </div>
+
+      <!-- DEMO CARD -->
+      <div class="card" id="demo" style="max-width:760px;margin:0 auto;text-align:left;">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:var(--text-caption);margin-bottom:16px;">
+          <span style="color:var(--color-ash);">🧭 Ayşe'nin paneli · 2 dk önce güncellendi</span>
+          <span style="display:flex;align-items:center;gap:6px;color:var(--color-vivid-mint);">● Canlı</span>
+        </div>
+        <div class="card--navy" style="border-radius:var(--radius-xl);padding:var(--spacing-20);box-shadow:var(--shadow-subtle-2);">
+          <span class="eyebrow eyebrow--signal">🎯 BU HAFTA EN DOĞRU ADIM</span>
+          <p style="margin-top:8px;font-size:var(--text-body-lg);font-weight:var(--font-weight-medium);color:var(--color-white);">
+            "Hayalindeki 1 bölümde okuyan biriyle 15 dakika konuş."
+          </p>
+          <div style="margin-top:12px;display:flex;gap:8px;">
+            <span class="btn btn-white" style="padding:6px 12px;font-size:var(--text-caption);">İşaretle ✓</span>
+            <span class="btn btn-dark" style="padding:6px 12px;font-size:var(--text-caption);">Detay</span>
+          </div>
+        </div>
+        <div class="grid-3 mt-16" style="text-align:center;">
+          <div class="card--sm" style="background:var(--surface-charcoal);border-radius:var(--radius-xl);padding:var(--spacing-12);box-shadow:none;">
+            <div class="fine">Karar güveni</div>
+            <div class="subheading">%72</div>
+            <div style="font-size:var(--text-caption);color:var(--color-vivid-mint);">+6</div>
+          </div>
+          <div class="card--sm" style="background:var(--surface-charcoal);border-radius:var(--radius-xl);padding:var(--spacing-12);box-shadow:none;">
+            <div class="fine">Kararsızlık</div>
+            <div class="subheading">%29</div>
+            <div style="font-size:var(--text-caption);color:var(--color-vivid-mint);">-9</div>
+          </div>
+          <div class="card--sm" style="background:var(--surface-charcoal);border-radius:var(--radius-xl);padding:var(--spacing-12);box-shadow:none;">
+            <div class="fine">TYT trend</div>
+            <div class="subheading">418</div>
+            <div style="font-size:var(--text-caption);color:var(--color-vivid-mint);">+6</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  "TEST DEĞİL" BANNER  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="callout" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 32px;text-align:center;">
+        <span style="color:var(--color-ash);">🚫 Bir test değil</span>
+        <span style="color:var(--color-ash);">🚫 Bir teşhis değil</span>
+        <span style="color:var(--color-ash);">🚫 Bir etiket değil</span>
+        <span style="color:var(--color-ash);">🚫 Bir kehanet değil</span>
+        <span style="color:var(--color-white);">✓ Yaşayan bir rota</span>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  NASIL ÇALIŞIR  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <h2 class="heading-lg">Nasıl çalışır?</h2>
+        <p class="lead mt-16">4 adım. Sonra her hafta bir adım daha. Sistem değişen sana göre kendini yeniden hesaplar.</p>
+      </div>
+      <div class="grid-4">
+        <article class="card card--sm">
+          <span class="eyebrow eyebrow--signal">ADIM 1</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);">İlk rota</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">30 soruda profilin ve ilk rotan oluşur. Bilimsel envanter + sade dil.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="eyebrow eyebrow--signal">ADIM 2</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);">Her hafta 1 adım</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Atlas sana bu hafta için en doğru bir sonraki adımı önerir.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="eyebrow eyebrow--signal">ADIM 3</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);">Veri değiştikçe yeniden hesap</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Yeni puan, yeni fikir, yeni veri — sistem rotanı tazeler.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="eyebrow eyebrow--signal">ADIM 4</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);">Plan A/B/C paralel</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Plan A tutmazsa B hazır. Pro Max'te üç plan eş zamanlı.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  MODÜLLER  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <h2 class="heading-lg">Tek bir ekran değil. Yaşayan bir panel.</h2>
+        <p class="lead mt-16">Her widget kararının başka bir kasını çalıştırır.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card card--sm">
+          <span class="topic-emoji" aria-hidden="true">🎯</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">Bu hafta en doğru adım</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">50+ aksiyon havuzundan, profilin ve takvimine göre 1 öneri.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="topic-emoji" aria-hidden="true">🧭</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">Plan A / B / C</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Üç paralel rota. Her birinin güven skoru, üniversite listesi, kabul tahmini.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="topic-emoji" aria-hidden="true">🧠</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">Atlas hafızası</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Konuştuklarınızı hatırlar. Sıfırdan başlamak yok.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="topic-emoji" aria-hidden="true">📓</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">Karar günlüğü</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">3 cümle yeter. Atlas okur, hafızasına ekler, sonra geri yansıtır.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="topic-emoji" aria-hidden="true">⚠️</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">Risk uyarıları</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Plan A'na fazla güven, Plan B'nin eskimesi, coğrafi risk... otomatik tespit.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="topic-emoji" aria-hidden="true">🎓</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">Mezun röportajları</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Profiline uyan hikâyeler. İlham, gerçek, dürüst.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="topic-emoji" aria-hidden="true">🏛️</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">Üniversite karşılaştırma odası</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">2 bölümü, 2 şehri yan yana koy. Maliyet, kabul, kariyer.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="topic-emoji" aria-hidden="true">📊</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">Karar güven skoru</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Kararsızlığını ölç. Zaman içinde azalt.</p>
+        </article>
+        <article class="card card--sm">
+          <span class="topic-emoji" aria-hidden="true">🌍</span>
+          <h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">Yurtdışı + Türkiye paralel</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">İki rotayı aynı anda izle (Pro Max).</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  BİLİMSEL TEMEL  ════════════════════════════ -->
+    <section>
+      <div class="grid-2" style="align-items:center;">
+        <div>
+          <h2 class="heading">Bilimsel temel, sade dil.</h2>
+          <p class="card-body mt-24" style="font-size:var(--text-body-sm);">
+            Sonuçlarımız <b style="color:var(--color-white);">Big Five</b>, <b style="color:var(--color-white);">Holland Code (RIASEC)</b>
+            ve modern değer hiyerarşisi envanterlerine dayanır. Bunlar üniversite ve okullarda yıllardır kullanılan,
+            dünya genelinde sınanmış yöntemlerdir.
+          </p>
+          <p class="card-body mt-16" style="font-size:var(--text-body-sm);">
+            Yapay zekâ burada <b style="color:var(--color-white);">karar veren değil, sade Türkçeye çeviren</b> rolündedir.
+          </p>
+        </div>
+        <div class="card card--navy">
+          <span class="eyebrow eyebrow--signal">KAYNAKLAR</span>
+          <ul class="check-list mt-16">
+            <li>Big Five Personality Model — Costa &amp; McCrae</li>
+            <li>Holland Code (RIASEC) — Career Choice</li>
+            <li>Value Hierarchies — Schwartz Values Theory</li>
+            <li>Multiple Intelligences — Gardner</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  VELİYE ÖZEL  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">VELİYE ÖZEL</span>
+        <h2 class="heading">Çocuğunuzu test eden taraf değil, <span class="text-aurora">anlayan taraf olun.</span></h2>
+        <p class="lead mt-16">Aylık aile raporu, konuşma rehberi, veli-öğrenci farkı raporu. Ham cevapları değil, yorumlanmış özeti görürsünüz.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card card--indigo card--sm">
+          <span class="topic-emoji" aria-hidden="true">📥</span>
+          <h3 class="card-title" style="font-size:var(--text-body-sm);margin-top:8px;">Aylık aile raporu</h3>
+          <p class="card-body" style="font-size:var(--text-caption);">3 dakikada okunan, PDF olarak rehber öğretmenle paylaşılabilen.</p>
+        </article>
+        <article class="card card--indigo card--sm">
+          <span class="topic-emoji" aria-hidden="true">💬</span>
+          <h3 class="card-title" style="font-size:var(--text-body-sm);margin-top:8px;">Konuşma rehberi</h3>
+          <p class="card-body" style="font-size:var(--text-caption);">Bu hafta neyi sormalı, neyi sormamalı listesi.</p>
+        </article>
+        <article class="card card--indigo card--sm">
+          <span class="topic-emoji" aria-hidden="true">🪞</span>
+          <h3 class="card-title" style="font-size:var(--text-body-sm);margin-top:8px;">Fark raporu</h3>
+          <p class="card-body" style="font-size:var(--text-caption);">Sizin görüşünüz vs onun görüşü — kritik farklar işaretlenir.</p>
+        </article>
+      </div>
+      <div class="button-row button-row--center">
+        <a class="btn btn-dark" href="aile.html">
+          Veliye özel sayfayı aç
+          <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  CANLI SAYAÇLAR  ════════════════════════════ -->
+    <section>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num text-aurora" data-count="48200" data-count-suffix="">0</div>
+          <div class="stat-label" style="font-family:var(--font-ui-monospace);text-transform:uppercase;letter-spacing:0.14em;">Toplam kullanıcı</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num text-aurora" data-count="9100" data-count-suffix="">0</div>
+          <div class="stat-label" style="font-family:var(--font-ui-monospace);text-transform:uppercase;letter-spacing:0.14em;">Bu ay test</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num text-aurora" data-count="3400" data-count-suffix="">0</div>
+          <div class="stat-label" style="font-family:var(--font-ui-monospace);text-transform:uppercase;letter-spacing:0.14em;">Aktif aile</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num text-aurora" style="display:flex;align-items:center;justify-content:center;gap:8px;">
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--color-vivid-mint);"></span>
+            <span data-count="217" data-count-suffix="">0</span>
+          </div>
+          <div class="stat-label" style="font-family:var(--font-ui-monospace);text-transform:uppercase;letter-spacing:0.14em;">Şu an çevrimiçi</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  SOSYAL KANIT  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <h2 class="heading-lg">Kullananlar ne diyor?</h2>
+      </div>
+      <div class="grid-3">
+        <figure class="card">
+          <blockquote class="card-body" style="font-size:var(--text-body-sm);">"Çocuğumla 6 aydır 'hangi bölüm' kavgası vardı. Aile raporunu okuyunca kavga yerine sohbet ettik."</blockquote>
+          <figcaption class="fine mt-16">— Selma K., anne</figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote class="card-body" style="font-size:var(--text-body-sm);">"Atlas geçen ay konuştuğumuzu hatırladığında 'sahi de' dedim. Sıfırdan başlamamak büyük rahatlık."</blockquote>
+          <figcaption class="fine mt-16">— Ayşe, 12. sınıf</figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote class="card-body" style="font-size:var(--text-body-sm);">"Velilerin elinde PDF olarak gelmesi randevuyu tanışmadan çalışmaya çeviriyor."</blockquote>
+          <figcaption class="fine mt-16">— Cem Ö., rehber öğretmen</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  FİYATLAR  ════════════════════════════ -->
+    <section id="planlar">
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">FİYATLAR</span>
+        <h2 class="heading">Doğru planı seç</h2>
+        <p class="lead mt-16">Free ile dene, Pro ile karar ver. Abonelik istediğin an iptal edilebilir — kalan süre boyunca erişimin sürer.</p>
+      </div>
+      <div class="plan-grid">
+        <article class="plan-card">
+          <div class="plan-head">
+            <span class="plan-name">Free</span>
+            <span class="badge">DEMO</span>
+          </div>
+          <div class="plan-price"><span class="plan-amount">₺0</span><span class="plan-period">sınırlı deneme</span></div>
+          <p class="plan-tagline">Ne sunduğumuzu gör. Sonuçlar demo niteliğinde — karar için Pro şart.</p>
+          <ul class="check-list">
+            <li>Kısa kişilik testi</li>
+            <li>Tek bölüm önerisi</li>
+            <li>Bulanık profil grafiği</li>
+            <li>Reklam yok, email gerekmez</li>
+          </ul>
+          <a class="btn btn-dark btn-block" href="test.html">Ücretsiz Başla</a>
+        </article>
+
+        <article class="plan-card">
+          <div class="plan-head">
+            <span class="plan-name">Pro</span>
+          </div>
+          <div class="plan-price"><span class="plan-amount">₺1.999</span><span class="plan-period">/ 3 ay</span></div>
+          <p class="plan-tagline">Tam bilimsel envanter + AI yorumu. Gerçek karar için.</p>
+          <ul class="check-list">
+            <li>RIASEC + Big Five + Holland</li>
+            <li>Atlas AI yorumu (Türkçe)</li>
+            <li>Top-5 bölüm + üniversite eşleşmesi</li>
+            <li>Tercih Simülatörü (24 slot)</li>
+            <li>PDF rapor</li>
+          </ul>
+          <a class="btn btn-dark btn-block" href="#" data-action="pay" data-plan="pro">Pro'ya Geç</a>
+        </article>
+
+        <article class="plan-card plan-card--featured">
+          <div class="plan-head">
+            <span class="plan-name">Pro Max</span>
+            <span class="badge badge--white">EN POPÜLER</span>
+          </div>
+          <div class="plan-price"><span class="plan-amount">₺2.499</span><span class="plan-period">/ 3 ay</span></div>
+          <p class="plan-tagline">Her şey dahil. Maaş rotaları, göçebe haritası ve mülakat alpha.</p>
+          <ul class="check-list">
+            <li>Pro'daki her şey</li>
+            <li>Yüksek Maaşlı Rotalar (dahil)</li>
+            <li>Göçebe &amp; Maaş Haritası</li>
+            <li>What-If senaryoları</li>
+            <li>AI Mock Mülakat (alpha)</li>
+          </ul>
+          <a class="btn btn-white btn-block" href="#" data-action="pay" data-plan="promax">Pro Max'e Geç</a>
+        </article>
+      </div>
+      <p class="fine center mt-24">Yıllık planlarda %12–15 indirim · 3 Aylık ve Yıllık döngü mevcut · <a href="karsilastir.html" style="color:var(--color-sky-wash);text-decoration:underline;">Planları karşılaştır</a></p>
+    </section>
+
+    <!-- ════════════════════════════  NEDEN ÜYELİK  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <h2 class="heading-lg">"Bir kere test çözdüm, neden üyelikte kalayım?"</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card card--sm">
+          <h3 class="card-title" style="font-size:var(--text-body-sm);">Çünkü puan değişir, rota da değişmeli.</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">9 ay boyunca ±40 net dalgalanır. Tek bir Kasım testi, Haziran tercihine cevap veremez.</p>
+        </div>
+        <div class="card card--sm">
+          <h3 class="card-title" style="font-size:var(--text-body-sm);">Çünkü Plan A her zaman tutmaz.</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Plan B hazır olsun. Pro Max'te Plan C de paralel takip edilir.</p>
+        </div>
+        <div class="card card--sm">
+          <h3 class="card-title" style="font-size:var(--text-body-sm);">Çünkü Atlas seni unutmamalı.</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Hafıza birikir — abonelik bunun kıymetini katlar.</p>
+        </div>
+        <div class="card card--sm">
+          <h3 class="card-title" style="font-size:var(--text-body-sm);">Çünkü tercih dönemi 9 aydır oluşur.</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">O dönem panik yapmamak için bugünden veri biriktirmek gerek.</p>
+        </div>
+        <div class="card card--sm">
+          <h3 class="card-title" style="font-size:var(--text-body-sm);">Çünkü veli süreçte tutulmalı.</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Aylık rapor, konuşma rehberi, fark raporu — sürekli güncellenir.</p>
+        </div>
+        <div class="card card--sm">
+          <h3 class="card-title" style="font-size:var(--text-body-sm);">Çünkü kararsızlık ölçülebilir ve azalabilir.</h3>
+          <p class="card-body" style="font-size:var(--text-body-sm);">Karar güven skorun haftalık yükselir; bu somut bir gelişmedir.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  FİNAL CTA  ════════════════════════════ -->
+    <section>
+      <div class="cta-card">
+        <div class="cta-content">
+          <h2 class="heading-lg">Bu hafta için doğru adımın hazır.</h2>
+          <p class="cta-sub">14 gün ücretsiz Pro. Atlas seni tanımaya başlasın.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="test.html">
+              Ücretsiz başla
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

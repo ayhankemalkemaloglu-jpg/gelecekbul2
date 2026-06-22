@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Liseler ve rehber öğretmenler için: sınıf bazlı bölüm-uyum raporları, Big Five + RIASEC akademik referanslar, KVKK uyumlu, 50 öğrenciye kadar ücretsiz." />
+  <title>Okullar — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Okullar için — Gelecek Bul" />
+  <meta property="og:description" content="Lisenizde toplu kullanım — ücretsiz. Sınıf bazlı raporlar, Big Five + RIASEC akademik referanslı." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="okullar">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  BAŞLIK / HERO  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">OKULLAR İÇİN</span>
+        <h1 class="heading-lg">Lisenizde <span class="text-aurora">toplu kullanım</span> — ücretsiz.</h1>
+        <p class="lead">
+          Rehber öğretmenler ve lise yönetimi için: 30 sorulu Big Five + RIASEC envanteri, sınıf bazlı
+          bölüm-uyum raporları. <strong style="color:var(--color-white);">50 öğrenciye kadar ücretsiz</strong>,
+          KVKK uyumlu, Türkçe.
+        </p>
+        <div class="button-row button-row--center">
+          <a class="btn btn-white" href="#talep">
+            Okulum İçin Talep Et
+            <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn-dark" href="#metodoloji">Akademik Referansları Gör</a>
+        </div>
+        <p class="eyebrow mt-16">BIG FIVE · RIASEC · HOLLAND · KVKK</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  4 KAZANIM  ════════════════════════════ -->
+    <section>
+      <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
+        <h2 class="heading">Rehber öğretmenin <span class="text-aurora">4 kazancı</span></h2>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="topic-emoji">📋</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Sınıf paneli</h3>
+          <p class="card-body">Tek dashboard'da sınıfın profil dağılımını görün: hangi öğrenci hangi profilde, kim hangi alana yatkın, kim ek yönlendirme istiyor.</p>
+        </div>
+        <div class="card">
+          <span class="topic-emoji">📊</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Toplu raporlar</h3>
+          <p class="card-body">Sınıf bazlı PDF rapor — yıllık değerlendirme, müdürlük sunumu, veli toplantısı için kullanılabilir veri.</p>
+        </div>
+        <div class="card">
+          <span class="topic-emoji">🧬</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">Akademik referans</h3>
+          <p class="card-body">Big Five (Costa &amp; McCrae) + RIASEC (Holland). MEB rehberlik müfredatıyla uyumlu envanter modelleri.</p>
+        </div>
+        <div class="card">
+          <span class="topic-emoji">🔐</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-lg);">KVKK uyumlu</h3>
+          <p class="card-body">Öğrenci verileri şifreli, anonim ID ile saklanır. Velilere yazılı bilgilendirme şablonu sağlanır.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  NEDEN BİZ  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">REHBERLİK SERVİSİNİN YÜKÜ</span>
+        <h2 class="heading">500 öğrenciye <span class="text-aurora">tek başınıza yetişmek</span> mi?</h2>
+        <p class="lead">
+          Türkiye'de bir lisede ortalama rehber öğretmen başına 400–800 öğrenci düşüyor. Gelecek Bul ön
+          filtreyi sizin yerinize yapar — siz gerçekten dikkat ister öğrenciye odaklanırsınız.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="card card--indigo">
+          <span class="topic-emoji">⏱️</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-sm);">Zaman tasarrufu</h3>
+          <p class="card-body" style="font-size:var(--text-caption);">Her öğrenciyle 45dk görüşmek yerine, ön analiz hazır gelir. Görüşme süreniz 15dk'ya iner — aynı ay 3x öğrenciye yetişirsiniz.</p>
+        </div>
+        <div class="card card--indigo">
+          <span class="topic-emoji">📈</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-sm);">Veriye dayalı yıllık rapor</h3>
+          <p class="card-body" style="font-size:var(--text-caption);">Sınıf profil dağılımı, alan tercihleri, "kararsız" öğrenci oranı — yıl sonu müdürlük raporunda kullanılabilir somut veri.</p>
+        </div>
+        <div class="card card--indigo">
+          <span class="topic-emoji">🤝</span>
+          <h3 class="card-title mt-16" style="font-size:var(--text-body-sm);">Veli toplantısında ortak dil</h3>
+          <p class="card-body" style="font-size:var(--text-caption);">"Çocuğum doktor olacak" diyen veliyle bilimsel envanter sonucuyla konuşmak kolay. Tartışma duygudan veriye geçer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  SSS  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">SIKÇA SORULAN SORULAR</span>
+        <h2 class="heading">Aklınızdaki <span class="text-aurora">soru</span> burada cevaplanmış.</h2>
+      </div>
+      <div class="faq" style="margin-left:auto;margin-right:auto;">
+        <details class="faq-item">
+          <summary>Gerçekten ücretsiz mi? Sonradan ücret çıkar mı?</summary>
+          <p class="faq-a">50 öğrenciye kadar tamamen ücretsiz, kart gerektirmez. 50'nin üzeri için yıllık plan vardır — sınıf paneli, toplu PDF rapor, KVKK paketi dahil. Önce 50 ile dene, faydasını gör, sonra karar ver.</p>
+        </details>
+        <details class="faq-item">
+          <summary>MEB onaylı mı? Müdür sorduğunda ne diyeceğim?</summary>
+          <p class="faq-a">Gelecek Bul bir öğrenim yazılımı değil, rehberlik servisini destekleyen bir ölçme aracı. Big Five ve RIASEC envanterleri MEB rehberlik müfredatında zaten kullanılan ölçeklerdir. KVKK uyumu için resmi bilgilendirme şablonu sağlanır.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Öğrenci verileri nerede tutuluyor? Veli ne diyecek?</summary>
+          <p class="faq-a">Sunucular Frankfurt (AB) ve İstanbul'da. Öğrenciler anonim ID ile katılır — TC kimlik istenmez. Velilere imzalatılmak üzere yazılı bilgilendirme şablonu (KVKK 5. madde uyumlu) panel kurulumunda gönderilir.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Test sonucu öğrenciyi etiketlemez mi?</summary>
+          <p class="faq-a">Test bir başlangıç noktasıdır, kesin yargı değil. Öğrenciye "şu kategorideki" denmez; "şu mesleklere yatkınlık var, gözden geçirelim" denir. Rapor dili bilinçli olarak ihtimal/yatkınlık üzerine kurgulandı — etiketleyici değil, açıcı.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Bilgisayar laboratuvarımız yok. Telefondan olur mu?</summary>
+          <p class="faq-a">Evet, mobil uyumlu. Test 4dk sürer — sınıfta kendi telefonlarıyla, evde, hatta servis molasında doldurabilirler. Sınıf erişim kodu sayesinde sonuçlar sizin panelinize otomatik düşer.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  METODOLOJİ  ════════════════════════════ -->
+    <section id="metodoloji">
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">AKADEMİK REFERANSLAR</span>
+        <h2 class="heading">Test arkasında <span class="text-aurora">hangi bilim</span> var?</h2>
+      </div>
+      <div class="card card--navy" style="max-width:760px;margin:0 auto;gap:var(--spacing-16);">
+        <p class="card-body" style="margin-top:0;"><strong style="color:var(--color-white);">Big Five:</strong> Costa, P. T., &amp; McCrae, R. R. (1992). NEO PI-R Professional Manual. Türkçe geçerlilik: Sümer, N., Lajunen, T., &amp; Özkan, T. (2005).</p>
+        <p class="card-body" style="margin-top:0;"><strong style="color:var(--color-white);">RIASEC İlgi Envanteri:</strong> Holland, J. L. (1997). Making Vocational Choices (3rd ed.). MEB rehberlik servislerinde de kullanılan sınıflandırma.</p>
+        <p class="card-body" style="margin-top:0;"><strong style="color:var(--color-white);">Holland Code → Bölüm Eşleştirme:</strong> O*NET sınıflandırma sistemiyle uyumlu, 1.247 Türkiye bölümü ve 500+ üniversite verisiyle.</p>
+        <p class="card-body" style="margin-top:0;"><strong style="color:var(--color-white);">AI Yorumlama Katmanı:</strong> Google Gemini 2.5 Flash, Türkiye eğitim sistemine özelleştirilmiş prompt mimarisiyle. AI sonucu üretmez — envanterden çıkan sonucu yorumlar.</p>
+      </div>
+      <p class="fine center mt-16" style="font-style:italic;">
+        Test bir tavsiye/yönlendirme aracıdır, kesin tıbbi/psikolojik teşhis değildir.
+      </p>
+    </section>
+
+    <!-- ════════════════════════════  SAYISAL  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num"><span data-count="50">50</span></div>
+          <div class="stat-label">öğrenci/okul ücretsiz</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span data-count="1247">1.247</span></div>
+          <div class="stat-label">bölüm veritabanı</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span data-count="500" data-count-suffix="+">500+</span></div>
+          <div class="stat-label">üniversite</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">~4dk</div>
+          <div class="stat-label">test süresi</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  KULLANIM AKIŞI  ════════════════════════════ -->
+    <section>
+      <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
+        <h2 class="heading">3 adımda <span class="text-aurora">okul kurulum</span></h2>
+      </div>
+      <ol class="steps">
+        <li class="step center">
+          <span class="step-num">1</span>
+          <h3 class="step-title">Talep formu</h3>
+          <p class="step-body">Aşağıdaki formu doldur, 24 saat içinde dönüş yapılır.</p>
+        </li>
+        <li class="step center">
+          <span class="step-num">2</span>
+          <h3 class="step-title">Sınıf erişim kodu</h3>
+          <p class="step-body">Öğrencilerinize özel kod, KVKK formu ve veli bilgilendirme şablonu gönderilir.</p>
+        </li>
+        <li class="step center">
+          <span class="step-num">3</span>
+          <h3 class="step-title">Sınıf raporu</h3>
+          <p class="step-body">Test tamamlandıktan sonra panelinizden sınıf raporu indirilebilir.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ════════════════════════════  TALEP FORMU  ════════════════════════════ -->
+    <section id="talep">
+      <div id="okul-wrap" style="max-width:640px;margin:0 auto;">
+        <div class="form-card" id="okul-card">
+          <div class="center" style="margin-bottom:var(--spacing-8);">
+            <h2 class="subheading">Okulum İçin Talep Et</h2>
+            <p class="fine" style="margin-top:var(--spacing-8);">24 saat içinde dönüş yapılır. Hiçbir ücret yoktur.</p>
+          </div>
+
+          <form id="okul-form" novalidate style="display:flex;flex-direction:column;gap:var(--spacing-16);">
+            <!-- honeypot -->
+            <input type="text" name="_hp_website" tabindex="-1" autocomplete="off" aria-hidden="true"
+              style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" />
+
+            <div class="field">
+              <label class="field-label" for="ok-okul">Okul adı</label>
+              <input class="input" id="ok-okul" name="okul" required placeholder="Örn. Atatürk Anadolu Lisesi" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="ok-il">İl / İlçe</label>
+              <input class="input" id="ok-il" name="il" required placeholder="Örn. İstanbul / Kadıköy" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="ok-ad">Ad - Soyad</label>
+              <input class="input" id="ok-ad" name="ad" required placeholder="Rehber öğretmen / yönetici" />
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label class="field-label" for="ok-email">Email</label>
+                <input class="input" id="ok-email" name="email" type="email" required placeholder="ornek@okul.k12.tr" />
+              </div>
+              <div class="field">
+                <label class="field-label" for="ok-sayi">Öğrenci sayısı</label>
+                <input class="input" id="ok-sayi" name="ogrenci_sayisi" type="number" min="1" required placeholder="örn. 120" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="ok-mesaj">Mesaj (opsiyonel)</label>
+              <textarea class="textarea" id="ok-mesaj" name="mesaj" rows="3" placeholder="Kullanım amacı veya özel istekleriniz..."></textarea>
+            </div>
+
+            <p class="callout callout--amber" id="ok-error" hidden></p>
+
+            <button type="submit" class="btn btn-white btn-block">
+              Talebi Gönder
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <p class="form-note">Verileriniz KVKK uyumlu işlenir. Sadece dönüş için kullanılır.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  CTA — SINIF PİLOTU  ════════════════════════════ -->
+    <section>
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="badge badge--white" style="margin-bottom:20px;">B2B · SINIF PİLOTU</span>
+          <h2 class="heading-lg">50 öğrenci, 4 hafta,<br />sıfır ücret.</h2>
+          <p class="cta-sub">Sınıf Pilotu ile rehberlik servisinizi denemeden karar vermeyin.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="sinif-pilot.html">
+              Sınıf Pilotuna Başla
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-dark" href="#talep">Talep Formuna Git</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Page-specific: inline success on school request submit -->
+  <script>
+    (function () {
+      var form = document.getElementById("okul-form");
+      if (!form) return;
+      var errBox = document.getElementById("ok-error");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var okul = (form.elements["okul"].value || "").trim();
+        var il = (form.elements["il"].value || "").trim();
+        var ad = (form.elements["ad"].value || "").trim();
+        var email = (form.elements["email"].value || "").trim();
+        var sayi = (form.elements["ogrenci_sayisi"].value || "").trim();
+
+        if (!okul || !il || !ad || !email || !sayi) {
+          if (errBox) {
+            errBox.textContent = "Lütfen zorunlu alanları doldur.";
+            errBox.hidden = false;
+          }
+          return;
+        }
+        if (errBox) errBox.hidden = true;
+
+        var card = document.getElementById("okul-card");
+        if (!card) return;
+        card.className = "card card--navy center";
+        card.innerHTML =
+          '<span class="icon-chip" style="margin:0 auto var(--spacing-16);">' +
+          '  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' +
+          "</span>" +
+          '<h3 class="subheading">Talebiniz alındı</h3>' +
+          '<p class="card-body" style="text-align:center;">24 saat içinde dönüş yapılacak. Hiçbir ücret yoktur.</p>';
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- G gradyanı: yeşil (sağ-üst) → teal → mavi → mor (sol-alt) -->
+    <linearGradient id="gGrad" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#4ADE80"/>
+      <stop offset="30%"  stop-color="#2DD4BF"/>
+      <stop offset="62%"  stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <!-- G iç boşluğunda mor parıltı -->
+    <radialGradient id="coreGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%"   stop-color="#4C1D95" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Siyah rounded-square (squircle) -->
+  <rect x="0" y="0" width="512" height="512" rx="115" ry="115" fill="#000000"/>
+
+  <!-- merkez mor parıltı -->
+  <circle cx="256" cy="256" r="150" fill="url(#coreGlow)"/>
+
+  <!-- G harfi (tek parça, yuvarlak uçlu) -->
+  <path d="M 388 168
+           A 162 162 0 1 0 388 344
+           L 248 344"
+        fill="none"
+        stroke="url(#gGrad)"
+        stroke-width="76"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- Beyaz 4 köşeli sparkle — merkez -->
+  <path d="M 250 164
+           Q 266 240 320 256
+           Q 266 272 250 348
+           Q 234 272 180 256
+           Q 234 240 250 164 Z"
+        fill="#ffffff"/>
+</svg>

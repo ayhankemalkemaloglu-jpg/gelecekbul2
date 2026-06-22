@@ -1,0 +1,15 @@
+{
+  "name": "Gelecek Bul",
+  "short_name": "Gelecek Bul",
+  "description": "AI destekli kariyer ve üniversite danışmanı",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    { "src": "/static/icons/favicon-192.webp", "sizes": "192x192", "type": "image/webp", "purpose": "any maskable" },
+    { "src": "/static/icons/favicon-512.webp", "sizes": "512x512", "type": "image/webp", "purpose": "any maskable" },
+    { "src": "/static/icons/favicon-192.png",  "sizes": "192x192", "type": "image/png",  "purpose": "any maskable" },
+    { "src": "/static/icons/favicon-512.png",  "sizes": "512x512", "type": "image/png",  "purpose": "any maskable" }
+  ]
+}

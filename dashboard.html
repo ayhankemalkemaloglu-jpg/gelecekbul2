@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Panelim — karar güveni skorun, rota kartların, haftalık öneriler ve test geçmişin tek ekranda. Gelecek Bul Kariyer GPS." />
+  <title>Panelim — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Panelim — Gelecek Bul" />
+  <meta property="og:description" content="Karar güveni, rotaların ve test geçmişin tek ekranda." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="dashboard">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  BAŞLIK  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">PANELİM</span>
+        <h1 class="heading">Rotanın kontrol paneli</h1>
+        <p class="lead">
+          Karar güveni skorun, rota kartların, haftalık önerin ve test geçmişin
+          tek ekranda. Profilin değiştikçe panel de yenilenir.
+        </p>
+        <div class="button-row button-row--center mt-24">
+          <span class="badge badge--blue">Plan: Pro Max</span>
+          <a class="btn btn-white" href="#" data-action="pay" data-plan="promax">Planı yükselt</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  BU HAFTA EN DOĞRU ADIM  ════════════════════════════ -->
+    <section class="section-tight">
+      <article class="card card--featured">
+        <span class="badge badge--blue" style="align-self:flex-start;">🎯 Bu hafta en doğru adım</span>
+        <h2 class="card-title mt-16">Tercih listeni 12 → 24 slota çıkar ve agresif tercihleri ekle.</h2>
+        <p class="card-body">Karar güvenin yüksek; artık hedef ve agresif tercihleri de listeye almanın tam zamanı. · ~6 dk</p>
+        <div class="button-row">
+          <a class="btn btn-white" href="tercih.html">İşaretle ✓</a>
+          <a class="btn btn-dark" href="#" data-action="login">Atla</a>
+          <a class="card-link" href="tercih.html">Detay
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- ════════════════════════════  ÖLÇERLER  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);">
+        <span class="eyebrow eyebrow--signal">ÖLÇERLER</span>
+        <h2 class="heading">Nerede duruyorsun</h2>
+      </div>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">%78</div>
+          <div class="stat-label">Karar güveni · yüksek</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">%24</div>
+          <div class="stat-label">Kararsızlık · düşük</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Pro Max</div>
+          <div class="stat-label">Bu hafta hakkın: 3 hak</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="5">5</div>
+          <div class="stat-label">Tamamlanan test</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  BU HAFTANIN SİNYALLERİ  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);">
+        <span class="eyebrow eyebrow--signal">⚠ BU HAFTANIN SİNYALLERİ</span>
+        <h2 class="heading">Dikkat etmen gerekenler</h2>
+      </div>
+      <div class="grid-3">
+        <div class="callout callout--amber">
+          <strong>Plan B zayıf kalıyor</strong><br />
+          Plan A güçlü ama yedek rotan netleşmedi. Bir alternatif bölüm ekle.
+        </div>
+        <div class="callout callout--info">
+          <strong>Üniversite puanların güncellendi</strong><br />
+          Hedef bölümlerinden ikisinin taban puanı yükseldi. Tercih listeni gözden geçir.
+        </div>
+        <div class="callout callout--mint">
+          <strong>✓ Atlas yorumun hazır</strong><br />
+          Son testinin AI yorumu okunmayı bekliyor. Güçlü yönlerini netleştir.
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ROTALARIM  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:none;">
+        <div>
+          <span class="eyebrow eyebrow--signal">🧭 ROTALARIM</span>
+          <h2 class="heading">Plan A / B / C</h2>
+        </div>
+        <a class="card-link" href="karsilastir.html" style="margin-top:0;">↔ Planları karşılaştır
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="grid-3">
+        <article class="card card--navy">
+          <span class="badge badge--blue" style="align-self:flex-start;">Plan A</span>
+          <h3 class="card-title mt-16">Bilgisayar Mühendisliği</h3>
+          <p class="card-body">Güven: %82 · SAY · Boğaziçi / ODTÜ / İTÜ eşleşmesi.</p>
+        </article>
+        <article class="card card--indigo">
+          <span class="badge" style="align-self:flex-start;">Plan B</span>
+          <h3 class="card-title mt-16">Endüstri Mühendisliği</h3>
+          <p class="card-body">Güven: %61 · SAY · Sağlam yedek rota, esnek kariyer yolu.</p>
+        </article>
+        <article class="card" style="border-style:dashed;align-items:center;text-align:center;justify-content:center;">
+          <span class="badge" style="margin-bottom:var(--spacing-12);">Plan C</span>
+          <p class="card-body" style="margin-top:0;">Henüz Plan C oluşturmadın. Test sonucundan otomatik üretilir.</p>
+          <a class="card-link" href="test.html" style="margin-top:var(--spacing-16);">+ Plan C oluştur
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  TEST GEÇMİŞİ  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);">
+        <span class="eyebrow eyebrow--signal">📜 TEST GEÇMİŞİ</span>
+        <h2 class="heading">Önceki testlerin</h2>
+        <p class="section-lead">Adaptif testin ve hızlı denemelerin tek listede. Kaynağına göre rozetlenir.</p>
+      </div>
+      <div class="card" style="padding:var(--spacing-8);gap:0;">
+        <div class="callout" style="border:none;border-radius:var(--radius-xl);background:transparent;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <strong style="color:var(--color-white);">Araştırmacı · KARAR_SAHIBI</strong><br />
+            <span class="fine">22 Haziran 2026 · 42 soru · eşleşme %88</span>
+          </div>
+          <span class="badge badge--blue">Adaptif</span>
+        </div>
+        <div style="height:1px;background:var(--hairline-soft);"></div>
+        <div class="callout" style="border:none;border-radius:var(--radius-xl);background:transparent;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <strong style="color:var(--color-white);">Girişimci eğilim · ÇOK SESLİ</strong><br />
+            <span class="fine">15 Haziran 2026 · 30 soru · eşleşme %81</span>
+          </div>
+          <span class="badge badge--mint">Hızlı test</span>
+        </div>
+        <div style="height:1px;background:var(--hairline-soft);"></div>
+        <div class="callout" style="border:none;border-radius:var(--radius-xl);background:transparent;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <strong style="color:var(--color-white);">Sanatsal · SEZGİ TİPİ</strong><br />
+            <span class="fine">8 Haziran 2026 · 15 soru · kısmi sonuç</span>
+          </div>
+          <span class="badge badge--amber">Kısmi</span>
+        </div>
+        <div style="height:1px;background:var(--hairline-soft);"></div>
+        <div class="callout" style="border:none;border-radius:var(--radius-xl);background:transparent;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <strong style="color:var(--color-white);">Sosyal · BİLGİ BEKLEYEN</strong><br />
+            <span class="fine">1 Haziran 2026 · 42 soru · eşleşme %76</span>
+          </div>
+          <span class="badge badge--blue">Adaptif</span>
+        </div>
+      </div>
+      <div class="button-row mt-24">
+        <a class="btn btn-white" href="test.html">Yeni teste başla
+          <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-dark" href="test-karsilastir.html">Son 2 testi karşılaştır</a>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  HIZLI ERİŞİM  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);">
+        <span class="eyebrow eyebrow--signal">HIZLI ERİŞİM</span>
+        <h2 class="heading">Araç seti</h2>
+      </div>
+      <div class="grid-3">
+        <a class="card card--sm" href="tercih.html">
+          <span class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+          <h3 class="card-title">Tercih Simülatörü</h3>
+          <p class="card-body">24 slotluk liste + YÖK Atlas eşleşmesi.</p>
+          <span class="card-link">Aç <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="card card--sm" href="aile.html">
+          <span class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <h3 class="card-title">Aile Alanı</h3>
+          <p class="card-body">Görev listesi, aylık rapor ve karar günlüğü. Veli davetiyle açılır.</p>
+          <span class="card-link">Tümünü aç <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="card card--sm" href="mezunlar.html">
+          <span class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+          <h3 class="card-title">Mezunlarla Tanış</h3>
+          <p class="card-body">Hayalindeki bölümde okumuş biriyle 15 dk görüşme.</p>
+          <span class="card-link">Mezunları gör <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  VELİM (KLASİK)  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="card card--navy" style="flex-direction:row;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div style="max-width:560px;">
+          <h2 class="card-title">👨‍👩‍👧 Velin süreci görsün</h2>
+          <p class="card-body">Velini davet et; aile raporunu sade bir dille okusun, onay akışını tamamlasın. Atlas sohbetin ve karar günlüğün asla paylaşılmaz.</p>
+        </div>
+        <a class="btn btn-white" href="referans.html">+ Veli davet et</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

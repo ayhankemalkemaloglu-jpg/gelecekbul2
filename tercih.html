@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tercih Simülatörü — 24 slotluk tercih listesi, YÖK Atlas puanlarıyla garanti / hedef / reach / agresif risk analizi ve puanına göre otomatik üniversite-bölüm önerileri. Pro özelliği." />
+  <title>Tercih Simülatörü — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Tercih Simülatörü — Gelecek Bul" />
+  <meta property="og:description" content="24 tercihinin risk analizi: garanti / hedef / reach / agresif. Puanına göre otomatik üniversite önerileri." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="tercih">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  HERO  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">PRO ARACI · YKS TERCİH</span>
+        <h1 class="heading-lg">Tercih <span class="text-aurora">Simülatörü</span></h1>
+        <p class="lead mt-16">
+          24 tercihini sıraya koy, YÖK Atlas puanlarıyla her birinin riskini gör.
+          Renk kodları: 🟢 garanti · 🟡 hedef · 🟠 reach · 🔴 agresif.
+        </p>
+        <div class="button-row button-row--center">
+          <span class="badge badge--blue">Pro özelliği</span>
+          <span class="badge badge--mint">24 slot</span>
+          <span class="badge badge--amber">Otomatik öneri</span>
+        </div>
+      </div>
+
+      <!-- Pro gate — amber callout -->
+      <div class="callout callout--amber" style="max-width:760px;margin:0 auto;text-align:center;">
+        <div class="eyebrow" style="color:var(--color-amber-glow);margin-bottom:8px;">PRO ÖZELLİĞİ</div>
+        <p style="color:var(--color-amber-glow);font-size:var(--text-body);line-height:1.6;margin-bottom:6px;">
+          <strong style="color:var(--color-white);">Tercih Simülatörü Pro planına özel.</strong>
+          24 tercih slotu · risk analizi (garanti / hedef / reach / agresif) ·
+          puanına göre otomatik üniversite önerileri · “Ya Şöyle Olsaydı?” senaryoları.
+        </p>
+        <p class="fine" style="margin-bottom:16px;">Şu an plan: <strong>Ücretsiz</strong> — aşağıdaki arayüz demo amaçlıdır.</p>
+        <a class="btn btn-white" href="#" data-action="pay" data-plan="pro">
+          Pro'ya Geç
+          <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  KONTROL KARTI  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="form-card">
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label" for="target-score">Hedef puanın (TYT+AYT)</label>
+            <input id="target-score" class="input" type="number" min="100" max="600" step="0.1" placeholder="Örn. 420" />
+          </div>
+          <div class="field">
+            <label class="field-label" for="track-select">YKS alanı</label>
+            <select id="track-select" class="select">
+              <option value="">Tüm alanlar</option>
+              <option value="SAY">SAY — Sayısal</option>
+              <option value="EA">EA — Eşit Ağırlık</option>
+              <option value="SOZ">SÖZ — Sözel</option>
+              <option value="DIL">DİL — Dil</option>
+            </select>
+          </div>
+        </div>
+        <div class="button-row" style="margin-top:0;">
+          <button id="suggest" class="btn btn-white" type="button">
+            <span style="margin-right:4px;">🎯</span> Otomatik öneri al
+          </button>
+          <button id="add-slot" class="btn btn-dark" type="button">
+            <span style="margin-right:4px;">＋</span> Slot ekle
+          </button>
+          <button id="reset-slots" class="btn btn-dark" type="button">Listeyi temizle</button>
+        </div>
+        <p class="form-note">
+          YÖK Atlas 2024–2025 baz alınarak tahminîdir · Gerçek başvuru öncesi
+          <a href="https://yokatlas.yok.gov.tr" rel="nofollow">yokatlas.yok.gov.tr</a> doğrula.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ÖNERİ PANELİ  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">OTOMATİK ÖNERİ</span>
+        <h2 class="heading">Puanına yakın <span class="text-aurora">bölümler</span></h2>
+        <p class="section-lead">
+          Hedef puanını gir, “Otomatik öneri al”a bas — sana uygun üniversite-bölüm
+          eşleşmeleri 4 kovaya ayrılarak listelensin.
+        </p>
+      </div>
+
+      <!-- Bucket count rozetleri -->
+      <div id="suggest-counts" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:var(--spacing-24);">
+        <span class="badge badge--mint">🟢 Garanti <strong id="c-garanti" style="margin-left:4px;">0</strong></span>
+        <span class="badge badge--amber">🟡 Hedef <strong id="c-hedef" style="margin-left:4px;">0</strong></span>
+        <span class="badge badge--amber">🟠 Reach <strong id="c-reach" style="margin-left:4px;">0</strong></span>
+        <span class="badge">🔴 Agresif <strong id="c-agresif" style="margin-left:4px;">0</strong></span>
+      </div>
+
+      <div class="card">
+        <div id="suggest-meta" class="fine" style="margin-bottom:var(--spacing-16);">
+          Hedef puanını girip “Otomatik öneri al”a basınca öneriler burada listelenir.
+        </div>
+        <div id="suggest-list" style="display:flex;flex-direction:column;gap:var(--spacing-12);"></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  TERCİH LİSTESİ  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">TERCİH LİSTEN</span>
+        <h2 class="heading">24 slotluk <span class="text-aurora">liste</span></h2>
+        <p class="section-lead">
+          Üniversite, bölüm ve geçen yılki tabanı yaz. Önerilerden “+ slot” ile
+          doğrudan ekleyebilirsin. Her satır kendi risk rozetiyle gelir.
+        </p>
+      </div>
+
+      <div class="card">
+        <div id="slots-list" style="display:flex;flex-direction:column;gap:var(--spacing-12);"></div>
+        <button id="add-slot-2" class="btn btn-dark btn-block" type="button" style="margin-top:var(--spacing-24);">
+          <span style="margin-right:4px;">＋</span> Yeni tercih slotu ekle
+        </button>
+      </div>
+
+      <p class="callout callout--info mt-24" style="max-width:760px;">
+        💎 <strong style="color:var(--color-white);">Pro Max'te “Ya Şöyle Olsaydı?”</strong>
+        senaryolarıyla puanın +50 olsaydı ya da hepsi İstanbul olsaydı listeni anında
+        yeniden hesaplarsın. <a href="index.html#planlar" style="color:var(--color-sky-wash);text-decoration:underline;">Planları karşılaştır →</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Page script — local demo only, no backend / no external fetch -->
+  <script>
+    (function () {
+      "use strict";
+
+      // Demo üniversite-bölüm havuzu (YÖK Atlas 2024-2025 baz, makul TR demo verisi)
+      var POOL = [
+        { uni: "Boğaziçi Üniversitesi",      dept: "Bilgisayar Mühendisliği",   city: "İstanbul", track: "SAY", score: 540 },
+        { uni: "ODTÜ",                        dept: "Elektrik-Elektronik Müh.",  city: "Ankara",   track: "SAY", score: 525 },
+        { uni: "İTÜ",                         dept: "Yapay Zeka ve Veri Müh.",   city: "İstanbul", track: "SAY", score: 515 },
+        { uni: "Hacettepe Üniversitesi",     dept: "Tıp",                       city: "Ankara",   track: "SAY", score: 530 },
+        { uni: "Ege Üniversitesi",           dept: "Endüstri Mühendisliği",     city: "İzmir",    track: "SAY", score: 470 },
+        { uni: "Yıldız Teknik Üniversitesi", dept: "İnşaat Mühendisliği",       city: "İstanbul", track: "SAY", score: 455 },
+        { uni: "Gazi Üniversitesi",          dept: "Makine Mühendisliği",       city: "Ankara",   track: "SAY", score: 440 },
+        { uni: "Dokuz Eylül Üniversitesi",   dept: "Mimarlık",                  city: "İzmir",    track: "SAY", score: 425 },
+        { uni: "Boğaziçi Üniversitesi",      dept: "İşletme",                   city: "İstanbul", track: "EA",  score: 510 },
+        { uni: "İstanbul Üniversitesi",      dept: "Hukuk",                     city: "İstanbul", track: "EA",  score: 485 },
+        { uni: "Ankara Üniversitesi",        dept: "Siyaset Bilimi",            city: "Ankara",   track: "EA",  score: 450 },
+        { uni: "Marmara Üniversitesi",       dept: "İktisat",                   city: "İstanbul", track: "EA",  score: 430 },
+        { uni: "Hacettepe Üniversitesi",     dept: "Psikoloji",                 city: "Ankara",   track: "EA",  score: 460 },
+        { uni: "İstanbul Üniversitesi",      dept: "Türk Dili ve Edebiyatı",    city: "İstanbul", track: "SOZ", score: 405 },
+        { uni: "Ankara Üniversitesi",        dept: "Tarih",                     city: "Ankara",   track: "SOZ", score: 390 },
+        { uni: "Ege Üniversitesi",           dept: "Sosyoloji",                 city: "İzmir",    track: "SOZ", score: 375 },
+        { uni: "Boğaziçi Üniversitesi",      dept: "İngiliz Dili ve Edebiyatı", city: "İstanbul", track: "DIL", score: 495 },
+        { uni: "Hacettepe Üniversitesi",     dept: "Mütercim Tercümanlık",      city: "Ankara",   track: "DIL", score: 460 },
+        { uni: "Bilkent Üniversitesi",       dept: "Mimarlık",                  city: "Ankara",   track: "SAY", score: 480 },
+        { uni: "Koç Üniversitesi",           dept: "Bilgisayar Mühendisliği",   city: "İstanbul", track: "SAY", score: 535 },
+        { uni: "Sabancı Üniversitesi",       dept: "Yönetim Bilimleri",         city: "İstanbul", track: "EA",  score: 500 },
+        { uni: "Galatasaray Üniversitesi",   dept: "Uluslararası İlişkiler",    city: "İstanbul", track: "EA",  score: 470 },
+        { uni: "Anadolu Üniversitesi",       dept: "İletişim Tasarımı",         city: "Eskişehir", track: "SOZ", score: 360 },
+        { uni: "Akdeniz Üniversitesi",       dept: "Turizm İşletmeciliği",      city: "Antalya",  track: "EA",  score: 340 }
+      ];
+
+      // Slot state — birkaç dolu örnek satırla başlatılır
+      var slots = [
+        { uni: "Boğaziçi Üniversitesi", dept: "Bilgisayar Mühendisliği", score: 540 },
+        { uni: "İTÜ",                   dept: "Yapay Zeka ve Veri Müh.", score: 515 },
+        { uni: "",                      dept: "",                        score: null }
+      ];
+
+      var MAX_SLOTS = 24;
+
+      function esc(s) { return String(s == null ? "" : s).replace(/"/g, "&quot;"); }
+
+      // Bucket: hedef puana göre delta → garanti/hedef/reach/agresif
+      function bucketFor(targetScore, slotScore) {
+        if (!targetScore || !slotScore) return null;
+        var d = targetScore - slotScore; // pozitifse puanın bölümün üstünde → daha garanti
+        if (d >= 20) return "garanti";
+        if (d >= -5) return "hedef";
+        if (d >= -25) return "reach";
+        return "agresif";
+      }
+      var BUCKET = {
+        garanti: { label: "🟢 Garanti", cls: "badge--mint" },
+        hedef:   { label: "🟡 Hedef",   cls: "badge--amber" },
+        reach:   { label: "🟠 Reach",   cls: "badge--amber" },
+        agresif: { label: "🔴 Agresif", cls: "badge" }
+      };
+
+      var slotsList = document.getElementById("slots-list");
+      var targetInput = document.getElementById("target-score");
+
+      function targetScore() {
+        var v = parseFloat(targetInput.value);
+        return isNaN(v) ? null : v;
+      }
+
+      function renderSlots() {
+        if (!slotsList) return;
+        slotsList.innerHTML = "";
+        var ts = targetScore();
+        if (!slots.length) {
+          slotsList.innerHTML = '<p class="fine">Henüz tercih yok. “Slot ekle” ile başla ya da yukarıdan otomatik öneri al.</p>';
+          return;
+        }
+        slots.forEach(function (s, i) {
+          var row = document.createElement("div");
+          row.style.cssText =
+            "display:grid;grid-template-columns:28px 1fr 1fr 110px auto auto;gap:10px;align-items:center;" +
+            "padding:var(--spacing-12);border:1px solid var(--hairline-soft);border-radius:var(--radius-2xl);" +
+            "background:var(--surface-charcoal);";
+          var b = bucketFor(ts, s.score);
+          var badgeHtml = b
+            ? '<span class="badge ' + BUCKET[b].cls + '">' + BUCKET[b].label + "</span>"
+            : '<span class="badge">—</span>';
+          row.innerHTML =
+            '<span class="fine" style="text-align:center;">' + (i + 1) + "</span>" +
+            '<input class="input" data-i="' + i + '" data-f="uni" value="' + esc(s.uni) + '" placeholder="Üniversite" />' +
+            '<input class="input" data-i="' + i + '" data-f="dept" value="' + esc(s.dept) + '" placeholder="Bölüm" />' +
+            '<input class="input" type="number" data-i="' + i + '" data-f="score" value="' +
+              (s.score == null ? "" : s.score) + '" placeholder="Taban" />' +
+            badgeHtml +
+            '<button class="btn btn-dark" type="button" data-del="' + i +
+              '" aria-label="Sil" style="padding:8px 12px;">✕</button>';
+          slotsList.appendChild(row);
+        });
+
+        slotsList.querySelectorAll("input").forEach(function (el) {
+          el.addEventListener("input", function (e) {
+            var i = +e.target.getAttribute("data-i");
+            var f = e.target.getAttribute("data-f");
+            if (!slots[i]) slots[i] = { uni: "", dept: "", score: null };
+            if (f === "score") {
+              var v = parseFloat(e.target.value);
+              slots[i].score = isNaN(v) ? null : v;
+              // sadece rozeti güncelle (focus kaybı olmasın diye tüm listeyi yeniden çizmiyoruz)
+              renderSlots();
+            } else {
+              slots[i][f] = e.target.value;
+            }
+          });
+        });
+        slotsList.querySelectorAll("[data-del]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            slots.splice(+btn.getAttribute("data-del"), 1);
+            renderSlots();
+          });
+        });
+      }
+
+      function addSlot(data) {
+        if (slots.length >= MAX_SLOTS) {
+          alert("En fazla " + MAX_SLOTS + " tercih ekleyebilirsin.");
+          return;
+        }
+        slots.push(data || { uni: "", dept: "", score: null });
+        renderSlots();
+      }
+
+      // ── Öneri paneli ──
+      var suggestList = document.getElementById("suggest-list");
+      var suggestMeta = document.getElementById("suggest-meta");
+      var counts = {
+        garanti: document.getElementById("c-garanti"),
+        hedef: document.getElementById("c-hedef"),
+        reach: document.getElementById("c-reach"),
+        agresif: document.getElementById("c-agresif")
+      };
+
+      function loadSuggestions() {
+        var ts = targetScore();
+        if (!ts || ts < 100) {
+          suggestMeta.textContent = "Önce hedef puanını gir (TYT+AYT, 100–600 arası).";
+          suggestList.innerHTML = "";
+          Object.keys(counts).forEach(function (k) { counts[k].textContent = "0"; });
+          return;
+        }
+        var track = document.getElementById("track-select").value;
+        var rows = POOL.filter(function (p) {
+          return (!track || p.track === track) && Math.abs(p.score - ts) <= 40;
+        }).map(function (p) {
+          return {
+            uni: p.uni, dept: p.dept, city: p.city, track: p.track, score: p.score,
+            delta: Math.round(ts - p.score),
+            bucket: bucketFor(ts, p.score)
+          };
+        }).sort(function (a, b) { return Math.abs(a.delta) - Math.abs(b.delta); });
+
+        var tally = { garanti: 0, hedef: 0, reach: 0, agresif: 0 };
+        rows.forEach(function (r) { if (r.bucket) tally[r.bucket]++; });
+        Object.keys(counts).forEach(function (k) { counts[k].textContent = String(tally[k]); });
+
+        suggestMeta.textContent = "· puan " + ts + " · " + rows.length + " öneri" + (track ? " · " + track : "");
+
+        if (!rows.length) {
+          suggestList.innerHTML =
+            '<p class="fine">Puanına yakın bölüm bulunamadı. Hedefini değiştir veya alanı genişlet.</p>';
+          return;
+        }
+
+        suggestList.innerHTML = "";
+        rows.forEach(function (r) {
+          var bm = BUCKET[r.bucket] || BUCKET.hedef;
+          var deltaStr = r.delta === 0 ? "tam" : (r.delta > 0 ? "+" + r.delta : r.delta) + " p";
+          var item = document.createElement("div");
+          item.style.cssText =
+            "display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between;" +
+            "padding:var(--spacing-12) var(--spacing-16);border:1px solid var(--hairline-soft);" +
+            "border-radius:var(--radius-2xl);background:var(--surface-charcoal);";
+          item.innerHTML =
+            '<div style="flex:1;min-width:200px;">' +
+              '<div style="font-size:var(--text-body-sm);font-weight:500;color:var(--color-white);">' + esc(r.uni) + "</div>" +
+              '<div class="fine">' + esc(r.dept) + " · " + esc(r.city) + " · " + r.track + "</div>" +
+            "</div>" +
+            '<div class="fine" style="white-space:nowrap;">' + r.score + " p</div>" +
+            '<span class="badge ' + bm.cls + '">' + bm.label + " <span style=\"opacity:.7;margin-left:4px;\">" + deltaStr + "</span></span>" +
+            '<button class="btn btn-white suggest-add" type="button" data-uni="' + esc(r.uni) +
+              '" data-dept="' + esc(r.dept) + '" data-score="' + r.score +
+              '" style="padding:8px 14px;font-size:13px;">+ slot</button>';
+          suggestList.appendChild(item);
+        });
+
+        suggestList.querySelectorAll(".suggest-add").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var empty = -1;
+            for (var i = 0; i < slots.length; i++) {
+              if (slots[i] && !slots[i].uni && !slots[i].dept) { empty = i; break; }
+            }
+            var data = {
+              uni: btn.getAttribute("data-uni"),
+              dept: btn.getAttribute("data-dept"),
+              score: parseFloat(btn.getAttribute("data-score"))
+            };
+            if (empty >= 0) { slots[empty] = data; renderSlots(); }
+            else { addSlot(data); }
+            btn.textContent = "✓ eklendi";
+            btn.disabled = true;
+            btn.style.opacity = "0.5";
+          });
+        });
+      }
+
+      // ── Bindings ──
+      var sg = document.getElementById("suggest");
+      if (sg) sg.addEventListener("click", loadSuggestions);
+      document.getElementById("track-select").addEventListener("change", function () {
+        if (suggestList.children.length) loadSuggestions();
+      });
+      targetInput.addEventListener("input", function () {
+        renderSlots();
+        if (suggestList.children.length) loadSuggestions();
+      });
+      ["add-slot", "add-slot-2"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener("click", function () { addSlot(); });
+      });
+      var rs = document.getElementById("reset-slots");
+      if (rs) rs.addEventListener("click", function () {
+        slots = [{ uni: "", dept: "", score: null }];
+        renderSlots();
+      });
+
+      renderSlots();
+    })();
+  </script>
+</body>
+</html>

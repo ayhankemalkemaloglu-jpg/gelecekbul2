@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gelecek Bul'a hoş geldin. 3 adımda seni doğru yere yönlendirelim: kim olduğunu söyle, ne aradığını seç, ilk adımını al." />
+  <title>Hoş Geldin — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Hoş Geldin — Gelecek Bul" />
+  <meta property="og:description" content="3 adımda seni doğru yere yönlendirelim." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="onboarding">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  HERO / SUBHEAD  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">3 ADIM · KURULUM</span>
+        <h1 class="heading-lg">Hoş geldin 👋</h1>
+        <p class="lead mt-16">
+          Önce seni doğru yere yönlendirelim. Kim olduğunu söyle, ne aradığını seç,
+          sistem sana en doğru ilk adımı önersin. Bir dakikadan kısa sürer.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ADIM ÖZETİ  ════════════════════════════ -->
+    <section class="section-tight">
+      <ol class="steps">
+        <li class="step" id="dot-1">
+          <span class="step-num">01</span>
+          <h3 class="step-title">Kim olduğunu söyle</h3>
+          <p class="step-body">Öğrenci misin, veli mi? Akışı buna göre şekillendiriyoruz.</p>
+        </li>
+        <li class="step" id="dot-2">
+          <span class="step-num">02</span>
+          <h3 class="step-title">Ne arıyorsun?</h3>
+          <p class="step-body">Birden fazla seçebilirsin — sistem rotanı buna göre kurar.</p>
+        </li>
+        <li class="step" id="dot-3">
+          <span class="step-num">03</span>
+          <h3 class="step-title">İlk adımını al</h3>
+          <p class="step-body">Bu hafta için en doğru adımı önerip seni başlatıyoruz.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ════════════════════════════  ADIM 1: ROL  ════════════════════════════ -->
+    <section class="section-tight" id="step-1">
+      <div class="card">
+        <span class="eyebrow eyebrow--signal" style="margin-bottom:var(--spacing-8);">1 / 3 · KİM OLDUĞUNU SÖYLE</span>
+        <h2 class="card-title">Sen kimsin?</h2>
+        <p class="card-body" style="margin-bottom:var(--spacing-24);">Önce seni doğru yere yönlendirelim.</p>
+        <div class="topic-grid" data-topic-input="#role-input" style="grid-template-columns:repeat(2,1fr);">
+          <button type="button" class="topic-card" data-topic="student" aria-pressed="false">
+            <span class="topic-emoji">🎓</span>
+            <span class="topic-title">Öğrenciyim</span>
+            <span class="topic-desc">Kendi kariyerime karar veriyorum</span>
+          </button>
+          <button type="button" class="topic-card" data-topic="parent" aria-pressed="false">
+            <span class="topic-emoji">👨‍👩‍👧</span>
+            <span class="topic-title">Veliyim</span>
+            <span class="topic-desc">Çocuğumun sürecine eşlik ediyorum</span>
+          </button>
+        </div>
+        <input type="hidden" id="role-input" value="" />
+        <button class="btn btn-white btn-block" type="button" id="next-1" disabled>Devam →</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ADIM 2: HEDEF  ════════════════════════════ -->
+    <section class="section-tight" id="step-2" hidden>
+      <div class="card">
+        <span class="eyebrow eyebrow--signal" style="margin-bottom:var(--spacing-8);">2 / 3 · BU AN NE ARIYORSUN?</span>
+        <h2 class="card-title" id="step-2-title">Şu an ne arıyorsun?</h2>
+        <p class="card-body" style="margin-bottom:var(--spacing-24);">Birden fazla seçebilirsin — sistem buna göre rotanı şekillendirir.</p>
+        <div class="topic-grid" id="goals"></div>
+        <div class="button-row mt-24">
+          <button class="btn btn-dark" type="button" data-back="2">← Geri</button>
+          <button class="btn btn-white" type="button" id="next-2" disabled style="flex:1;">Devam →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ADIM 3: İLK ADIM  ════════════════════════════ -->
+    <section class="section-tight" id="step-3" hidden>
+      <div class="card card--featured">
+        <span class="eyebrow eyebrow--signal" style="margin-bottom:var(--spacing-8);">3 / 3 · BAŞLANGIÇ</span>
+        <h2 class="card-title">Hazır mısın? 🎯</h2>
+        <p class="card-body" style="margin-bottom:var(--spacing-24);">Sistem senin için ilk adımı önerdi:</p>
+        <div class="callout callout--info">
+          <div class="eyebrow eyebrow--signal" style="margin-bottom:var(--spacing-8);">BU HAFTA EN DOĞRU ADIM</div>
+          <p class="subheading" id="first-step-title" style="font-size:var(--text-body-lg);">—</p>
+          <p class="fine mt-8" id="first-step-desc">—</p>
+        </div>
+        <div class="button-row mt-24">
+          <button class="btn btn-dark" type="button" data-back="3">← Geri</button>
+          <a class="btn btn-white" id="finish" href="test.html" style="flex:1;justify-content:center;">Başla →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  FINAL CTA  ════════════════════════════ -->
+    <section class="cta">
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="badge badge--white" style="margin-bottom:20px;">30 saniyede başla</span>
+          <h2 class="heading-lg">Acelen mi var?<br />Direkt teste geç.</h2>
+          <p class="cta-sub">Kurulumu atla, anonim olarak teste başla; rotanı sonra şekillendir.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="test.html">
+              Teste Başla
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-dark" href="aile.html">Veliysen Aile Alanı</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Onboarding step flow — defensive, demo only, no backend -->
+  <script>
+    (function () {
+      "use strict";
+      var state = { role: null, goals: [] };
+      var GOALS = {
+        student: [
+          { id: "bolum",    icon: "🎯", label: "Hangi bölüm bana uygun?",      step: "Test çöz → ilk rotanı al",                 href: "test.html" },
+          { id: "plan_b",   icon: "🧭", label: "Plan B düşünmem lazım",        step: "Mevcut profilden Plan B üret",             href: "tercih.html" },
+          { id: "yurtdisi", icon: "🌍", label: "Yurtdışı seçeneği",            step: "Yurtdışı + Türkiye paralel takip",         href: "nomad-harita.html" },
+          { id: "tercih",   icon: "📋", label: "Tercih dönemine hazırlık",     step: "24 slot tercih simülatörünü aç",           href: "tercih.html" },
+          { id: "aile",     icon: "👨‍👩‍👧", label: "Aileyle daha iyi konuşmak", step: "Veli davet et + aile alanı kur",           href: "aile.html" },
+          { id: "kararsiz", icon: "💭", label: "Kararsızım, düşünmem lazım",   step: "Atlas'la karar günlüğü başlat",            href: "test.html" }
+        ],
+        parent: [
+          { id: "cocuk_anla", icon: "🪞", label: "Çocuğumu daha iyi anlamak",  step: "Aile raporu öncelikli",                    href: "aile.html" },
+          { id: "konusma",    icon: "💬", label: "Konuşma rehberi istiyorum",  step: "Bu haftaki konuşma kartlarına bak",        href: "aile.html" },
+          { id: "surec",      icon: "📅", label: "Tüm süreci takip etmek",     step: "Veli paneli + aylık rapor",                href: "veli-dashboard.html" },
+          { id: "tercih_v",   icon: "🎓", label: "Tercih döneminde destek",    step: "Tercih simülatörü + rehber klasörü",       href: "tercih.html" }
+        ]
+      };
+
+      var $ = function (id) { return document.getElementById(id); };
+      var sections = { 1: $("step-1"), 2: $("step-2"), 3: $("step-3") };
+      var dots = { 1: $("dot-1"), 2: $("dot-2"), 3: $("dot-3") };
+
+      function showStep(n) {
+        for (var i = 1; i <= 3; i++) {
+          if (sections[i]) sections[i].hidden = i !== n;
+          if (dots[i]) dots[i].classList.toggle("card--featured", i === n);
+        }
+        try { window.scrollTo({ top: 0, behavior: "smooth" }); } catch (e) {}
+      }
+
+      // Step 1 — role via topic-grid (shared script sets #role-input)
+      var roleGrid = $("step-1") && $("step-1").querySelector(".topic-grid");
+      if (roleGrid) {
+        roleGrid.querySelectorAll(".topic-card").forEach(function (b) {
+          b.addEventListener("click", function () {
+            state.role = b.getAttribute("data-topic");
+            if ($("next-1")) $("next-1").disabled = !state.role;
+          });
+        });
+      }
+      if ($("next-1")) {
+        $("next-1").addEventListener("click", function () {
+          if (!state.role) return;
+          var list = GOALS[state.role] || [];
+          if ($("step-2-title")) {
+            $("step-2-title").textContent = state.role === "parent"
+              ? "Çocuğunuz için neye odaklanmak istersiniz?"
+              : "Şu an ne arıyorsun?";
+          }
+          $("goals").innerHTML = list.map(function (g) {
+            return '<button type="button" class="topic-card" data-goal="' + g.id + '" aria-pressed="false">' +
+              '<span class="topic-emoji">' + g.icon + '</span>' +
+              '<span class="topic-title">' + g.label + '</span></button>';
+          }).join("");
+          $("goals").querySelectorAll("[data-goal]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              b.classList.toggle("is-active");
+              var on = b.classList.contains("is-active");
+              b.setAttribute("aria-pressed", String(on));
+              state.goals = Array.prototype.map.call(
+                $("goals").querySelectorAll("[data-goal].is-active"),
+                function (x) { return x.getAttribute("data-goal"); }
+              );
+              if ($("next-2")) $("next-2").disabled = !state.goals.length;
+            });
+          });
+          showStep(2);
+        });
+      }
+
+      // Step 2 → 3
+      if ($("next-2")) {
+        $("next-2").addEventListener("click", function () {
+          var list = GOALS[state.role] || [];
+          var picked = list.filter(function (g) { return g.id === state.goals[0]; })[0];
+          if ($("first-step-title")) $("first-step-title").textContent = (picked && picked.step) || "İlk testten başla";
+          if ($("first-step-desc")) $("first-step-desc").textContent = state.goals.length + " hedefin var. İlk adım hazır.";
+          if ($("finish") && picked && picked.href) $("finish").setAttribute("href", picked.href);
+          else if ($("finish")) $("finish").setAttribute("href", state.role === "parent" ? "aile.html" : "test.html");
+          showStep(3);
+        });
+      }
+
+      // Back buttons
+      document.querySelectorAll("[data-back]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          showStep((parseInt(b.getAttribute("data-back"), 10) || 1) - 1);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

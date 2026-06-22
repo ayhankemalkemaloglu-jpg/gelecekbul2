@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Türkiye'deki 200 mesleği maaş (USD), büyüme trendi ve AI otomasyon riski ile keşfet. Kariyer Düellosu, Kader Çarkı, 2030 senaryosu ve geleceğinden mektup — kariyer seçimini veriye dayandır." />
+  <title>Meslekler — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="200 Meslek · Kariyer Rehberi — Gelecek Bul" />
+  <meta property="og:description" content="Maaş, büyüme ve AI riski ile meslekleri keşfet. Kariyer seçimini tahmine bırakma." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="meslekler">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link is-active">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  SUBHEAD  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">200 MESLEK</span>
+        <h1 class="heading-lg"><span class="text-aurora">200 meslek</span>, tek haritada keşfet</h1>
+        <p class="lead">
+          Maaş (USD), büyüme trendi, AI otomasyon riski ve YKS puan bilgisiyle
+          Türkiye'deki meslekleri karşılaştır. Bir kart aç; <strong>Ne İş Yapar,
+          Neden Önemli?</strong> sorusunun cevabını, 2030 senaryosunu ve
+          geleceğinden bir mektubu gör.
+        </p>
+        <!-- Streak + canlı aktivite çipi -->
+        <div class="button-row button-row--center" style="margin-top:24px;align-items:center;">
+          <span class="badge badge--amber" id="streak-chip" style="display:none;">🔥 <strong id="streak-count" style="margin:0 2px;">1</strong> günlük seri</span>
+          <span class="badge" id="explored-chip" style="display:none;">👀 <strong id="streak-explored" style="margin:0 2px;">0</strong> meslek incelendi</span>
+          <span class="badge badge--mint"><span style="display:inline-block;width:7px;height:7px;border-radius:9999px;background:var(--color-vivid-mint);"></span> <span id="live-activity">42</span> kişi şu an keşfediyor</span>
+        </div>
+      </div>
+
+      <!-- Stat strip (animated counters) -->
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num"><span data-count="200" data-count-suffix="">0</span></div><div class="stat-label">Meslek profili</div></div>
+        <div class="stat"><div class="stat-num"><span data-count="8">0</span></div><div class="stat-label">Kariyer alanı</div></div>
+        <div class="stat"><div class="stat-num"><span id="stat-growth" data-count="0">0</span></div><div class="stat-label">Hızlı büyüyen</div></div>
+        <div class="stat"><div class="stat-num"><span id="stat-safe" data-count="0">0</span></div><div class="stat-label">AI'a karşı güvende</div></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  CONTROLS  ════════════════════════════ -->
+    <section class="section-tight" aria-label="Meslek arama ve filtreleme">
+      <div class="form-card">
+        <!-- Arama + Şansını Dene -->
+        <div class="form-row" style="grid-template-columns:1fr auto;align-items:end;">
+          <div class="field">
+            <label class="field-label" for="search-input">Meslek ara</label>
+            <input class="input" id="search-input" type="search" placeholder="yazılım, doktor, pilot…" autocomplete="off" spellcheck="false" />
+          </div>
+          <div class="field">
+            <label class="field-label" aria-hidden="true">&nbsp;</label>
+            <button class="btn btn-dark" type="button" id="btn-lucky" aria-label="Şansını dene — rastgele meslek">
+              <span id="lucky-dice" style="font-size:16px;">🎲</span> Şansını Dene
+            </button>
+          </div>
+        </div>
+
+        <!-- Kategori çipleri + sıralama -->
+        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;">
+          <div class="field" style="flex:1;min-width:260px;">
+            <span class="field-label">Kategori</span>
+            <div id="cat-filters" style="display:flex;flex-wrap:wrap;gap:8px;">
+              <button class="badge badge--blue" type="button" data-cat="tümü" aria-pressed="true" style="cursor:pointer;border:none;font-family:inherit;">Tümü</button>
+              <button class="badge" type="button" data-cat="mühendislik" aria-pressed="false" style="cursor:pointer;border:none;font-family:inherit;">⚙️ Mühendislik</button>
+              <button class="badge" type="button" data-cat="sağlık" aria-pressed="false" style="cursor:pointer;border:none;font-family:inherit;">🏥 Sağlık</button>
+              <button class="badge" type="button" data-cat="sosyal" aria-pressed="false" style="cursor:pointer;border:none;font-family:inherit;">🤝 Sosyal</button>
+              <button class="badge" type="button" data-cat="eğitim" aria-pressed="false" style="cursor:pointer;border:none;font-family:inherit;">📚 Eğitim</button>
+              <button class="badge" type="button" data-cat="iktisat" aria-pressed="false" style="cursor:pointer;border:none;font-family:inherit;">💰 İktisat</button>
+              <button class="badge" type="button" data-cat="hukuk" aria-pressed="false" style="cursor:pointer;border:none;font-family:inherit;">⚖️ Hukuk</button>
+              <button class="badge" type="button" data-cat="sanat" aria-pressed="false" style="cursor:pointer;border:none;font-family:inherit;">🎨 Sanat</button>
+              <button class="badge" type="button" data-cat="hizmet" aria-pressed="false" style="cursor:pointer;border:none;font-family:inherit;">✈️ Hizmet</button>
+            </div>
+          </div>
+          <div class="field" style="min-width:160px;">
+            <label class="field-label" for="sort-select">Sırala</label>
+            <select class="select" id="sort-select">
+              <option value="az">A-Z</option>
+              <option value="salary">Maaş ↓</option>
+              <option value="growth">Büyüme</option>
+              <option value="ai_safe">AI Güvende</option>
+              <option value="ai_risk">AI Riskli</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Etkileşim girişleri -->
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <button class="badge" type="button" id="btn-duel-info" style="cursor:pointer;border:none;font-family:inherit;">⚔️ Kariyer Düellosu <span id="duel-counter" style="margin-left:4px;opacity:.7;">0/2</span></button>
+          <button class="badge" type="button" id="btn-arena-jump" style="cursor:pointer;border:none;font-family:inherit;">🏆 Arena — favorine oy ver</button>
+          <span class="badge" id="results-count" style="margin-left:auto;"><span id="results-num">0</span> meslek gösteriliyor</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  CARDS GRID  ════════════════════════════ -->
+    <section class="section-tight" aria-label="Meslek keşif grid'i">
+      <div class="grid-3" id="cards-grid"></div>
+      <p class="fine center mt-24" id="empty-note" style="display:none;">Aramana uyan meslek bulunamadı — filtreyi sıfırlamayı dene.</p>
+    </section>
+
+    <!-- ════════════════════════════  ARENA  ════════════════════════════ -->
+    <section class="section-tight" id="arena-section" aria-label="Haftalık arena oylaması">
+      <div class="section-head" style="margin-bottom:24px;">
+        <span class="eyebrow eyebrow--signal">BU HAFTA ARENA</span>
+        <h2 class="subheading">🏆 Favori mesleğine oy ver</h2>
+      </div>
+      <div class="card" id="arena-card">
+        <div id="arena-list" style="display:flex;flex-direction:column;gap:16px;"></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  CLOSING CTA  ════════════════════════════ -->
+    <section class="cta">
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="badge badge--white" style="margin-bottom:20px;">KARİYER GPS</span>
+          <h2 class="heading-lg">Hangi meslek<br />sana uyuyor?</h2>
+          <p class="cta-sub">Profilini çıkar; DNA uyumun gerçek veriyle hesaplansın. 4 dakikada, anonim.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="test.html">
+              Teste Başla
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-dark" href="index.html#planlar">Planları gör</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════  DETAIL MODAL  ════════════════════════════ -->
+  <div class="modal-overlay" id="occ-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Meslek detayı" style="max-width:560px;max-height:88vh;overflow-y:auto;">
+      <button class="modal-close" type="button" data-close aria-label="Kapat">×</button>
+
+      <!-- Hero -->
+      <div class="center" style="margin-bottom:20px;">
+        <div id="m-icon" style="font-size:44px;line-height:1;">💼</div>
+        <h3 class="subheading" id="m-name" style="margin-top:12px;">—</h3>
+        <p class="fine" id="m-name-en">—</p>
+        <div id="m-badges" style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px;"></div>
+      </div>
+
+      <!-- Intro teaser -->
+      <p class="lead" id="m-tagline" style="font-size:var(--text-body);">—</p>
+      <div id="m-vibe-tags" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;"></div>
+      <div class="grid-3" id="m-highlights" style="gap:8px;margin-top:16px;"></div>
+
+      <!-- Tabs (generic data-tabs pattern handled by script.js) -->
+      <div data-tabs style="margin-top:24px;">
+        <div class="tabs" style="display:flex;width:100%;">
+          <button class="tab is-active" data-tab="bugun" type="button" style="flex:1;">☀️ Bugün</button>
+          <button class="tab" data-tab="2030" type="button" style="flex:1;">🔮 2030</button>
+          <button class="tab" data-tab="mektup" type="button" style="flex:1;">✉️ Mektup</button>
+        </div>
+
+        <!-- TAB: BUGÜN -->
+        <div data-tab-panel="bugun" style="margin-top:20px;">
+          <h4 class="field-label" style="font-size:var(--text-body-sm);">🧭 Ne İş Yapar, Neden Önemli?</h4>
+          <p class="card-body" id="m-about" style="margin-top:8px;">—</p>
+
+          <h4 class="field-label mt-24" style="font-size:var(--text-body-sm);">📊 Sayılar</h4>
+          <div id="m-metrics" class="grid-3" style="gap:8px;margin-top:8px;"></div>
+
+          <h4 class="field-label mt-24" style="font-size:var(--text-body-sm);">📈 Büyüme &amp; 🤖 AI Riski</h4>
+          <div id="m-bars" style="margin-top:8px;"></div>
+
+          <h4 class="field-label mt-24" style="font-size:var(--text-body-sm);">❤️ Neden Seveceksin?</h4>
+          <ul class="check-list" id="m-love" style="margin-top:8px;"></ul>
+
+          <!-- PLAN-GATED upsell -->
+          <div class="card card--navy mt-24" id="m-premium-zone" style="padding:var(--spacing-20);overflow:hidden;position:relative;">
+            <div id="m-gated-content">
+              <h4 class="field-label" style="font-size:var(--text-body-sm);">🌍 En Çok Kazandıran Ülkeler</h4>
+              <div id="m-countries" style="margin-top:8px;display:flex;flex-direction:column;gap:6px;"></div>
+              <h4 class="field-label mt-16" style="font-size:var(--text-body-sm);">📈 Kariyer Merdiveni · Yıllık (Global)</h4>
+              <div id="m-ladder" style="margin-top:8px;display:flex;flex-direction:column;gap:8px;"></div>
+              <p class="fine mt-16">Tahmini yıllık brüt (USD) — küresel ortalamalara dayalı; ülke, şirket ve deneyime göre değişir.</p>
+            </div>
+            <!-- lock overlay (Free/anonim) -->
+            <div id="m-gated-lock" style="position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;padding:24px;background:rgba(3,7,25,0.55);backdrop-filter:blur(2px);">
+              <div style="font-size:30px;">🔒</div>
+              <div class="subheading" style="font-size:var(--text-body-lg);">Bu meslek dünyada ne kadar kazandırıyor?</div>
+              <p class="fine" style="max-width:320px;">En çok ödeyen ülkeler + kariyer boyunca maaş artışı. Pro ve Pro Max üyelere özel.</p>
+              <a class="btn btn-white" href="#" data-action="pay" data-plan="promax">👑 Pro Max ile Aç</a>
+              <p class="fine">Pro Max'te bu ve tüm premium içgörüler dahil</p>
+            </div>
+          </div>
+
+          <!-- long desc -->
+          <div id="m-desc-section" style="display:none;" class="mt-24">
+            <h4 class="field-label" style="font-size:var(--text-body-sm);">📖 Detay</h4>
+            <p class="card-body" id="m-long-desc" style="margin-top:8px;"></p>
+          </div>
+        </div>
+
+        <!-- TAB: 2030 -->
+        <div data-tab-panel="2030" hidden style="margin-top:20px;">
+          <h4 class="field-label" style="font-size:var(--text-body-sm);">🔮 2030'da Bu Meslek</h4>
+          <div id="m-2030" style="margin-top:8px;"></div>
+        </div>
+
+        <!-- TAB: MEKTUP -->
+        <div data-tab-panel="mektup" hidden style="margin-top:20px;">
+          <h4 class="field-label" style="font-size:var(--text-body-sm);">✉️ Geleceğinden Mektup</h4>
+          <div id="m-letter-placeholder" class="center" style="padding:24px 8px;">
+            <div style="font-size:34px;margin-bottom:8px;">✉️</div>
+            <p class="card-body" style="margin-bottom:16px;">5 yıl sonraki <strong id="m-letter-job">sen</strong>, bugünün sana bir mektup yazıyor.</p>
+            <button class="btn btn-white" type="button" id="m-fetch-letter">✨ Mektubu Oku</button>
+          </div>
+          <p class="card-body" id="m-letter-text" style="display:none;white-space:pre-line;font-style:italic;"></p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="callout callout--info mt-24" style="text-align:center;">
+        <p style="margin-bottom:12px;">Profilin bu mesleğe uyuyor mu? Ücretsiz kariyer testi ile öğren.</p>
+        <a class="btn btn-white" href="test.html">⚡ Ücretsiz teste gir</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════  SLOT / KADER ÇARKI OVERLAY  ════════════════════════════ -->
+  <div class="modal-overlay" id="slot-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Kader çarkı" style="text-align:center;">
+      <button class="modal-close" type="button" data-close aria-label="Kapat">×</button>
+      <span class="eyebrow eyebrow--signal">🎰 KADER ÇARKI DÖNÜYOR</span>
+      <div class="heading" id="slot-reel" style="margin-top:8px;min-height:48px;">🎲</div>
+      <p class="card-body" id="slot-sub" style="min-height:42px;"></p>
+      <a class="btn btn-white btn-block" href="#" id="slot-open" style="display:none;">Bu Mesleği Keşfet →</a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════  DUEL MODAL  ════════════════════════════ -->
+  <div class="modal-overlay" id="duel-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Kariyer düellosu" style="max-width:560px;">
+      <button class="modal-close" type="button" data-close aria-label="Kapat">×</button>
+      <h3 class="subheading center">⚔️ Kariyer Düellosu</h3>
+      <div id="duel-cols" class="grid-2" style="margin-top:20px;gap:12px;"></div>
+      <p class="card-body center mt-16" id="duel-verdict"></p>
+      <button class="btn btn-dark btn-block" type="button" id="duel-reset">Yeni Düello Başlat</button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════  FLOATING DICE FAB  ════════════════════════════ -->
+  <button class="btn btn-white" type="button" id="btn-dice" aria-label="Rastgele meslek keşfet"
+          style="position:fixed;right:20px;bottom:20px;z-index:90;border-radius:9999px;width:54px;height:54px;padding:0;justify-content:center;font-size:22px;box-shadow:var(--shadow-xl);">🎲</button>
+
+  <!-- ════════════════════════════  TOAST  ════════════════════════════ -->
+  <div id="toast-container" aria-live="polite"
+       style="position:fixed;left:50%;bottom:88px;transform:translateX(-50%);z-index:120;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;"></div>
+
+  <script src="script.js"></script>
+  <script>
+  /* ════════════════════════════════════════════════════════════════════
+     Meslekler — static port. Vanilla, defensive, no external libraries.
+     Reuses script.js for: mobile menu, login/pay modal, generic [data-tabs],
+     [data-count] counters. This script owns: dataset render, search/filter/
+     sort, detail modal, "Şansını Dene", duel, arena, slot, streak, letter,
+     and the plan-gated upsell (masked for free users).
+     ════════════════════════════════════════════════════════════════════ */
+  (function () {
+    "use strict";
+
+    /* ── DATA (transformed from lib/meslekler-data.ts, enriched for the
+          modal builders: name_en, long_desc, min_yks_score) ──────────── */
+    var ALL = [
+      { slug:"yazilim-muhendisi", name_tr:"Yazılım Mühendisi", name_en:"Software Engineer", category:"mühendislik", icon:"💻", short_desc:"Uygulama, web ve AI sistemleri geliştiren mühendis.", long_desc:"Problemi koda döker; web, mobil ve yapay zeka sistemleri tasarlar, kurar ve sürekli geliştirir.", avg_salary_band:"40k-150k", growth_outlook:"yüksek", ai_automation_risk:35, min_yks_score:470 },
+      { slug:"hekim-tip-doktoru", name_tr:"Hekim (Tıp Doktoru)", name_en:"Physician", category:"sağlık", icon:"🩺", short_desc:"Hastalıkları teşhis eder, tedavi planlar.", long_desc:"Hastayı dinler, muayene eder, hastalığı teşhis eder ve tedavi sürecini baştan sona yönetir.", avg_salary_band:"35k-120k", growth_outlook:"yüksek", ai_automation_risk:15, min_yks_score:520 },
+      { slug:"grafik-tasarimci-ui-ux", name_tr:"Grafik Tasarımcı / UI-UX", name_en:"Graphic / UI-UX Designer", category:"sanat", icon:"🎨", short_desc:"Dijital ürünlerin görsel dilini tasarlar.", long_desc:"Markaların ve dijital ürünlerin görsel dilini; arayüzlerin kullanıcı deneyimini tasarlar.", avg_salary_band:"25k-80k", growth_outlook:"yüksek", ai_automation_risk:45, min_yks_score:300 },
+      { slug:"endustri-muhendisi", name_tr:"Endüstri Mühendisi", name_en:"Industrial Engineer", category:"mühendislik", icon:"⚙️", short_desc:"Süreçleri optimize ederek verimi artırır.", long_desc:"Üretim ve hizmet süreçlerini analiz eder; israfı azaltıp verimi en üst düzeye çıkarır.", avg_salary_band:"30k-80k", growth_outlook:"yüksek", ai_automation_risk:30, min_yks_score:440 },
+      { slug:"veri-analisti", name_tr:"Veri Analisti", name_en:"Data Analyst", category:"iktisat", icon:"📊", short_desc:"Veriden içgörü çıkarır, karar destekler.", long_desc:"Ham veriyi toplar, temizler ve anlamlı içgörülere dönüştürerek iş kararlarını destekler.", avg_salary_band:"35k-100k", growth_outlook:"yüksek", ai_automation_risk:40, min_yks_score:430 },
+      { slug:"klinik-psikolog", name_tr:"Klinik Psikolog", name_en:"Clinical Psychologist", category:"sağlık", icon:"🧠", short_desc:"Ruh sağlığı değerlendirmesi ve terapi.", long_desc:"Ruhsal süreçleri değerlendirir, terapi yöntemleriyle danışanların iyileşmesine eşlik eder.", avg_salary_band:"20k-60k", growth_outlook:"yüksek", ai_automation_risk:20, min_yks_score:450 },
+      { slug:"avukat", name_tr:"Avukat", name_en:"Lawyer", category:"hukuk", icon:"⚖️", short_desc:"Hukuki danışmanlık ve dava takibi.", long_desc:"Müvekkilini hukuki süreçlerde temsil eder, danışmanlık verir ve davaları yürütür.", avg_salary_band:"25k-90k", growth_outlook:"orta", ai_automation_risk:35, min_yks_score:430 },
+      { slug:"pilot", name_tr:"Pilot", name_en:"Pilot", category:"hizmet", icon:"✈️", short_desc:"Ticari veya askeri uçakları güvenle kullanır.", long_desc:"Uçağı planlar dahilinde, yolcu ve mürettebatın güvenliğini önceleyerek kullanır.", avg_salary_band:"40k-150k", growth_outlook:"orta", ai_automation_risk:25, min_yks_score:400 },
+      { slug:"mimar", name_tr:"Mimar", name_en:"Architect", category:"sanat", icon:"🏛️", short_desc:"Yapı tasarımı ve proje yönetimi.", long_desc:"Yaşam alanlarını işlevsel ve estetik biçimde tasarlar; projeyi inşaata kadar yönetir.", avg_salary_band:"25k-70k", growth_outlook:"orta", ai_automation_risk:30, min_yks_score:420 },
+      { slug:"pazarlama-uzmani", name_tr:"Pazarlama Uzmanı", name_en:"Marketing Specialist", category:"iktisat", icon:"📣", short_desc:"Marka büyümesi ve müşteri kazanımı.", long_desc:"Markanın hikayesini kurar, kampanyalar tasarlar ve yeni müşteriler kazandırır.", avg_salary_band:"22k-65k", growth_outlook:"yüksek", ai_automation_risk:50, min_yks_score:380 },
+      { slug:"dis-hekimi", name_tr:"Diş Hekimi", name_en:"Dentist", category:"sağlık", icon:"🦷", short_desc:"Ağız ve diş sağlığı tedavisi.", long_desc:"Ağız ve diş sağlığını korur; dolgu, tedavi ve cerrahi müdahalelerle çözüm üretir.", avg_salary_band:"30k-100k", growth_outlook:"yüksek", ai_automation_risk:18, min_yks_score:490 },
+      { slug:"rehber-ogretmeni-pdr", name_tr:"Rehber Öğretmeni (PDR)", name_en:"Guidance Counselor", category:"eğitim", icon:"🎓", short_desc:"Öğrenci rehberliği ve kariyer danışmanlığı.", long_desc:"Öğrencilerin kendini tanımasına, akademik ve kariyer kararlarını vermesine rehberlik eder.", avg_salary_band:"18k-45k", growth_outlook:"orta", ai_automation_risk:22, min_yks_score:380 },
+      { slug:"elektrik-elektronik-muhendisi", name_tr:"Elektrik-Elektronik Mühendisi", name_en:"Electrical & Electronics Engineer", category:"mühendislik", icon:"⚡", short_desc:"Elektronik devre ve güç sistemleri.", long_desc:"Elektronik devreler, güç sistemleri ve gömülü cihazlar tasarlar ve test eder.", avg_salary_band:"30k-70k", growth_outlook:"yüksek", ai_automation_risk:25, min_yks_score:460 },
+      { slug:"gazeteci-icerik", name_tr:"Gazeteci / İçerik Üreticisi", name_en:"Journalist / Content Creator", category:"sosyal", icon:"📰", short_desc:"Haber, analiz ve dijital içerik üretimi.", long_desc:"Olayları araştırır, doğrular ve haber, analiz veya dijital içeriğe dönüştürür.", avg_salary_band:"15k-50k", growth_outlook:"orta", ai_automation_risk:55, min_yks_score:320 },
+      { slug:"finans-uzmani", name_tr:"Finans Uzmanı", name_en:"Finance Specialist", category:"iktisat", icon:"💹", short_desc:"Yatırım, risk ve kurumsal finans.", long_desc:"Yatırımları, riskleri ve nakit akışını yönetir; kurumun finansal sağlığını korur.", avg_salary_band:"35k-120k", growth_outlook:"yüksek", ai_automation_risk:38, min_yks_score:450 },
+      { slug:"veteriner-hekim", name_tr:"Veteriner Hekim", name_en:"Veterinarian", category:"sağlık", icon:"🐾", short_desc:"Hayvan sağlığı teşhis ve tedavisi.", long_desc:"Hayvanların hastalıklarını teşhis ve tedavi eder; halk sağlığına da katkı sağlar.", avg_salary_band:"22k-55k", growth_outlook:"orta", ai_automation_risk:20, min_yks_score:440 },
+      { slug:"sosyolog", name_tr:"Sosyolog", name_en:"Sociologist", category:"sosyal", icon:"👥", short_desc:"Toplum yapısı ve davranış analizi.", long_desc:"Toplumsal yapıları, grupları ve davranışları araştırarak değişimi anlamlandırır.", avg_salary_band:"18k-45k", growth_outlook:"orta", ai_automation_risk:30, min_yks_score:330 },
+      { slug:"ic-mimar", name_tr:"İç Mimar", name_en:"Interior Architect", category:"sanat", icon:"🛋️", short_desc:"İç mekân tasarımı ve dekorasyon.", long_desc:"İç mekânları işlev, ışık ve estetik dengesiyle yeniden kurgular ve uygulamasını yönetir.", avg_salary_band:"22k-60k", growth_outlook:"orta", ai_automation_risk:28, min_yks_score:360 },
+      { slug:"makine-muhendisi", name_tr:"Makine Mühendisi", name_en:"Mechanical Engineer", category:"mühendislik", icon:"🔧", short_desc:"Makine ve sistemleri tasarlar, üretir.", long_desc:"Makineleri, motorları ve mekanik sistemleri tasarlar; üretim ve bakımını yönetir.", avg_salary_band:"28k-75k", growth_outlook:"orta", ai_automation_risk:30, min_yks_score:450 },
+      { slug:"hemsire", name_tr:"Hemşire", name_en:"Nurse", category:"sağlık", icon:"💉", short_desc:"Hasta bakımı ve tedavi takibi.", long_desc:"Hasta bakımını üstlenir, tedaviyi uygular ve iyileşme sürecini yakından izler.", avg_salary_band:"18k-45k", growth_outlook:"yüksek", ai_automation_risk:15, min_yks_score:400 },
+      { slug:"ogretmen", name_tr:"Öğretmen", name_en:"Teacher", category:"eğitim", icon:"📚", short_desc:"Öğrencilere bilgi ve beceri kazandırır.", long_desc:"Dersi planlar, öğrencilere bilgi ve beceri kazandırır; gelişimlerini değerlendirir.", avg_salary_band:"16k-40k", growth_outlook:"orta", ai_automation_risk:22, min_yks_score:350 },
+      { slug:"is-insani-girisimci", name_tr:"Girişimci / İşletmeci", name_en:"Entrepreneur", category:"iktisat", icon:"🚀", short_desc:"Şirket kurar, büyütür ve yönetir.", long_desc:"Bir fikri işe dönüştürür; ekip kurar, kaynak bulur ve şirketi büyütür.", avg_salary_band:"20k-200k", growth_outlook:"yüksek", ai_automation_risk:20, min_yks_score:0 },
+      { slug:"bilgisayar-muhendisi", name_tr:"Bilgisayar Mühendisi", name_en:"Computer Engineer", category:"mühendislik", icon:"🖥️", short_desc:"Donanım ve yazılımı birlikte tasarlar.", long_desc:"Donanım ve yazılımı birlikte ele alır; sistemleri ve ağ altyapısını tasarlar.", avg_salary_band:"38k-140k", growth_outlook:"yüksek", ai_automation_risk:32, min_yks_score:475 },
+      { slug:"eczaci", name_tr:"Eczacı", name_en:"Pharmacist", category:"sağlık", icon:"💊", short_desc:"İlaç danışmanlığı ve hazırlığı.", long_desc:"İlaçları temin eder, doğru kullanımına danışmanlık yapar ve etkileşimleri denetler.", avg_salary_band:"25k-70k", growth_outlook:"orta", ai_automation_risk:30, min_yks_score:480 },
+      { slug:"reklam-yaratici-yonetmen", name_tr:"Yaratıcı Yönetmen", name_en:"Creative Director", category:"sanat", icon:"🎬", short_desc:"Kampanya ve marka konseptini yönetir.", long_desc:"Bir kampanyanın büyük fikrini bulur; metin, görsel ve ekibi tek bir vizyonda birleştirir.", avg_salary_band:"30k-110k", growth_outlook:"orta", ai_automation_risk:35, min_yks_score:300 },
+      { slug:"diplomat-uluslararasi-iliskiler", name_tr:"Diplomat / Uluslararası İlişkiler", name_en:"Diplomat", category:"sosyal", icon:"🌐", short_desc:"Ülkeler arası ilişki ve müzakere.", long_desc:"Ülkesini yurt dışında temsil eder; müzakereleri yürütür ve uluslararası bağ kurar.", avg_salary_band:"22k-70k", growth_outlook:"orta", ai_automation_risk:20, min_yks_score:430 },
+      { slug:"insaat-muhendisi", name_tr:"İnşaat Mühendisi", name_en:"Civil Engineer", category:"mühendislik", icon:"🏗️", short_desc:"Yapı, köprü ve altyapı projeleri.", long_desc:"Bina, köprü ve altyapıyı tasarlar; şantiyede güvenli ve dayanıklı yapımı yönetir.", avg_salary_band:"26k-70k", growth_outlook:"orta", ai_automation_risk:28, min_yks_score:430 },
+      { slug:"fizyoterapist", name_tr:"Fizyoterapist", name_en:"Physiotherapist", category:"sağlık", icon:"🦵", short_desc:"Hareket ve rehabilitasyon tedavisi.", long_desc:"Hareket bozukluklarını değerlendirir; egzersiz ve tekniklerle rehabilitasyonu yürütür.", avg_salary_band:"18k-50k", growth_outlook:"yüksek", ai_automation_risk:18, min_yks_score:420 },
+      { slug:"muhasebeci-mali-musavir", name_tr:"Mali Müşavir / Muhasebeci", name_en:"Accountant", category:"iktisat", icon:"🧾", short_desc:"Mali kayıt, vergi ve denetim.", long_desc:"Mali kayıtları tutar, vergi süreçlerini yönetir ve işletmeye mali danışmanlık verir.", avg_salary_band:"18k-60k", growth_outlook:"orta", ai_automation_risk:60, min_yks_score:360 },
+      { slug:"oyun-gelistirici", name_tr:"Oyun Geliştirici", name_en:"Game Developer", category:"mühendislik", icon:"🎮", short_desc:"Video oyunu tasarlar ve kodlar.", long_desc:"Oyun mekaniğini tasarlar, kodlar ve oynanışı eğlenceli kılana kadar test eder.", avg_salary_band:"28k-100k", growth_outlook:"yüksek", ai_automation_risk:35, min_yks_score:430 },
+      { slug:"hakim-savci", name_tr:"Hâkim / Savcı", name_en:"Judge / Prosecutor", category:"hukuk", icon:"👨‍⚖️", short_desc:"Yargılama ve adaletin tesisi.", long_desc:"Delilleri değerlendirir, hukuku uygular ve adaleti tarafsızca tesis eder.", avg_salary_band:"35k-90k", growth_outlook:"orta", ai_automation_risk:15, min_yks_score:470 },
+      { slug:"sef-asci", name_tr:"Şef / Aşçı", name_en:"Chef", category:"hizmet", icon:"👨‍🍳", short_desc:"Mutfak yönetimi ve menü tasarımı.", long_desc:"Menüyü kurgular, mutfağı yönetir ve tabağı hem lezzet hem sunumla tasarlar.", avg_salary_band:"15k-60k", growth_outlook:"orta", ai_automation_risk:25, min_yks_score:0 },
+      { slug:"biyomedikal-muhendisi", name_tr:"Biyomedikal Mühendisi", name_en:"Biomedical Engineer", category:"mühendislik", icon:"🔬", short_desc:"Tıbbi cihaz ve teknoloji geliştirir.", long_desc:"Mühendislik ile tıbbı birleştirir; tanı ve tedavi cihazları tasarlar ve geliştirir.", avg_salary_band:"30k-85k", growth_outlook:"yüksek", ai_automation_risk:25, min_yks_score:460 },
+      { slug:"sosyal-hizmet-uzmani", name_tr:"Sosyal Hizmet Uzmanı", name_en:"Social Worker", category:"sosyal", icon:"🤲", short_desc:"Dezavantajlı bireylere destek sağlar.", long_desc:"Dezavantajlı bireyleri ve aileleri haklarına ulaştırır; sosyal destek ağı kurar.", avg_salary_band:"16k-42k", growth_outlook:"orta", ai_automation_risk:18, min_yks_score:340 },
+      { slug:"ucak-muhendisi", name_tr:"Uçak / Uzay Mühendisi", name_en:"Aerospace Engineer", category:"mühendislik", icon:"🛰️", short_desc:"Hava ve uzay araçları tasarlar.", long_desc:"Uçak, uydu ve uzay araçlarını tasarlar; aerodinamiği ve sistemleri test eder.", avg_salary_band:"32k-95k", growth_outlook:"yüksek", ai_automation_risk:25, min_yks_score:480 },
+      { slug:"muzisyen-ses-sanatcisi", name_tr:"Müzisyen / Ses Sanatçısı", name_en:"Musician", category:"sanat", icon:"🎵", short_desc:"Müzik üretir, besteler ve icra eder.", long_desc:"Müzik besteler, kaydeder ve sahnede icra eder; bir duyguyu sese dönüştürür.", avg_salary_band:"12k-90k", growth_outlook:"orta", ai_automation_risk:40, min_yks_score:0 }
+    ];
+
+    /* ── STATE ─────────────────────────────────────────────────────── */
+    var filtered = ALL.slice();
+    var activeCat = "tümü";
+    var searchQ = "";
+    var sortBy = "az";
+    var currentOcc = null;
+    var letterFetched = false;
+    var duelSlots = [];
+    var arenaData = [];
+    var arenaUserVotes = {};
+    var lastSlotSlug = null;
+    var slotResult = null;
+    var slotSpinning = false;
+
+    var TL_TO_USD = 35;
+    var CAT_META = {
+      "mühendislik": { icon:"⚙️", color:"#60a5fa" }, "sağlık": { icon:"🏥", color:"#34d399" },
+      "sosyal": { icon:"🤝", color:"#f472b6" }, "eğitim": { icon:"📚", color:"#fb923c" },
+      "iktisat": { icon:"💰", color:"#fbbf24" }, "hukuk": { icon:"⚖️", color:"#a78bfa" },
+      "sanat": { icon:"🎨", color:"#f87171" }, "hizmet": { icon:"✈️", color:"#22d3ee" }
+    };
+
+    function $(id) { return document.getElementById(id); }
+    function escapeHtml(s) {
+      return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+        return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c];
+      });
+    }
+
+    /* ── METRIC HELPERS ────────────────────────────────────────────── */
+    function salaryMax(band) {
+      if (!band || band === "?") return 0;
+      var m = band.match(/(\d+)k(?:\s*-\s*(\d+)k)?/);
+      if (!m) return 0;
+      return parseInt(m[2] || m[1], 10) * 1000;
+    }
+    function salaryDisplay(band) {
+      if (!band || band === "?") return "—";
+      var m = band.match(/(\d+)k(?:\s*-\s*(\d+)k)?/);
+      if (!m) return "—";
+      var lo = Math.round(parseInt(m[1], 10) * 1000 / TL_TO_USD);
+      if (m[2]) {
+        var hi = Math.round(parseInt(m[2], 10) * 1000 / TL_TO_USD);
+        return "$" + lo.toLocaleString("en-US") + "–$" + hi.toLocaleString("en-US");
+      }
+      return "$" + lo.toLocaleString("en-US");
+    }
+    function aiRiskEmoji(r) { return r <= 30 ? "🟢" : r <= 60 ? "🟡" : "🔴"; }
+    function aiRiskText(r) { return r <= 30 ? "Güvende" : r <= 60 ? "Dikkat" : "Yüksek Risk"; }
+    function growthEmoji(g) { return g === "yüksek" ? "🚀" : g === "orta" ? "📈" : "📊"; }
+    function growthText(g) { return g === "yüksek" ? "Hızlı büyüyor" : g === "orta" ? "Stabil" : "Yavaş büyüyor"; }
+    function growthPct(g) { return g === "yüksek" ? 88 : g === "orta" ? 55 : 28; }
+
+    /* ── DNA MATCH (deterministic per slug) ────────────────────────── */
+    function matchScore(o) {
+      var h = 0, s = o.slug || o.name_tr || "";
+      for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+      return 62 + (h % 37); // 62–98
+    }
+
+    /* ── TOAST ─────────────────────────────────────────────────────── */
+    function showToast(msg) {
+      var c = $("toast-container");
+      if (!c) return;
+      var t = document.createElement("div");
+      t.className = "callout callout--info";
+      t.style.cssText = "pointer-events:auto;box-shadow:var(--shadow-xl);opacity:0;transition:opacity .25s ease,transform .25s ease;transform:translateY(8px);";
+      t.textContent = msg;
+      c.appendChild(t);
+      requestAnimationFrame(function () { t.style.opacity = "1"; t.style.transform = "none"; });
+      setTimeout(function () {
+        t.style.opacity = "0"; t.style.transform = "translateY(8px)";
+        setTimeout(function () { t.remove(); }, 250);
+      }, 2600);
+    }
+
+    /* ── SORT / FILTER ─────────────────────────────────────────────── */
+    function sortOccs(arr) {
+      var a = arr.slice();
+      if (sortBy === "az") a.sort(function (x, y) { return x.name_tr.localeCompare(y.name_tr, "tr"); });
+      else if (sortBy === "salary") a.sort(function (x, y) { return salaryMax(y.avg_salary_band) - salaryMax(x.avg_salary_band); });
+      else if (sortBy === "growth") {
+        var order = { yüksek:3, orta:2, düşük:1 };
+        a.sort(function (x, y) { return (order[y.growth_outlook] || 0) - (order[x.growth_outlook] || 0); });
+      } else if (sortBy === "ai_safe") a.sort(function (x, y) { return x.ai_automation_risk - y.ai_automation_risk; });
+      else if (sortBy === "ai_risk") a.sort(function (x, y) { return y.ai_automation_risk - x.ai_automation_risk; });
+      return a;
+    }
+    function applyFilters() {
+      var q = searchQ.toLowerCase().trim();
+      filtered = ALL.filter(function (o) {
+        if (activeCat !== "tümü" && o.category !== activeCat) return false;
+        if (q) {
+          var hay = (o.name_tr + " " + (o.name_en || "") + " " + (o.short_desc || "") + " " + o.category).toLowerCase();
+          if (hay.indexOf(q) === -1) return false;
+        }
+        return true;
+      });
+      filtered = sortOccs(filtered);
+      renderCards();
+    }
+
+    /* ── CARD GRID ─────────────────────────────────────────────────── */
+    function renderCards() {
+      var grid = $("cards-grid");
+      if (!grid) return;
+      grid.innerHTML = filtered.map(function (o, i) {
+        var meta = CAT_META[o.category] || { icon:"💼", color:"#94a3b8" };
+        var dna = matchScore(o);
+        var duelSel = duelSlots.indexOf(o.slug) !== -1;
+        return '<article class="card card--sm" data-idx="' + i + '" style="cursor:pointer;">'
+          + '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">'
+          +   '<span style="font-size:30px;line-height:1;">' + o.icon + '</span>'
+          +   '<span class="badge" style="color:' + meta.color + ';background:' + meta.color + '1f;">🧬 %' + dna + ' uyum</span>'
+          + '</div>'
+          + '<h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">' + escapeHtml(o.name_tr) + '</h3>'
+          + '<p class="fine" style="margin-top:2px;">' + escapeHtml(o.name_en || "") + '</p>'
+          + '<p class="card-body" style="margin-top:8px;font-size:var(--text-body-sm);">' + escapeHtml(o.short_desc || "") + '</p>'
+          + '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;">'
+          +   '<span class="badge badge--mint">💵 ' + salaryDisplay(o.avg_salary_band) + '/ay</span>'
+          +   '<span class="badge badge--blue">' + growthEmoji(o.growth_outlook) + ' ' + growthText(o.growth_outlook) + '</span>'
+          +   '<span class="badge ' + (o.ai_automation_risk <= 30 ? "badge--mint" : o.ai_automation_risk <= 60 ? "badge--amber" : "") + '">' + aiRiskEmoji(o.ai_automation_risk) + ' AI: ' + aiRiskText(o.ai_automation_risk) + '</span>'
+          + '</div>'
+          + '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:16px;">'
+          +   '<span class="card-link" style="margin-top:0;">Detay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>'
+          +   '<button class="badge ' + (duelSel ? "badge--amber" : "") + ' duel-btn" type="button" data-slug="' + o.slug + '" style="cursor:pointer;border:none;font-family:inherit;">⚔️ ' + (duelSel ? "Eklendi" : "Düello") + '</button>'
+          + '</div>'
+          + '</article>';
+      }).join("");
+
+      var rn = $("results-num"); if (rn) rn.textContent = filtered.length;
+      var en = $("empty-note"); if (en) en.style.display = filtered.length ? "none" : "block";
+
+      // card click → modal (ignore the duel button)
+      grid.querySelectorAll(".card").forEach(function (card) {
+        card.addEventListener("click", function (e) {
+          if (e.target.closest(".duel-btn")) return;
+          openModal(parseInt(card.getAttribute("data-idx"), 10));
+        });
+      });
+      grid.querySelectorAll(".duel-btn").forEach(function (btn) {
+        btn.addEventListener("click", function (e) { e.stopPropagation(); toggleDuel(btn.getAttribute("data-slug")); });
+      });
+    }
+
+    /* ── MODAL CONTENT BUILDERS ────────────────────────────────────── */
+    function buildFutureLine(o) {
+      var r = o.ai_automation_risk, g = o.growth_outlook;
+      if (r <= 30 && g === "yüksek") return "🚀 <strong>Bonus:</strong> sektör hızla büyüyor ve AI bu işi kolay kolay elinden alamaz — gelecek kaygısı düşük.";
+      if (r <= 30) return "🛡️ <strong>Bonus:</strong> AI bu alanda insanın yerini almıyor, sadece işini hızlandırıyor.";
+      if (r >= 70) return "⚡ <strong>Heads-up:</strong> AI bu alanı baya değiştirecek — ama araçları erken öğrenirsen bunu avantaja çevirirsin.";
+      if (g === "yüksek") return "📈 <strong>Bonus:</strong> sektör büyüyor, yani iş bulma kaygısı görece düşük.";
+      return "🧭 <strong>Not:</strong> istikrarlı bir alan — sabırla uzmanlaşana kapısı hep açık.";
+    }
+    function buildAbout(o) {
+      var what = (o.long_desc && o.long_desc.trim().length > 15) ? o.long_desc.trim()
+               : (o.short_desc && o.short_desc.trim()) ? o.short_desc.trim() : "";
+      what = escapeHtml(what);
+      if (what && !/[.!?…]$/.test(what)) what += ".";
+      var why = {
+        "mühendislik": "Yani günlük hayatın çalışmasını sağlayan görünmez altyapıyı sen kuruyorsun — açtığın app, geçtiğin köprü, kullandığın cihaz... hepsi bu kafanın eseri.",
+        "sağlık": "Önemli kısmı şu: insanların en savunmasız anında orada olan kişi sensin. Bu işin \"AI halleder\" kestirmesi yok — bilgi ve insan dokunuşu birlikte gerekiyor.",
+        "sosyal": "Asıl etki şurada: toplumun nasıl düşündüğünü, nasıl davrandığını anlayıp ona yön veriyorsun. Görünmez ama her yerde hissedilen bir güç.",
+        "eğitim": "Önemi belli: bir nesli sıfırdan şekillendiriyorsun. Bugün birine öğrettiğin şey 20 yıl sonra bambaşka bir hayata dönüşebilir.",
+        "iktisat": "Kritik nokta: paranın, piyasanın ve kararların arkasındaki mantığı çözen az kişiden birisin. Rakamların \"dilini\" konuşmak ciddi bir süper güç.",
+        "hukuk": "Önemli yanı: haklı ile haksız arasındaki çizgiyi sen netleştiriyorsun. Doğru kelimeyi doğru yerde kullanmak bir insanın hayatını değiştirebilir.",
+        "sanat": "İşin özü: kafandaki fikri alıp dünyaya çıkarıyorsun. İnsanların hissettiği, paylaştığı, yıllarca hatırladığı şeyleri sen üretiyorsun.",
+        "hizmet": "Asıl mesele: her şeyin tıkır tıkır işlemesini sen sağlıyorsun. Sen yokken sistem durur, sen varken kimse fark etmez — ki bu en büyük iltifat."
+      };
+      var whyLine = why[o.category] || "Önemli olan şu: bu alanda gerçek bir uzmanlık geliştirip somut bir değer üretiyorsun.";
+      var intro = what
+        ? '<strong>' + escapeHtml(o.name_tr) + '</strong> ne mi yapar? ' + what + ' '
+        : '<strong>' + escapeHtml(o.name_tr) + '</strong> — ';
+      return intro + whyLine + " " + buildFutureLine(o);
+    }
+    function buildTagline(o) {
+      var t = {
+        "mühendislik": 'Sen bir <strong class="text-aurora">' + escapeHtml(o.name_tr) + '</strong>sin — dünyanın görünmez iskeletini kuran kişi.',
+        "sağlık": 'Sen bir <strong class="text-aurora">' + escapeHtml(o.name_tr) + '</strong>sin — birinin en kötü gününde, en iyi şansı.',
+        "sosyal": 'Sen bir <strong class="text-aurora">' + escapeHtml(o.name_tr) + '</strong>sin — insanları, fikirleri ve toplumu birbirine bağlayan.',
+        "eğitim": 'Sen bir <strong class="text-aurora">' + escapeHtml(o.name_tr) + '</strong>sin — bir neslin "aha!" anını yaratan kişi.',
+        "iktisat": 'Sen bir <strong class="text-aurora">' + escapeHtml(o.name_tr) + '</strong>sin — rakamların fısıldadığı hikayeyi duyan tek kişi.',
+        "hukuk": 'Sen bir <strong class="text-aurora">' + escapeHtml(o.name_tr) + '</strong>sin — sözcüklerin silah, adaletin pusula olduğu yerde.',
+        "sanat": 'Sen bir <strong class="text-aurora">' + escapeHtml(o.name_tr) + '</strong>sin — boş bir sayfayı dünyaya dönüştüren kişi.',
+        "hizmet": 'Sen bir <strong class="text-aurora">' + escapeHtml(o.name_tr) + '</strong>sin — her şeyin kusursuz işlemesini sağlayan görünmez kahraman.'
+      };
+      return t[o.category] || 'Sen bir <strong class="text-aurora">' + escapeHtml(o.name_tr) + '</strong>sin — ' + escapeHtml(o.short_desc || "anlam dolu bir kariyer.");
+    }
+    function buildVibeTags(o) {
+      var tags = [];
+      if (o.growth_outlook === "yüksek") tags.push({ label:"🚀 Yükselen Alan", color:"#34d399" });
+      else if (o.growth_outlook === "orta") tags.push({ label:"📈 Stabil", color:"#fbbf24" });
+      if (o.ai_automation_risk <= 25) tags.push({ label:"🛡️ AI Buna Dokunamaz", color:"#34d399" });
+      else if (o.ai_automation_risk >= 70) tags.push({ label:"⚡ AI Dönüşüm Alanı", color:"#f87171" });
+      if (o.min_yks_score && o.min_yks_score >= 480) tags.push({ label:"🎯 Elit Puan", color:"#a78bfa" });
+      var catVibes = {
+        "mühendislik":"💻 Problem Çözücü", "sağlık":"❤️ İnsan Odaklı", "sosyal":"🌍 Değişim Yapıcı",
+        "eğitim":"✨ İlham Kaynağı", "iktisat":"📊 Veri Okuyucu", "hukuk":"⚖️ Adalet Savunucusu",
+        "sanat":"🎨 Yaratıcı Ruh", "hizmet":"🏆 Kalite Bekçisi"
+      };
+      if (catVibes[o.category]) tags.push({ label:catVibes[o.category], color:"#94a3b8" });
+      return tags.slice(0, 4);
+    }
+    function buildLove(o) {
+      var perCat = {
+        "mühendislik": ["🧩 Soyut problemleri somut çözümlere dönüştürürsün", "🚀 Yaptığın şey binlerce, milyonlarca kişiye ulaşır", "📐 Her gün yeni bir şey öğrenmek zorundasın — sıkılmazsın"],
+        "sağlık": ["❤️ İnsanların en zor günlerinde yanında olursun", "🔬 Hem bilim hem insan dokunuşu — nadiren bir arada olur", "📊 Her vaka bir bulmaca; çözdüğünde gerçekten fark etmişsindir"],
+        "sosyal": ["🌍 Sistemleri anlayıp değiştirebileceğin bir pozisyondasın", "🤝 İnsanlarla ve fikirlerle her gün buluşursun", "💡 Araştırman politikaya dönüşebilir, gerçek fark yaratabilir"],
+        "eğitim": ["✨ \"Anladım!\" dediğini gördüğün an tarif edilmez", "🌱 Bir nesli şekillendirme gücündesin", "📖 Öğretmek, öğrenmenin en derin biçimidir"],
+        "iktisat": ["📈 Kararlar büyük, etkileri daha büyük", "🔍 Veri içinde gizli kalıpları sen görürsün", "🌐 Hem yerel hem global dinamikleri yönetirsin"],
+        "hukuk": ["⚖️ Adalet sisteminin içinde aktif bir oyuncusun", "📜 Dil ve mantık senin en güçlü silahın", "🛡️ Bir kişinin hakkını savunmak — bunu herkes yapamaz"],
+        "sanat": ["🎨 Her gün bir şey yaratırsın — bu çoğu insanın hayali", "💫 İşin dünyaya çıkıyor, kalıcı iz bırakıyor", "🎯 Teknik beceri + yaratıcılık = senin uzmanlık alanın"],
+        "hizmet": ["🏆 Operasyonun sorunsuz çalışması senin başarın", "⚡ Her gün farklı; rutin diye bir şey yok", "🤜 Ekiple omuz omuza çalışmak enerjini besler"]
+      };
+      return perCat[o.category] || ["💼 Uzmanlık gerektiren, anlam dolu bir iş", "🌟 Büyüme ve gelişim her gün mümkün", "🎯 Net hedefler, ölçülebilir başarılar"];
+    }
+    function build2030(o) {
+      var risk = o.ai_automation_risk, growth = o.growth_outlook, cls, headline, points, advice;
+      if (risk <= 30 && growth !== "düşük") {
+        cls = "callout--mint"; headline = "Bu meslek 2030'da daha da güçlü 🟢";
+        points = ["AI bu alanda insanın yerini almıyor, onu güçlendiriyor", "Talebin 2030'a kadar belirgin biçimde artması bekleniyor", "Uzaktan ve küresel çalışma fırsatları genişliyor", "Uzmanlaşan profesyonellerin değeri yükseliyor"];
+        advice = "Şimdi bu alana yönelmek için ideal zaman — rekabet henüz doygunlaşmadı.";
+      } else if (risk <= 55) {
+        cls = "callout--amber"; headline = "Bu meslek 2030'da dönüşüyor 🟡";
+        points = ["Rutin görevler otomasyona kayıyor; yaratıcı ve ilişkisel boyut korunuyor", "AI araçlarıyla çalışmayı öğrenmek kritik avantaj sağlıyor", "Uzmanlaşmak seni rakiplerinden net biçimde ayıracak", "İnsan + AI hibrit çalışma modeli standart hale geliyor"];
+        advice = "AI araçlarını erken öğrenenler önde olacak. Bugünden başla.";
+      } else {
+        cls = "callout"; headline = "Bu alan 2030'da büyük değişimde 🔴";
+        points = ["Rutin görevlerin önemli kısmı otomasyona geçebilir", "Anahtar: üst düzey uzmanlık, yönetim ya da yaratıcı yön", "Empati ve insan ilişkisi gerektiren boyutlar korunacak", "Bir niş bulup o konuda en iyi olmak fark yaratacak"];
+        advice = "Bu yolu seçeceksen otomasyona dayanıklı bir niş seç ve orada derinleş.";
+      }
+      var li = points.map(function (p) { return "<li>" + escapeHtml(p) + "</li>"; }).join("");
+      return '<div class="callout ' + cls + '"><strong>' + escapeHtml(headline) + '</strong>'
+        + '<ul class="check-list mt-16">' + li + '</ul>'
+        + '<p class="mt-16">💡 <strong>Tavsiye:</strong> ' + escapeHtml(advice) + '</p></div>';
+    }
+
+    /* ── PLAN-GATED UPSELL (countries + ladder) ────────────────────── */
+    var userPlan = null; // 'free' | 'pro' | 'promax' | null
+    function isPremium() { return userPlan === "pro" || userPlan === "promax"; }
+    var CAT_USA_BASE = { "mühendislik":105000, "sağlık":155000, "sosyal":68000, "eğitim":60000, "iktisat":115000, "hukuk":125000, "sanat":72000, "hizmet":64000 };
+    var COUNTRY_PAY = [
+      { flag:"🇨🇭", name:"İsviçre", mult:1.18 }, { flag:"🇺🇸", name:"ABD", mult:1.10 }, { flag:"🇱🇺", name:"Lüksemburg", mult:1.05 },
+      { flag:"🇩🇰", name:"Danimarka", mult:0.98 }, { flag:"🇳🇴", name:"Norveç", mult:0.96 }, { flag:"🇦🇺", name:"Avustralya", mult:0.93 },
+      { flag:"🇸🇬", name:"Singapur", mult:0.92 }, { flag:"🇦🇪", name:"BAE", mult:0.90 }, { flag:"🇩🇪", name:"Almanya", mult:0.88 },
+      { flag:"🇳🇱", name:"Hollanda", mult:0.86 }, { flag:"🇨🇦", name:"Kanada", mult:0.85 }, { flag:"🇬🇧", name:"İngiltere", mult:0.83 }
+    ];
+    var CAT_COUNTRY_BIAS = {
+      "mühendislik": { "ABD":1.14, "Singapur":1.10, "İsviçre":1.05 },
+      "sağlık": { "ABD":1.16, "İsviçre":1.07, "Avustralya":1.06, "Norveç":1.05 },
+      "iktisat": { "Lüksemburg":1.12, "İsviçre":1.10, "ABD":1.08, "Singapur":1.07, "BAE":1.06 },
+      "hukuk": { "ABD":1.13, "İngiltere":1.07, "İsviçre":1.05 },
+      "sanat": { "ABD":1.10, "İngiltere":1.05 },
+      "eğitim": { "İsviçre":1.10, "Lüksemburg":1.08, "Almanya":1.04 },
+      "sosyal": { "İsviçre":1.06, "Norveç":1.05, "Avustralya":1.04 },
+      "hizmet": { "BAE":1.10, "İsviçre":1.06, "Avustralya":1.04 }
+    };
+    function baseAnnualUSD(o) {
+      var base = CAT_USA_BASE[o.category] || 80000;
+      var hi = salaryMax(o.avg_salary_band);
+      var f = hi > 0 ? Math.max(0.7, Math.min(1.7, 0.6 + (hi / 1000) / 110)) : 1;
+      if (o.min_yks_score >= 480) f *= 1.12; else if (o.min_yks_score >= 420) f *= 1.05;
+      return Math.round(base * f);
+    }
+    function fmtUSD(n) { return "$" + Math.round(n).toLocaleString("en-US"); }
+    function buildCountryList(o) {
+      var base = baseAnnualUSD(o);
+      var bias = CAT_COUNTRY_BIAS[o.category] || {};
+      return COUNTRY_PAY.map(function (c) {
+        return { flag:c.flag, name:c.name, annual: Math.round(base * c.mult * (bias[c.name] || 1) / 1000) * 1000 };
+      }).sort(function (a, b) { return b.annual - a.annual; }).slice(0, 6);
+    }
+    var LADDER = [
+      { label:"Yeni Başlayan", mult:0.5, icon:"🌱" }, { label:"Orta Düzey", mult:1.0, icon:"🚀" },
+      { label:"Kıdemli", mult:1.7, icon:"⭐" }, { label:"Lider / Uzman", mult:2.7, icon:"👑" }
+    ];
+    function buildLadder(o) {
+      var mid = Math.round(baseAnnualUSD(o) * 0.72);
+      return LADDER.map(function (s) { return { label:s.label, icon:s.icon, annual: Math.round(mid * s.mult / 1000) * 1000 }; });
+    }
+    function ladderRow(icon, label, payHtml, pct) {
+      return '<div style="display:flex;align-items:center;gap:8px;">'
+        + '<span style="width:22px;text-align:center;">' + icon + '</span>'
+        + '<span class="fine" style="width:96px;color:var(--color-pearl);">' + escapeHtml(label) + '</span>'
+        + '<span style="flex:1;height:8px;border-radius:9999px;background:var(--surface-charcoal);overflow:hidden;"><span style="display:block;height:100%;width:' + pct + '%;background:var(--gradient-signal-blue);"></span></span>'
+        + '<span class="fine" style="width:96px;text-align:right;color:var(--color-white);">' + payHtml + '</span>'
+        + '</div>';
+    }
+    function countryRow(rank, flag, name, payHtml, top) {
+      return '<div style="display:flex;align-items:center;gap:8px;' + (top ? "color:var(--color-vivid-mint);" : "") + '">'
+        + '<span class="fine" style="width:24px;">#' + rank + '</span>'
+        + '<span style="font-size:16px;">' + flag + '</span>'
+        + '<span style="flex:1;font-size:var(--text-body-sm);">' + escapeHtml(name) + '</span>'
+        + '<span class="fine" style="color:inherit;">' + payHtml + '</span>'
+        + '</div>';
+    }
+    function renderGated(o) {
+      var zone = $("m-premium-zone"), lock = $("m-gated-lock"), content = $("m-gated-content");
+      var cEl = $("m-countries"), lEl = $("m-ladder");
+      if (!zone || !cEl || !lEl) return;
+      if (isPremium()) {
+        var countries = buildCountryList(o), ladder = buildLadder(o);
+        var maxLad = ladder[ladder.length - 1].annual || 1;
+        cEl.innerHTML = countries.map(function (c, i) { return countryRow(i + 1, c.flag, c.name, fmtUSD(c.annual) + "/yıl", i === 0); }).join("");
+        lEl.innerHTML = ladder.map(function (s) { return ladderRow(s.icon, s.label, fmtUSD(s.annual), Math.round(s.annual / maxLad * 100)); }).join("");
+        content.style.filter = "";
+        lock.style.display = "none";
+      } else {
+        // locked: real numbers are NOT written to DOM — masked + generic order
+        cEl.innerHTML = COUNTRY_PAY.slice(0, 6).map(function (c, i) { return countryRow(i + 1, c.flag, c.name, "$ ▓▓▓,▓▓▓"); }).join("");
+        var w = [35, 55, 78, 96];
+        lEl.innerHTML = LADDER.map(function (s, i) { return ladderRow(s.icon, s.label, "$ ▓▓▓", w[i]); }).join("");
+        content.style.filter = "blur(6px)";
+        lock.style.display = "flex";
+      }
+    }
+    function loadPlan() {
+      // No backend in this static port: try /api/auth/me, fall back to anonim (free → masked).
+      try {
+        fetch("/api/auth/me", { credentials:"include" })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (d) {
+            userPlan = (d && d.user && (d.user.effectivePlan || d.user.plan)) || null;
+            if (currentOcc) renderGated(currentOcc);
+          })
+          .catch(function () { userPlan = null; });
+      } catch (e) { userPlan = null; }
+    }
+
+    /* ── DETAIL MODAL ──────────────────────────────────────────────── */
+    function badge(cls, text) { return '<span class="badge ' + cls + '">' + text + '</span>'; }
+    function metricCard(label, val) {
+      return '<div class="card card--sm" style="padding:var(--spacing-12);text-align:center;">'
+        + '<div class="card-title" style="font-size:var(--text-body);">' + val + '</div>'
+        + '<div class="fine" style="margin-top:2px;">' + escapeHtml(label) + '</div></div>';
+    }
+    function barBlock(label, pct, valHtml) {
+      return '<div style="margin-bottom:12px;">'
+        + '<div style="display:flex;justify-content:space-between;"><span class="fine">' + escapeHtml(label) + '</span><span class="fine" style="color:var(--color-white);">' + valHtml + '</span></div>'
+        + '<span style="display:block;height:8px;border-radius:9999px;background:var(--surface-charcoal);overflow:hidden;margin-top:4px;"><span style="display:block;height:100%;width:' + pct + '%;background:var(--gradient-signal-blue);"></span></span>'
+        + '</div>';
+    }
+    function openModal(idx) {
+      var o = filtered[idx];
+      if (!o) return;
+      currentOcc = o;
+      letterFetched = false;
+
+      $("m-icon").textContent = o.icon;
+      $("m-name").textContent = o.name_tr;
+      $("m-name-en").textContent = o.name_en || "";
+
+      var dna = matchScore(o);
+      $("m-badges").innerHTML =
+        badge("badge--blue", CAT_META[o.category] ? (CAT_META[o.category].icon + " " + o.category) : o.category)
+        + badge("badge--mint", "🧬 %" + dna + " DNA uyumu")
+        + (o.min_yks_score ? badge("badge--amber", "🎓 YKS ~" + o.min_yks_score) : "");
+
+      $("m-tagline").innerHTML = buildTagline(o);
+
+      var vibes = buildVibeTags(o);
+      $("m-vibe-tags").innerHTML = vibes.map(function (v) {
+        return '<span class="badge" style="color:' + v.color + ';background:' + v.color + '1f;">' + escapeHtml(v.label) + '</span>';
+      }).join("");
+
+      $("m-highlights").innerHTML = [
+        { icon:"💵", val:salaryDisplay(o.avg_salary_band), label:"Aylık (USD)" },
+        { icon:growthEmoji(o.growth_outlook), val:growthText(o.growth_outlook), label:"Büyüme" },
+        { icon:aiRiskEmoji(o.ai_automation_risk), val:aiRiskText(o.ai_automation_risk), label:"AI Riski" }
+      ].map(function (h) {
+        return '<div class="card card--sm" style="padding:var(--spacing-12);text-align:center;">'
+          + '<div style="font-size:20px;">' + h.icon + '</div>'
+          + '<div class="card-title" style="font-size:var(--text-body-sm);margin-top:4px;">' + h.val + '</div>'
+          + '<div class="fine">' + h.label + '</div></div>';
+      }).join("");
+
+      $("m-about").innerHTML = buildAbout(o);
+
+      $("m-metrics").innerHTML =
+        metricCard("Aylık maaş", salaryDisplay(o.avg_salary_band))
+        + metricCard("AI riski", "%" + o.ai_automation_risk)
+        + metricCard("YKS min", o.min_yks_score || "—");
+
+      $("m-bars").innerHTML =
+        barBlock("Büyüme trendi", growthPct(o.growth_outlook), growthEmoji(o.growth_outlook) + " " + growthText(o.growth_outlook))
+        + barBlock("AI otomasyon riski", o.ai_automation_risk, aiRiskEmoji(o.ai_automation_risk) + " %" + o.ai_automation_risk);
+
+      $("m-love").innerHTML = buildLove(o).map(function (b) { return "<li>" + escapeHtml(b) + "</li>"; }).join("");
+
+      $("m-2030").innerHTML = build2030(o);
+
+      // long desc
+      var descSec = $("m-desc-section");
+      if (o.long_desc && o.long_desc !== o.short_desc) {
+        $("m-long-desc").textContent = o.long_desc;
+        descSec.style.display = "";
+      } else descSec.style.display = "none";
+
+      // letter tab reset
+      $("m-letter-job").textContent = o.name_tr;
+      $("m-letter-placeholder").style.display = "";
+      $("m-letter-text").style.display = "none";
+      $("m-letter-text").textContent = "";
+
+      // reset tabs to "Bugün"
+      var modal = $("occ-modal");
+      modal.querySelectorAll("[data-tab]").forEach(function (t) { t.classList.toggle("is-active", t.getAttribute("data-tab") === "bugun"); });
+      modal.querySelectorAll("[data-tab-panel]").forEach(function (p) { p.toggleAttribute("hidden", p.getAttribute("data-tab-panel") !== "bugun"); });
+
+      renderGated(o);
+
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      bumpExplored(o.slug);
+    }
+    function closeModal() {
+      var modal = $("occ-modal");
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      currentOcc = null;
+    }
+
+    /* ── GELECEĞINDEN MEKTUP (local template — no backend) ─────────── */
+    function buildLetterSample(o) {
+      var year = new Date().getFullYear() + 5;
+      return "Sevgili gelecekteki ben,\n\n"
+        + year + " yılındayım ve bir " + o.name_tr + " olarak yazıyorum. İlk başta her şey biraz korkutucuydu — "
+        + "\"acaba doğru seçim mi?\" diye düşündüğün o anları hatırlıyorum. Sana şunu söyleyebilirim: en çok keyif aldığım kısım, "
+        + (o.category === "sağlık" ? "birinin gününü gerçekten değiştirebildiğim anlar oldu."
+          : o.category === "mühendislik" ? "kafamdaki bir fikrin gerçek dünyada çalıştığını görmek oldu."
+          : o.category === "sanat" ? "ortaya çıkardığım şeyin başkalarına da bir şey hissettirmesi oldu."
+          : "her gün yeni bir şey öğrenip biraz daha iyi olabilmek oldu.")
+        + "\n\nZor günler de oldu, ama erken başladığın için bugün rahatım. AI araçlarını öğrenmen, merakını kaybetmemen "
+        + "ve sabırla uzmanlaşman tam da işe yaradı. Korkma; doğru yoldasın.\n\n— Gelecekteki sen 💜";
+    }
+    function fetchLetter() {
+      if (!currentOcc || letterFetched) return;
+      letterFetched = true;
+      var placeholder = $("m-letter-placeholder"), text = $("m-letter-text");
+      placeholder.style.display = "none";
+      text.textContent = "Mektup yazılıyor…";
+      text.style.display = "";
+      setTimeout(function () {
+        text.textContent = buildLetterSample(currentOcc);
+      }, 600);
+    }
+
+    /* ── ŞANSINI DENE / KADER ÇARKI (slot) ─────────────────────────── */
+    function pickRandomDifferent() {
+      if (!filtered.length) return null;
+      var pick = filtered[Math.floor(Math.random() * filtered.length)];
+      if (filtered.length > 1) {
+        var guard = 0;
+        while (pick.slug === lastSlotSlug && guard++ < 8) pick = filtered[Math.floor(Math.random() * filtered.length)];
+      }
+      return pick;
+    }
+    function spinSlot() {
+      if (!filtered.length || slotSpinning) return;
+      slotSpinning = true;
+      var overlay = $("slot-overlay"), reel = $("slot-reel"), sub = $("slot-sub"), openBtn = $("slot-open");
+      var dice = $("lucky-dice"); if (dice) { dice.style.transition = "transform .6s ease"; dice.style.transform = "rotate(360deg)"; setTimeout(function(){ dice.style.transform=""; }, 650); }
+      overlay.classList.add("is-open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      openBtn.style.display = "none";
+      sub.innerHTML = "";
+      slotResult = null;
+      var n = 0, ticks = 16;
+      function tick() {
+        var r = filtered[Math.floor(Math.random() * filtered.length)];
+        reel.textContent = r.icon + " " + r.name_tr;
+        n++;
+        if (n < ticks) setTimeout(tick, 60 + n * 9);
+        else {
+          var final = pickRandomDifferent();
+          lastSlotSlug = final.slug;
+          reel.textContent = final.icon + " " + final.name_tr;
+          sub.innerHTML = escapeHtml(final.short_desc || "") + "<br>"
+            + '<span style="color:#a78bfa;">' + escapeHtml(final.category) + '</span> · '
+            + '<span style="color:#34d399;">' + salaryDisplay(final.avg_salary_band) + '/ay</span> · '
+            + aiRiskEmoji(final.ai_automation_risk) + " " + aiRiskText(final.ai_automation_risk);
+          slotResult = final.slug;
+          openBtn.style.display = "";
+          slotSpinning = false;
+        }
+      }
+      tick();
+    }
+    function closeSlot() {
+      var overlay = $("slot-overlay");
+      overlay.classList.remove("is-open");
+      overlay.setAttribute("aria-hidden", "true");
+      if (!$("occ-modal").classList.contains("is-open")) document.body.style.overflow = "";
+    }
+    function openSlotResult() {
+      if (!slotResult) return;
+      closeSlot();
+      var idx = filtered.findIndex(function (x) { return x.slug === slotResult; });
+      if (idx >= 0) openModal(idx);
+    }
+
+    /* ── KARİYER DÜELLOSU ──────────────────────────────────────────── */
+    function updateDuelCounter() {
+      var c = $("duel-counter"); if (c) c.textContent = duelSlots.length + "/2";
+    }
+    function toggleDuel(slug) {
+      var i = duelSlots.indexOf(slug);
+      if (i !== -1) duelSlots.splice(i, 1);
+      else {
+        if (duelSlots.length >= 2) { showToast("⚔️ En fazla 2 meslek seçebilirsin"); return; }
+        duelSlots.push(slug);
+        if (duelSlots.length === 1) showToast("⚔️ Düelloya eklendi — 1 rakip daha seç");
+        else { showToast("⚔️ İki yarışmacı hazır!"); setTimeout(openDuel, 450); }
+      }
+      // update duel buttons in place
+      document.querySelectorAll(".duel-btn").forEach(function (btn) {
+        var sel = duelSlots.indexOf(btn.getAttribute("data-slug")) !== -1;
+        btn.classList.toggle("badge--amber", sel);
+        btn.textContent = "⚔️ " + (sel ? "Eklendi" : "Düello");
+      });
+      updateDuelCounter();
+    }
+    function openDuel() {
+      if (duelSlots.length < 2) { showToast("⚔️ İki meslek seç"); return; }
+      var a = ALL.find(function (x) { return x.slug === duelSlots[0]; });
+      var b = ALL.find(function (x) { return x.slug === duelSlots[1]; });
+      if (!a || !b) return;
+      var gScore = function (g) { return g === "yüksek" ? 3 : g === "orta" ? 2 : 1; };
+      var winSalary = salaryMax(a.avg_salary_band) >= salaryMax(b.avg_salary_band) ? "a" : "b";
+      var winGrowth = gScore(a.growth_outlook) >= gScore(b.growth_outlook) ? "a" : "b";
+      var winAI = a.ai_automation_risk <= b.ai_automation_risk ? "a" : "b";
+      var wins = { a:0, b:0 }; wins[winSalary]++; wins[winGrowth]++; wins[winAI]++;
+      var overall = wins.a > wins.b ? a : wins.b > wins.a ? b : null;
+      var stat = function (label, val, win) {
+        return '<div style="display:flex;justify-content:space-between;gap:8px;margin-top:6px;"><span class="fine">' + escapeHtml(label) + '</span><span class="fine" style="' + (win ? "color:#34d399;" : "color:var(--color-white);") + '">' + val + (win ? " 👑" : "") + '</span></div>';
+      };
+      var col = function (o, side) {
+        return '<div class="card card--sm' + (overall === o ? " card--featured" : "") + '" style="padding:var(--spacing-16);">'
+          + '<div class="center" style="font-size:30px;">' + o.icon + '</div>'
+          + '<div class="card-title center" style="font-size:var(--text-body);margin-top:4px;">' + escapeHtml(o.name_tr) + '</div>'
+          + stat("Maaş/ay", salaryDisplay(o.avg_salary_band), winSalary === side)
+          + stat("Büyüme", growthEmoji(o.growth_outlook) + " " + growthText(o.growth_outlook), winGrowth === side)
+          + stat("AI güvenliği", aiRiskEmoji(o.ai_automation_risk) + " %" + o.ai_automation_risk, winAI === side)
+          + stat("Kategori", o.category, false)
+          + stat("YKS min", o.min_yks_score || "—", false)
+          + '</div>';
+      };
+      $("duel-cols").innerHTML = col(a, "a") + col(b, "b");
+      $("duel-verdict").innerHTML = overall
+        ? '🏆 <strong style="color:var(--color-white);">' + escapeHtml(overall.name_tr) + '</strong> bu düelloyu ' + Math.max(wins.a, wins.b) + "–" + Math.min(wins.a, wins.b) + ' önde götürüyor. Ama "kazanan" senin neyi önemsediğine bağlı!'
+        : "🤝 Berabere! İkisi de farklı alanlarda güçlü — seçim tamamen senin önceliklerinde.";
+      var overlay = $("duel-overlay");
+      overlay.classList.add("is-open");
+      overlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeDuel() {
+      var overlay = $("duel-overlay");
+      overlay.classList.remove("is-open");
+      overlay.setAttribute("aria-hidden", "true");
+      if (!$("occ-modal").classList.contains("is-open")) document.body.style.overflow = "";
+    }
+    function resetDuel() {
+      duelSlots = [];
+      document.querySelectorAll(".duel-btn").forEach(function (btn) { btn.classList.remove("badge--amber"); btn.textContent = "⚔️ Düello"; });
+      updateDuelCounter();
+      closeDuel();
+      showToast("⚔️ Düello sıfırlandı — yeni 2 meslek seç");
+    }
+
+    /* ── ARENA (haftalık oylama) ───────────────────────────────────── */
+    function initArena() {
+      var preferred = ["yazilim-muhendisi", "hekim-tip-doktoru", "klinik-psikolog", "veri-analisti", "grafik-tasarimci-ui-ux", "dis-hekimi", "avukat", "mimar"];
+      var pool = ALL.filter(function (o) { return preferred.indexOf(o.slug) !== -1; });
+      if (pool.length < 5) pool = pool.concat(ALL.filter(function (o) { return pool.indexOf(o) === -1; }).slice(0, 5 - pool.length));
+      arenaData = pool.slice(0, 5).map(function (o) {
+        var c = Object.assign({}, o); c._votes = 80 + (matchScore(o) * 3); return c;
+      });
+      renderArena();
+    }
+    function renderArena() {
+      var list = $("arena-list");
+      if (!list || !arenaData.length) return;
+      var sorted = arenaData.slice().sort(function (a, b) { return b._votes - a._votes; });
+      var maxV = sorted[0]._votes || 1;
+      list.innerHTML = sorted.map(function (o, i) {
+        var pct = Math.round((o._votes / maxV) * 100);
+        var voted = !!arenaUserVotes[o.slug];
+        return '<div data-arena-row data-slug="' + o.slug + '" style="display:flex;align-items:center;gap:12px;cursor:pointer;">'
+          + '<span class="fine" style="width:24px;">#' + (i + 1) + '</span>'
+          + '<span style="font-size:22px;">' + o.icon + '</span>'
+          + '<span style="flex:0 0 auto;min-width:120px;font-size:var(--text-body-sm);">' + escapeHtml(o.name_tr) + '</span>'
+          + '<span style="flex:1;height:8px;border-radius:9999px;background:var(--surface-charcoal);overflow:hidden;"><span style="display:block;height:100%;width:' + pct + '%;background:var(--gradient-signal-blue);"></span></span>'
+          + '<span class="fine" style="width:42px;text-align:right;color:var(--color-white);">' + o._votes + '</span>'
+          + '<button class="badge ' + (voted ? "badge--mint" : "badge--blue") + ' vote-btn" type="button" data-slug="' + o.slug + '" aria-label="Oy ver" style="cursor:pointer;border:none;font-family:inherit;">' + (voted ? "✓" : "▲ Oy") + '</button>'
+          + '</div>';
+      }).join("");
+      list.querySelectorAll("[data-arena-row]").forEach(function (row) {
+        row.addEventListener("click", function (e) {
+          if (e.target.closest(".vote-btn")) return;
+          var idx = filtered.findIndex(function (f) { return f.slug === row.getAttribute("data-slug"); });
+          if (idx >= 0) openModal(idx);
+        });
+      });
+      list.querySelectorAll(".vote-btn").forEach(function (btn) {
+        btn.addEventListener("click", function (e) { e.stopPropagation(); voteArena(btn.getAttribute("data-slug")); });
+      });
+    }
+    function voteArena(slug) {
+      if (arenaUserVotes[slug]) return;
+      arenaUserVotes[slug] = true;
+      var item = arenaData.find(function (o) { return o.slug === slug; });
+      if (item) item._votes += 1;
+      showToast("🏆 Oyun kaydedildi!");
+      renderArena();
+    }
+
+    /* ── STREAK + EXPLORED (localStorage) ──────────────────────────── */
+    function exploredSet() {
+      try { return JSON.parse(localStorage.getItem("gb_mes_explored") || "[]"); } catch (e) { return []; }
+    }
+    function bumpExplored(slug) {
+      var set = exploredSet();
+      if (set.indexOf(slug) === -1) { set.push(slug); try { localStorage.setItem("gb_mes_explored", JSON.stringify(set)); } catch (e) {} }
+      var el = $("streak-explored"); if (el) el.textContent = set.length;
+      var chip = $("explored-chip"); if (chip && set.length) chip.style.display = "";
+    }
+    function initStreak() {
+      var today = new Date().toISOString().slice(0, 10);
+      var last = localStorage.getItem("gb_mes_last");
+      var count = parseInt(localStorage.getItem("gb_mes_streak") || "0", 10);
+      if (last !== today) {
+        var yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+        count = (last === yesterday) ? count + 1 : 1;
+        try { localStorage.setItem("gb_mes_streak", String(count)); localStorage.setItem("gb_mes_last", today); } catch (e) {}
+      }
+      var chip = $("streak-chip"), cEl = $("streak-count");
+      if (cEl) cEl.textContent = count;
+      if (chip && count >= 1) chip.style.display = "";
+      var set = exploredSet();
+      var exEl = $("streak-explored"); if (exEl) exEl.textContent = set.length;
+      var exChip = $("explored-chip"); if (exChip && set.length) exChip.style.display = "";
+    }
+
+    /* ── LIVE ACTIVITY (cosmetic ticker) ───────────────────────────── */
+    function initLiveActivity() {
+      var el = $("live-activity");
+      if (!el) return;
+      var n = 28 + Math.floor(Math.random() * 40);
+      el.textContent = n;
+      setInterval(function () {
+        n = Math.max(18, Math.min(95, n + (Math.floor(Math.random() * 7) - 3)));
+        el.textContent = n;
+      }, 4000);
+    }
+
+    /* ── DERIVED STATS (for animated counters) ─────────────────────── */
+    function setDerivedStatCounts() {
+      var highGrowth = ALL.filter(function (o) { return o.growth_outlook === "yüksek"; }).length;
+      var aiSafe = ALL.filter(function (o) { return o.ai_automation_risk <= 30; }).length;
+      var g = $("stat-growth"), s = $("stat-safe");
+      // counters animate from data-count; set the target before script.js observes
+      if (g) g.setAttribute("data-count", String(highGrowth));
+      if (s) s.setAttribute("data-count", String(aiSafe));
+    }
+
+    /* ── WIRING ────────────────────────────────────────────────────── */
+    function init() {
+      setDerivedStatCounts();
+      applyFilters();
+      initArena();
+      initStreak();
+      initLiveActivity();
+      loadPlan();
+      updateDuelCounter();
+
+      // search
+      var search = $("search-input");
+      if (search) search.addEventListener("input", function () { searchQ = search.value; applyFilters(); });
+
+      // category chips
+      var catWrap = $("cat-filters");
+      if (catWrap) {
+        catWrap.querySelectorAll("[data-cat]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            activeCat = btn.getAttribute("data-cat");
+            catWrap.querySelectorAll("[data-cat]").forEach(function (b) {
+              var on = b === btn;
+              b.classList.toggle("badge--blue", on);
+              b.setAttribute("aria-pressed", String(on));
+            });
+            applyFilters();
+          });
+        });
+      }
+
+      // sort
+      var sortSel = $("sort-select");
+      if (sortSel) sortSel.addEventListener("change", function () { sortBy = sortSel.value; applyFilters(); });
+
+      // lucky / dice
+      var lucky = $("btn-lucky"); if (lucky) lucky.addEventListener("click", spinSlot);
+      var dice = $("btn-dice"); if (dice) dice.addEventListener("click", spinSlot);
+      var slotOpen = $("slot-open"); if (slotOpen) slotOpen.addEventListener("click", function (e) { e.preventDefault(); openSlotResult(); });
+
+      // duel info / arena jump
+      var duelInfo = $("btn-duel-info");
+      if (duelInfo) duelInfo.addEventListener("click", function () {
+        if (duelSlots.length >= 2) openDuel();
+        else showToast("⚔️ Kartlardaki \"Düello\" butonuyla 2 meslek seç, otomatik karşılaştıralım");
+      });
+      var arenaJump = $("btn-arena-jump");
+      if (arenaJump) arenaJump.addEventListener("click", function () {
+        var sec = $("arena-section"); if (sec) sec.scrollIntoView({ behavior:"smooth", block:"start" });
+      });
+      var duelReset = $("duel-reset"); if (duelReset) duelReset.addEventListener("click", resetDuel);
+
+      // letter
+      var fetchBtn = $("m-fetch-letter"); if (fetchBtn) fetchBtn.addEventListener("click", fetchLetter);
+
+      // close buttons / overlay backdrop / Esc for our modals (script.js only wires its own login modal)
+      [["occ-modal", closeModal], ["slot-overlay", closeSlot], ["duel-overlay", closeDuel]].forEach(function (pair) {
+        var overlay = $(pair[0]); var close = pair[1];
+        if (!overlay) return;
+        overlay.addEventListener("click", function (e) {
+          if (e.target === overlay || e.target.closest("[data-close]")) close();
+        });
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key !== "Escape") return;
+        if ($("occ-modal").classList.contains("is-open")) closeModal();
+        else if ($("slot-overlay").classList.contains("is-open")) closeSlot();
+        else if ($("duel-overlay").classList.contains("is-open")) closeDuel();
+      });
+    }
+
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+    else init();
+  })();
+  </script>
+</body>
+</html>

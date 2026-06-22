@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Göçebe & Maaş Haritası — 60 ülke için aylık gelir, yaşam maliyeti, net birikim, internet hızı, göçebe yoğunluğu ve dijital göçebe vizesi. 3D interaktif dünya haritası, ücretsiz." />
+  <title>Göçebe &amp; Maaş Haritası — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Göçebe &amp; Maaş Haritası — Gelecek Bul" />
+  <meta property="og:description" content="60 ülke, 3D interaktif küre. Gelir, yaşam maliyeti, göçebe vizesi ve net kazanç bir arada — ücretsiz." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="nomad-harita">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link is-active">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  HERO  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">DİJİTAL GÖÇEBE · 60 ÜLKE</span>
+        <h1 class="heading-lg">Göçebe &amp; Maaş <span class="text-aurora">Haritası</span></h1>
+        <p class="lead mt-16">
+          Ülkelere göre aylık gelir, yaşam maliyeti, net birikim, internet hızı ve
+          dijital göçebe vizesi — tek bir interaktif dünya haritasında.
+        </p>
+        <div class="button-row button-row--center">
+          <span class="badge badge--mint">Ücretsiz · 3D</span>
+          <span class="badge badge--blue">60 ülke</span>
+          <span class="badge badge--amber">2026 baseline</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  FİLTRE ÇUBUĞU  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="form-card">
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label" for="metric">Metrik</label>
+            <select id="metric" class="select">
+              <option value="score">Genel Skor</option>
+              <option value="income">Aylık Gelir (USD)</option>
+              <option value="cost">Yaşam Maliyeti (USD)</option>
+              <option value="net">Net Birikim (USD)</option>
+              <option value="internet">İnternet Hızı (Mbps)</option>
+              <option value="density">Göçebe Yoğunluğu</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="income-min">
+              Min. Aylık Gelir: <span id="income-val" style="color:var(--color-vivid-mint);">$0</span>
+            </label>
+            <input id="income-min" type="range" min="0" max="6000" step="100" value="0"
+                   style="width:100%;accent-color:var(--color-forest-pulse);margin-top:14px;" />
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Kıta</span>
+          <div id="region-chips" style="display:flex;flex-wrap:wrap;gap:8px;">
+            <button type="button" class="badge badge--blue chip-toggle is-on" data-region="Avrupa">Avrupa</button>
+            <button type="button" class="badge badge--blue chip-toggle is-on" data-region="Asya">Asya</button>
+            <button type="button" class="badge badge--blue chip-toggle is-on" data-region="Amerika">Amerika</button>
+            <button type="button" class="badge badge--blue chip-toggle is-on" data-region="Afrika">Afrika</button>
+            <button type="button" class="badge badge--blue chip-toggle is-on" data-region="Orta Doğu">Orta Doğu</button>
+            <button type="button" class="badge badge--blue chip-toggle is-on" data-region="Okyanusya">Okyanusya</button>
+          </div>
+        </div>
+
+        <label class="checkbox-row" for="visa-only">
+          <input type="checkbox" id="visa-only" />
+          <span>Yalnızca dijital göçebe vizesi olan ülkeler</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  KÜRE + TOP-5  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="grid-2" style="align-items:start;">
+        <!-- Aurora "globe" placeholder -->
+        <div class="card card--ring" style="align-items:center;text-align:center;min-height:420px;justify-content:center;background:var(--surface-midnight-indigo);">
+          <div aria-hidden="true" style="
+            width:260px;height:260px;border-radius:var(--radius-full);
+            background:var(--gradient-aurora-blacklavender);
+            box-shadow:0 0 80px rgba(75,82,170,0.45), inset 0 0 60px rgba(0,0,0,0.45);
+            position:relative;display:grid;place-items:center;">
+            <div style="
+              width:170px;height:170px;border-radius:var(--radius-full);
+              background:radial-gradient(circle at 35% 30%, rgba(96,165,250,0.45), transparent 60%),
+                         radial-gradient(circle at 70% 75%, rgba(168,135,220,0.4), transparent 55%);
+              border:1px solid var(--hairline-strong);"></div>
+          </div>
+          <h3 class="card-title mt-24" style="font-size:var(--text-body-lg);">3D interaktif küre</h3>
+          <p class="card-body" style="max-width:36ch;">
+            Tam sürümde sürükle, yakınlaştır, ülkeye dokun — yükseklik ve renk seçili
+            metriği gösterir. Bu önizlemede statik bir küre yer alır.
+          </p>
+          <span class="badge badge--mint mt-16">Canlı 3D · gelecekbul.com</span>
+        </div>
+
+        <!-- Top-5 list -->
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+            <h3 class="card-title" style="font-size:var(--text-body-lg);">İlk 5</h3>
+            <span id="top5-metric" class="badge badge--mint">Genel Skor</span>
+          </div>
+          <div id="top5-list" class="mt-16" style="display:flex;flex-direction:column;gap:var(--spacing-8);"></div>
+          <p class="fine mt-16">Sıralama, seçili metrik ve kıta filtresine göre güncellenir.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  DETAY KARTI ÖRNEĞİ  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">ÜLKE DETAYI</span>
+        <h2 class="heading">Bir ülkeye <span class="text-aurora">dokununca</span></h2>
+        <p class="section-lead">
+          Haritada bir ülke seçtiğinde böyle bir kart açılır: başkent, para birimi,
+          gelir/maliyet/net birikim, internet hızı ve vize için gereken minimum gelir.
+        </p>
+      </div>
+
+      <div class="grid-2" style="align-items:start;">
+        <div class="card card--navy" style="max-width:420px;">
+          <div style="display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--hairline-soft);padding-bottom:var(--spacing-16);">
+            <span style="font-size:34px;line-height:1;">🇵🇹</span>
+            <div>
+              <div class="card-title" style="font-size:var(--text-body-lg);">Portekiz</div>
+              <div class="eyebrow" style="margin-bottom:0;">AVRUPA</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;margin-top:var(--spacing-16);">
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Başkent</span><span style="color:var(--color-white);">Lizbon</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Para birimi</span><span style="color:var(--color-white);">€ EUR · Euro</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Aylık gelir</span><span style="color:var(--color-vivid-mint);">$2.800</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Yaşam maliyeti</span><span style="color:var(--color-white);">$1.600</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Net birikim</span><span style="color:var(--color-amber-glow);">$1.200</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">İnternet hızı</span><span style="color:var(--color-white);">120 Mbps</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Göçebe yoğunluğu</span><span style="color:var(--color-white);">92/100</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Genel skor</span><span style="color:var(--color-vivid-mint);">88/100</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0 6px;margin-top:6px;border-top:1px solid var(--hairline-soft);font-size:var(--text-body-sm);">
+              <span class="muted">Dijital göçebe vizesi</span><span class="badge badge--mint">✓ Var</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Vize min. gelir</span><span style="color:var(--color-white);">$3.950/ay</span></div>
+          </div>
+        </div>
+
+        <!-- Legend / skala -->
+        <div class="card">
+          <h3 class="card-title" style="font-size:var(--text-body-lg);">Skala — <span id="legend-metric" class="text-aurora">Genel Skor</span></h3>
+          <div aria-hidden="true" style="height:12px;border-radius:var(--radius-full);margin:var(--spacing-16) 0 6px;
+            background:linear-gradient(90deg,#0f3a3a 0%, #16c253 35%, #ffdd00 65%, #ffb764 100%);"></div>
+          <div style="display:flex;justify-content:space-between;font-size:var(--text-caption);color:var(--color-fog);">
+            <span id="legend-min">düşük</span><span id="legend-max">yüksek</span>
+          </div>
+          <p class="card-body" style="font-size:var(--text-body-sm);">
+            Küre üzerindeki çubuk yüksekliği ve rengi seçili metriği gösterir
+            (teal → amber). “Yaşam maliyeti” metriğinde düşük olan daha iyidir.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dinamik disclaimer satırı -->
+    <section class="section-tight">
+      <p id="disclaimer" class="callout" style="max-width:760px;margin:0 auto;text-align:center;">
+        📊 Veriler curated 2026 baseline — <span id="ds-source">kaynak yükleniyor…</span>
+      </p>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Page script — local demo only, no three.js / no external fetch -->
+  <script>
+    (function () {
+      "use strict";
+
+      // Curated 2026 baseline demo (income/cost/internet/density in USD/Mbps/0-100)
+      var COUNTRIES = [
+        { n: "Portekiz",     fl: "🇵🇹", r: "Avrupa",    income: 2800, cost: 1600, internet: 120, density: 92, visa: true },
+        { n: "İspanya",      fl: "🇪🇸", r: "Avrupa",    income: 2900, cost: 1800, internet: 130, density: 85, visa: true },
+        { n: "Estonya",      fl: "🇪🇪", r: "Avrupa",    income: 2400, cost: 1300, internet: 150, density: 78, visa: true },
+        { n: "Almanya",      fl: "🇩🇪", r: "Avrupa",    income: 3800, cost: 2400, internet: 140, density: 70, visa: true },
+        { n: "Hollanda",     fl: "🇳🇱", r: "Avrupa",    income: 4100, cost: 2500, internet: 160, density: 62, visa: false },
+        { n: "Hırvatistan",  fl: "🇭🇷", r: "Avrupa",    income: 2200, cost: 1100, internet: 90,  density: 75, visa: true },
+        { n: "Türkiye",      fl: "🇹🇷", r: "Avrupa",    income: 1800, cost: 900,  internet: 60,  density: 62, visa: false },
+        { n: "Tayland",      fl: "🇹🇭", r: "Asya",      income: 2200, cost: 1100, internet: 100, density: 95, visa: true },
+        { n: "Endonezya",    fl: "🇮🇩", r: "Asya",      income: 2100, cost: 900,  internet: 60,  density: 96, visa: true },
+        { n: "Japonya",      fl: "🇯🇵", r: "Asya",      income: 3700, cost: 2200, internet: 200, density: 60, visa: true },
+        { n: "Singapur",     fl: "🇸🇬", r: "Asya",      income: 5500, cost: 3500, internet: 240, density: 75, visa: false },
+        { n: "Gürcistan",    fl: "🇬🇪", r: "Asya",      income: 2000, cost: 900,  internet: 60,  density: 78, visa: true },
+        { n: "Meksika",      fl: "🇲🇽", r: "Amerika",   income: 2500, cost: 1300, internet: 80,  density: 90, visa: true },
+        { n: "Kolombiya",    fl: "🇨🇴", r: "Amerika",   income: 2100, cost: 900,  internet: 80,  density: 82, visa: true },
+        { n: "Brezilya",     fl: "🇧🇷", r: "Amerika",   income: 2200, cost: 1100, internet: 100, density: 70, visa: true },
+        { n: "Kanada",       fl: "🇨🇦", r: "Amerika",   income: 3700, cost: 2300, internet: 150, density: 62, visa: true },
+        { n: "ABD",          fl: "🇺🇸", r: "Amerika",   income: 4500, cost: 3000, internet: 180, density: 78, visa: false },
+        { n: "Güney Afrika", fl: "🇿🇦", r: "Afrika",    income: 2200, cost: 1100, internet: 80,  density: 65, visa: true },
+        { n: "Fas",          fl: "🇲🇦", r: "Afrika",    income: 1900, cost: 850,  internet: 60,  density: 60, visa: false },
+        { n: "Mauritius",    fl: "🇲🇺", r: "Afrika",    income: 2300, cost: 1200, internet: 90,  density: 55, visa: true },
+        { n: "BAE",          fl: "🇦🇪", r: "Orta Doğu", income: 5200, cost: 2800, internet: 200, density: 85, visa: true },
+        { n: "İsrail",       fl: "🇮🇱", r: "Orta Doğu", income: 3800, cost: 2400, internet: 160, density: 62, visa: false },
+        { n: "Katar",        fl: "🇶🇦", r: "Orta Doğu", income: 5000, cost: 2500, internet: 180, density: 50, visa: false },
+        { n: "Avustralya",   fl: "🇦🇺", r: "Okyanusya", income: 3900, cost: 2600, internet: 130, density: 65, visa: false },
+        { n: "Yeni Zelanda", fl: "🇳🇿", r: "Okyanusya", income: 3500, cost: 2300, internet: 140, density: 58, visa: false }
+      ];
+
+      // Derived: net + min-max normalized score
+      COUNTRIES.forEach(function (c) { c.net = c.income - c.cost; });
+      function normer(key) {
+        var vals = COUNTRIES.map(function (c) { return c[key]; });
+        var mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals);
+        return function (v) { return mx === mn ? 0.5 : (v - mn) / (mx - mn); };
+      }
+      var nI = normer("income"), nC = normer("cost"), nN = normer("internet"), nD = normer("density");
+      COUNTRIES.forEach(function (c) {
+        c.score = Math.round(100 * (0.35 * nI(c.income) + 0.30 * (1 - nC(c.cost)) + 0.20 * nN(c.internet) + 0.15 * nD(c.density)));
+      });
+
+      var LABELS = {
+        score: "Genel Skor", income: "Aylık Gelir", cost: "Yaşam Maliyeti",
+        net: "Net Birikim", internet: "İnternet Hızı", density: "Göçebe Yoğunluğu"
+      };
+      var FMT = {
+        score: function (v) { return v + "/100"; },
+        income: function (v) { return "$" + v; },
+        cost: function (v) { return "$" + v; },
+        net: function (v) { return "$" + v; },
+        internet: function (v) { return v + " Mbps"; },
+        density: function (v) { return v + "/100"; }
+      };
+      var INVERT = { cost: true }; // maliyet düşükse iyi
+
+      var state = {
+        metric: "score",
+        regions: { "Avrupa": 1, "Asya": 1, "Amerika": 1, "Afrika": 1, "Orta Doğu": 1, "Okyanusya": 1 },
+        incomeMin: 0,
+        visaOnly: false
+      };
+
+      function activeCountries() {
+        return COUNTRIES.filter(function (c) {
+          return state.regions[c.r] && c.income >= state.incomeMin && (!state.visaOnly || c.visa);
+        });
+      }
+
+      var top5List = document.getElementById("top5-list");
+      var top5Metric = document.getElementById("top5-metric");
+      var legendMetric = document.getElementById("legend-metric");
+
+      function refresh() {
+        var key = state.metric;
+        var invert = !!INVERT[key];
+        var active = activeCountries();
+        var sorted = active.slice().sort(function (a, b) {
+          return invert ? a[key] - b[key] : b[key] - a[key];
+        }).slice(0, 5);
+
+        top5Metric.textContent = LABELS[key];
+        legendMetric.textContent = LABELS[key];
+
+        top5List.innerHTML = "";
+        if (!sorted.length) {
+          top5List.innerHTML = '<p class="fine">Filtreyle eşleşen ülke yok.</p>';
+          return;
+        }
+        sorted.forEach(function (c, i) {
+          var row = document.createElement("div");
+          row.style.cssText =
+            "display:flex;align-items:center;justify-content:space-between;gap:10px;" +
+            "padding:8px 12px;border-radius:var(--radius-xl);background:var(--surface-charcoal);" +
+            "border:1px solid var(--hairline-soft);";
+          row.innerHTML =
+            '<span class="fine" style="width:22px;">#' + (i + 1) + "</span>" +
+            '<span style="flex:1;font-size:var(--text-body-sm);color:var(--color-white);">' + c.fl + " " + c.n + "</span>" +
+            '<span style="font-size:var(--text-body-sm);color:var(--color-amber-glow);font-weight:500;">' + FMT[key](c[key]) + "</span>";
+          top5List.appendChild(row);
+        });
+      }
+
+      // ── Bindings ──
+      document.getElementById("metric").addEventListener("change", function (e) {
+        state.metric = e.target.value;
+        refresh();
+      });
+      var chips = document.querySelectorAll("#region-chips .chip-toggle");
+      chips.forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          var r = chip.getAttribute("data-region");
+          if (state.regions[r]) { delete state.regions[r]; chip.classList.remove("is-on"); chip.style.opacity = "0.4"; }
+          else { state.regions[r] = 1; chip.classList.add("is-on"); chip.style.opacity = ""; }
+          refresh();
+        });
+      });
+      var inc = document.getElementById("income-min");
+      var incVal = document.getElementById("income-val");
+      inc.addEventListener("input", function (e) {
+        state.incomeMin = +e.target.value;
+        incVal.textContent = "$" + state.incomeMin;
+        refresh();
+      });
+      document.getElementById("visa-only").addEventListener("change", function (e) {
+        state.visaOnly = e.target.checked;
+        refresh();
+      });
+
+      // Dynamic disclaimer line ("kaynak · N ülke · güncelleme")
+      var ds = document.getElementById("ds-source");
+      if (ds) {
+        var when = new Date().toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
+        ds.textContent = "curated baseline (önizleme) · " + COUNTRIES.length + " ülke · güncelleme: " + when;
+      }
+
+      refresh();
+    })();
+  </script>
+</body>
+</html>

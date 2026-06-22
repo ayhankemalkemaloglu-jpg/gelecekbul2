@@ -1,47 +1,48 @@
-# superwhisper — landing page
+# Gelecek Bul — statik arayüz
 
-> aurora dissolving over midnight glass
+> Bir test değil, canlı bir **Kariyer GPS**'i.
 
-A single-page marketing site built directly on the **Superwhisper** design
-system: a cinematic dark-mode product whose hero is a vertical aurora gradient
-(black → deep navy → violet → lavender → dusty pink) floating on a near-black
-`#000000` canvas.
+Gelecek Bul'un tüm arayüzünün (ana sayfa + tüm alt sayfalar, özellikler,
+butonlar, metinler) **aurora "midnight glass"** tasarım sistemiyle yeniden
+inşa edilmiş, derleme adımı gerektirmeyen statik kopyası.
 
-## Stack
+## Tasarım sistemi (template — değişmez)
 
-Plain, dependency-free static site so it's trivial to preview and edit:
+Tüm sayfalar tek bir tasarım dilini paylaşır; tokenlar `styles.css :root`
+içinde yaşar (renkler, imza aurora gradyanı, Inter tip ölçeği, boşluk, radius,
+gölge, yüzeyler). Yeniden temalandırmak için sadece oradaki değişkenleri düzenle.
 
-- `index.html` — page structure (nav, hero, features, how-it-works, pricing, CTA, footer)
-- `styles.css` — all design tokens as CSS custom properties + component styles
-- `script.js` — light scroll-reveal + active-nav interactions
+- `index.html` — ana sayfa (hero, nasıl çalışır, araçlar, planlar, SSS, CTA)
+- `styles.css` — tüm tasarım tokenları + bileşen sınıfları (nav, kart, plan,
+  form, sekme, FAQ, modal, prose…)
+- `script.js` — paylaşılan etkileşimler: mobil menü, hero morph, login modal,
+  sekmeler, sayaçlar, scroll-reveal (her sayfada aynı dosya, element yoksa no-op)
 
-No build step. Just open `index.html`.
+Derleme yok — `index.html`'i aç, yeter.
 
-## Run locally
+## Sayfalar
+
+| Grup | Sayfalar |
+|---|---|
+| Keşfet | `index.html`, `test.html`, `meslekler.html`, `nomad-harita.html`, `tercih.html`, `maas-rotalari.html` |
+| Dönüşüm | `mock-mulakat.html`, `snapshot.html`, `tercih-donemi.html`, `kariyer-gps-landing.html`, `karsilastir.html` |
+| Hesap | `dashboard.html`, `davet.html`, `referans.html`, `mezunlar.html`, `onboarding.html`, `test-karsilastir.html` |
+| Aile & Okul | `aile.html`, `veli-dashboard.html`, `veli-panel.html`, `okullar.html`, `okul-demo.html`, `sinif-pilot.html` |
+| Destek | `iletisim.html`, `sinav-takvimi.html`, `yenilikler.html`, `404.html` |
+| Yasal | `yasal.html`, `kvkk.html`, `cerez.html`, `cocuk-veri.html`, `mesafeli-satis.html`, `sorumluluk.html`, `uyelik-sozlesmesi.html` |
+
+## Yerelde çalıştır
 
 ```bash
-# any static server works, e.g.
 python3 -m http.server 8000
-# then visit http://localhost:8000
+# sonra http://localhost:8000 adresini aç
 ```
 
-## Design tokens
+## Notlar
 
-Every token from the style reference lives in `:root` at the top of
-`styles.css` — colors, the signature aurora gradient, the Inter type scale with
-its aggressive negative tracking, spacing, radii, shadows, and surface levels.
-Edit there to retheme globally.
-
-### Key rules baked in
-
-- **Aurora gradient** is the only hero atmosphere — never a flat dark.
-- **White (`#ffffff`) is the primary action fill** — no chromatic CTA color.
-- **Display type** is Inter 60px / weight 500 / `-3.42px` tracking — the
-  compressed, logo-like headline is the signature.
-- **One chromatic accent** (`#0088ff` electric signal) for icons and links.
-- **Radii:** 24px cards, 9px buttons/inputs, 9999px nav pill + chips.
-
-## Customizing
-
-Content is in `index.html`; swap the headline, copy, and feature cards freely.
-To change the palette or type ramp, edit the variables in `styles.css :root`.
+- **Backend yok.** Test akışı, formlar, ödeme ve giriş arayüzleri birebir
+  taşındı; canlı API çağrıları yerine demo/yerel davranış gösterir
+  (form gönderiminde inline başarı, ödeme/giriş butonları login modalını açar).
+- Marka varlıkları `static/icons/` altında (gerçek `logo.webp` + favicon seti).
+- İçerik kaynağı: Gelecek Bul production arayüzü (kariyer + meslek seçimi
+  platformu, lise 11–12 öğrencileri için).

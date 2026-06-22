@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mezunlarla tanış — hayalindeki bölümde okumuş biriyle 15 dakikalık online görüşme. Profiline uyan mezunlar, tüm mezunlar ve görüşme talepleri." />
+  <title>Mezunlar — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Mezunlar — Gelecek Bul" />
+  <meta property="og:description" content="Hayalindeki bölümde okumuş biriyle 15 dakikalık online görüşme." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="mezunlar">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  BAŞLIK  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">🎓 MEZUNLARLA TANIŞ</span>
+        <h1 class="heading">Hayalindeki bölümü <span class="text-aurora">yaşamış biriyle</span> konuş</h1>
+        <p class="lead">
+          Hayalindeki bölümde okumuş biriyle 15 dakikalık online görüşme. Aylık 1
+          görüşme hakkın var.
+        </p>
+        <div class="button-row button-row--center mt-24">
+          <span class="badge badge--blue">Pro Max · aylık 1 görüşme</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  PROFİLİNE UYAN MEZUNLAR  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);">
+        <span class="eyebrow eyebrow--signal">✨ ÖNERİLEN</span>
+        <h2 class="heading">Profiline uyan mezunlar</h2>
+        <p class="section-lead">Test profiline en yakın bölüm ve kariyerlerden seçtiklerimiz.</p>
+      </div>
+      <div class="grid-2">
+        <article class="card card--navy">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:var(--spacing-12);">
+            <div>
+              <h3 class="card-title" style="font-size:var(--text-body-lg);">Elif Yıldız</h3>
+              <p class="fine">Bilgisayar Mühendisliği · Boğaziçi Üniversitesi</p>
+            </div>
+            <span class="badge badge--blue">2021</span>
+          </div>
+          <p class="card-body" style="margin-top:var(--spacing-12);">Yazılım Mühendisi · bir fintech girişiminde</p>
+          <p class="card-body" style="margin-top:var(--spacing-4);">Hazırlıktan ilk işe kadar yolu birlikte konuşalım; staj ve okul seçimine dair gerçekçi tavsiyeler.</p>
+          <a class="btn btn-white" style="align-self:flex-start;margin-top:var(--spacing-20);" href="#" data-action="login">15 dk görüşme talep et</a>
+        </article>
+
+        <article class="card card--indigo">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:var(--spacing-12);">
+            <div>
+              <h3 class="card-title" style="font-size:var(--text-body-lg);">Mert Kaya</h3>
+              <p class="fine">Endüstri Mühendisliği · ODTÜ</p>
+            </div>
+            <span class="badge badge--blue">2020</span>
+          </div>
+          <p class="card-body" style="margin-top:var(--spacing-12);">Operasyon Analisti · lojistik sektörü</p>
+          <p class="card-body" style="margin-top:var(--spacing-4);">Sayısaldan sosyale geniş bir yelpazede ne işine yarar, hangi dersler önemli — açık açık anlatırım.</p>
+          <a class="btn btn-white" style="align-self:flex-start;margin-top:var(--spacing-20);" href="#" data-action="login">15 dk görüşme talep et</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  TÜM MEZUNLAR  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:none;">
+        <div>
+          <span class="eyebrow eyebrow--signal">📚 TÜM MEZUNLAR</span>
+          <h2 class="heading">Topluluğu keşfet</h2>
+        </div>
+        <div class="field" style="min-width:240px;">
+          <label class="field-label" for="search">Bölüm ara</label>
+          <input id="search" class="input" type="search" placeholder="Bölüm ara…" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:var(--spacing-12);">
+            <div>
+              <h3 class="card-title" style="font-size:var(--text-body-lg);">Zeynep Aydın</h3>
+              <p class="fine">Tıp · Hacettepe Üniversitesi</p>
+            </div>
+            <span class="badge">2019</span>
+          </div>
+          <p class="card-body" style="margin-top:var(--spacing-12);">Araştırma Görevlisi Dr. · iç hastalıkları</p>
+          <p class="card-body" style="margin-top:var(--spacing-4);">Uzun ve zorlu ama keyifli bir yol. TUS, nöbetler ve gerçek hayatı dürüstçe konuşuruz.</p>
+          <a class="btn btn-dark" style="align-self:flex-start;margin-top:var(--spacing-20);" href="#" data-action="login">15 dk görüşme talep et</a>
+        </article>
+
+        <article class="card">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:var(--spacing-12);">
+            <div>
+              <h3 class="card-title" style="font-size:var(--text-body-lg);">Can Demir</h3>
+              <p class="fine">Hukuk · İstanbul Üniversitesi</p>
+            </div>
+            <span class="badge">2018</span>
+          </div>
+          <p class="card-body" style="margin-top:var(--spacing-12);">Avukat · ticaret hukuku</p>
+          <p class="card-body" style="margin-top:var(--spacing-4);">Staj, baro ve uzmanlaşma seçenekleri; hukuk gerçekten sana göre mi birlikte bakalım.</p>
+          <a class="btn btn-dark" style="align-self:flex-start;margin-top:var(--spacing-20);" href="#" data-action="login">15 dk görüşme talep et</a>
+        </article>
+
+        <article class="card">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:var(--spacing-12);">
+            <div>
+              <h3 class="card-title" style="font-size:var(--text-body-lg);">Selin Korkmaz</h3>
+              <p class="fine">Psikoloji · Bilkent Üniversitesi</p>
+            </div>
+            <span class="badge">2022</span>
+          </div>
+          <p class="card-body" style="margin-top:var(--spacing-12);">İnsan Kaynakları Uzmanı · teknoloji şirketi</p>
+          <p class="card-body" style="margin-top:var(--spacing-4);">Psikolojinin klinik dışı kariyer yollarını ve yüksek lisans tercihlerini anlatırım.</p>
+          <a class="btn btn-dark" style="align-self:flex-start;margin-top:var(--spacing-20);" href="#" data-action="login">15 dk görüşme talep et</a>
+        </article>
+
+        <article class="card">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:var(--spacing-12);">
+            <div>
+              <h3 class="card-title" style="font-size:var(--text-body-lg);">Ahmet Şahin</h3>
+              <p class="fine">Mimarlık · İTÜ</p>
+            </div>
+            <span class="badge">2017</span>
+          </div>
+          <p class="card-body" style="margin-top:var(--spacing-12);">Mimar · bağımsız stüdyo kurucusu</p>
+          <p class="card-body" style="margin-top:var(--spacing-4);">Portfolyo, atölye gerçeği ve mezuniyet sonrası kendi işini kurmaya dair samimi sohbet.</p>
+          <a class="btn btn-dark" style="align-self:flex-start;margin-top:var(--spacing-20);" href="#" data-action="login">15 dk görüşme talep et</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  GÖRÜŞMELERİM  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);">
+        <span class="eyebrow eyebrow--signal">📅 GÖRÜŞMELERİM</span>
+        <h2 class="heading">Talep ettiklerin</h2>
+      </div>
+      <div class="card" style="padding:var(--spacing-8);gap:0;">
+        <div class="callout" style="border:none;border-radius:var(--radius-xl);background:transparent;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <strong style="color:var(--color-white);">Elif Yıldız (Bilgisayar Mühendisliği)</strong><br />
+            <span class="fine">onaylandı · 20 Haziran 2026</span>
+          </div>
+          <span class="badge badge--mint">Onaylandı</span>
+        </div>
+        <div style="height:1px;background:var(--hairline-soft);"></div>
+        <div class="callout" style="border:none;border-radius:var(--radius-xl);background:transparent;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <strong style="color:var(--color-white);">Zeynep Aydın (Tıp)</strong><br />
+            <span class="fine">beklemede · 18 Haziran 2026</span>
+          </div>
+          <span class="badge badge--amber">Beklemede</span>
+        </div>
+      </div>
+      <p class="fine mt-16">Aylık 1 görüşme hakkın Pro Max ile gelir. Talebin onaylandığında e-posta ile bilgilendirilirsin.</p>
+    </section>
+
+    <!-- ════════════════════════════  FINAL CTA  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="badge badge--white" style="margin-bottom:20px;">PRO MAX · MEZUN GÖRÜŞMESİ</span>
+          <h2 class="heading-lg">Bir mezunla<br />15 dakika konuş.</h2>
+          <p class="cta-sub">Profilini çıkar, sana uyan mezunları gör, görüşme talebini gönder.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="test.html">
+              Teste Başla
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-dark" href="#" data-action="pay" data-plan="promax">Pro Max'e Geç</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

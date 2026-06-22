@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Arkadaşını Gelecek Bul'a davet et. Linkinden gelen arkadaşın ilk ücretli planını aldığında ikinize de 1 ay Pro Max." />
+  <title>Davet — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Davet — Gelecek Bul" />
+  <meta property="og:description" content="Arkadaşını davet et, ikinize de 1 ay Pro Max." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="davet">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  BAŞLIK  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">🎁 ARKADAŞINI DAVET ET</span>
+        <h1 class="heading">Arkadaşını davet et, <span class="text-aurora">1 ay Pro Max</span> kazan</h1>
+        <p class="lead">
+          Linkinden gelen arkadaşın ilk ücretli planını aldığında ikinize de
+          hesabınıza <strong style="color:var(--color-vivid-mint);">1 ay Pro Max</strong> tanımlanır.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  LİNK + PAYLAŞ  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="card card--featured" style="max-width:760px;margin:0 auto;">
+        <div class="field">
+          <label class="field-label" for="my-link">Kendi linkin</label>
+          <div style="display:flex;gap:var(--spacing-8);flex-wrap:wrap;">
+            <input id="my-link" class="input" readonly style="flex:1;min-width:220px;font-family:var(--font-ui-monospace);" value="https://gelecekbul.com/?ref=SENIN-KODUN" />
+            <button id="copy-btn" type="button" class="btn btn-white">📋 Kopyala</button>
+          </div>
+          <p class="fine mt-16">Bu link sana özel. Paylaş, arkadaşın tıklasın, ilk ücretli planında ödül ikinize de gelsin.</p>
+        </div>
+
+        <div class="button-row mt-24">
+          <button type="button" class="btn btn-dark" data-share="whatsapp">💬 WhatsApp</button>
+          <button type="button" class="btn btn-dark" data-share="twitter">𝕏 Twitter</button>
+          <button type="button" class="btn btn-dark" data-share="copy">🔗 Linki kopyala</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  ÖDÜL  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);">
+        <span class="eyebrow eyebrow--signal">ÖDÜL</span>
+        <h2 class="heading">İkinize de 1 ay Pro Max</h2>
+      </div>
+      <div class="grid-3">
+        <article class="card card--navy">
+          <span class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>
+          <h3 class="card-title">Sana 1 ay Pro Max</h3>
+          <p class="card-body">Davetin meyve verdiğinde, hesabına bir ay tam erişim eklenir.</p>
+        </article>
+        <article class="card card--indigo">
+          <span class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <h3 class="card-title">Arkadaşına 1 ay Pro Max</h3>
+          <p class="card-body">Arkadaşın da ilk ücretli planının üstüne bir ay Pro Max kazanır.</p>
+        </article>
+        <article class="card card--deepnavy">
+          <span class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <h3 class="card-title">Otomatik tanımlanır</h3>
+          <p class="card-body">Arkadaşının ilk ücretli plan satın alımında ödül kendiliğinden aktif olur.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  DURUMUM  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head" style="margin-bottom:var(--spacing-24);">
+        <span class="eyebrow eyebrow--signal">DURUMUM</span>
+        <h2 class="heading">Davet özeti</h2>
+      </div>
+      <div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="stat">
+          <div class="stat-num" data-count="2">2</div>
+          <div class="stat-label">Bekleyen</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="3">3</div>
+          <div class="stat-label">Kazanılan</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3 ay</div>
+          <div class="stat-label">Toplam Pro Max</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  UYARI  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="callout callout--amber" style="max-width:760px;margin:0 auto;">
+        ⚠ Kendi kendine referans yapmak engellenir. Ödüller davet edilen kullanıcının
+        <strong>ilk ücretli plan satın alımı</strong>nda otomatik aktif olur.
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Davet linki: kopyala + paylaş (defansif, navigator.clipboard guard'lı)
+    (function () {
+      var linkEl = document.getElementById('my-link');
+      function getLink() { return linkEl ? linkEl.value : 'https://gelecekbul.com/'; }
+      var shareText = "Gelecek Bul kariyer GPS'i — bu link ile başla, ikimize de 1 ay Pro Max gelsin:";
+
+      function copyLink(btn) {
+        var link = getLink();
+        var done = function () {
+          if (!btn) return;
+          var old = btn.textContent;
+          btn.textContent = '✓ Kopyalandı';
+          setTimeout(function () { btn.textContent = old; }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(link).then(done).catch(function () { fallbackCopy(link); done(); });
+        } else {
+          fallbackCopy(link);
+          done();
+        }
+      }
+      function fallbackCopy(text) {
+        try {
+          if (linkEl && linkEl.select) { linkEl.focus(); linkEl.select(); document.execCommand('copy'); }
+        } catch (e) { /* sessizce geç */ }
+      }
+      function share(kind) {
+        var link = getLink();
+        if (kind === 'whatsapp') {
+          window.open('https://wa.me/?text=' + encodeURIComponent(shareText + ' ' + link), '_blank', 'noopener');
+        } else if (kind === 'twitter') {
+          window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(link), '_blank', 'noopener');
+        } else {
+          copyLink(null);
+        }
+      }
+
+      var copyBtn = document.getElementById('copy-btn');
+      if (copyBtn) copyBtn.addEventListener('click', function () { copyLink(copyBtn); });
+
+      var shareBtns = document.querySelectorAll('[data-share]');
+      for (var i = 0; i < shareBtns.length; i++) {
+        (function (b) {
+          b.addEventListener('click', function () { share(b.getAttribute('data-share')); });
+        })(shareBtns[i]);
+      }
+    })();
+  </script>
+</body>
+</html>

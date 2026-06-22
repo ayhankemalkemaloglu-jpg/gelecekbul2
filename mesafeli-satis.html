@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gelecek Bul Mesafeli Satış Sözleşmesi — 6502 sayılı Tüketicinin Korunması Hakkında Kanun uyarınca taraflar, hizmet özellikleri, ödeme, cayma hakkı ve uyuşmazlık çözümü." />
+  <title>Mesafeli Satış Sözleşmesi — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Mesafeli Satış Sözleşmesi — Gelecek Bul" />
+  <meta property="og:description" content="Dijital üyelik hizmetinin satış koşulları ve cayma hakkı." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="yasal">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <div class="subhead">
+      <span class="eyebrow eyebrow--signal">YASAL</span>
+      <h1 class="heading-lg">Mesafeli Satış Sözleşmesi</h1>
+      <p class="lead">6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği uyarınca düzenlenmiştir.</p>
+    </div>
+
+    <div class="prose" style="margin:0 auto;">
+      <h2>1. Taraflar</h2>
+      <p><strong>SATICI:</strong> Gelecekbul Eğitim Teknolojileri A.Ş. · MERSİS: [Avukatla doldurulacak] · VKN: [Avukatla doldurulacak]<br/>
+      Adres: [Avukatla doldurulacak] · KEP: [Avukatla doldurulacak] · İletişim: destek@gelecekbul.com</p>
+      <p><strong>ALICI:</strong> [ad-soyad / kullanıcı] · E-posta: [Üye'nin e-posta adresi]</p>
+
+      <h2>2. Konu</h2>
+      <p>Bu sözleşme; ALICI'nın gelecekbul.com'dan elektronik ortamda satın aldığı dijital hizmetin (Pro / Pro Max üyelik) satış koşullarını düzenler.</p>
+
+      <h2>3. Hizmet Özellikleri ve Fiyat</h2>
+      <p>Aşağıdaki ücretler KDV dahildir:</p>
+      <ul>
+        <li><strong>Pro — Aylık:</strong> 1 ay · 199</li>
+        <li><strong>Pro — Yıllık:</strong> 12 ay · 1.999</li>
+        <li><strong>Pro Max — Aylık:</strong> 1 ay · 199</li>
+        <li><strong>Pro Max — Yıllık:</strong> 12 ay · 1.999</li>
+      </ul>
+
+      <h2>4. Ödeme</h2>
+      <p>Ödeme; kredi kartı / banka kartı ile Stripe veya Iyzico altyapısı üzerinden alınır. Sözleşme bedeli, ödeme onayı anında tahsil edilir. Otomatik yenilemeli aboneliklerde her dönem başında yeniden tahsilat yapılır; ALICI dilediği an iptal edebilir.</p>
+
+      <h2>5. İfa Yeri ve Süresi</h2>
+      <p>Hizmet, ödeme onayından sonra <strong>anlık olarak</strong> ALICI'nın gelecekbul.com hesabına aktive edilir. Dijital hizmet sunumu Yönetmelik m.5/g kapsamındadır.</p>
+
+      <h2>6. Cayma Hakkı (14 Gün)</h2>
+      <p>ALICI; sözleşmenin kurulduğu tarihten itibaren <strong>14 gün</strong> içinde herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşmeden cayma hakkına sahiptir.</p>
+
+      <h2>7. Cayma Hakkının Kullanılamayacağı Haller</h2>
+      <div class="callout callout--amber">Yönetmelik m.15/1-(ğ): <strong>Elektronik ortamda anında ifa edilen hizmetler ile tüketiciye anında teslim edilen gayri maddi mallara</strong> ilişkin sözleşmelerde, ön bilgilendirme yapılması ve ALICI'nın "ifa başlasın" rızasını vermesi halinde cayma hakkı KULLANILAMAZ.</div>
+      <p>ALICI ödeme öncesi "Mesafeli Satış Sözleşmesi'ni okudum, hizmetin hemen başlamasına ve cayma hakkımı bu çerçevede kaybedeceğime onay veriyorum" kutusunu işaretler.</p>
+
+      <h2>8. Cayma Hakkının Kullanımı</h2>
+      <p>Cayma hakkı, "ifa başlamasın" tercihi yapılmışsa kullanılabilir. ALICI cayma bildirimini <strong>destek@gelecekbul.com</strong> adresine veya hesabındaki "İptal Et" butonuyla iletir.</p>
+      <p>SATICI cayma bildirimini aldığı tarihten itibaren <strong>14 gün içinde</strong> tahsil edilen tutarı aynı ödeme yöntemiyle iade eder.</p>
+
+      <h2>9. Sözleşme Süresi ve Yenileme</h2>
+      <p>Aylık abonelik: 1 ay sonunda otomatik yenilenir; iptal edilmediği sürece devam eder. Yıllık abonelik: 12 ay sonunda yenilenir. Yenileme öncesi ALICI'ya e-posta ile bildirim gönderilir.</p>
+
+      <h2>10. ALICI Beyanları</h2>
+      <ul>
+        <li>18 yaşımı doldurdum veya veli onayı aldım.</li>
+        <li>Ön Bilgilendirme Formu'nu okudum, anladım.</li>
+        <li>Üyelik Sözleşmesi'ni, KVKK Aydınlatma Metni'ni ve Çerez Politikası'nı okudum.</li>
+        <li>Cayma hakkı koşullarını anladım.</li>
+      </ul>
+
+      <h2>11. Uyuşmazlık</h2>
+      <p>Şikayetler için: Sanayi ve Teknoloji Bakanlığı'nca her yıl belirlenen parasal sınırlara göre Tüketici Hakem Heyeti veya Tüketici Mahkemeleri yetkilidir.</p>
+      <ul>
+        <li>İlçe Tüketici Hakem Heyeti: belirlenen alt limite kadar</li>
+        <li>İl Tüketici Hakem Heyeti: belirlenen orta aralık</li>
+        <li>Tüketici Mahkemesi: üst limitin üzeri</li>
+      </ul>
+      <p>(Güncel limitler için <a href="https://tuketici.ticaret.gov.tr" target="_blank" rel="noopener">Ticaret Bakanlığı</a> sayfasına bakınız.)</p>
+
+      <h2>12. Yürürlük</h2>
+      <p>ALICI ödeme sayfasında "Mesafeli Satış Sözleşmesi'ni okudum ve onaylıyorum" kutusunu işaretledikten ve ödeme onaylandıktan sonra sözleşme yürürlüğe girer. ALICI'ya elektronik kopya gönderilir.</p>
+
+      <p class="fine" style="margin-top:var(--spacing-40);">Bu sözleşme <a href="uyelik-sozlesmesi.html">Üyelik Sözleşmesi</a>, <a href="kvkk.html">KVKK Aydınlatma Metni</a> ve <a href="cerez.html">Çerez Politikası</a> ile birlikte bir bütündür. <a href="yasal.html">Tüm yasal metinler</a></p>
+    </div>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="YKS 2026 sınav takvimi: TYT, AYT ve YDT resmî tarihleri, sınav günü programı ve tercih dönemi anahtar tarihleri. Bölüm testinle hazırlığa başla." />
+  <title>Sınav Takvimi — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Sınav Takvimi — Gelecek Bul" />
+  <meta property="og:description" content="2026 YKS resmî tarihleri ve tercih dönemi anahtar günleri tek sayfada." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="sinav-takvimi">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  HERO / SUBHEAD  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">2026 YKS · CANLI TAKVİM</span>
+        <h1 class="heading-lg">Sınav <span class="text-aurora">Takvimi</span></h1>
+        <p class="lead mt-16">
+          TYT, AYT ve YDT için resmî ÖSYM tarihleri, sınav günü programı ve tercih
+          dönemi anahtar günleri tek sayfada. Önemli bir tarihi kaçırma.
+        </p>
+        <div class="button-row button-row--center">
+          <a class="btn btn-white" href="test.html">
+            Bölüm Testine Başla
+            <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn-dark" href="tercih.html">Tercih Simülatörü</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  3 SINAV KARTI  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="grid-3">
+        <article class="card card--navy">
+          <span class="badge badge--blue" style="align-self:flex-start;">Temel Yeterlilik</span>
+          <h2 class="card-title mt-16">TYT</h2>
+          <p class="card-body" style="margin-top:var(--spacing-8);">20 Haziran 2026 · Cumartesi</p>
+          <div class="plan-price" style="margin-top:var(--spacing-16);">
+            <span class="plan-amount" data-count="20" data-count-suffix=" Haz">20 Haz</span>
+          </div>
+          <ul class="check-list mt-16">
+            <li>Saat 09:30 (TR)</li>
+            <li>120 soru · 165 dakika</li>
+            <li>Türkçe + Sosyal + Matematik + Fen</li>
+          </ul>
+        </article>
+
+        <article class="card card--indigo">
+          <span class="badge badge--mint" style="align-self:flex-start;">Alan Yeterlilik</span>
+          <h2 class="card-title mt-16">AYT</h2>
+          <p class="card-body" style="margin-top:var(--spacing-8);">21 Haziran 2026 · Pazar</p>
+          <div class="plan-price" style="margin-top:var(--spacing-16);">
+            <span class="plan-amount">21 Haz</span>
+          </div>
+          <ul class="check-list mt-16">
+            <li>Saat 09:30 (TR)</li>
+            <li>160 soru · 180 dakika</li>
+            <li>Alan testleri (SAY / EA / SÖZ)</li>
+          </ul>
+        </article>
+
+        <article class="card card--deepnavy">
+          <span class="badge badge--amber" style="align-self:flex-start;">Yabancı Dil</span>
+          <h2 class="card-title mt-16">YDT</h2>
+          <p class="card-body" style="margin-top:var(--spacing-8);">21 Haziran 2026 · Pazar</p>
+          <div class="plan-price" style="margin-top:var(--spacing-16);">
+            <span class="plan-amount">21 Haz</span>
+          </div>
+          <ul class="check-list mt-16">
+            <li>Saat 14:00 (TR)</li>
+            <li>80 soru · 120 dakika</li>
+            <li>İngilizce / Almanca / Fransızca / Arapça / Rusça</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  SINAV GÜNÜ PROGRAMI  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">SINAV GÜNÜ PROGRAMI</span>
+        <h2 class="heading">Oturum oturum 2026 YKS</h2>
+        <p class="section-lead">Resmî ÖSYM oturumları. Kesin tarih için her zaman osym.gov.tr'yi kontrol et.</p>
+      </div>
+      <div class="card" style="padding:var(--spacing-24);overflow-x:auto;">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Sınav</th>
+              <th>Tarih</th>
+              <th>Saat (TR)</th>
+              <th>Süre</th>
+              <th>Soru</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--color-electric-signal);font-weight:600;">TYT</td>
+              <td>20 Haziran 2026 · Cumartesi</td>
+              <td>09:30</td>
+              <td>165 dk</td>
+              <td>120</td>
+            </tr>
+            <tr>
+              <td style="color:var(--color-vivid-mint);font-weight:600;">AYT</td>
+              <td>21 Haziran 2026 · Pazar</td>
+              <td>09:30</td>
+              <td>180 dk</td>
+              <td>160</td>
+            </tr>
+            <tr>
+              <td style="color:var(--color-amber-glow);font-weight:600;">YDT</td>
+              <td>21 Haziran 2026 · Pazar</td>
+              <td>14:00</td>
+              <td>120 dk</td>
+              <td>80</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="fine mt-16">Resmî kaynak: ÖSYM. Bu sayfa bilgi amaçlıdır, kesin tarih için <a href="https://www.osym.gov.tr" target="_blank" rel="noopener" style="color:var(--color-sky-wash);text-decoration:underline;">osym.gov.tr</a> kontrol et.</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  TERCİH DÖNEMİ ANAHTAR TARİHLER  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">TERCİH DÖNEMİ</span>
+        <h2 class="heading">Sınav sonrası anahtar tarihler</h2>
+        <p class="section-lead">Asıl karar tercih döneminde veriliyor. Bu günleri ajandana al.</p>
+      </div>
+      <div class="grid-4">
+        <div class="stat">
+          <div class="stat-num">20–21 Haz</div>
+          <div class="stat-label">YKS sınav günleri</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">25 Tem</div>
+          <div class="stat-label">Sonuçların açıklanması</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">31 Tem–9 Ağu</div>
+          <div class="stat-label">Tercih başvurusu</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Ağustos</div>
+          <div class="stat-label">Yerleştirme sonuçları</div>
+        </div>
+      </div>
+      <p class="callout callout--amber mt-24">
+        ⏳ Tarihler ÖSYM duyurularına göre güncellenir ve temsilî 2026 takvimini yansıtır. Son durumu osym.gov.tr üzerinden teyit et.
+      </p>
+    </section>
+
+    <!-- ════════════════════════════  HAZIRLIK ADIMLARI  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">SINAVA GİDERKEN</span>
+        <h2 class="heading">Geri sayım senin lehine çalışsın</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">01</span>
+          <h3 class="step-title">Bölümünü netleştir</h3>
+          <p class="step-body">Hangi bölümün sana uygun olduğunu sınavdan önce bil; çalışmanı doğru hedefe yönlendir.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">02</span>
+          <h3 class="step-title">Sıralama hedefi koy</h3>
+          <p class="step-body">YÖK Atlas puanlarıyla hedef bölümün gerektirdiği sıralamayı gör, gerçekçi plan yap.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">03</span>
+          <h3 class="step-title">Tercih listeni hazırla</h3>
+          <p class="step-body">Tercih simülatörüyle 24 slotluk listeni garanti / hedef / agresif olarak şimdiden kur.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ════════════════════════════  FINAL CTA  ════════════════════════════ -->
+    <section class="cta">
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="badge badge--white" style="margin-bottom:20px;">15 dakika test · 4 yıllık karar</span>
+          <h2 class="heading-lg">Hazır mısın?</h2>
+          <p class="cta-sub">YKS'ye hazırlanırken hangi bölümün sana uygun olduğunu bilmek tercih dönemini kurtarır.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="test.html">
+              Bölüm Testine Başla
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-dark" href="meslekler.html">200 Mesleği Keşfet</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gelecek Bul plan karşılaştırması: Free, Pro ve Pro Max özellikleri yan yana. Hangi plan sana uygun, tek tabloda gör." />
+  <title>Plan Karşılaştırma — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="Plan Karşılaştırma — Gelecek Bul" />
+  <meta property="og:description" content="Free, Pro ve Pro Max özellikleri yan yana tek tabloda." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="karsilastir">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  HERO / SUBHEAD  ════════════════════════════ -->
+    <section>
+      <div class="subhead">
+        <span class="eyebrow eyebrow--signal">PLAN KARŞILAŞTIRMA</span>
+        <h1 class="heading-lg">Hangi plan <span class="text-aurora">sana uygun?</span></h1>
+        <p class="lead mt-16">
+          Free ile dene, Pro ile karar ver, Pro Max ile her şeyi aç. 21 özellik
+          yan yana — kararını rahat ver. Abonelik istediğin an iptal edilebilir.
+        </p>
+        <div class="button-row button-row--center">
+          <a class="btn btn-white" href="test.html">Ücretsiz Başla</a>
+          <a class="btn btn-dark" href="#" data-action="pay" data-plan="promax">Pro Max'e Geç</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  FİYAT ÖZETİ  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="grid-3">
+        <article class="card card--sm center">
+          <span class="badge">DEMO</span>
+          <h2 class="plan-name mt-16">Free</h2>
+          <div class="plan-price" style="justify-content:center;"><span class="plan-amount">₺0</span><span class="plan-period">sınırlı deneme</span></div>
+          <p class="plan-tagline">Ne sunduğumuzu gör. Sonuçlar demo niteliğinde.</p>
+          <a class="btn btn-dark btn-block" href="test.html">Ücretsiz Başla</a>
+        </article>
+        <article class="card card--sm center">
+          <h2 class="plan-name mt-16">Pro</h2>
+          <div class="plan-price" style="justify-content:center;"><span class="plan-amount">₺1.999</span><span class="plan-period">/ 3 ay</span></div>
+          <p class="plan-tagline">Tam bilimsel envanter + AI yorumu. Gerçek karar için.</p>
+          <a class="btn btn-dark btn-block" href="#" data-action="pay" data-plan="pro">Pro'ya Geç</a>
+        </article>
+        <article class="card card--sm card--featured center">
+          <span class="badge badge--white">EN POPÜLER</span>
+          <h2 class="plan-name mt-16">Pro Max</h2>
+          <div class="plan-price" style="justify-content:center;"><span class="plan-amount">₺2.499</span><span class="plan-period">/ 3 ay</span></div>
+          <p class="plan-tagline">Her şey dahil. Maaş rotaları, göçebe haritası ve mülakat alpha.</p>
+          <a class="btn btn-white btn-block" href="#" data-action="pay" data-plan="promax">Pro Max'e Geç</a>
+        </article>
+      </div>
+      <p class="fine center mt-24">Yıllık planlarda %12–15 indirim · 3 Aylık ve Yıllık döngü mevcut.</p>
+    </section>
+
+    <!-- ════════════════════════════  KARŞILAŞTIRMA TABLOSU  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">ÖZELLİK ÖZELLİK</span>
+        <h2 class="heading">21 özellik, üç plan</h2>
+        <p class="section-lead">✓ dahil · — yok. Free demo niteliğindedir; karar için Pro'nun tam, kalibre ölçümünü öneririz.</p>
+      </div>
+      <div class="card" style="padding:var(--spacing-24);overflow-x:auto;">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Özellik</th>
+              <th style="text-align:center;">Free</th>
+              <th style="text-align:center;">Pro</th>
+              <th style="text-align:center;">Pro Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kısa kişilik testi</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Tam bilimsel envanter (RIASEC + Big Five + Holland)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Adaptif derin test (ort. 42 soru)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Karar arketipi (12 profil)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Bölüm önerisi</td>
+              <td style="text-align:center;">1 bölüm</td>
+              <td class="yes" style="text-align:center;">Top-5</td>
+              <td class="yes" style="text-align:center;">Top-5</td>
+            </tr>
+            <tr>
+              <td>Profil grafiği (radar)</td>
+              <td style="text-align:center;">Bulanık</td>
+              <td class="yes" style="text-align:center;">✓ Net</td>
+              <td class="yes" style="text-align:center;">✓ Net</td>
+            </tr>
+            <tr>
+              <td>Atlas AI yorumu (Türkçe)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Atlas ile sohbet (danışman)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓ Genişletilmiş</td>
+            </tr>
+            <tr>
+              <td>Üniversite eşleşmesi (YÖK Atlas)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>YKS alanı (track) filtresi</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Tercih Simülatörü (24 slot)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Otomatik üni önerisi (garanti/hedef/agresif)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>PDF rapor</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td style="text-align:center;">₺49</td>
+              <td class="yes" style="text-align:center;">✓ Dahil</td>
+            </tr>
+            <tr>
+              <td>Test geçmişi + karşılaştırma</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Göçebe &amp; Maaş Haritası (60 ülke)</td>
+              <td class="yes" style="text-align:center;">✓ Ücretsiz</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Yüksek Maaşlı Rotalar (ülke + merdiven)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓ Dahil</td>
+            </tr>
+            <tr>
+              <td>What-If senaryoları (Ya Şöyle Olsaydı?)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>AI Mock Mülakat (alpha)</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="no" style="text-align:center;">—</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Aile Alanı &amp; Veli Paneli</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>Reklamsız &amp; KVKK uyumlu</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+            <tr>
+              <td>İstediğin an iptal</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+              <td class="yes" style="text-align:center;">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="button-row button-row--center mt-32">
+        <a class="btn btn-dark" href="test.html">Free ile Dene</a>
+        <a class="btn btn-dark" href="#" data-action="pay" data-plan="pro">Pro'ya Geç</a>
+        <a class="btn btn-white" href="#" data-action="pay" data-plan="promax">Pro Max'e Geç</a>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  SSS  ════════════════════════════ -->
+    <section class="section-tight">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--signal">SIKÇA SORULAN</span>
+        <h2 class="heading">Plan kararı</h2>
+      </div>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Free planın sonuçlarına güvenebilir miyim?</summary>
+          <p class="faq-a">Free demo niteliğindedir; ne sunduğumuzu görmen içindir. Tam bilimsel envanter, AI yorumu ve üniversite eşleşmesi için Pro gerekir.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Pro ile Pro Max farkı ne?</summary>
+          <p class="faq-a">Pro tam envanter, AI yorumu, üniversite eşleşmesi ve tercih simülatörünü içerir. Pro Max ek olarak Yüksek Maaşlı Rotalar, Göçebe &amp; Maaş Haritası, What-If senaryoları ve AI Mock Mülakat'ı kapsar.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Aboneliği nasıl iptal ederim?</summary>
+          <p class="faq-a">Hesabından tek tıkla iptal edebilirsin. İptal sonrası kalan süre boyunca tüm özelliklere erişimin sürer; sonra otomatik Free'ye döner.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Yıllık planda ne kadar avantaj var?</summary>
+          <p class="faq-a">Yıllık döngüde %12–15 indirim uygulanır. Hem 3 Aylık hem Yıllık seçenek mevcuttur.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  FINAL CTA  ════════════════════════════ -->
+    <section class="cta">
+      <div class="cta-card">
+        <div class="cta-content">
+          <span class="badge badge--white" style="margin-bottom:20px;">Karar zamanı</span>
+          <h2 class="heading-lg">Önce dene,<br />sonra karar ver.</h2>
+          <p class="cta-sub">Free ile başla; ihtiyacın olduğunda Pro veya Pro Max'e geç.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="test.html">
+              Teste Başla
+              <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn-dark" href="index.html#planlar">Fiyatlara Dön</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

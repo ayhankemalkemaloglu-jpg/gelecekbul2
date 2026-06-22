@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pro Max'a özel: Atlas ile 5 soruluk hızlı mülakat provası. Cevap ver, saniyeler içinde gerçek geri bildirim al. Üniversite mülakatı, staj/iş ve sözlü sınavlar için pratik." />
+  <title>AI Mock Mülakat — Gelecek Bul</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="static/icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="static/icons/favicon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <meta property="og:title" content="AI Mock Mülakat — Gelecek Bul" />
+  <meta property="og:description" content="5 soru. Atlas sorar, sen cevap verirsin, anında geri bildirim alırsın." />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="mock-mulakat">
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Birincil">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-logo" src="static/icons/logo.webp" alt="" width="22" height="22" />
+        Gelecek Bul
+      </a>
+      <ul class="nav-links">
+        <li><a href="meslekler.html" class="nav-link">Meslekler</a></li>
+        <li><a href="index.html#planlar" class="nav-link">Fiyatlar</a></li>
+        <li><a href="index.html#nasil" class="nav-link">Nasıl çalışır</a></li>
+        <li><a href="nomad-harita.html" class="nav-link">Harita</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="nav-ghost" href="#" data-action="login">Giriş</a>
+        <a class="btn-pill" href="test.html">Teste Başla</a>
+        <button class="nav-toggle" type="button" data-action="menu" aria-label="Menü" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="meslekler.html">Meslekler <span class="badge">200+</span></a>
+      <a href="index.html#planlar">Fiyatlar</a>
+      <a href="index.html#nasil">Nasıl çalışır</a>
+      <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+      <a href="tercih.html">Tercih Simülatörü</a>
+      <a href="aile.html">Aile Alanı</a>
+      <a href="okullar.html">Okullar</a>
+      <a href="#" data-action="login">Giriş</a>
+      <a class="btn btn-white btn-block" href="test.html">Teste Başla</a>
+    </div>
+  </header>
+
+  <main class="page-main glow-wrap">
+    <div class="aurora-glow" aria-hidden="true"></div>
+
+    <!-- ════════════════════════════  INTRO  ════════════════════════════ -->
+    <section class="subhead" style="margin-top:0;">
+      <span class="eyebrow eyebrow--signal">PRO MAX · ALPHA</span>
+      <h1 class="heading-lg">AI <span class="text-aurora">Mock Mülakat</span></h1>
+      <p class="lead mt-16">
+        5 soru. Atlas sorar, sen yazılı cevap verirsin. Saniyeler içinde geri
+        bildirim. Üniversite mülakatı, staj/iş ve sözlü sınavlar için pratik.
+      </p>
+      <div class="button-row button-row--center" style="margin-top:24px;">
+        <span class="badge badge--blue">🔒 Pro Max'a özel</span>
+        <span class="badge badge--mint">⚡ Anında geri bildirim</span>
+        <span class="badge">5 soru</span>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  PRO MAX GATE  ════════════════════════════ -->
+    <section class="section-tight" id="gate-section" style="max-width:640px;margin-left:auto;margin-right:auto;">
+      <div class="card card--navy center">
+        <span class="icon-chip icon-chip--lg" style="margin-left:auto;margin-right:auto;" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </span>
+        <h2 class="subheading">Bu özellik Pro Max'a özel</h2>
+        <p class="card-body" style="max-width:46ch;margin-left:auto;margin-right:auto;">
+          AI Mock Mülakat tam erişimi sadece Pro Max kullanıcıları için — Atlas
+          öncelikli kanal ve What-If Simülatörü ile birlikte gelir. Önizleme için
+          provayı aşağıdan deneyebilirsin.
+        </p>
+        <div class="button-row button-row--center">
+          <a class="btn btn-white" href="index.html#planlar" data-action="pay" data-plan="promax">Pro Max'e geç</a>
+          <button class="btn btn-dark" type="button" id="preview-btn">Önizlemeyi dene</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  STEPPER (preview)  ════════════════════════════ -->
+    <section class="section-tight" id="interview-section" hidden style="max-width:720px;margin-left:auto;margin-right:auto;">
+      <div class="callout callout--info" style="margin-bottom:24px;">
+        🎯 <strong>Önizleme modu</strong> — örnek sorularla pratik yap. Atlas'ın
+        kişiye özel, derin geri bildirimi Pro Max'ta açılır.
+      </div>
+
+      <!-- Progress -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <span class="eyebrow eyebrow--signal" id="step-counter" style="margin-bottom:0;">SORU 1 / 5</span>
+        <span class="fine" id="step-progress">%0</span>
+      </div>
+      <div style="height:6px;border-radius:9999px;background:var(--surface-charcoal);overflow:hidden;margin-bottom:28px;">
+        <div id="progress-bar" style="height:100%;width:20%;border-radius:9999px;background:linear-gradient(90deg,#a887dc 0%,#60a5fa 100%);transition:width 0.3s ease;"></div>
+      </div>
+
+      <!-- Question card -->
+      <div class="card" id="question-card">
+        <span class="eyebrow eyebrow--signal" id="q-index" style="margin-bottom:8px;">SORU 1 / 5</span>
+        <p class="subheading" id="q-text" style="font-size:var(--text-body-lg);line-height:1.4;">—</p>
+        <div class="field" style="margin-top:20px;">
+          <label class="field-label" for="answer-input">Cevabın</label>
+          <textarea class="textarea" id="answer-input" placeholder="Cevabını buraya yaz… (en az 50 karakter)"></textarea>
+        </div>
+        <div class="button-row" style="margin-top:16px;align-items:center;gap:16px;">
+          <button class="btn btn-white" type="button" id="feedback-btn">Atlas'tan geri bildirim al</button>
+          <button class="btn btn-dark" type="button" id="next-btn">Sonraki Soru →</button>
+        </div>
+
+        <!-- Feedback -->
+        <div id="feedback-box" class="callout callout--info" hidden style="margin-top:20px;border-left:2px solid var(--color-electric-signal);">
+          <span class="eyebrow eyebrow--signal" style="margin-bottom:6px;">ATLAS</span>
+          <p id="feedback-text" style="margin:0;"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  FINAL  ════════════════════════════ -->
+    <section class="section-tight" id="final-section" hidden style="max-width:640px;margin-left:auto;margin-right:auto;">
+      <div class="card card--featured center">
+        <span class="icon-chip icon-chip--lg" style="margin-left:auto;margin-right:auto;" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </span>
+        <h2 class="subheading">Provayı tamamladın 🎉</h2>
+        <p class="card-body" style="max-width:46ch;margin-left:auto;margin-right:auto;">
+          5 sorunun da üstesinden geldin. Önizlemede gördüğün geri bildirim
+          örnekti; Pro Max'ta Atlas her cevabını kişisel profilinle harmanlayıp
+          güçlü ve geliştirilebilir yönlerini madde madde söyler.
+        </p>
+        <ul class="check-list" style="text-align:left;max-width:420px;margin:24px auto 0;">
+          <li>Her cevap için spesifik, klişesiz geri bildirim</li>
+          <li>Sınırsız mülakat seti — üniversite, staj, iş</li>
+          <li>What-If Simülatörü ve öncelikli Atlas kanalı</li>
+        </ul>
+        <div class="button-row button-row--center">
+          <a class="btn btn-white" href="index.html#planlar" data-action="pay" data-plan="promax">Pro Max'e geç</a>
+          <button class="btn btn-dark" type="button" id="restart-btn">Baştan dene</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="index.html">
+          <img class="nav-logo" src="static/icons/logo.webp" alt="" width="24" height="24" style="width:24px;height:24px;" />
+          Gelecek Bul
+        </a>
+        <p class="footer-tag">Bir test değil, canlı bir Kariyer GPS'i. Bilimsel envanter + AI yorumu ile lise sonrası yolunu netleştir.</p>
+      </div>
+      <nav class="footer-cols" aria-label="Alt menü">
+        <div class="footer-col">
+          <span class="footer-col-title">Keşfet</span>
+          <a href="test.html">Kariyer Testi</a>
+          <a href="meslekler.html">200 Meslek</a>
+          <a href="nomad-harita.html">Göçebe &amp; Maaş Haritası</a>
+          <a href="tercih.html">Tercih Simülatörü</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Güven</span>
+          <a href="index.html#nasil">Nasıl Çalışır</a>
+          <a href="index.html#planlar">Fiyatlar</a>
+          <a href="iletisim.html">İletişim</a>
+          <a href="sinav-takvimi.html">Sınav Takvimi</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Aile &amp; Okul</span>
+          <a href="aile.html">Aile Alanı</a>
+          <a href="veli-dashboard.html">Veli Paneli</a>
+          <a href="okullar.html">Okullar</a>
+          <a href="sinif-pilot.html">Sınıf Pilotu</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 SER PLUS İNŞAAT A.Ş. · Tüm hakları saklıdır.</span>
+      <span><a href="iletisim.html" style="color:inherit;">İletişim</a> · <span class="code-chip">gelecekbul.com</span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var QUESTIONS = [
+        "Neden bu bölümü/sektörü seçmek istiyorsun? 2-3 cümle.",
+        "Stres altındaki en yoğun deneyimin ne oldu, nasıl yönettin?",
+        "Senin için “başarılı bir kariyer” tanımı nedir? Para mı, anlam mı, denge mi? Niye?",
+        "Hiç hayal kırıklığı yaşadığın bir karar oldu mu? Şimdi olsa farklı ne yapardın?",
+        "5 yıl sonra bir gününü anlat — hangi şehir, hangi iş, nasıl yaşıyorsun?"
+      ];
+      // Templated sample feedback (no backend) — varied so each question feels distinct.
+      var FEEDBACK = [
+        "Motivasyonun net ve içten — “neden” sorusunun kalbine değiniyorsun. Güçlü yön: somut bir tetikleyici (bir deneyim ya da kişi) anmışsın. Geliştir: bu seçimin günlük hayatında neye benzeyeceğine dair tek bir spesifik örnek ekle.",
+        "İyi: stresi tanımlamakla kalmayıp nasıl yönettiğini de söylemişsin. Güçlü yön: eylem odaklı bir dil kullanıyorsun. Geliştir: sonucu ölçülebilir kıl — “sonunda ne değişti?” sorusuna bir cümleyle yanıt ver.",
+        "Başarı tanımın olgun; tek bir kelimeye sıkışmamışsın. Güçlü yön: değerlerini gerekçelendirmişsin. Geliştir: bu tanımın seni hangi somut tercihe ittiğini (ör. şehir, sektör) bağlayarak kapat.",
+        "Dürüst ve öz-farkındalığı yüksek bir cevap. Güçlü yön: hatadan ders çıkardığını gösteriyorsun. Geliştir: “şimdi farklı ne yapardım” kısmını tek, net bir adıma indir — mülakatçı bunu hatırlar.",
+        "Canlı bir gelecek tablosu çizmişsin — bu akılda kalır. Güçlü yön: somut detaylar (şehir, iş) kullanıyorsun. Geliştir: bugünden o güne giden ilk adımı ekle ki hayal, plana dönüşsün."
+      ];
+
+      var current = 0;
+      var sec = {
+        gate: document.getElementById("gate-section"),
+        interview: document.getElementById("interview-section"),
+        final: document.getElementById("final-section")
+      };
+      var els = {
+        previewBtn: document.getElementById("preview-btn"),
+        counter: document.getElementById("step-counter"),
+        progressLabel: document.getElementById("step-progress"),
+        progressBar: document.getElementById("progress-bar"),
+        qIndex: document.getElementById("q-index"),
+        qText: document.getElementById("q-text"),
+        answer: document.getElementById("answer-input"),
+        feedbackBtn: document.getElementById("feedback-btn"),
+        nextBtn: document.getElementById("next-btn"),
+        feedbackBox: document.getElementById("feedback-box"),
+        feedbackText: document.getElementById("feedback-text"),
+        restartBtn: document.getElementById("restart-btn")
+      };
+
+      function renderQuestion() {
+        if (!QUESTIONS[current]) return;
+        var label = "SORU " + (current + 1) + " / " + QUESTIONS.length;
+        if (els.counter) els.counter.textContent = label;
+        if (els.qIndex) els.qIndex.textContent = label;
+        if (els.qText) els.qText.textContent = QUESTIONS[current];
+        if (els.answer) els.answer.value = "";
+        var pct = Math.round(((current + 1) / QUESTIONS.length) * 100);
+        if (els.progressLabel) els.progressLabel.textContent = "%" + pct;
+        if (els.progressBar) els.progressBar.style.width = pct + "%";
+        if (els.feedbackBox) els.feedbackBox.hidden = true;
+        if (els.nextBtn) {
+          els.nextBtn.textContent = current === QUESTIONS.length - 1 ? "Provayı bitir →" : "Sonraki Soru →";
+        }
+      }
+
+      function showFeedback() {
+        if (!els.answer) return;
+        var val = (els.answer.value || "").trim();
+        if (!els.feedbackBox || !els.feedbackText) return;
+        if (val.length < 50) {
+          els.feedbackText.textContent = "Daha detaylı bir cevap yaz (en az 50 karakter) — değerlendirebilmem için.";
+        } else {
+          els.feedbackText.textContent = FEEDBACK[current] || FEEDBACK[0];
+        }
+        els.feedbackBox.hidden = false;
+      }
+
+      function next() {
+        if (current < QUESTIONS.length - 1) {
+          current += 1;
+          renderQuestion();
+          if (sec.interview) sec.interview.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          if (sec.interview) sec.interview.hidden = true;
+          if (sec.final) {
+            sec.final.hidden = false;
+            sec.final.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      }
+
+      function startPreview() {
+        if (sec.gate) sec.gate.hidden = true;
+        if (sec.final) sec.final.hidden = true;
+        if (sec.interview) {
+          sec.interview.hidden = false;
+          sec.interview.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        current = 0;
+        renderQuestion();
+      }
+
+      if (els.previewBtn) els.previewBtn.addEventListener("click", startPreview);
+      if (els.feedbackBtn) els.feedbackBtn.addEventListener("click", showFeedback);
+      if (els.nextBtn) els.nextBtn.addEventListener("click", next);
+      if (els.restartBtn) els.restartBtn.addEventListener("click", startPreview);
+
+      renderQuestion();
+    })();
+  </script>
+</body>
+</html>
