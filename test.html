@@ -159,22 +159,42 @@
         ⏸ Testi erken bitirdin — bu <strong>kısmi bir sonuç</strong>. Tam, kalibre edilmiş profil için testi sonuna kadar tamamla.
       </div>
 
-      <!-- En iyi eşleşme kartı -->
-      <article class="card card--featured" style="max-width:760px;margin:0 auto;">
-        <div class="plan-head">
-          <span class="badge badge--white" id="archetype-badge">KARAR SAHİBİ</span>
-          <span class="badge badge--mint" id="match-badge">%88 uyum</span>
+      <!-- Profil Uyum Kartı — gerçek RIASEC profilinle dolar -->
+      <article class="umk">
+        <div class="umk-head">
+          <div>
+            <span class="umk-eyebrow">Profil Uyumu</span>
+            <span class="umk-pct" id="umk-pct">—</span>
+          </div>
+          <div class="umk-head-right">
+            <span class="badge badge--white" id="archetype-badge">RIASEC</span>
+          </div>
         </div>
-        <h3 class="card-title mt-16" id="archetype-title" style="margin-top:var(--spacing-16);">Karar Sahibi</h3>
-        <p class="card-body" id="archetype-desc">
-          Bilgiyi toplar, hızlı karar verir ve yoluna güvenirsin. Net hedefler ve özerklik seni besler.
-        </p>
-        <div class="mt-24" style="margin-top:var(--spacing-24);">
-          <span class="fine">Sana en uygun 3 alan</span>
-          <div class="button-row" style="margin-top:var(--spacing-12);gap:var(--spacing-8);">
-            <span class="badge badge--blue" id="match-1">Mühendislik · %87</span>
-            <span class="badge badge--blue" id="match-2">İktisat · %82</span>
-            <span class="badge badge--blue" id="match-3">Sağlık · %78</span>
+        <div class="umk-bar" id="umk-bar" aria-hidden="true"></div>
+        <div class="umk-subrow">
+          <span><b id="umk-score">— / 100</b> uyum puanı</span>
+          <span>EN GÜÇLÜ ALAN · <b id="umk-top">—</b></span>
+        </div>
+        <h3 class="umk-arch-title" id="archetype-title">Profilin</h3>
+        <p class="umk-arch-desc" id="archetype-desc">Cevaplarından çıkan profil aşağıda.</p>
+        <div class="umk-divider" aria-hidden="true"></div>
+        <div class="umk-thead">
+          <span class="umk-th-title">Eşleşme Tablosu</span>
+          <a class="umk-viewall" href="meslekler.html">Tümünü gör →</a>
+        </div>
+        <div class="umk-table">
+          <div class="umk-tr umk-tr--head"><span>Alan</span><span>Profil yönü</span><span class="r">Uyum</span><span class="r">Durum</span></div>
+          <div id="umk-rows"></div>
+        </div>
+        <div class="umk-foot">
+          <div class="umk-foot-left">
+            <button class="umk-ic" type="button" data-umk="csv" title="CSV indir" aria-label="CSV indir">⬇</button>
+            <button class="umk-ic" type="button" data-umk="print" title="Yazdır" aria-label="Yazdır">🖨</button>
+            <button class="umk-ic" type="button" data-umk="share" title="Paylaş" aria-label="Paylaş">↗</button>
+          </div>
+          <div class="umk-foot-right">
+            <span class="umk-brand"><span class="umk-brand-dot">G</span> Profil · Gelecek Bul</span>
+            <a class="umk-manage" href="#" data-action="login">Sonucu kaydet</a>
           </div>
         </div>
       </article>
@@ -754,48 +774,108 @@
     }
 
     // ── Sonuç ekranını gerçek profille doldur ─────────────────────
+    function setText(id, t) { var el = $(id); if (el) el.textContent = t; }
+    function durumKey(p) { return p >= 80 ? "hi" : p >= 65 ? "mid" : "lo"; }
+    function durumLbl(p) { return p >= 80 ? "güçlü" : p >= 65 ? "iyi" : "orta"; }
+    function catDir(cat) {
+      if (!window.GB || !GB.CAT_RIASEC[cat]) return "—";
+      var w = GB.CAT_RIASEC[cat], best = "C", bv = -1;
+      GB.DIMS.forEach(function (k) { if ((w[k] || 0) > bv) { bv = w[k]; best = k; } });
+      return GB.DIM_TR[best] || "—";
+    }
+
     function renderResult(profile, isPartial) {
       // GB yoksa (script.js yüklenemediyse) eski örnek veriye düş.
       if (!profile || !window.GB) {
         var r = RESULTS[state.answers.length % RESULTS.length];
-        $("archetype-badge").textContent = r.badge;
-        $("archetype-title").textContent = r.title;
-        $("match-badge").textContent = "%" + r.match + " uyum";
-        $("archetype-desc").textContent = r.desc;
-        $("match-1").textContent = r.progs[0];
-        $("match-2").textContent = r.progs[1];
-        $("match-3").textContent = r.progs[2];
+        setText("archetype-badge", r.badge);
+        setText("archetype-title", r.title);
+        setText("archetype-desc", r.desc);
+        renderUyumCard(null, r);
       } else {
         var tops = GB.topDims(profile);               // ["I","S",...] desc
         var topCats = GB.topCategories(3);            // [{cat,pct}]
-        var bestCat = topCats[0] || { cat: "—", pct: 0 };
         var topName = GB.DIM_TR[tops[0]] || "—";
 
-        // Başlık kartı: baskın yön + en uyumlu alanın eşleşme %'si
-        $("archetype-badge").textContent = "RIASEC · " + profile.code;
-        $("archetype-title").textContent = topName + " baskın profil";
-        $("match-badge").textContent = "%" + bestCat.pct + " uyum";
-        $("archetype-desc").textContent =
+        setText("archetype-badge", "RIASEC · " + profile.code);
+        setText("archetype-title", topName + " baskın profil");
+        setText("archetype-desc",
           "Baskın yönlerin " +
           tops.slice(0, 3).map(function (k) { return GB.DIM_TR[k]; }).join(", ") +
           ". Cevapların seni en çok " +
           topCats.map(function (c) { return capWord(c.cat); }).join(", ") +
-          " alanlarına yaklaştırıyor.";
+          " alanlarına yaklaştırıyor.");
 
-        // "Sana en yakın 3 bölüm" rozetleri → en uyumlu 3 alan + %
-        ["match-1", "match-2", "match-3"].forEach(function (id, i) {
-          var c = topCats[i];
-          $(id).textContent = c ? capWord(c.cat) + " · %" + c.pct : "—";
-        });
-
+        renderUyumCard(profile, null);
         renderDimBars(profile);
       }
 
       $("partial-banner").hidden = !isPartial;
-      $("result-lead").textContent = isPartial
+      setText("result-lead", isPartial
         ? "Erken bitirdiğin için bu kısmi bir önizleme. Tam profil için testi tamamla."
-        : "Cevaplarına göre RIASEC profilin, sana en uygun alanlar ve Atlas'ın yorumu aşağıda.";
+        : "Cevaplarına göre RIASEC profilin, sana en uygun alanlar ve Atlas'ın yorumu aşağıda.");
     }
+
+    // ── Profil Uyum Kartı: büyük % + segmentli bar + eşleşme tablosu ──
+    function renderUyumCard(profile, fallback) {
+      var pct, topName, rows;
+      if (profile && window.GB) {
+        var cats = GB.topCategories(6);
+        pct = (cats[0] || { pct: 0 }).pct;
+        topName = capWord((cats[0] || { cat: "—" }).cat);
+        rows = cats.map(function (c) { return { area: capWord(c.cat), dir: catDir(c.cat), pct: c.pct }; });
+      } else {
+        var r = fallback || RESULTS[0];
+        pct = r.match;
+        topName = r.progs[0];
+        rows = r.progs.map(function (p, i) { return { area: p, dir: "—", pct: Math.max(40, r.match - i * 6) }; });
+      }
+      setText("umk-pct", pct + "%");
+      setText("umk-score", pct + " / 100");
+      setText("umk-top", (topName || "—").toLocaleUpperCase("tr"));
+
+      var bar = $("umk-bar");
+      if (bar) {
+        var SEG = 75, fill = Math.round(pct / 100 * SEG), html = "";
+        for (var i = 0; i < SEG; i++) {
+          var on = i < fill;
+          html += '<span class="umk-seg' + (on ? " on" : "") + '" style="opacity:' + (on ? (1 - i * 0.004).toFixed(3) : 1) + '"></span>';
+        }
+        bar.innerHTML = html;
+      }
+      var host = $("umk-rows");
+      if (host) {
+        host.innerHTML = rows.map(function (r) {
+          return '<div class="umk-tr"><span>' + esc(r.area) + '</span>' +
+            '<span class="umk-dir">' + esc(r.dir) + '</span>' +
+            '<span class="r umk-pctcell">%' + r.pct + '</span>' +
+            '<span class="r"><em class="umk-st umk-st--' + durumKey(r.pct) + '">' + durumLbl(r.pct) + '</em></span></div>';
+        }).join("");
+      }
+      window._umkRows = rows; window._umkPct = pct;
+    }
+
+    // Footer aksiyonları (CSV indir / yazdır / paylaş)
+    document.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-umk]");
+      if (!b) return;
+      var act = b.getAttribute("data-umk");
+      var rows = window._umkRows || [];
+      if (act === "print") { window.print(); }
+      else if (act === "csv") {
+        var csv = "Alan,Profil yonu,Uyum,Durum\n" + rows.map(function (r) {
+          return [r.area, r.dir, r.pct + "%", durumLbl(r.pct)].join(",");
+        }).join("\n");
+        var blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob); a.download = "profil-uyum.csv"; a.click();
+        URL.revokeObjectURL(a.href);
+      } else if (act === "share") {
+        var txt = "Gelecek Bul profil uyumum: %" + (window._umkPct || "") + " — gelecekbul.com";
+        if (navigator.share) { navigator.share({ text: txt }).catch(function () {}); }
+        else if (navigator.clipboard) { navigator.clipboard.writeText(txt); b.setAttribute("title", "Kopyalandı"); }
+      }
+    });
 
     // Açık (kilitsiz) RIASEC çubuk satırlarını üretir.
     function renderDimBars(profile) {

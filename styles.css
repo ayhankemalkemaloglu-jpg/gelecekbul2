@@ -2426,6 +2426,235 @@ body {
 }
 
 /* ════════════════════════════════════════════════════════════════════
+   UYUM KARTI (.umk) — test result "profil uyumu" card, aurora adaptation
+   of a credit-usage card: big %, segmented bar, match table, footer.
+   ════════════════════════════════════════════════════════════════════ */
+.umk {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--surface-charcoal);
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-ui-monospace);
+}
+.umk-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-20) var(--spacing-24);
+}
+.umk-eyebrow {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-ash);
+  margin-bottom: 4px;
+}
+.umk-pct {
+  font-family: var(--font-inter);
+  font-size: 30px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: -1px;
+  color: #fff;
+}
+.umk-head-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.umk-bar {
+  display: flex;
+  gap: 3px;
+  height: 12px;
+  padding: 0 var(--spacing-24);
+}
+.umk-seg {
+  flex: 1;
+  border-radius: var(--radius-full);
+  background: var(--hairline);
+}
+.umk-seg.on {
+  background: var(--color-electric-signal);
+}
+.umk-subrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-12);
+  padding: var(--spacing-16) var(--spacing-24);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-mist);
+}
+.umk-subrow b {
+  color: #fff;
+}
+.umk-arch-title {
+  padding: var(--spacing-8) var(--spacing-24) 0;
+  font-family: var(--font-inter);
+  font-size: var(--text-body-lg);
+  font-weight: var(--font-weight-semibold);
+  color: #fff;
+}
+.umk-arch-desc {
+  padding: 6px var(--spacing-24) var(--spacing-16);
+  font-family: var(--font-inter);
+  font-size: var(--text-body-sm);
+  line-height: 1.5;
+  color: var(--color-mist);
+}
+.umk-divider {
+  border-bottom: 2px dashed var(--hairline);
+}
+.umk-thead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-16) var(--spacing-24) var(--spacing-8);
+}
+.umk-th-title {
+  font-family: var(--font-inter);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-semibold);
+  color: #fff;
+}
+.umk-viewall {
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: var(--color-sky-wash);
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+}
+.umk-viewall:hover {
+  background: var(--surface-obsidian);
+}
+.umk-table {
+  padding: 0 var(--spacing-24) var(--spacing-8);
+}
+.umk-tr {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.7fr 0.85fr;
+  gap: var(--spacing-8);
+  align-items: center;
+  padding: 9px 4px;
+  border-top: 1px solid var(--hairline-soft);
+  font-size: 11px;
+  color: var(--color-silver);
+}
+.umk-tr .r {
+  text-align: right;
+}
+.umk-tr--head {
+  border-top: none;
+  color: var(--color-ash);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 9px;
+}
+.umk-dir {
+  color: var(--color-mist);
+}
+.umk-pctcell {
+  color: #fff;
+  font-weight: 700;
+}
+.umk-st {
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+}
+.umk-st--hi {
+  background: rgba(39, 201, 63, 0.16);
+  color: var(--color-vivid-mint);
+}
+.umk-st--mid {
+  background: rgba(0, 136, 255, 0.16);
+  color: var(--color-electric-signal);
+}
+.umk-st--lo {
+  background: rgba(255, 183, 100, 0.16);
+  color: var(--color-amber-glow);
+}
+.umk-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-12);
+  flex-wrap: wrap;
+  padding: var(--spacing-16) var(--spacing-24);
+  background: var(--surface-obsidian);
+  border-top: 1px solid var(--hairline-soft);
+}
+.umk-foot-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  color: var(--color-ash);
+}
+.umk-ic {
+  background: none;
+  border: none;
+  color: var(--color-ash);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+}
+.umk-ic:hover {
+  color: #fff;
+}
+.umk-foot-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+.umk-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-fog);
+}
+.umk-brand-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  color: #fff;
+  background: var(--gradient-aurora-blacklavender);
+}
+.umk-manage {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  color: var(--color-pearl);
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-full);
+  padding: 6px 12px;
+}
+.umk-manage:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ════════════════════════════════════════════════════════════════════
    BENTO — "Platformun içi" animated information cards
    Vanilla aurora adaptation of a React bento-grid. Five obsidian panels,
    each with a small title, a muted description and a framed visual area
