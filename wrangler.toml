@@ -1,0 +1,19 @@
+# Cloudflare Pages + Functions + D1 config for gelecekbul2
+# Static assets are served from the repo root; serverless API lives in functions/.
+name = "gelecekbul2"
+compatibility_date = "2024-11-06"
+pages_build_output_dir = "."
+
+# D1 database binding (users + atlas usage).
+# Create it once, then paste the id here:
+#   wrangler d1 create gelecekbul2-db
+#   wrangler d1 execute gelecekbul2-db --remote --file=./schema.sql
+[[d1_databases]]
+binding = "DB"
+database_name = "gelecekbul2-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+# Secrets are NOT stored here. Set them on the Pages project:
+#   wrangler pages secret put GEMINI_API_KEY
+#   wrangler pages secret put AUTH_SECRET        # long random string
+# (or Cloudflare dashboard → Pages → Settings → Environment variables / Secrets)

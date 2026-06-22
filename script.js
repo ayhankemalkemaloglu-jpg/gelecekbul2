@@ -168,90 +168,113 @@
   }
 
   /* ── Login modal (injected once, shared across pages) ────────────── */
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function planLabel(p) { return p === "promax" ? "Pro Max" : p === "pro" ? "Pro" : "Free"; }
+
+  /* ── Auth / membership modal (real, via Cloudflare Functions) ────────── */
   function ensureLoginModal() {
-    let overlay = document.getElementById("login-modal");
+    var overlay = document.getElementById("login-modal");
     if (overlay) return overlay;
     overlay = document.createElement("div");
     overlay.className = "modal-overlay";
     overlay.id = "login-modal";
-    overlay.innerHTML = [
-      '<div class="modal" role="dialog" aria-modal="true" aria-label="Giriş">',
-      '  <button class="modal-close" type="button" data-close aria-label="Kapat">×</button>',
-      '  <div style="text-align:center;margin-bottom:20px;">',
-      '    <img src="static/icons/logo.webp" alt="" width="40" height="40" style="margin:0 auto 12px;border-radius:10px;" />',
-      '    <h3 class="subheading">Gelecek Bul\'a giriş</h3>',
-      '    <p class="fine mt-8">Sonuçlarını kaydet, geçmişini gör, aileyle paylaş.</p>',
-      "  </div>",
-      '  <div class="tabs" data-tabs style="display:flex;width:100%;margin-bottom:20px;" id="login-tabs">',
-      '    <button class="tab is-active" data-tab="ogrenci" style="flex:1;">Öğrenci</button>',
-      '    <button class="tab" data-tab="aile" style="flex:1;">Aile</button>',
-      '    <button class="tab" data-tab="kurumsal" style="flex:1;">Kurumsal</button>',
-      "  </div>",
-      '  <div data-tab-panel="ogrenci">',
-      '    <form class="form-card" style="padding:0;border:none;box-shadow:none;gap:14px;background:transparent;" data-login-form>',
-      '      <div class="field"><label class="field-label">E-posta</label><input class="input" type="email" name="email" placeholder="ornek@eposta.com" required /></div>',
-      '      <div class="field"><label class="field-label">Şifre</label><input class="input" type="password" name="password" placeholder="••••••••" required /></div>',
-      '      <button class="btn btn-white btn-block" type="submit">Giriş Yap</button>',
-      '      <button class="btn btn-dark btn-block" type="button" data-google style="margin-top:0;">Google ile devam et</button>',
-      '      <p class="form-note">Hesabın yok mu? <a href="#" data-register>Kayıt ol</a> · <a href="#">Şifreni mi unuttun?</a></p>',
-      "    </form>",
-      "  </div>",
-      '  <div data-tab-panel="aile" hidden>',
-      '    <p class="callout">Aile hesabıyla çocuğunun sürecini takip et, veli raporunu sade bir dille oku.</p>',
-      '    <form class="form-card" style="padding:0;border:none;box-shadow:none;gap:14px;margin-top:14px;background:transparent;" data-login-form>',
-      '      <div class="field"><label class="field-label">E-posta</label><input class="input" type="email" placeholder="veli@eposta.com" required /></div>',
-      '      <div class="field"><label class="field-label">Şifre</label><input class="input" type="password" placeholder="••••••••" required /></div>',
-      '      <button class="btn btn-white btn-block" type="submit">Veli Girişi</button>',
-      "    </form>",
-      "  </div>",
-      '  <div data-tab-panel="kurumsal" hidden>',
-      '    <p class="callout callout--info">Okul / dershane misin? Sınıf Pilotu ile 50 öğrenci 4 hafta ücretsiz.</p>',
-      '    <a class="btn btn-white btn-block" href="sinif-pilot.html">Okul Başvurusu</a>',
-      '    <a class="btn btn-dark btn-block" href="okullar.html">Okullar için detay</a>',
-      "  </div>",
-      "</div>",
-    ].join("");
+    overlay.innerHTML =
+      '<div class="modal" role="dialog" aria-modal="true" aria-label="Üyelik">' +
+      '<button class="modal-close" type="button" data-close aria-label="Kapat">×</button>' +
+      '<div id="auth-body"></div></div>';
     document.body.appendChild(overlay);
-
-    const close = () => overlay.classList.remove("is-open");
-    overlay.addEventListener("click", (e) => {
+    var bodyEl = overlay.querySelector("#auth-body");
+    var mode = "login", role = "student";
+    function close() { overlay.classList.remove("is-open"); }
+    overlay.addEventListener("click", function (e) {
       if (e.target === overlay || e.target.closest("[data-close]")) close();
     });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") close();
-    });
-    // wire the injected tabs
-    const tabs = overlay.querySelectorAll("[data-tab]");
-    const panels = overlay.querySelectorAll("[data-tab-panel]");
-    tabs.forEach((tab) =>
-      tab.addEventListener("click", () => {
-        const key = tab.getAttribute("data-tab");
-        tabs.forEach((t) => t.classList.toggle("is-active", t === tab));
-        panels.forEach((p) =>
-          p.toggleAttribute("hidden", p.getAttribute("data-tab-panel") !== key)
-        );
-      })
-    );
-    overlay.querySelectorAll("[data-login-form]").forEach((f) =>
-      f.addEventListener("submit", (e) => {
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+    document.addEventListener("gb:auth", function () { if (overlay.classList.contains("is-open")) render(); });
+
+    function render() {
+      if (GB.isAuthed()) {
+        bodyEl.innerHTML =
+          '<div style="text-align:center;">' +
+          '<img src="static/icons/logo.webp" alt="" width="40" height="40" style="margin:0 auto 12px;border-radius:10px;" />' +
+          '<h3 class="subheading">Hesabım</h3>' +
+          '<p class="fine mt-8">' + esc(GB.user.email) + '</p>' +
+          '<p class="mt-16"><span class="badge badge--blue">Plan: ' + planLabel(GB.user.plan) + '</span></p>' +
+          '<a class="btn btn-white btn-block mt-24" href="dashboard.html">Panele git</a>' +
+          '<button class="btn btn-dark btn-block" type="button" id="auth-logout" style="margin-top:10px;">Çıkış yap</button>' +
+          '</div>';
+        bodyEl.querySelector("#auth-logout").addEventListener("click", async function () { await GB.logout(); render(); });
+        return;
+      }
+      var formHtml = role === "kurumsal"
+        ? '<p class="callout callout--info">Okul / dershane misin? <a href="sinif-pilot.html">Sınıf Pilotu</a> ile 50 öğrenci 4 hafta ücretsiz; detay için <a href="okullar.html">okullar</a>.</p>'
+        : '<form class="form-card" id="auth-form" style="padding:0;border:none;box-shadow:none;gap:12px;background:transparent;">' +
+            (mode === "register" ? '<div class="field"><label class="field-label">Ad</label><input class="input" name="name" autocomplete="name" /></div>' : "") +
+            '<div class="field"><label class="field-label">E-posta</label><input class="input" name="email" type="email" autocomplete="email" required /></div>' +
+            '<div class="field"><label class="field-label">Şifre</label><input class="input" name="password" type="password" autocomplete="' + (mode === "login" ? "current-password" : "new-password") + '" minlength="8" required /></div>' +
+            '<p class="callout callout--amber" id="auth-err" hidden></p>' +
+            '<button class="btn btn-white btn-block" type="submit">' + (mode === "login" ? "Giriş Yap" : "Üye Ol") + '</button>' +
+            '<p class="form-note">' + (mode === "login" ? 'Hesabın yok mu? <a href="#" data-switch="register">Üye ol</a>' : 'Zaten üye misin? <a href="#" data-switch="login">Giriş yap</a>') + '</p>' +
+          '</form>';
+      bodyEl.innerHTML =
+        '<div style="text-align:center;margin-bottom:18px;">' +
+        '<img src="static/icons/logo.webp" alt="" width="40" height="40" style="margin:0 auto 12px;border-radius:10px;" />' +
+        '<h3 class="subheading">' + (mode === "login" ? "Giriş yap" : "Üye ol") + '</h3>' +
+        '<p class="fine mt-8">Gerçek Atlas AI + plan avantajları üyelere özel.</p>' +
+        '</div>' +
+        '<div class="tabs" style="display:flex;width:100%;margin-bottom:16px;">' +
+        '<button class="tab' + (role === "student" ? " is-active" : "") + '" type="button" data-role="student" style="flex:1;">Öğrenci</button>' +
+        '<button class="tab' + (role === "veli" ? " is-active" : "") + '" type="button" data-role="veli" style="flex:1;">Aile</button>' +
+        '<button class="tab' + (role === "kurumsal" ? " is-active" : "") + '" type="button" data-role="kurumsal" style="flex:1;">Kurumsal</button>' +
+        '</div>' + formHtml;
+
+      bodyEl.querySelectorAll("[data-role]").forEach(function (b) {
+        b.addEventListener("click", function () { role = b.getAttribute("data-role"); render(); });
+      });
+      bodyEl.querySelectorAll("[data-switch]").forEach(function (a) {
+        a.addEventListener("click", function (e) { e.preventDefault(); mode = a.getAttribute("data-switch"); render(); });
+      });
+      var form = bodyEl.querySelector("#auth-form");
+      if (form) form.addEventListener("submit", async function (e) {
         e.preventDefault();
-        alert("Demo arayüz — canlı giriş için backend gerekir.");
-      })
-    );
+        var fd = new FormData(form);
+        var email = String(fd.get("email") || "").trim();
+        var password = String(fd.get("password") || "");
+        var name = String(fd.get("name") || "").trim();
+        var errEl = bodyEl.querySelector("#auth-err");
+        var btn = form.querySelector('button[type="submit"]');
+        errEl.hidden = true;
+        btn.disabled = true; btn.textContent = "…";
+        var res = mode === "login" ? await GB.login(email, password) : await GB.register(email, password, name, role);
+        if (res.ok) { close(); setTimeout(function () { location.reload(); }, 120); return; }
+        btn.disabled = false; btn.textContent = mode === "login" ? "Giriş Yap" : "Üye Ol";
+        errEl.hidden = false; errEl.textContent = GB.AUTH_ERR[res.error] || GB.AUTH_ERR.error;
+      });
+    }
+    overlay._render = render;
+    render();
     return overlay;
   }
 
-  document.addEventListener("click", (e) => {
-    const loginTrigger = e.target.closest('[data-action="login"]');
+  document.addEventListener("click", function (e) {
+    var loginTrigger = e.target.closest('[data-action="login"]');
     if (loginTrigger) {
       e.preventDefault();
-      ensureLoginModal().classList.add("is-open");
+      var m = ensureLoginModal(); m._render(); m.classList.add("is-open");
       return;
     }
-    const payTrigger = e.target.closest('[data-action="pay"]');
+    var payTrigger = e.target.closest('[data-action="pay"]');
     if (payTrigger) {
       e.preventDefault();
-      ensureLoginModal().classList.add("is-open");
+      if (GB.isAuthed()) {
+        alert("Ödeme entegrasyonu yakında. Planını yükseltmek için iletişime geç (iletisim.html).");
+      } else {
+        var lm = ensureLoginModal(); lm._render(); lm.classList.add("is-open");
+      }
     }
   });
 
@@ -362,31 +385,42 @@
     var cats = GB.topCategories(3).map(function (c) { return c.cat + " %" + c.pct; });
     return "RIASEC kodu " + p.code + ". Baskın yönler: " + t.join(", ") + ". En uyumlu alanlar: " + cats.join(", ") + ".";
   };
-  // Returns Gemini text, or null when no key / on error (caller shows fallback)
+  // Keyless: posts to the server proxy (/api/atlas) which holds the Gemini key
+  // and enforces per-plan quota. Returns text, or null (caller shows fallback);
+  // sets GB._atlasErr {code:'auth'|'quota'|'error'|'offline'} for the chat UI.
   GB.atlasAsk = async function (system, user) {
-    var key = GB.atlasKey();
-    if (!key) return null;
+    GB._atlasErr = null;
     try {
-      var r = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + encodeURIComponent(key),
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            systemInstruction: { parts: [{ text: system }] },
-            contents: [{ role: "user", parts: [{ text: user }] }],
-            generationConfig: { temperature: 0.85, maxOutputTokens: 600 }
-          })
-        }
-      );
-      if (!r.ok) throw new Error("HTTP " + r.status);
-      var j = await r.json();
-      var c = j && j.candidates && j.candidates[0];
-      var t = c && c.content && c.content.parts && c.content.parts[0] && c.content.parts[0].text;
-      return t || null;
-    } catch (e) { return null; }
+      var r = await fetch("/api/atlas", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: user, profile: GB.profileSummary() })
+      });
+      if (r.status === 401) { GB._atlasErr = { code: "auth" }; return null; }
+      if (r.status === 429) {
+        var q = await r.json().catch(function () { return {}; });
+        GB._atlasErr = { code: "quota", cap: q.cap, plan: q.plan };
+        return null;
+      }
+      if (r.ok) { var j = await r.json(); if (j && j.text) return j.text; }
+      GB._atlasErr = { code: "error" };
+    } catch (e) { GB._atlasErr = { code: "offline" }; }
+    // optional dev/preview override: a personal Gemini key in this browser
+    var key = GB.atlasKey && GB.atlasKey();
+    if (key) {
+      try {
+        var rr = await fetch(
+          "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + encodeURIComponent(key),
+          { method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ systemInstruction: { parts: [{ text: system }] }, contents: [{ role: "user", parts: [{ text: user }] }], generationConfig: { temperature: 0.85, maxOutputTokens: 600 } }) }
+        );
+        if (rr.ok) { var jj = await rr.json(); var c = jj && jj.candidates && jj.candidates[0]; var t = c && c.content && c.content.parts && c.content.parts[0] && c.content.parts[0].text; if (t) { GB._atlasErr = null; return t; } }
+      } catch (e2) {}
+    }
+    return null;
   };
-  // Deterministic, profile-aware fallback when there is no API key
+  // Profile-aware fallback when Atlas isn't available (logged out / quota / preview)
   GB.atlasFallback = function (userMsg) {
     var p = GB.getProfile();
     var head;
@@ -398,9 +432,57 @@
     } else {
       head = "Henüz testini yapmamışsın — birkaç dakikalık testi bitirirsen sana özel konuşabilirim. ";
     }
-    var tail = "(Gerçek, sohbet eden Atlas için sağ üstten kendi Gemini anahtarını ekleyebilirsin — anahtar yalnızca senin tarayıcında saklanır.)";
-    return head + (userMsg ? "Sorduğun “" + userMsg + "” konusunda: önce ilgini en çok çeken 2-3 alanı yaz, üzerine birlikte daraltalım. " : "") + tail;
+    return head + (userMsg ? "Sorduğun “" + userMsg + "” için: ilgini en çok çeken 2-3 alanı yaz, birlikte daraltalım. " : "") + "(Gerçek Atlas üyelere özel — giriş yap.)";
   };
+
+  /* ── Membership (real auth via Cloudflare Functions) ─────────────────── */
+  GB.AUTH_ERR = {
+    invalid_email: "E-posta geçersiz görünüyor.",
+    weak_password: "Şifre en az 8 karakter olmalı.",
+    email_taken: "Bu e-posta zaten kayıtlı — giriş yapmayı dene.",
+    invalid_credentials: "E-posta veya şifre hatalı.",
+    missing_fields: "E-posta ve şifre gerekli.",
+    db_unconfigured: "Sunucu henüz hazır değil (backend kurulmadan giriş çalışmaz).",
+    bad_json: "İstek hatası.",
+    error: "Bir aksilik oldu, birazdan tekrar dene."
+  };
+  GB.user = null;
+  GB.isAuthed = function () { return !!GB.user; };
+  GB.plan = function () {
+    if (GB.user && GB.user.plan) return GB.user.plan;
+    try { return localStorage.getItem("gb_plan") || "free"; } catch (e) { return "free"; }
+  };
+  GB.refreshMe = async function () {
+    try {
+      var r = await fetch("/api/auth/me", { credentials: "same-origin" });
+      if (r.ok) { var j = await r.json(); GB.user = (j && j.user) || null; }
+    } catch (e) { /* static preview: no backend */ }
+    try { localStorage.setItem("gb_plan", GB.plan()); } catch (e) {}
+    document.dispatchEvent(new CustomEvent("gb:auth", { detail: { user: GB.user } }));
+    return GB.user;
+  };
+  GB.login = async function (email, password) {
+    try {
+      var r = await fetch("/api/auth/login", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email, password: password }) });
+      var j = await r.json().catch(function () { return {}; });
+      if (r.ok && j.ok) { GB.user = j.user; try { localStorage.setItem("gb_plan", GB.plan()); } catch (e) {} document.dispatchEvent(new CustomEvent("gb:auth", { detail: { user: GB.user } })); return { ok: true }; }
+      return { ok: false, error: j.error || "error" };
+    } catch (e) { return { ok: false, error: "db_unconfigured" }; }
+  };
+  GB.register = async function (email, password, name, role) {
+    try {
+      var r = await fetch("/api/auth/register", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email, password: password, name: name, role: role }) });
+      var j = await r.json().catch(function () { return {}; });
+      if (r.ok && j.ok) { GB.user = j.user; try { localStorage.setItem("gb_plan", GB.plan()); } catch (e) {} document.dispatchEvent(new CustomEvent("gb:auth", { detail: { user: GB.user } })); return { ok: true }; }
+      return { ok: false, error: j.error || "error" };
+    } catch (e) { return { ok: false, error: "db_unconfigured" }; }
+  };
+  GB.logout = async function () {
+    try { await fetch("/api/auth/logout", { method: "POST", credentials: "same-origin" }); } catch (e) {}
+    GB.user = null; try { localStorage.setItem("gb_plan", "free"); } catch (e) {}
+    document.dispatchEvent(new CustomEvent("gb:auth", { detail: { user: null } }));
+  };
+  GB.refreshMe();
 
   /* Atlas chat modal — injected once, opened by [data-action="atlas"] */
   function ensureAtlasModal() {
@@ -428,11 +510,16 @@
 
     var log = overlay.querySelector("#atlas-log");
     var statusEl = overlay.querySelector("#atlas-status");
-    var keyBtn = overlay.querySelector("#atlas-key-btn");
+    var actBtn = overlay.querySelector("#atlas-key-btn");
     function refreshStatus() {
-      var has = !!GB.atlasKey();
-      statusEl.textContent = has ? "Gemini bağlı · sana özel" : "Şablon modu · profil-temelli";
-      keyBtn.textContent = has ? "Gemini anahtarını değiştir / kaldır" : "Gemini anahtarı ekle → gerçek AI";
+      if (GB.isAuthed()) {
+        statusEl.textContent = "Plan: " + planLabel(GB.user.plan) + " · sana özel";
+        actBtn.hidden = true;
+      } else {
+        statusEl.textContent = "Üyelere özel — giriş yapınca açılır";
+        actBtn.hidden = false;
+        actBtn.textContent = "Giriş yap / Üye ol →";
+      }
     }
     function bubble(text, who) {
       var b = document.createElement("div");
@@ -446,22 +533,16 @@
       log.scrollTop = log.scrollHeight;
       return b;
     }
-    keyBtn.addEventListener("click", function () {
-      var cur = GB.atlasKey();
-      var v = window.prompt(
-        "Google Gemini API anahtarını yapıştır (yalnızca bu tarayıcıda saklanır, sunucuya/repoya gitmez). Boş bırakıp kaydedersen şablon moduna döner.\nAnahtar: aistudio.google.com/apikey",
-        cur
-      );
-      if (v !== null) { GB.atlasKey(v.trim()); refreshStatus(); bubble(v.trim() ? "Anahtar kaydedildi — artık gerçek Atlas konuşuyor." : "Anahtar kaldırıldı — şablon moduna döndüm.", "atlas"); }
+    actBtn.addEventListener("click", function () {
+      var m = ensureLoginModal(); m._render(); m.classList.add("is-open");
     });
     overlay.addEventListener("click", function (e) {
       if (e.target === overlay || e.target.closest("[data-close]")) overlay.classList.remove("is-open");
     });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") overlay.classList.remove("is-open"); });
+    document.addEventListener("gb:auth", function () { if (overlay.classList.contains("is-open")) refreshStatus(); });
 
-    var SYSTEM =
-      "Sen 'Atlas'sın: Gelecek Bul platformunun Türk lise öğrencilerine yönelik kariyer danışmanı AI'ısın. " +
-      "Sıcak, net, klişesiz konuş; Türkiye bağlamını (YKS, bölümler, YÖK Atlas) bil. Kısa ve somut yanıt ver.";
+    var SYSTEM = "Sen 'Atlas'sın: Gelecek Bul kariyer danışmanı AI.";
     overlay.querySelector("#atlas-form").addEventListener("submit", async function (e) {
       e.preventDefault();
       var inp = overlay.querySelector("#atlas-input");
@@ -470,8 +551,17 @@
       bubble(msg, "me");
       inp.value = "";
       var thinking = bubble("…", "atlas");
-      var ans = await GB.atlasAsk(SYSTEM, "Öğrenci profili: " + GB.profileSummary() + "\n\nSoru: " + msg);
-      thinking.textContent = ans || GB.atlasFallback(msg);
+      var ans = await GB.atlasAsk(SYSTEM, msg);
+      if (ans) {
+        thinking.textContent = ans;
+      } else if (GB._atlasErr && GB._atlasErr.code === "auth") {
+        thinking.textContent = "Gerçek Atlas üyelere özel. Hemen giriş yap — ücretsiz planda bile günde 5 soru hakkın var.";
+        refreshStatus();
+      } else if (GB._atlasErr && GB._atlasErr.code === "quota") {
+        thinking.textContent = "Bugünlük Atlas hakkın doldu (Plan: " + planLabel(GB._atlasErr.plan) + " · " + GB._atlasErr.cap + "/gün). Yarın yenilenir — ya da planını yükselt.";
+      } else {
+        thinking.textContent = GB.atlasFallback(msg);
+      }
       log.scrollTop = log.scrollHeight;
     });
 
@@ -479,10 +569,9 @@
       refreshStatus();
       if (!log.childElementCount) {
         bubble(
-          "Selam, ben Atlas 👋 " +
-            (GB.hasProfile()
-              ? GB.profileSummary() + " Ne sormak istersin — bölüm, üniversite, ya da bir meslek?"
-              : "Önce kısa testi yaparsan sana özel konuşabilirim. Yine de genel sorularını yanıtlayabilirim."),
+          GB.isAuthed()
+            ? "Selam, ben Atlas 👋 " + (GB.hasProfile() ? GB.profileSummary() + " Ne sormak istersin?" : "Ne sormak istersin — bölüm, üniversite ya da bir meslek?")
+            : "Selam, ben Atlas 👋 Gerçek sohbet üyelere özel — giriş yap, ücretsiz planda bile günde 5 soru. Testini yaptıysan profil özetini yine de görebilirim.",
           "atlas"
         );
       }
