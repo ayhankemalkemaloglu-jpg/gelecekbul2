@@ -2078,3 +2078,95 @@ section {
     opacity: 1;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   DOCK — magnifying quick-access dock (lives at the top of the footer).
+   Vanilla adaptation of the macOS-style Dock: cards scale by cursor
+   proximity (magnify logic in script.js). Touch = static row.
+   ════════════════════════════════════════════════════════════════════ */
+.dock-wrap {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-40) var(--spacing-24) var(--spacing-8);
+}
+.dock {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(15, 15, 16, 0.72);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-xl);
+  max-width: 100%;
+}
+.dock-card {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: 14px;
+  background: var(--dg, var(--gradient-aurora-wash));
+  display: grid;
+  place-items: center;
+  color: #0f1115;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+  transform-origin: bottom center;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.dock-card svg {
+  width: 24px;
+  height: 24px;
+}
+.dock-card::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 12px);
+  transform: translateX(-50%) translateY(6px);
+  background: #fff;
+  color: #0f1115;
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.1px;
+  padding: 4px 9px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  box-shadow: var(--shadow-md);
+}
+.dock-card:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.dock-divider {
+  width: 1px;
+  height: 38px;
+  align-self: center;
+  background: var(--hairline-strong);
+  margin: 0 4px;
+}
+@media (max-width: 860px) {
+  .dock-wrap {
+    padding: var(--spacing-32) var(--spacing-16) var(--spacing-4);
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  .dock {
+    gap: 8px;
+  }
+  .dock-card {
+    width: 46px;
+    height: 46px;
+  }
+  .dock-card svg {
+    width: 21px;
+    height: 21px;
+  }
+}

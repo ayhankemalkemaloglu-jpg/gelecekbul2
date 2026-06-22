@@ -254,4 +254,29 @@
       ensureLoginModal().classList.add("is-open");
     }
   });
+
+  /* ── Dock magnify (footer quick-access) ──────────────────────────────
+     macOS-style fisheye: each card scales with cursor proximity. Static
+     row on touch (no fine pointer). */
+  document.querySelectorAll(".dock").forEach((dock) => {
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    var cards = Array.prototype.slice.call(dock.querySelectorAll(".dock-card"));
+    var RANGE = 130, MAX = 0.55, LIFT = 16;
+    dock.addEventListener("mousemove", function (e) {
+      cards.forEach(function (card) {
+        var r = card.getBoundingClientRect();
+        var cx = r.left + r.width / 2;
+        var t = Math.max(0, 1 - Math.abs(e.clientX - cx) / RANGE);
+        card.style.transform =
+          "translateY(" + (-LIFT * t) + "px) scale(" + (1 + MAX * t) + ")";
+        card.style.zIndex = t > 0.5 ? "3" : "1";
+      });
+    });
+    dock.addEventListener("mouseleave", function () {
+      cards.forEach(function (card) {
+        card.style.transform = "";
+        card.style.zIndex = "";
+      });
+    });
+  });
 })();
