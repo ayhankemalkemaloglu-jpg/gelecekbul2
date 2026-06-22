@@ -1815,3 +1815,262 @@ section {
     display: none;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   SHIFT CARD — animated occupation card (aurora adaptation of ShiftCard)
+   Rest: top bar + centered aurora hero tile. Hover: hero shifts to a
+   top-right thumbnail (dashed ghost left behind) and the detail panel
+   (description + stats + texture buttons) reveals. Fixed height → no
+   grid reflow on hover.
+   ════════════════════════════════════════════════════════════════════ */
+.shift-card {
+  position: relative;
+  height: 300px;
+  background: var(--surface-obsidian);
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--radius-cards);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.28s ease, box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+.shift-card:hover,
+.shift-card:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--hairline-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Top bar — always visible */
+.sc-top {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-8);
+  padding: var(--spacing-16) var(--spacing-16) 0;
+}
+.sc-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ash);
+  text-transform: capitalize;
+}
+.sc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex: none;
+}
+/* DNA badge fades out as the thumbnail takes the top-right corner */
+.sc-dna {
+  transition: opacity 0.25s ease;
+}
+.shift-card:hover .sc-dna,
+.shift-card:focus-within .sc-dna {
+  opacity: 0;
+}
+
+/* Hero media (rest state) */
+.sc-media {
+  position: absolute;
+  left: var(--spacing-16);
+  right: var(--spacing-16);
+  top: 52px;
+  bottom: var(--spacing-16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: var(--spacing-20);
+  text-align: center;
+  border-radius: var(--radius-2xl);
+  background: var(--gradient-aurora-blacklavender);
+  box-shadow: var(--shadow-subtle-2);
+  z-index: 2;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+.shift-card:hover .sc-media,
+.shift-card:focus-within .sc-media {
+  transform: translateY(-10px) scale(0.85);
+  opacity: 0;
+}
+.sc-emoji {
+  font-size: 46px;
+  line-height: 1;
+}
+.sc-name {
+  font-size: var(--text-body-lg);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.3px;
+  color: #fff;
+}
+.sc-en {
+  font-size: var(--text-caption);
+  color: rgba(255, 255, 255, 0.72);
+}
+.sc-salary {
+  margin-top: 6px;
+}
+
+/* Thumbnail + dashed ghost (hover) */
+.sc-thumb {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 52px;
+  height: 66px;
+  border-radius: var(--radius-lg);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  background: var(--gradient-aurora-blacklavender);
+  box-shadow: var(--shadow-md);
+  z-index: 6;
+  opacity: 0;
+  transform: scale(0.5);
+  transform-origin: top right;
+  transition: opacity 0.3s ease 0.12s,
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+.shift-card:hover .sc-thumb,
+.shift-card:focus-within .sc-thumb {
+  opacity: 1;
+  transform: scale(1);
+}
+.sc-ghost {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 52px;
+  height: 66px;
+  border: 2px dashed var(--hairline-strong);
+  border-radius: var(--radius-lg);
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.shift-card:hover .sc-ghost,
+.shift-card:focus-within .sc-ghost {
+  opacity: 1;
+}
+
+/* Detail panel (hover) */
+.sc-detail {
+  position: absolute;
+  left: var(--spacing-16);
+  right: var(--spacing-16);
+  top: 84px;
+  bottom: var(--spacing-16);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.3s ease 0.06s,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) 0.06s;
+}
+.shift-card:hover .sc-detail,
+.shift-card:focus-within .sc-detail {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.sc-desc {
+  flex: 1;
+  overflow: hidden;
+  font-size: var(--text-body-sm);
+  line-height: 1.5;
+  color: var(--color-mist);
+}
+.sc-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.sc-actions {
+  display: flex;
+  gap: var(--spacing-8);
+}
+
+/* Texture button (ShiftCard's TextureButton, aurora dark) */
+.texture-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 1;
+  padding: 9px var(--spacing-12);
+  border-radius: var(--radius-xl);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  background: var(--surface-charcoal);
+  border: 1px solid var(--hairline-strong);
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 1px 2px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+.texture-btn:hover {
+  background: #26282b;
+  transform: translateY(-1px);
+}
+.texture-btn svg {
+  width: 15px;
+  height: 15px;
+}
+.texture-btn--primary {
+  background: var(--gradient-signal-blue);
+  border-color: transparent;
+}
+.texture-btn--primary:hover {
+  opacity: 0.92;
+}
+.texture-btn--on {
+  background: rgba(255, 183, 100, 0.16);
+  border-color: rgba(255, 183, 100, 0.4);
+  color: var(--color-amber-glow);
+}
+
+@media (max-width: 860px) {
+  .shift-card {
+    height: 290px;
+  }
+  /* No hover on touch: stack hero + detail so the card is never "empty" */
+  .shift-card .sc-media {
+    top: 52px;
+    bottom: auto;
+    height: 122px;
+    transform: none;
+    opacity: 1;
+  }
+  .shift-card .sc-detail {
+    top: 188px;
+    bottom: var(--spacing-16);
+    height: auto;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .shift-card .sc-detail .sc-desc {
+    display: none;
+  }
+  .shift-card .sc-thumb,
+  .shift-card .sc-ghost {
+    display: none;
+  }
+  .shift-card .sc-dna {
+    opacity: 1;
+  }
+}

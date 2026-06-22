@@ -504,22 +504,32 @@
         var meta = CAT_META[o.category] || { icon:"💼", color:"#94a3b8" };
         var dna = matchScore(o);
         var duelSel = duelSlots.indexOf(o.slug) !== -1;
-        return '<article class="card card--sm" data-idx="' + i + '" style="cursor:pointer;">'
-          + '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">'
-          +   '<span style="font-size:30px;line-height:1;">' + o.icon + '</span>'
-          +   '<span class="badge" style="color:' + meta.color + ';background:' + meta.color + '1f;">🧬 %' + dna + ' uyum</span>'
+        var aiCls = o.ai_automation_risk <= 30 ? "badge--mint" : o.ai_automation_risk <= 60 ? "badge--amber" : "";
+        var cat = o.category ? o.category.charAt(0).toUpperCase() + o.category.slice(1) : "";
+        var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
+        return '<article class="shift-card" data-idx="' + i + '" tabindex="0" aria-label="' + escapeHtml(o.name_tr) + '">'
+          + '<div class="sc-top">'
+          +   '<span class="sc-cat"><span class="sc-dot" style="background:' + meta.color + ';"></span>' + meta.icon + ' ' + escapeHtml(cat) + '</span>'
+          +   '<span class="badge sc-dna" style="color:' + meta.color + ';background:' + meta.color + '1f;">🧬 %' + dna + '</span>'
           + '</div>'
-          + '<h3 class="card-title" style="font-size:var(--text-body-lg);margin-top:12px;">' + escapeHtml(o.name_tr) + '</h3>'
-          + '<p class="fine" style="margin-top:2px;">' + escapeHtml(o.name_en || "") + '</p>'
-          + '<p class="card-body" style="margin-top:8px;font-size:var(--text-body-sm);">' + escapeHtml(o.short_desc || "") + '</p>'
-          + '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;">'
-          +   '<span class="badge badge--mint">💵 ' + salaryDisplay(o.avg_salary_band) + '/ay</span>'
-          +   '<span class="badge badge--blue">' + growthEmoji(o.growth_outlook) + ' ' + growthText(o.growth_outlook) + '</span>'
-          +   '<span class="badge ' + (o.ai_automation_risk <= 30 ? "badge--mint" : o.ai_automation_risk <= 60 ? "badge--amber" : "") + '">' + aiRiskEmoji(o.ai_automation_risk) + ' AI: ' + aiRiskText(o.ai_automation_risk) + '</span>'
+          + '<div class="sc-ghost" aria-hidden="true"></div>'
+          + '<div class="sc-thumb" aria-hidden="true">' + o.icon + '</div>'
+          + '<div class="sc-media">'
+          +   '<span class="sc-emoji">' + o.icon + '</span>'
+          +   '<span class="sc-name">' + escapeHtml(o.name_tr) + '</span>'
+          +   (o.name_en ? '<span class="sc-en">' + escapeHtml(o.name_en) + '</span>' : '')
+          +   '<span class="badge badge--mint sc-salary">💵 ' + salaryDisplay(o.avg_salary_band) + '/ay</span>'
           + '</div>'
-          + '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:16px;">'
-          +   '<span class="card-link" style="margin-top:0;">Detay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>'
-          +   '<button class="badge ' + (duelSel ? "badge--amber" : "") + ' duel-btn" type="button" data-slug="' + o.slug + '" style="cursor:pointer;border:none;font-family:inherit;">⚔️ ' + (duelSel ? "Eklendi" : "Düello") + '</button>'
+          + '<div class="sc-detail">'
+          +   '<p class="sc-desc">' + escapeHtml(o.short_desc || "") + '</p>'
+          +   '<div class="sc-stats">'
+          +     '<span class="badge badge--blue">' + growthEmoji(o.growth_outlook) + ' ' + growthText(o.growth_outlook) + '</span>'
+          +     '<span class="badge ' + aiCls + '">' + aiRiskEmoji(o.ai_automation_risk) + ' AI: ' + aiRiskText(o.ai_automation_risk) + '</span>'
+          +   '</div>'
+          +   '<div class="sc-actions">'
+          +     '<button class="texture-btn texture-btn--primary detail-btn" type="button" data-idx="' + i + '">Detayı Aç ' + arrow + '</button>'
+          +     '<button class="texture-btn duel-btn' + (duelSel ? " texture-btn--on" : "") + '" type="button" data-slug="' + o.slug + '">⚔️ ' + (duelSel ? "Eklendi" : "Düello") + '</button>'
+          +   '</div>'
           + '</div>'
           + '</article>';
       }).join("");
@@ -527,11 +537,17 @@
       var rn = $("results-num"); if (rn) rn.textContent = filtered.length;
       var en = $("empty-note"); if (en) en.style.display = filtered.length ? "none" : "block";
 
-      // card click → modal (ignore the duel button)
-      grid.querySelectorAll(".card").forEach(function (card) {
+      // card click / Enter → modal (ignore the duel button; "Detayı Aç" bubbles up)
+      grid.querySelectorAll(".shift-card").forEach(function (card) {
         card.addEventListener("click", function (e) {
           if (e.target.closest(".duel-btn")) return;
           openModal(parseInt(card.getAttribute("data-idx"), 10));
+        });
+        card.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(parseInt(card.getAttribute("data-idx"), 10));
+          }
         });
       });
       grid.querySelectorAll(".duel-btn").forEach(function (btn) {
@@ -914,7 +930,7 @@
       // update duel buttons in place
       document.querySelectorAll(".duel-btn").forEach(function (btn) {
         var sel = duelSlots.indexOf(btn.getAttribute("data-slug")) !== -1;
-        btn.classList.toggle("badge--amber", sel);
+        btn.classList.toggle("texture-btn--on", sel);
         btn.textContent = "⚔️ " + (sel ? "Eklendi" : "Düello");
       });
       updateDuelCounter();
