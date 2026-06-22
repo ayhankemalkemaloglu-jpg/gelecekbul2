@@ -67,7 +67,8 @@
         <h1 class="heading-lg">Göçebe &amp; Maaş <span class="text-aurora">Haritası</span></h1>
         <p class="lead mt-16">
           Ülkelere göre aylık gelir, yaşam maliyeti, net birikim, internet hızı ve
-          dijital göçebe vizesi — tek bir interaktif dünya haritasında.
+          dijital göçebe vizesi — tek bir interaktif 3D dünya haritasında.
+          Sürükle, yakınlaştır, ülkeye dokun.
         </p>
         <div class="button-row button-row--center">
           <span class="badge badge--mint">Ücretsiz · 3D</span>
@@ -123,25 +124,19 @@
     <!-- ════════════════════════════  KÜRE + TOP-5  ════════════════════════════ -->
     <section class="section-tight">
       <div class="grid-2" style="align-items:start;">
-        <!-- Aurora "globe" placeholder -->
-        <div class="card card--ring" style="align-items:center;text-align:center;min-height:420px;justify-content:center;background:var(--surface-midnight-indigo);">
-          <div aria-hidden="true" style="
-            width:260px;height:260px;border-radius:var(--radius-full);
-            background:var(--gradient-aurora-blacklavender);
-            box-shadow:0 0 80px rgba(75,82,170,0.45), inset 0 0 60px rgba(0,0,0,0.45);
-            position:relative;display:grid;place-items:center;">
-            <div style="
-              width:170px;height:170px;border-radius:var(--radius-full);
-              background:radial-gradient(circle at 35% 30%, rgba(96,165,250,0.45), transparent 60%),
-                         radial-gradient(circle at 70% 75%, rgba(168,135,220,0.4), transparent 55%);
-              border:1px solid var(--hairline-strong);"></div>
+        <!-- Real 3D globe -->
+        <div class="card card--ring" style="padding:0;overflow:hidden;background:var(--surface-midnight-indigo);">
+          <div id="globe-host" style="position:relative;width:100%;height:min(70vh,560px);min-height:380px;cursor:grab;">
+            <!-- Loader overlay -->
+            <div id="globe-loader" style="position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:var(--surface-midnight-indigo);transition:opacity .4s ease;">
+              <span class="badge badge--mint">Dünya yükleniyor…</span>
+              <p class="fine" style="max-width:30ch;text-align:center;">3D küre ve ülke sınırları hazırlanıyor.</p>
+            </div>
+            <!-- Hover tooltip -->
+            <div id="tooltip" style="position:absolute;z-index:5;pointer-events:none;display:none;padding:6px 10px;border-radius:var(--radius-lg);background:rgba(3,7,25,0.95);border:1px solid rgba(39,201,63,0.35);font-size:var(--text-caption);color:var(--color-white);white-space:nowrap;transform:translate(-50%,calc(-100% - 10px));">
+              <span class="tt-name" style="color:var(--color-vivid-mint);font-weight:500;"></span><span class="tt-val" style="color:var(--color-amber-glow);margin-left:6px;"></span>
+            </div>
           </div>
-          <h3 class="card-title mt-24" style="font-size:var(--text-body-lg);">3D interaktif küre</h3>
-          <p class="card-body" style="max-width:36ch;">
-            Tam sürümde sürükle, yakınlaştır, ülkeye dokun — yükseklik ve renk seçili
-            metriği gösterir. Bu önizlemede statik bir küre yer alır.
-          </p>
-          <span class="badge badge--mint mt-16">Canlı 3D · gelecekbul.com</span>
         </div>
 
         <!-- Top-5 list -->
@@ -151,44 +146,51 @@
             <span id="top5-metric" class="badge badge--mint">Genel Skor</span>
           </div>
           <div id="top5-list" class="mt-16" style="display:flex;flex-direction:column;gap:var(--spacing-8);"></div>
-          <p class="fine mt-16">Sıralama, seçili metrik ve kıta filtresine göre güncellenir.</p>
+          <p class="fine mt-16">Sıralama, seçili metrik ve kıta filtresine göre güncellenir. Bir satıra dokun — küre o ülkeye döner.</p>
         </div>
       </div>
     </section>
 
-    <!-- ════════════════════════════  DETAY KARTI ÖRNEĞİ  ════════════════════════════ -->
+    <!-- ════════════════════════════  DETAY KARTI + LEGEND  ════════════════════════════ -->
     <section class="section-tight">
       <div class="subhead">
         <span class="eyebrow eyebrow--signal">ÜLKE DETAYI</span>
         <h2 class="heading">Bir ülkeye <span class="text-aurora">dokununca</span></h2>
         <p class="section-lead">
-          Haritada bir ülke seçtiğinde böyle bir kart açılır: başkent, para birimi,
+          Haritada bir ülke seçtiğinde burada açılır: başkent, para birimi,
           gelir/maliyet/net birikim, internet hızı ve vize için gereken minimum gelir.
         </p>
       </div>
 
       <div class="grid-2" style="align-items:start;">
+        <!-- Detail card (filled on click; starts with a hint) -->
         <div class="card card--navy" style="max-width:420px;">
-          <div style="display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--hairline-soft);padding-bottom:var(--spacing-16);">
-            <span style="font-size:34px;line-height:1;">🇵🇹</span>
-            <div>
-              <div class="card-title" style="font-size:var(--text-body-lg);">Portekiz</div>
-              <div class="eyebrow" style="margin-bottom:0;">AVRUPA</div>
-            </div>
+          <div id="detail-empty" style="text-align:center;padding:var(--spacing-16) 0;">
+            <span style="font-size:34px;line-height:1;">🌍</span>
+            <p class="card-body" style="margin-top:var(--spacing-12);">Küre üzerinde bir ülkeye tıkla ya da İlk 5 listesinden birini seç — detayları burada göreceksin.</p>
           </div>
-          <div style="display:flex;flex-direction:column;gap:2px;margin-top:var(--spacing-16);">
-            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Başkent</span><span style="color:var(--color-white);">Lizbon</span></div>
-            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Para birimi</span><span style="color:var(--color-white);">€ EUR · Euro</span></div>
-            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Aylık gelir</span><span style="color:var(--color-vivid-mint);">$2.800</span></div>
-            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Yaşam maliyeti</span><span style="color:var(--color-white);">$1.600</span></div>
-            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Net birikim</span><span style="color:var(--color-amber-glow);">$1.200</span></div>
-            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">İnternet hızı</span><span style="color:var(--color-white);">120 Mbps</span></div>
-            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Göçebe yoğunluğu</span><span style="color:var(--color-white);">92/100</span></div>
-            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Genel skor</span><span style="color:var(--color-vivid-mint);">88/100</span></div>
-            <div style="display:flex;justify-content:space-between;padding:10px 0 6px;margin-top:6px;border-top:1px solid var(--hairline-soft);font-size:var(--text-body-sm);">
-              <span class="muted">Dijital göçebe vizesi</span><span class="badge badge--mint">✓ Var</span>
+          <div id="detail-body" style="display:none;">
+            <div style="display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--hairline-soft);padding-bottom:var(--spacing-16);">
+              <span id="d-flag" style="font-size:34px;line-height:1;">🌍</span>
+              <div>
+                <div id="d-name" class="card-title" style="font-size:var(--text-body-lg);">—</div>
+                <div id="d-region" class="eyebrow" style="margin-bottom:0;">—</div>
+              </div>
             </div>
-            <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Vize min. gelir</span><span style="color:var(--color-white);">$3.950/ay</span></div>
+            <div style="display:flex;flex-direction:column;gap:2px;margin-top:var(--spacing-16);">
+              <div id="row-capital" style="display:none;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Başkent</span><span id="d-capital" style="color:var(--color-white);">—</span></div>
+              <div id="row-currency" style="display:none;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Para birimi</span><span id="d-currency" style="color:var(--color-white);">—</span></div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Aylık gelir</span><span id="d-income" style="color:var(--color-vivid-mint);">—</span></div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Yaşam maliyeti</span><span id="d-cost" style="color:var(--color-white);">—</span></div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Net birikim</span><span id="d-net" style="color:var(--color-amber-glow);">—</span></div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">İnternet hızı</span><span id="d-internet" style="color:var(--color-white);">—</span></div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Göçebe yoğunluğu</span><span id="d-density" style="color:var(--color-white);">—</span></div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Genel skor</span><span id="d-score" style="color:var(--color-vivid-mint);">—</span></div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0 6px;margin-top:6px;border-top:1px solid var(--hairline-soft);font-size:var(--text-body-sm);">
+                <span class="muted">Dijital göçebe vizesi</span><span id="d-visa"></span>
+              </div>
+              <div id="row-visa-min" style="display:none;justify-content:space-between;padding:6px 0;font-size:var(--text-body-sm);"><span class="muted">Vize min. gelir</span><span id="d-visa-min" style="color:var(--color-white);">—</span></div>
+            </div>
           </div>
         </div>
 
@@ -196,13 +198,14 @@
         <div class="card">
           <h3 class="card-title" style="font-size:var(--text-body-lg);">Skala — <span id="legend-metric" class="text-aurora">Genel Skor</span></h3>
           <div aria-hidden="true" style="height:12px;border-radius:var(--radius-full);margin:var(--spacing-16) 0 6px;
-            background:linear-gradient(90deg,#0f3a3a 0%, #16c253 35%, #ffdd00 65%, #ffb764 100%);"></div>
+            background:linear-gradient(90deg,#0e3a3a 0%, #2dd4bf 35%, #fde68a 65%, #f7a924 100%);"></div>
           <div style="display:flex;justify-content:space-between;font-size:var(--text-caption);color:var(--color-fog);">
             <span id="legend-min">düşük</span><span id="legend-max">yüksek</span>
           </div>
           <p class="card-body" style="font-size:var(--text-body-sm);">
             Küre üzerindeki çubuk yüksekliği ve rengi seçili metriği gösterir
-            (teal → amber). “Yaşam maliyeti” metriğinde düşük olan daha iyidir.
+            (teal → amber). "Yaşam maliyeti" metriğinde düşük olan daha iyidir.
+            Veri olmayan ülkeler düz gri kalır.
           </p>
         </div>
       </div>
@@ -211,7 +214,7 @@
     <!-- Dinamik disclaimer satırı -->
     <section class="section-tight">
       <p id="disclaimer" class="callout" style="max-width:760px;margin:0 auto;text-align:center;">
-        📊 Veriler curated 2026 baseline — <span id="ds-source">kaynak yükleniyor…</span>
+        📊 <span id="ds-source">Veriler hazırlanıyor…</span>
       </p>
     </section>
   </main>
@@ -269,148 +272,810 @@
   </footer>
 
   <script src="script.js"></script>
-  <!-- Page script — local demo only, no three.js / no external fetch -->
+
+  <!-- three.js r128 + topojson-client + three-globe (CDN, CORS-enabled) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/three-globe@2.24.10/dist/three-globe.min.js"></script>
+  <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+
+  <!-- Page script — real 3D globe, embedded data, no backend -->
   <script>
-    (function () {
-      "use strict";
+  (function () {
+    "use strict";
 
-      // Curated 2026 baseline demo (income/cost/internet/density in USD/Mbps/0-100)
-      var COUNTRIES = [
-        { n: "Portekiz",     fl: "🇵🇹", r: "Avrupa",    income: 2800, cost: 1600, internet: 120, density: 92, visa: true },
-        { n: "İspanya",      fl: "🇪🇸", r: "Avrupa",    income: 2900, cost: 1800, internet: 130, density: 85, visa: true },
-        { n: "Estonya",      fl: "🇪🇪", r: "Avrupa",    income: 2400, cost: 1300, internet: 150, density: 78, visa: true },
-        { n: "Almanya",      fl: "🇩🇪", r: "Avrupa",    income: 3800, cost: 2400, internet: 140, density: 70, visa: true },
-        { n: "Hollanda",     fl: "🇳🇱", r: "Avrupa",    income: 4100, cost: 2500, internet: 160, density: 62, visa: false },
-        { n: "Hırvatistan",  fl: "🇭🇷", r: "Avrupa",    income: 2200, cost: 1100, internet: 90,  density: 75, visa: true },
-        { n: "Türkiye",      fl: "🇹🇷", r: "Avrupa",    income: 1800, cost: 900,  internet: 60,  density: 62, visa: false },
-        { n: "Tayland",      fl: "🇹🇭", r: "Asya",      income: 2200, cost: 1100, internet: 100, density: 95, visa: true },
-        { n: "Endonezya",    fl: "🇮🇩", r: "Asya",      income: 2100, cost: 900,  internet: 60,  density: 96, visa: true },
-        { n: "Japonya",      fl: "🇯🇵", r: "Asya",      income: 3700, cost: 2200, internet: 200, density: 60, visa: true },
-        { n: "Singapur",     fl: "🇸🇬", r: "Asya",      income: 5500, cost: 3500, internet: 240, density: 75, visa: false },
-        { n: "Gürcistan",    fl: "🇬🇪", r: "Asya",      income: 2000, cost: 900,  internet: 60,  density: 78, visa: true },
-        { n: "Meksika",      fl: "🇲🇽", r: "Amerika",   income: 2500, cost: 1300, internet: 80,  density: 90, visa: true },
-        { n: "Kolombiya",    fl: "🇨🇴", r: "Amerika",   income: 2100, cost: 900,  internet: 80,  density: 82, visa: true },
-        { n: "Brezilya",     fl: "🇧🇷", r: "Amerika",   income: 2200, cost: 1100, internet: 100, density: 70, visa: true },
-        { n: "Kanada",       fl: "🇨🇦", r: "Amerika",   income: 3700, cost: 2300, internet: 150, density: 62, visa: true },
-        { n: "ABD",          fl: "🇺🇸", r: "Amerika",   income: 4500, cost: 3000, internet: 180, density: 78, visa: false },
-        { n: "Güney Afrika", fl: "🇿🇦", r: "Afrika",    income: 2200, cost: 1100, internet: 80,  density: 65, visa: true },
-        { n: "Fas",          fl: "🇲🇦", r: "Afrika",    income: 1900, cost: 850,  internet: 60,  density: 60, visa: false },
-        { n: "Mauritius",    fl: "🇲🇺", r: "Afrika",    income: 2300, cost: 1200, internet: 90,  density: 55, visa: true },
-        { n: "BAE",          fl: "🇦🇪", r: "Orta Doğu", income: 5200, cost: 2800, internet: 200, density: 85, visa: true },
-        { n: "İsrail",       fl: "🇮🇱", r: "Orta Doğu", income: 3800, cost: 2400, internet: 160, density: 62, visa: false },
-        { n: "Katar",        fl: "🇶🇦", r: "Orta Doğu", income: 5000, cost: 2500, internet: 180, density: 50, visa: false },
-        { n: "Avustralya",   fl: "🇦🇺", r: "Okyanusya", income: 3900, cost: 2600, internet: 130, density: 65, visa: false },
-        { n: "Yeni Zelanda", fl: "🇳🇿", r: "Okyanusya", income: 3500, cost: 2300, internet: 140, density: 58, visa: false }
-      ];
+    // ─── Embedded dataset (curated 2026 baseline — copied from backend/nomad.js) ───
+    // income/cost USD aylık · internet Mbps · density 0-100 · visa boolean
+    // visa_min_income: DNV minimum gereksinim (USD/ay), 0 = vize yok ya da gereksinim yok
+    var COUNTRIES = [
+      // Avrupa
+      { n:'Portekiz',         cca2:'PT', fl:'🇵🇹', r:'Avrupa',    lat:38.72,  lng:-9.14,   income:3000, cost:1700, internet:120, density:92, visa:true,  visa_min_income:3950 },
+      { n:'İspanya',          cca2:'ES', fl:'🇪🇸', r:'Avrupa',    lat:40.42,  lng:-3.70,   income:2950, cost:1800, internet:130, density:88, visa:true,  visa_min_income:3050 },
+      { n:'İtalya',           cca2:'IT', fl:'🇮🇹', r:'Avrupa',    lat:41.90,  lng:12.50,   income:2750, cost:1700, internet:90,  density:62, visa:true,  visa_min_income:2890 },
+      { n:'Almanya',          cca2:'DE', fl:'🇩🇪', r:'Avrupa',    lat:52.52,  lng:13.40,   income:3850, cost:2400, internet:140, density:72, visa:true,  visa_min_income:0    },
+      { n:'Hollanda',         cca2:'NL', fl:'🇳🇱', r:'Avrupa',    lat:52.37,  lng:4.90,    income:4150, cost:2500, internet:160, density:65, visa:false, visa_min_income:0    },
+      { n:'Estonya',          cca2:'EE', fl:'🇪🇪', r:'Avrupa',    lat:59.44,  lng:24.75,   income:2400, cost:1300, internet:150, density:80, visa:true,  visa_min_income:4500 },
+      { n:'Hırvatistan',      cca2:'HR', fl:'🇭🇷', r:'Avrupa',    lat:45.81,  lng:15.98,   income:2300, cost:1100, internet:90,  density:78, visa:true,  visa_min_income:2720 },
+      { n:'Çekya',            cca2:'CZ', fl:'🇨🇿', r:'Avrupa',    lat:50.08,  lng:14.44,   income:2500, cost:1300, internet:110, density:70, visa:true,  visa_min_income:5600 },
+      { n:'Polonya',          cca2:'PL', fl:'🇵🇱', r:'Avrupa',    lat:52.23,  lng:21.01,   income:2300, cost:1100, internet:120, density:58, visa:false, visa_min_income:0    },
+      { n:'Romanya',          cca2:'RO', fl:'🇷🇴', r:'Avrupa',    lat:44.43,  lng:26.10,   income:2100, cost:900,  internet:160, density:55, visa:true,  visa_min_income:3950 },
+      { n:'Yunanistan',       cca2:'GR', fl:'🇬🇷', r:'Avrupa',    lat:37.98,  lng:23.73,   income:2200, cost:1200, internet:80,  density:62, visa:true,  visa_min_income:3750 },
+      { n:'Macaristan',       cca2:'HU', fl:'🇭🇺', r:'Avrupa',    lat:47.50,  lng:19.04,   income:2300, cost:1100, internet:130, density:65, visa:true,  visa_min_income:3200 },
+      { n:'İrlanda',          cca2:'IE', fl:'🇮🇪', r:'Avrupa',    lat:53.35,  lng:-6.26,   income:4200, cost:2700, internet:130, density:55, visa:false, visa_min_income:0    },
+      { n:'Birleşik Krallık', cca2:'GB', fl:'🇬🇧', r:'Avrupa',    lat:51.51,  lng:-0.13,   income:4000, cost:2800, internet:140, density:65, visa:false, visa_min_income:0    },
+      { n:'Fransa',           cca2:'FR', fl:'🇫🇷', r:'Avrupa',    lat:48.85,  lng:2.35,    income:3500, cost:2200, internet:130, density:68, visa:false, visa_min_income:0    },
+      { n:'Norveç',           cca2:'NO', fl:'🇳🇴', r:'Avrupa',    lat:59.91,  lng:10.75,   income:4500, cost:3100, internet:150, density:48, visa:false, visa_min_income:0    },
+      { n:'İsveç',            cca2:'SE', fl:'🇸🇪', r:'Avrupa',    lat:59.33,  lng:18.07,   income:3900, cost:2300, internet:160, density:55, visa:false, visa_min_income:0    },
+      { n:'Türkiye',          cca2:'TR', fl:'🇹🇷', r:'Avrupa',    lat:41.01,  lng:28.98,   income:1800, cost:900,  internet:60,  density:65, visa:false, visa_min_income:0    },
+      { n:'Bulgaristan',      cca2:'BG', fl:'🇧🇬', r:'Avrupa',    lat:42.70,  lng:23.32,   income:1900, cost:850,  internet:130, density:55, visa:false, visa_min_income:0    },
+      { n:'Malta',            cca2:'MT', fl:'🇲🇹', r:'Avrupa',    lat:35.94,  lng:14.38,   income:2700, cost:1500, internet:120, density:75, visa:true,  visa_min_income:3750 },
 
-      // Derived: net + min-max normalized score
-      COUNTRIES.forEach(function (c) { c.net = c.income - c.cost; });
-      function normer(key) {
-        var vals = COUNTRIES.map(function (c) { return c[key]; });
-        var mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals);
-        return function (v) { return mx === mn ? 0.5 : (v - mn) / (mx - mn); };
-      }
-      var nI = normer("income"), nC = normer("cost"), nN = normer("internet"), nD = normer("density");
-      COUNTRIES.forEach(function (c) {
-        c.score = Math.round(100 * (0.35 * nI(c.income) + 0.30 * (1 - nC(c.cost)) + 0.20 * nN(c.internet) + 0.15 * nD(c.density)));
+      // Asya
+      { n:'Tayland',          cca2:'TH', fl:'🇹🇭', r:'Asya',      lat:13.75,  lng:100.50,  income:2200, cost:1100, internet:100, density:96, visa:true,  visa_min_income:6700 },
+      { n:'Vietnam',          cca2:'VN', fl:'🇻🇳', r:'Asya',      lat:21.03,  lng:105.85,  income:2000, cost:800,  internet:80,  density:90, visa:false, visa_min_income:0    },
+      { n:'Endonezya',        cca2:'ID', fl:'🇮🇩', r:'Asya',      lat:-8.41,  lng:115.19,  income:2100, cost:900,  internet:60,  density:97, visa:true,  visa_min_income:2000 },
+      { n:'Malezya',          cca2:'MY', fl:'🇲🇾', r:'Asya',      lat:3.14,   lng:101.69,  income:2400, cost:1100, internet:100, density:82, visa:true,  visa_min_income:2000 },
+      { n:'Filipinler',       cca2:'PH', fl:'🇵🇭', r:'Asya',      lat:14.60,  lng:120.98,  income:1900, cost:850,  internet:50,  density:72, visa:false, visa_min_income:0    },
+      { n:'Japonya',          cca2:'JP', fl:'🇯🇵', r:'Asya',      lat:35.68,  lng:139.69,  income:3700, cost:2200, internet:200, density:60, visa:true,  visa_min_income:5800 },
+      { n:'Güney Kore',       cca2:'KR', fl:'🇰🇷', r:'Asya',      lat:37.57,  lng:126.98,  income:3400, cost:2000, internet:230, density:58, visa:true,  visa_min_income:7200 },
+      { n:'Singapur',         cca2:'SG', fl:'🇸🇬', r:'Asya',      lat:1.35,   lng:103.82,  income:5500, cost:3500, internet:240, density:75, visa:false, visa_min_income:0    },
+      { n:'Hong Kong',        cca2:'HK', fl:'🇭🇰', r:'Asya',      lat:22.30,  lng:114.17,  income:4800, cost:3200, internet:210, density:65, visa:false, visa_min_income:0    },
+      { n:'Tayvan',           cca2:'TW', fl:'🇹🇼', r:'Asya',      lat:25.03,  lng:121.57,  income:3100, cost:1600, internet:170, density:74, visa:true,  visa_min_income:5500 },
+      { n:'Hindistan',        cca2:'IN', fl:'🇮🇳', r:'Asya',      lat:12.97,  lng:77.59,   income:1500, cost:600,  internet:50,  density:68, visa:false, visa_min_income:0    },
+      { n:'Sri Lanka',        cca2:'LK', fl:'🇱🇰', r:'Asya',      lat:6.93,   lng:79.85,   income:1600, cost:700,  internet:40,  density:55, visa:false, visa_min_income:0    },
+      { n:'Gürcistan',        cca2:'GE', fl:'🇬🇪', r:'Asya',      lat:41.71,  lng:44.78,   income:2000, cost:900,  internet:60,  density:80, visa:true,  visa_min_income:2000 },
+
+      // Amerika
+      { n:'Meksika',          cca2:'MX', fl:'🇲🇽', r:'Amerika',   lat:19.43,  lng:-99.13,  income:2500, cost:1300, internet:80,  density:92, visa:true,  visa_min_income:2600 },
+      { n:'Kosta Rika',       cca2:'CR', fl:'🇨🇷', r:'Amerika',   lat:9.93,   lng:-84.08,  income:2300, cost:1400, internet:60,  density:80, visa:true,  visa_min_income:3000 },
+      { n:'Kolombiya',        cca2:'CO', fl:'🇨🇴', r:'Amerika',   lat:4.71,   lng:-74.07,  income:2100, cost:900,  internet:80,  density:85, visa:true,  visa_min_income:750  },
+      { n:'Arjantin',         cca2:'AR', fl:'🇦🇷', r:'Amerika',   lat:-34.61, lng:-58.38,  income:2000, cost:850,  internet:90,  density:78, visa:true,  visa_min_income:2500 },
+      { n:'Brezilya',         cca2:'BR', fl:'🇧🇷', r:'Amerika',   lat:-23.55, lng:-46.63,  income:2200, cost:1100, internet:100, density:72, visa:true,  visa_min_income:1500 },
+      { n:'Şili',             cca2:'CL', fl:'🇨🇱', r:'Amerika',   lat:-33.45, lng:-70.65,  income:2600, cost:1300, internet:120, density:55, visa:false, visa_min_income:0    },
+      { n:'Peru',             cca2:'PE', fl:'🇵🇪', r:'Amerika',   lat:-12.05, lng:-77.04,  income:1900, cost:850,  internet:50,  density:48, visa:false, visa_min_income:0    },
+      { n:'Uruguay',          cca2:'UY', fl:'🇺🇾', r:'Amerika',   lat:-34.90, lng:-56.16,  income:2400, cost:1400, internet:90,  density:50, visa:true,  visa_min_income:0    },
+      { n:'Kanada',           cca2:'CA', fl:'🇨🇦', r:'Amerika',   lat:43.65,  lng:-79.38,  income:3700, cost:2300, internet:150, density:62, visa:false, visa_min_income:0    },
+      { n:'ABD',              cca2:'US', fl:'🇺🇸', r:'Amerika',   lat:40.71,  lng:-74.01,  income:4500, cost:3000, internet:180, density:78, visa:false, visa_min_income:0    },
+      { n:'Panama',           cca2:'PA', fl:'🇵🇦', r:'Amerika',   lat:8.98,   lng:-79.52,  income:2400, cost:1500, internet:80,  density:68, visa:true,  visa_min_income:3000 },
+      { n:'Ekvador',          cca2:'EC', fl:'🇪🇨', r:'Amerika',   lat:-0.18,  lng:-78.47,  income:1800, cost:800,  internet:50,  density:62, visa:true,  visa_min_income:1350 },
+
+      // Afrika
+      { n:'Güney Afrika',     cca2:'ZA', fl:'🇿🇦', r:'Afrika',    lat:-33.92, lng:18.42,   income:2200, cost:1100, internet:80,  density:70, visa:true,  visa_min_income:3300 },
+      { n:'Mısır',            cca2:'EG', fl:'🇪🇬', r:'Afrika',    lat:30.04,  lng:31.23,   income:1700, cost:700,  internet:50,  density:50, visa:false, visa_min_income:0    },
+      { n:'Fas',              cca2:'MA', fl:'🇲🇦', r:'Afrika',    lat:31.63,  lng:-7.99,   income:1900, cost:850,  internet:60,  density:62, visa:false, visa_min_income:0    },
+      { n:'Kenya',            cca2:'KE', fl:'🇰🇪', r:'Afrika',    lat:-1.29,  lng:36.82,   income:1800, cost:900,  internet:50,  density:48, visa:false, visa_min_income:0    },
+      { n:'Tanzanya',         cca2:'TZ', fl:'🇹🇿', r:'Afrika',    lat:-6.79,  lng:39.21,   income:1600, cost:750,  internet:40,  density:45, visa:false, visa_min_income:0    },
+      { n:'Mauritius',        cca2:'MU', fl:'🇲🇺', r:'Afrika',    lat:-20.35, lng:57.55,   income:2300, cost:1200, internet:90,  density:58, visa:true,  visa_min_income:1500 },
+      { n:'Cabo Verde',       cca2:'CV', fl:'🇨🇻', r:'Afrika',    lat:14.93,  lng:-23.51,  income:1800, cost:900,  internet:50,  density:45, visa:true,  visa_min_income:1500 },
+      { n:'Tunus',            cca2:'TN', fl:'🇹🇳', r:'Afrika',    lat:36.81,  lng:10.18,   income:1700, cost:750,  internet:60,  density:42, visa:false, visa_min_income:0    },
+
+      // Orta Doğu
+      { n:'BAE',              cca2:'AE', fl:'🇦🇪', r:'Orta Doğu', lat:25.20,  lng:55.27,   income:5200, cost:2800, internet:200, density:88, visa:true,  visa_min_income:3500 },
+      { n:'Katar',            cca2:'QA', fl:'🇶🇦', r:'Orta Doğu', lat:25.28,  lng:51.52,   income:5000, cost:2500, internet:180, density:50, visa:false, visa_min_income:0    },
+      { n:'İsrail',           cca2:'IL', fl:'🇮🇱', r:'Orta Doğu', lat:32.09,  lng:34.78,   income:3800, cost:2400, internet:160, density:62, visa:false, visa_min_income:0    },
+      { n:'Suudi Arabistan',  cca2:'SA', fl:'🇸🇦', r:'Orta Doğu', lat:24.71,  lng:46.67,   income:3400, cost:1700, internet:120, density:42, visa:false, visa_min_income:0    },
+      { n:'Bahreyn',          cca2:'BH', fl:'🇧🇭', r:'Orta Doğu', lat:26.07,  lng:50.55,   income:3600, cost:1900, internet:130, density:48, visa:false, visa_min_income:0    },
+      { n:'Ürdün',            cca2:'JO', fl:'🇯🇴', r:'Orta Doğu', lat:31.95,  lng:35.93,   income:1800, cost:1000, internet:60,  density:38, visa:false, visa_min_income:0    },
+      { n:'Umman',            cca2:'OM', fl:'🇴🇲', r:'Orta Doğu', lat:23.59,  lng:58.41,   income:3200, cost:1600, internet:110, density:40, visa:false, visa_min_income:0    },
+
+      // Okyanusya
+      { n:'Avustralya',       cca2:'AU', fl:'🇦🇺', r:'Okyanusya', lat:-33.87, lng:151.21,  income:3900, cost:2600, internet:130, density:68, visa:false, visa_min_income:0    },
+      { n:'Yeni Zelanda',     cca2:'NZ', fl:'🇳🇿', r:'Okyanusya', lat:-36.85, lng:174.76,  income:3500, cost:2300, internet:140, density:90, visa:true,  visa_min_income:610  }
+    ];
+
+    // ─── Static capital + currency lookup (no REST Countries here) ───
+    // cca2 → { capital, currency:{ code, name, symbol } }
+    var META = {
+      PT:{ capital:'Lizbon',     currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      ES:{ capital:'Madrid',     currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      IT:{ capital:'Roma',       currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      DE:{ capital:'Berlin',     currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      NL:{ capital:'Amsterdam',  currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      EE:{ capital:'Tallinn',    currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      HR:{ capital:'Zagreb',     currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      CZ:{ capital:'Prag',       currency:{ code:'CZK', name:'Çek Korunası',        symbol:'Kč' } },
+      PL:{ capital:'Varşova',    currency:{ code:'PLN', name:'Zloti',               symbol:'zł' } },
+      RO:{ capital:'Bükreş',     currency:{ code:'RON', name:'Rumen Leyi',          symbol:'lei'} },
+      GR:{ capital:'Atina',      currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      HU:{ capital:'Budapeşte',  currency:{ code:'HUF', name:'Macar Forinti',       symbol:'Ft' } },
+      IE:{ capital:'Dublin',     currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      GB:{ capital:'Londra',     currency:{ code:'GBP', name:'İngiliz Sterlini',    symbol:'£'  } },
+      FR:{ capital:'Paris',      currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      NO:{ capital:'Oslo',       currency:{ code:'NOK', name:'Norveç Kronu',        symbol:'kr' } },
+      SE:{ capital:'Stockholm',  currency:{ code:'SEK', name:'İsveç Kronu',         symbol:'kr' } },
+      TR:{ capital:'Ankara',     currency:{ code:'TRY', name:'Türk Lirası',         symbol:'₺'  } },
+      BG:{ capital:'Sofya',      currency:{ code:'BGN', name:'Bulgar Levası',       symbol:'лв' } },
+      MT:{ capital:'Valletta',   currency:{ code:'EUR', name:'Euro',                symbol:'€'  } },
+      TH:{ capital:'Bangkok',    currency:{ code:'THB', name:'Tayland Bahtı',       symbol:'฿'  } },
+      VN:{ capital:'Hanoi',      currency:{ code:'VND', name:'Vietnam Dongu',       symbol:'₫'  } },
+      ID:{ capital:'Cakarta',    currency:{ code:'IDR', name:'Endonezya Rupisi',    symbol:'Rp' } },
+      MY:{ capital:'Kuala Lumpur',currency:{ code:'MYR', name:'Malezya Ringiti',    symbol:'RM' } },
+      PH:{ capital:'Manila',     currency:{ code:'PHP', name:'Filipin Pesosu',      symbol:'₱'  } },
+      JP:{ capital:'Tokyo',      currency:{ code:'JPY', name:'Japon Yeni',          symbol:'¥'  } },
+      KR:{ capital:'Seul',       currency:{ code:'KRW', name:'Güney Kore Wonu',     symbol:'₩'  } },
+      SG:{ capital:'Singapur',   currency:{ code:'SGD', name:'Singapur Doları',     symbol:'S$' } },
+      HK:{ capital:'Hong Kong',  currency:{ code:'HKD', name:'Hong Kong Doları',    symbol:'HK$'} },
+      TW:{ capital:'Taipei',     currency:{ code:'TWD', name:'Yeni Tayvan Doları',  symbol:'NT$'} },
+      IN:{ capital:'Yeni Delhi', currency:{ code:'INR', name:'Hindistan Rupisi',    symbol:'₹'  } },
+      LK:{ capital:'Kolombo',    currency:{ code:'LKR', name:'Sri Lanka Rupisi',    symbol:'Rs' } },
+      GE:{ capital:'Tiflis',     currency:{ code:'GEL', name:'Gürcü Larisi',        symbol:'₾'  } },
+      MX:{ capital:'Meksiko',    currency:{ code:'MXN', name:'Meksika Pesosu',      symbol:'$'  } },
+      CR:{ capital:'San José',   currency:{ code:'CRC', name:'Kosta Rika Kolonu',   symbol:'₡'  } },
+      CO:{ capital:'Bogotá',     currency:{ code:'COP', name:'Kolombiya Pesosu',    symbol:'$'  } },
+      AR:{ capital:'Buenos Aires',currency:{ code:'ARS', name:'Arjantin Pesosu',    symbol:'$'  } },
+      BR:{ capital:'Brasília',   currency:{ code:'BRL', name:'Brezilya Reali',      symbol:'R$' } },
+      CL:{ capital:'Santiago',   currency:{ code:'CLP', name:'Şili Pesosu',         symbol:'$'  } },
+      PE:{ capital:'Lima',       currency:{ code:'PEN', name:'Peru Solu',           symbol:'S/' } },
+      UY:{ capital:'Montevideo', currency:{ code:'UYU', name:'Uruguay Pesosu',      symbol:'$U' } },
+      CA:{ capital:'Ottawa',     currency:{ code:'CAD', name:'Kanada Doları',       symbol:'C$' } },
+      US:{ capital:'Washington', currency:{ code:'USD', name:'ABD Doları',          symbol:'$'  } },
+      PA:{ capital:'Panama City',currency:{ code:'PAB', name:'Panama Balboası',     symbol:'B/.'} },
+      EC:{ capital:'Quito',      currency:{ code:'USD', name:'ABD Doları',          symbol:'$'  } },
+      ZA:{ capital:'Pretoria',   currency:{ code:'ZAR', name:'Güney Afrika Randı',  symbol:'R'  } },
+      EG:{ capital:'Kahire',     currency:{ code:'EGP', name:'Mısır Lirası',        symbol:'£'  } },
+      MA:{ capital:'Rabat',      currency:{ code:'MAD', name:'Fas Dirhemi',         symbol:'DH' } },
+      KE:{ capital:'Nairobi',    currency:{ code:'KES', name:'Kenya Şilini',        symbol:'KSh'} },
+      TZ:{ capital:'Dodoma',     currency:{ code:'TZS', name:'Tanzanya Şilini',     symbol:'TSh'} },
+      MU:{ capital:'Port Louis', currency:{ code:'MUR', name:'Mauritius Rupisi',    symbol:'₨'  } },
+      CV:{ capital:'Praia',      currency:{ code:'CVE', name:'Cabo Verde Esküdosu', symbol:'$'  } },
+      TN:{ capital:'Tunus',      currency:{ code:'TND', name:'Tunus Dinarı',        symbol:'DT' } },
+      AE:{ capital:'Abu Dabi',   currency:{ code:'AED', name:'BAE Dirhemi',         symbol:'د.إ'} },
+      QA:{ capital:'Doha',       currency:{ code:'QAR', name:'Katar Riyali',        symbol:'﷼'  } },
+      IL:{ capital:'Kudüs',      currency:{ code:'ILS', name:'İsrail Şekeli',       symbol:'₪'  } },
+      SA:{ capital:'Riyad',      currency:{ code:'SAR', name:'Suudi Riyali',        symbol:'﷼'  } },
+      BH:{ capital:'Manama',     currency:{ code:'BHD', name:'Bahreyn Dinarı',      symbol:'.د.ب'} },
+      JO:{ capital:'Amman',      currency:{ code:'JOD', name:'Ürdün Dinarı',        symbol:'د.ا'} },
+      OM:{ capital:'Maskat',     currency:{ code:'OMR', name:'Umman Riyali',        symbol:'﷼'  } },
+      AU:{ capital:'Kanberra',   currency:{ code:'AUD', name:'Avustralya Doları',   symbol:'A$' } },
+      NZ:{ capital:'Wellington', currency:{ code:'NZD', name:'Yeni Zelanda Doları', symbol:'NZ$'} }
+    };
+    // Merge META onto COUNTRIES (capital + currency)
+    COUNTRIES.forEach(function (c) {
+      var m = META[c.cca2];
+      if (m) { c.capital = m.capital; c.currency = m.currency; }
+    });
+
+    // ─── Derived: net + min-max normalized score (SAME formula as original) ───
+    COUNTRIES.forEach(function (c) { c.net = c.income - c.cost; });
+    function normVals(key) {
+      var vals = COUNTRIES.map(function (c) { return c[key]; });
+      var mn = Math.min.apply(null, vals), mx = Math.max.apply(null, vals);
+      return function (v) { return (mx === mn) ? 0.5 : (v - mn) / (mx - mn); };
+    }
+    var nIncome = normVals('income'), nCost = normVals('cost'),
+        nInternet = normVals('internet'), nDensity = normVals('density');
+    COUNTRIES.forEach(function (c) {
+      c.score = Math.round(100 * (
+        0.35 * nIncome(c.income) +
+        0.30 * (1 - nCost(c.cost)) +
+        0.20 * nInternet(c.internet) +
+        0.15 * nDensity(c.density)
+      ));
+    });
+
+    // ─── Labels / formatters / invert ───
+    var METRIC_LABELS = {
+      score:'Genel Skor', income:'Aylık Gelir', cost:'Yaşam Maliyeti',
+      net:'Net Birikim', internet:'İnternet Hızı', density:'Göçebe Yoğunluğu'
+    };
+    var METRIC_FORMAT = {
+      score:    function (v) { return '' + v; },
+      income:   function (v) { return '$' + v; },
+      cost:     function (v) { return '$' + v; },
+      net:      function (v) { return '$' + v; },
+      internet: function (v) { return v + ' Mbps'; },
+      density:  function (v) { return v + '/100'; }
+    };
+    var METRIC_INVERT = { cost: true }; // maliyet düşükse iyi
+
+    // ─── Filter state ───
+    var state = {
+      metric: 'score',
+      regions: { 'Avrupa':1, 'Asya':1, 'Amerika':1, 'Afrika':1, 'Orta Doğu':1, 'Okyanusya':1 },
+      incomeMin: 0,
+      visaOnly: false,
+      selected: null,
+      hovered: null
+    };
+    function activeCountries() {
+      return COUNTRIES.filter(function (c) {
+        return state.regions[c.r] && c.income >= state.incomeMin && (!state.visaOnly || c.visa);
       });
+    }
 
-      var LABELS = {
-        score: "Genel Skor", income: "Aylık Gelir", cost: "Yaşam Maliyeti",
-        net: "Net Birikim", internet: "İnternet Hızı", density: "Göçebe Yoğunluğu"
-      };
-      var FMT = {
-        score: function (v) { return v + "/100"; },
-        income: function (v) { return "$" + v; },
-        cost: function (v) { return "$" + v; },
-        net: function (v) { return "$" + v; },
-        internet: function (v) { return v + " Mbps"; },
-        density: function (v) { return v + "/100"; }
-      };
-      var INVERT = { cost: true }; // maliyet düşükse iyi
+    // ─── DOM refs ───
+    var host       = document.getElementById('globe-host');
+    var loaderEl   = document.getElementById('globe-loader');
+    var tooltip    = document.getElementById('tooltip');
+    var top5List   = document.getElementById('top5-list');
+    var top5Metric = document.getElementById('top5-metric');
+    var legendMetric = document.getElementById('legend-metric');
+    var legendMin  = document.getElementById('legend-min');
+    var legendMax  = document.getElementById('legend-max');
+    var dsSource   = document.getElementById('ds-source');
 
-      var state = {
-        metric: "score",
-        regions: { "Avrupa": 1, "Asya": 1, "Amerika": 1, "Afrika": 1, "Orta Doğu": 1, "Okyanusya": 1 },
-        incomeMin: 0,
-        visaOnly: false
-      };
+    function hostSize() {
+      var w = host.clientWidth  || 600;
+      var h = host.clientHeight || 480;
+      return { w: w, h: h };
+    }
 
-      function activeCountries() {
-        return COUNTRIES.filter(function (c) {
-          return state.regions[c.r] && c.income >= state.incomeMin && (!state.visaOnly || c.visa);
+    // ─── Disclaimer (no external source now) ───
+    if (dsSource) {
+      var when = new Date().toLocaleDateString('tr-TR', { day:'numeric', month:'long', year:'numeric' });
+      dsSource.textContent = 'Veriler curated 2026 baseline · ' + COUNTRIES.length + ' ülke · güncelleme: ' + when;
+    }
+
+    // ─── Top-5 (always works, independent of WebGL) ───
+    function refreshTop5(active) {
+      var key = state.metric;
+      var invert = !!METRIC_INVERT[key];
+      var fmt = METRIC_FORMAT[key];
+      var sorted = active.slice().sort(function (a, b) {
+        return invert ? a[key] - b[key] : b[key] - a[key];
+      }).slice(0, 5);
+
+      top5Metric.textContent = METRIC_LABELS[key];
+      top5List.innerHTML = '';
+      if (!sorted.length) {
+        top5List.innerHTML = '<p class="fine">Filtreyle eşleşen ülke yok.</p>';
+        return;
+      }
+      sorted.forEach(function (c, i) {
+        var row = document.createElement('button');
+        row.type = 'button';
+        row.setAttribute('data-name', c.n);
+        row.style.cssText =
+          'display:flex;align-items:center;justify-content:space-between;gap:10px;' +
+          'padding:8px 12px;border-radius:var(--radius-xl);background:var(--surface-charcoal);' +
+          'border:1px solid var(--hairline-soft);cursor:pointer;font-family:inherit;text-align:left;color:inherit;';
+        row.innerHTML =
+          '<span class="fine" style="width:22px;">#' + (i + 1) + '</span>' +
+          '<span style="flex:1;font-size:var(--text-body-sm);color:var(--color-white);">' + c.fl + ' ' + c.n + '</span>' +
+          '<span style="font-size:var(--text-body-sm);color:var(--color-amber-glow);font-weight:500;">' + fmt(c[key]) + '</span>';
+        row.addEventListener('click', function () {
+          openDetail(c);
+          if (globe) focusOn(c);
         });
+        top5List.appendChild(row);
+      });
+    }
+
+    // ─── Detail card ───
+    function setRow(rowId, valId, value) {
+      var row = document.getElementById(rowId);
+      var val = document.getElementById(valId);
+      if (value) { val.textContent = value; row.style.display = 'flex'; }
+      else { row.style.display = 'none'; }
+    }
+    function openDetail(c) {
+      state.selected = c;
+      document.getElementById('detail-empty').style.display = 'none';
+      document.getElementById('detail-body').style.display = 'block';
+      var usd = function (n) { return '$' + n.toLocaleString('en-US'); };
+      document.getElementById('d-flag').textContent = c.fl;
+      document.getElementById('d-name').textContent = c.n;
+      document.getElementById('d-region').textContent = c.r;
+      document.getElementById('d-income').textContent = usd(c.income);
+      document.getElementById('d-cost').textContent   = usd(c.cost);
+      document.getElementById('d-net').textContent    = usd(c.net);
+      document.getElementById('d-internet').textContent = c.internet + ' Mbps';
+      document.getElementById('d-density').textContent  = c.density + '/100';
+      document.getElementById('d-score').textContent    = c.score + '/100';
+      document.getElementById('d-visa').innerHTML = c.visa
+        ? '<span class="badge badge--mint">✓ Var</span>'
+        : '<span class="badge">— Yok</span>';
+
+      // Capital — only show if known
+      setRow('row-capital', 'd-capital', c.capital || '');
+      // Currency — only show if known
+      var curTxt = '';
+      if (c.currency && c.currency.code) {
+        var cur = c.currency;
+        curTxt = ((cur.symbol ? cur.symbol + ' ' : '') + cur.code + (cur.name ? ' · ' + cur.name : '')).trim();
+      }
+      setRow('row-currency', 'd-currency', curTxt);
+      // Visa min income — only if visa + positive requirement
+      var minTxt = (c.visa && typeof c.visa_min_income === 'number' && c.visa_min_income > 0)
+        ? usd(c.visa_min_income) + '/ay' : '';
+      setRow('row-visa-min', 'd-visa-min', minTxt);
+    }
+
+    // ─── three.js + three-globe (optional layer — page works without it) ───
+    var globe = null, scene = null, camera = null, renderer = null;
+    var allFeatures = [];
+    var metricRange = { min: 0, max: 1, invert: false };
+    var T = window.THREE;
+
+    function refreshMarkers() {
+      var active = activeCountries();
+      var activeNames = {};
+      active.forEach(function (c) { activeNames[c.n] = 1; });
+      COUNTRIES.forEach(function (c) { c.__active = !!activeNames[c.n]; });
+
+      var key = state.metric;
+      var invert = !!METRIC_INVERT[key];
+      var min = Infinity, max = -Infinity;
+      active.forEach(function (c) { if (c[key] < min) min = c[key]; if (c[key] > max) max = c[key]; });
+      if (!isFinite(min)) { min = 0; max = 1; }
+      if (min === max) max = min + 1;
+      metricRange = { min: min, max: max, invert: invert };
+
+      if (globe && allFeatures.length) {
+        globe
+          .polygonAltitude(altitudeFor)
+          .polygonCapColor(capColorFor)
+          .polygonSideColor(sideColorFor)
+          .polygonStrokeColor(strokeColorFor);
       }
 
-      var top5List = document.getElementById("top5-list");
-      var top5Metric = document.getElementById("top5-metric");
-      var legendMetric = document.getElementById("legend-metric");
+      // Legend
+      var fmt = METRIC_FORMAT[key];
+      legendMetric.textContent = METRIC_LABELS[key];
+      legendMin.textContent = invert ? fmt(max) : fmt(min);
+      legendMax.textContent = invert ? fmt(min) : fmt(max);
 
-      function refresh() {
-        var key = state.metric;
-        var invert = !!INVERT[key];
-        var active = activeCountries();
-        var sorted = active.slice().sort(function (a, b) {
-          return invert ? a[key] - b[key] : b[key] - a[key];
-        }).slice(0, 5);
+      refreshTop5(active);
+    }
 
-        top5Metric.textContent = LABELS[key];
-        legendMetric.textContent = LABELS[key];
+    // Initial paint (works even if 3D never loads)
+    refreshMarkers();
 
-        top5List.innerHTML = "";
-        if (!sorted.length) {
-          top5List.innerHTML = '<p class="fine">Filtreyle eşleşen ülke yok.</p>';
-          return;
+    // ─── Name normalization (world-atlas English → our dataset) ───
+    function nameKey(s) {
+      return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+    }
+    var NAME_ALIASES = {
+      'united states of america':'ABD', 'united states':'ABD', 'usa':'ABD',
+      'united kingdom':'Birleşik Krallık', 'great britain':'Birleşik Krallık',
+      'czech republic':'Çekya', 'czechia':'Çekya',
+      'south korea':'Güney Kore', 'republic of korea':'Güney Kore', 'korea':'Güney Kore',
+      'taiwan':'Tayvan',
+      'united arab emirates':'BAE',
+      'saudi arabia':'Suudi Arabistan',
+      'south africa':'Güney Afrika',
+      'egypt':'Mısır', 'morocco':'Fas', 'tanzania':'Tanzanya', 'tunisia':'Tunus',
+      'cape verde':'Cabo Verde', 'cabo verde':'Cabo Verde',
+      'jordan':'Ürdün', 'oman':'Umman', 'qatar':'Katar', 'bahrain':'Bahreyn',
+      'australia':'Avustralya', 'new zealand':'Yeni Zelanda',
+      'sweden':'İsveç', 'norway':'Norveç', 'germany':'Almanya', 'spain':'İspanya',
+      'portugal':'Portekiz', 'netherlands':'Hollanda', 'estonia':'Estonya',
+      'croatia':'Hırvatistan', 'poland':'Polonya', 'romania':'Romanya',
+      'greece':'Yunanistan', 'hungary':'Macaristan', 'ireland':'İrlanda',
+      'france':'Fransa', 'italy':'İtalya', 'turkey':'Türkiye', 'türkiye':'Türkiye',
+      'bulgaria':'Bulgaristan', 'malta':'Malta',
+      'thailand':'Tayland', 'vietnam':'Vietnam', 'indonesia':'Endonezya',
+      'malaysia':'Malezya', 'philippines':'Filipinler', 'japan':'Japonya',
+      'singapore':'Singapur', 'hong kong':'Hong Kong', 'india':'Hindistan',
+      'sri lanka':'Sri Lanka', 'georgia':'Gürcistan',
+      'mexico':'Meksika', 'costa rica':'Kosta Rika', 'colombia':'Kolombiya',
+      'argentina':'Arjantin', 'brazil':'Brezilya', 'chile':'Şili', 'peru':'Peru',
+      'uruguay':'Uruguay', 'canada':'Kanada', 'panama':'Panama', 'ecuador':'Ekvador',
+      'kenya':'Kenya', 'mauritius':'Mauritius', 'israel':'İsrail',
+      'finland':'__skip', 'russia':'__skip'
+    };
+    var byName = {};
+    COUNTRIES.forEach(function (c) { byName[nameKey(c.n)] = c; });
+    Object.keys(NAME_ALIASES).forEach(function (alias) {
+      var tn = NAME_ALIASES[alias];
+      if (tn === '__skip') return;
+      var c = COUNTRIES.filter(function (x) { return x.n === tn; })[0];
+      if (c) byName[nameKey(alias)] = c;
+    });
+    function lookupCountry(feat) {
+      var props = (feat && feat.properties) || {};
+      var candidates = [props.name, props.NAME, props.ADMIN, props.NAME_LONG, props.name_long];
+      for (var i = 0; i < candidates.length; i++) {
+        if (!candidates[i]) continue;
+        var c = byName[nameKey(candidates[i])];
+        if (c) return c;
+      }
+      return null;
+    }
+
+    // ─── Color ramp: dark teal → teal → amber → orange ───
+    var RAMP = [
+      { t:0.00, c:[14, 58, 58]    },
+      { t:0.35, c:[45, 212, 191]  },
+      { t:0.65, c:[253, 230, 138] },
+      { t:1.00, c:[247, 169, 36]  }
+    ];
+    function rampColor(t) {
+      t = Math.max(0, Math.min(1, t));
+      for (var i = 1; i < RAMP.length; i++) {
+        if (t <= RAMP[i].t) {
+          var a = RAMP[i - 1], b = RAMP[i];
+          var k = (t - a.t) / (b.t - a.t);
+          return [
+            Math.round(a.c[0] + (b.c[0] - a.c[0]) * k),
+            Math.round(a.c[1] + (b.c[1] - a.c[1]) * k),
+            Math.round(a.c[2] + (b.c[2] - a.c[2]) * k)
+          ];
         }
-        sorted.forEach(function (c, i) {
-          var row = document.createElement("div");
-          row.style.cssText =
-            "display:flex;align-items:center;justify-content:space-between;gap:10px;" +
-            "padding:8px 12px;border-radius:var(--radius-xl);background:var(--surface-charcoal);" +
-            "border:1px solid var(--hairline-soft);";
-          row.innerHTML =
-            '<span class="fine" style="width:22px;">#' + (i + 1) + "</span>" +
-            '<span style="flex:1;font-size:var(--text-body-sm);color:var(--color-white);">' + c.fl + " " + c.n + "</span>" +
-            '<span style="font-size:var(--text-body-sm);color:var(--color-amber-glow);font-weight:500;">' + FMT[key](c[key]) + "</span>";
-          top5List.appendChild(row);
-        });
       }
+      return RAMP[RAMP.length - 1].c.slice();
+    }
+    function rampCss(t, alpha) {
+      var c = rampColor(t);
+      return alpha != null
+        ? 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + alpha + ')'
+        : 'rgb(' + c[0] + ',' + c[1] + ',' + c[2] + ')';
+    }
+    function normT(c) {
+      var key = state.metric;
+      var t = (c[key] - metricRange.min) / (metricRange.max - metricRange.min);
+      if (metricRange.invert) t = 1 - t;
+      return Math.max(0, Math.min(1, t));
+    }
 
-      // ── Bindings ──
-      document.getElementById("metric").addEventListener("change", function (e) {
-        state.metric = e.target.value;
-        refresh();
-      });
-      var chips = document.querySelectorAll("#region-chips .chip-toggle");
-      chips.forEach(function (chip) {
-        chip.addEventListener("click", function () {
-          var r = chip.getAttribute("data-region");
-          if (state.regions[r]) { delete state.regions[r]; chip.classList.remove("is-on"); chip.style.opacity = "0.4"; }
-          else { state.regions[r] = 1; chip.classList.add("is-on"); chip.style.opacity = ""; }
-          refresh();
-        });
-      });
-      var inc = document.getElementById("income-min");
-      var incVal = document.getElementById("income-val");
-      inc.addEventListener("input", function (e) {
-        state.incomeMin = +e.target.value;
-        incVal.textContent = "$" + state.incomeMin;
-        refresh();
-      });
-      document.getElementById("visa-only").addEventListener("change", function (e) {
-        state.visaOnly = e.target.checked;
-        refresh();
-      });
+    // ─── Polygon styling callbacks ───
+    function altitudeFor(feat) {
+      var c = lookupCountry(feat);
+      if (!c || !c.__active) return 0.005;
+      return 0.01 + normT(c) * 0.32; // max %32 globe radius
+    }
+    function capColorFor(feat) {
+      var c = lookupCountry(feat);
+      if (!c) return 'rgba(120, 130, 145, 0.18)';        // veri yok — gri
+      if (!c.__active) return 'rgba(120, 130, 145, 0.25)'; // filtre dışı — soluk
+      return rampCss(normT(c), 0.92);
+    }
+    function sideColorFor(feat) {
+      var c = lookupCountry(feat);
+      if (!c || !c.__active) return 'rgba(45, 212, 191, 0.08)';
+      return rampCss(normT(c) * 0.6, 0.45);
+    }
+    function strokeColorFor(feat) {
+      var c = lookupCountry(feat);
+      return (c && c.__active) ? 'rgba(255,255,255,0.25)' : 'rgba(180,200,220,0.10)';
+    }
 
-      // Dynamic disclaimer line ("kaynak · N ülke · güncelleme")
-      var ds = document.getElementById("ds-source");
-      if (ds) {
-        var when = new Date().toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
-        ds.textContent = "curated baseline (önizleme) · " + COUNTRIES.length + " ülke · güncelleme: " + when;
+    // ─── lat/lng → vec (focus için) ───
+    function latLngToVec(lat, lng, radius) {
+      var phi   = (90 - lat) * Math.PI / 180;
+      var theta = (lng + 180) * Math.PI / 180;
+      return new T.Vector3(
+        -radius * Math.sin(phi) * Math.cos(theta),
+         radius * Math.cos(phi),
+         radius * Math.sin(phi) * Math.sin(theta)
+      );
+    }
+    var focusTarget = null;
+    function focusOn(c) {
+      if (!globe) return;
+      focusTarget = latLngToVec(c.lat, c.lng, GLOBE_RADIUS).normalize();
+    }
+    function applyFocusEase() {
+      if (!focusTarget) return;
+      var desired = new T.Quaternion();
+      var m = new T.Matrix4().lookAt(new T.Vector3(0, 0, 0), focusTarget.clone().negate(), new T.Vector3(0, 1, 0));
+      desired.setFromRotationMatrix(m);
+      globe.quaternion.slerp(desired, 0.06);
+      if (globe.quaternion.angleTo(desired) < 0.01) focusTarget = null;
+    }
+
+    // ─── Interaction state ───
+    var GLOBE_RADIUS = 100;
+    var isDragging = false, lastX = 0, lastY = 0, velX = 0, velY = 0;
+    var autoRotate = true, lastInteractTs = (window.performance ? performance.now() : Date.now());
+    var raycaster = null, ndc = null;
+
+    function nowMs() { return window.performance ? performance.now() : Date.now(); }
+
+    function pointerDown(x, y) {
+      isDragging = true; lastX = x; lastY = y; velX = 0; velY = 0;
+      autoRotate = false; lastInteractTs = nowMs(); focusTarget = null;
+    }
+    function pointerMove(x, y) {
+      if (!isDragging || !globe) return;
+      var dx = (x - lastX) * 0.005;
+      var dy = (y - lastY) * 0.005;
+      globe.rotation.y += dx;
+      globe.rotation.x += dy;
+      globe.rotation.x = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, globe.rotation.x));
+      velX = dx; velY = dy; lastX = x; lastY = y;
+    }
+    function pointerUp() { isDragging = false; lastInteractTs = nowMs(); }
+
+    function relXY(clientX, clientY) {
+      var rect = host.getBoundingClientRect();
+      return { x: clientX - rect.left, y: clientY - rect.top };
+    }
+
+    function pickCountryAt(localX, localY) {
+      if (!globe || !allFeatures.length || !raycaster) return null;
+      var sz = hostSize();
+      ndc.x = (localX / sz.w) * 2 - 1;
+      ndc.y = -(localY / sz.h) * 2 + 1;
+      raycaster.setFromCamera(ndc, camera);
+      var hits = raycaster.intersectObjects(globe.children, true);
+      for (var i = 0; i < hits.length; i++) {
+        var feat = findFeatureInHit(hits[i].object);
+        if (!feat) continue;
+        var c = lookupCountry(feat);
+        if (c) return c;
       }
+      return null;
+    }
+    function findFeatureInHit(obj) {
+      var n = obj;
+      for (var i = 0; i < 6 && n; i++) {
+        if (n.__data && n.__data.geometry && n.__data.properties) return n.__data;
+        if (n.userData && n.userData.feature) return n.userData.feature;
+        n = n.parent;
+      }
+      return null;
+    }
 
-      refresh();
-    })();
+    function handleHover(localX, localY) {
+      var c = pickCountryAt(localX, localY);
+      if (c) {
+        state.hovered = c;
+        var fmt = METRIC_FORMAT[state.metric];
+        var val = (c[state.metric] != null) ? fmt(c[state.metric]) : '—';
+        tooltip.querySelector('.tt-name').textContent = c.fl + ' ' + c.n;
+        tooltip.querySelector('.tt-val').textContent  = val;
+        tooltip.style.display = 'block';
+        tooltip.style.left = localX + 'px';
+        tooltip.style.top  = localY + 'px';
+        host.style.cursor = 'pointer';
+      } else {
+        state.hovered = null;
+        tooltip.style.display = 'none';
+        host.style.cursor = isDragging ? 'grabbing' : 'grab';
+      }
+    }
+
+    // ─── Filter UI bindings (always wired) ───
+    document.getElementById('metric').addEventListener('change', function (e) {
+      state.metric = e.target.value;
+      refreshMarkers();
+    });
+    var chips = document.querySelectorAll('#region-chips .chip-toggle');
+    Array.prototype.forEach.call(chips, function (chip) {
+      chip.addEventListener('click', function () {
+        var r = chip.getAttribute('data-region');
+        if (state.regions[r]) { delete state.regions[r]; chip.classList.remove('is-on'); chip.style.opacity = '0.4'; }
+        else { state.regions[r] = 1; chip.classList.add('is-on'); chip.style.opacity = ''; }
+        refreshMarkers();
+      });
+    });
+    var incEl = document.getElementById('income-min');
+    var incVal = document.getElementById('income-val');
+    incEl.addEventListener('input', function (e) {
+      state.incomeMin = +e.target.value;
+      incVal.textContent = '$' + state.incomeMin;
+      refreshMarkers();
+    });
+    document.getElementById('visa-only').addEventListener('change', function (e) {
+      state.visaOnly = e.target.checked;
+      refreshMarkers();
+    });
+
+    // ─── Friendly inline message in the globe container on failure ───
+    function globeMessage(msg) {
+      if (!loaderEl) return;
+      loaderEl.style.opacity = '1';
+      loaderEl.innerHTML =
+        '<span class="badge badge--amber">3D harita yüklenemedi</span>' +
+        '<p class="fine" style="max-width:32ch;text-align:center;">' + msg +
+        ' Filtreler, İlk 5 listesi ve ülke detayları çalışmaya devam ediyor.</p>';
+    }
+    function hideLoader() {
+      if (!loaderEl) return;
+      loaderEl.style.opacity = '0';
+      setTimeout(function () { loaderEl.style.display = 'none'; }, 420);
+    }
+
+    // ─── Boot the 3D layer (defensive) ───
+    function bootGlobe() {
+      if (!window.THREE) { globeMessage('3D motoru (three.js) yüklenemedi — internet bağlantını kontrol et.'); return; }
+      if (!window.ThreeGlobe || !window.topojson) { globeMessage('3D harita kütüphaneleri yüklenemedi.'); return; }
+      T = window.THREE;
+
+      var sz = hostSize();
+      scene = new T.Scene();
+      scene.background = new T.Color(0x030719);
+
+      camera = new T.PerspectiveCamera(45, sz.w / sz.h, 1, 4000);
+      camera.position.set(0, 0, 280);
+
+      renderer = new T.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(sz.w, sz.h);
+      renderer.domElement.style.display = 'block';
+      renderer.domElement.style.outline = 'none';
+      host.appendChild(renderer.domElement);
+
+      // Lights
+      scene.add(new T.AmbientLight(0xffffff, 0.6));
+      var sun = new T.DirectionalLight(0xfff2d4, 0.9);
+      sun.position.set(250, 150, 250);
+      scene.add(sun);
+      var rim = new T.DirectionalLight(0x2dd4bf, 0.4);
+      rim.position.set(-250, -100, -150);
+      scene.add(rim);
+
+      // Stars
+      (function makeStars() {
+        var starGeo = new T.BufferGeometry();
+        var N = 1400;
+        var pos = new Float32Array(N * 3);
+        for (var i = 0; i < N; i++) {
+          var rr = 1500 + Math.random() * 1000;
+          var th = Math.acos(2 * Math.random() - 1);
+          var ph = Math.random() * Math.PI * 2;
+          pos[i * 3]     = rr * Math.sin(th) * Math.cos(ph);
+          pos[i * 3 + 1] = rr * Math.sin(th) * Math.sin(ph);
+          pos[i * 3 + 2] = rr * Math.cos(th);
+        }
+        starGeo.setAttribute('position', new T.BufferAttribute(pos, 3));
+        var starMat = new T.PointsMaterial({ color: 0xffffff, size: 2.2, sizeAttenuation: true, opacity: 0.7, transparent: true });
+        scene.add(new T.Points(starGeo, starMat));
+      })();
+
+      // Globe
+      globe = new ThreeGlobe()
+        .showAtmosphere(true)
+        .atmosphereColor('#2dd4bf')
+        .atmosphereAltitude(0.18);
+      try {
+        var gm = globe.globeMaterial();
+        if (gm) {
+          gm.color = new T.Color(0x0e1a2c);
+          gm.emissive = new T.Color(0x051018);
+          gm.emissiveIntensity = 0.6;
+          gm.shininess = 18;
+        }
+      } catch (_) {}
+      scene.add(globe);
+
+      raycaster = new T.Raycaster();
+      ndc = new T.Vector2();
+
+      // ── Input handlers (scoped to host) ──
+      host.addEventListener('mousedown', function (e) { var p = relXY(e.clientX, e.clientY); pointerDown(p.x, p.y); downX = e.clientX; downY = e.clientY; downT = nowMs(); });
+      window.addEventListener('mousemove', function (e) {
+        var p = relXY(e.clientX, e.clientY);
+        pointerMove(e.clientX, e.clientY);
+        // only hover-test when pointer is over the host
+        var rect = host.getBoundingClientRect();
+        if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+          handleHover(p.x, p.y);
+        } else if (!isDragging) {
+          tooltip.style.display = 'none';
+        }
+      });
+      window.addEventListener('mouseup', pointerUp);
+
+      // Click vs drag
+      host.addEventListener('click', function (e) {
+        var moved = Math.sqrt(Math.pow(e.clientX - downX, 2) + Math.pow(e.clientY - downY, 2));
+        if (moved > 6 || nowMs() - downT > 400) return;
+        var p = relXY(e.clientX, e.clientY);
+        var c = pickCountryAt(p.x, p.y);
+        if (c) { openDetail(c); focusOn(c); }
+      });
+
+      // Touch
+      var pinchStart = 0;
+      host.addEventListener('touchstart', function (e) {
+        if (e.touches.length === 1) {
+          var p = relXY(e.touches[0].clientX, e.touches[0].clientY);
+          pointerDown(p.x, p.y);
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          var dx = e.touches[0].clientX - e.touches[1].clientX;
+          var dy = e.touches[0].clientY - e.touches[1].clientY;
+          pinchStart = Math.sqrt(dx * dx + dy * dy);
+        }
+      }, { passive: true });
+      host.addEventListener('touchmove', function (e) {
+        if (e.touches.length === 1) {
+          var p = relXY(e.touches[0].clientX, e.touches[0].clientY);
+          pointerMove(e.touches[0].clientX, e.touches[0].clientY);
+        } else if (e.touches.length === 2) {
+          e.preventDefault();
+          var dx = e.touches[0].clientX - e.touches[1].clientX;
+          var dy = e.touches[0].clientY - e.touches[1].clientY;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          var delta = (pinchStart - dist) * 0.5;
+          camera.position.z = Math.max(150, Math.min(600, camera.position.z + delta));
+          pinchStart = dist;
+        }
+      }, { passive: false });
+      host.addEventListener('touchend', function (e) {
+        pointerUp(); pinchStart = 0;
+        if (!e.changedTouches.length) return;
+        var p = relXY(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+        var c = pickCountryAt(p.x, p.y);
+        if (c) {
+          handleHover(p.x, p.y);
+          openDetail(c); focusOn(c);
+          setTimeout(function () { tooltip.style.display = 'none'; }, 1200);
+        }
+      });
+
+      // Wheel zoom (only when over host)
+      host.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        camera.position.z = Math.max(150, Math.min(600, camera.position.z + e.deltaY * 0.15));
+        autoRotate = false; lastInteractTs = nowMs();
+      }, { passive: false });
+
+      // Resize → match container
+      window.addEventListener('resize', function () {
+        if (!renderer || !camera) return;
+        var s = hostSize();
+        camera.aspect = s.w / s.h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(s.w, s.h);
+      });
+
+      // Render loop
+      function loop() {
+        requestAnimationFrame(loop);
+        if (!isDragging && nowMs() - lastInteractTs > 2000) autoRotate = true;
+        if (autoRotate && !focusTarget) globe.rotation.y += 0.0015;
+        if (!isDragging && (Math.abs(velX) > 0.0001 || Math.abs(velY) > 0.0001)) {
+          globe.rotation.y += velX;
+          globe.rotation.x += velY;
+          globe.rotation.x = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, globe.rotation.x));
+          velX *= 0.94; velY *= 0.94;
+        }
+        applyFocusEase();
+        renderer.render(scene, camera);
+      }
+      loop();
+
+      // Load world borders from CORS-enabled CDN (jsDelivr), client-side
+      loadWorld()
+        .then(function (features) {
+          allFeatures = features;
+          globe
+            .polygonsData(allFeatures)
+            .polygonAltitude(altitudeFor)
+            .polygonCapColor(capColorFor)
+            .polygonSideColor(sideColorFor)
+            .polygonStrokeColor(strokeColorFor)
+            .polygonsTransitionDuration(700);
+          refreshMarkers();
+          hideLoader();
+        })
+        .catch(function (err) {
+          console.error('[nomad] world fetch failed:', err);
+          globeMessage('Dünya sınırları (world-atlas) yüklenemedi.');
+        });
+    }
+
+    // click-vs-drag temp vars (module scope so handlers share them)
+    var downX = 0, downY = 0, downT = 0;
+
+    function loadWorld() {
+      var WORLD_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
+      var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 12000);
+      var opts = ctrl ? { signal: ctrl.signal } : {};
+      return fetch(WORLD_URL, opts).then(function (r) {
+        clearTimeout(timer);
+        if (!r.ok) throw new Error('world fetch HTTP ' + r.status);
+        return r.json();
+      }).then(function (topo) {
+        if (!topo || !topo.objects || !topo.objects.countries) throw new Error('invalid topojson shape');
+        var fc = window.topojson.feature(topo, topo.objects.countries);
+        return (fc && fc.features) || [];
+      }).catch(function (err) {
+        clearTimeout(timer);
+        throw err;
+      });
+    }
+
+    // Kick off the 3D layer after layout settles (so the container has a size)
+    if (window.requestAnimationFrame) {
+      requestAnimationFrame(function () { requestAnimationFrame(bootGlobe); });
+    } else {
+      setTimeout(bootGlobe, 60);
+    }
+  })();
   </script>
 </body>
 </html>
