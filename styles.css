@@ -2262,6 +2262,170 @@ body {
 }
 
 /* ════════════════════════════════════════════════════════════════════
+   EXPANDABLE BENTO ("Test değil, ölçüm") — vanilla adaptation of the
+   vengenceui ExpandableBentoGrid: compact cards that expand into a
+   centered detail modal on click (X / Esc / backdrop closes; body scroll
+   locks while open).
+   ════════════════════════════════════════════════════════════════════ */
+.xbento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-16);
+}
+.xbento-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: var(--spacing-20);
+  background: var(--surface-deep-navy);
+  border: 1px solid rgba(0, 136, 255, 0.18);
+  border-radius: var(--radius-2xl);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.xbento-card:hover,
+.xbento-card:focus-visible {
+  background: #062338;
+  transform: translateY(-2px);
+  border-color: rgba(0, 136, 255, 0.42);
+  outline: none;
+}
+.xbento-ic {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 136, 255, 0.14);
+  color: var(--color-electric-signal);
+  box-shadow: var(--shadow-subtle-2);
+}
+.xbento-ic svg {
+  width: 26px;
+  height: 26px;
+}
+.xbento-title {
+  font-size: var(--text-body-lg);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.2px;
+  color: #fff;
+}
+.xbento-sub {
+  margin-top: 2px;
+  font-size: var(--text-caption);
+  color: var(--color-sky-wash);
+}
+.xbento-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-20);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.xbento-modal-overlay.is-open {
+  display: flex;
+}
+.xbento-modal {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-obsidian);
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-3xl);
+  box-shadow: var(--shadow-xl);
+  transform: scale(0.96);
+  opacity: 0;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+}
+.xbento-modal-overlay.is-open .xbento-modal {
+  transform: scale(1);
+  opacity: 1;
+}
+.xbento-modal-head {
+  height: 150px;
+  display: grid;
+  place-items: center;
+  background: var(--gradient-aurora-wash);
+  color: var(--color-electric-signal);
+  border-bottom: 1px solid var(--hairline-soft);
+}
+.xbento-modal-head svg {
+  width: 48px;
+  height: 48px;
+}
+.xbento-modal-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-20) var(--spacing-20) 0;
+}
+.xbento-modal-row h3 {
+  font-size: var(--text-subheading);
+  letter-spacing: var(--tracking-subheading);
+  font-weight: var(--font-weight-semibold);
+  color: #fff;
+}
+.xbento-modal-row p {
+  margin-top: 4px;
+  font-size: var(--text-body-sm);
+  color: var(--color-mist);
+}
+.xbento-modal-row .btn {
+  flex: none;
+}
+.xbento-modal-content {
+  padding: var(--spacing-16) var(--spacing-20) var(--spacing-24);
+  overflow: auto;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--color-pearl);
+}
+.xbento-modal-content p + p {
+  margin-top: var(--spacing-12);
+}
+.xbento-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--hairline-soft);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+.xbento-close:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+@media (max-width: 860px) {
+  .xbento {
+    grid-template-columns: 1fr;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xbento-modal {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
    BENTO — "Platformun içi" animated information cards
    Vanilla aurora adaptation of a React bento-grid. Five obsidian panels,
    each with a small title, a muted description and a framed visual area
