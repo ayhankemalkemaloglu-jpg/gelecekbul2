@@ -2188,3 +2188,75 @@ body {
     height: 21px;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   LIQUID METAL BUTTONS — animated metallic ring around every CTA
+   Vanilla-CSS take on the metal-fx component (no WebGL/React): a masked
+   conic-gradient ring that rotates via @property. Default preset is
+   "chromatic" (aurora-tinted); add .metal-silver / .metal-gold to switch.
+   Freezes under prefers-reduced-motion. Applies to .btn (+ variants) and
+   the nav .btn-pill; micro-controls (badges, dock, texture-btn) stay calm.
+   ════════════════════════════════════════════════════════════════════ */
+@property --metal-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+:root {
+  --metal-chromatic: conic-gradient(
+    from var(--metal-angle),
+    #c9d2e0, #ffffff, #8fb6ff, #b98cff, #ff9bd0, #ffffff, #9fe7c8, #c9d2e0
+  );
+  --metal-silver: conic-gradient(
+    from var(--metal-angle),
+    #5b616b, #e9edf3, #ffffff, #9aa1ac, #3f444c, #e9edf3, #5b616b
+  );
+  --metal-gold: conic-gradient(
+    from var(--metal-angle),
+    #7c5e1e, #ffd97a, #fff6cf, #caa53d, #8a6a22, #ffd97a, #7c5e1e
+  );
+}
+.btn,
+.btn-pill {
+  --metal: var(--metal-chromatic);
+  --metal-angle: 0deg;
+  position: relative;
+  isolation: isolate;
+}
+.btn::before,
+.btn-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 2px;
+  background: var(--metal);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: metal-spin 4.5s linear infinite;
+  pointer-events: none;
+}
+.btn:hover::before,
+.btn-pill:hover::before {
+  filter: drop-shadow(0 0 6px rgba(150, 170, 255, 0.45));
+}
+.metal-silver {
+  --metal: var(--metal-silver);
+}
+.metal-gold {
+  --metal: var(--metal-gold);
+}
+@keyframes metal-spin {
+  to {
+    --metal-angle: 360deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn::before,
+  .btn-pill::before {
+    animation: none;
+  }
+}
