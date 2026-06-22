@@ -2260,3 +2260,527 @@ body {
     animation: none;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   BENTO — "Platformun içi" animated information cards
+   Vanilla aurora adaptation of a React bento-grid. Five obsidian panels,
+   each with a small title, a muted description and a framed visual area
+   running a looping mini-visual (CSS-driven; JS only feeds the activity
+   stack + active-index cycling). Reuses the aurora tokens — no new
+   palette, no external assets. Looping motion freezes under
+   prefers-reduced-motion (a static but complete state remains).
+   Prefixes: .bento / .bento-card / .bento-visual + .bp- (pipeline),
+   .bm- (measure), .bf- (feed), .bk- (knowledge), .bt- (tools).
+   ════════════════════════════════════════════════════════════════════ */
+.bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-16);
+}
+@media (min-width: 700px) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1000px) {
+  .bento {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* card 1 + card 4 span two columns → top row = 3 singles,
+     bottom row = one wide (2-col) + one single */
+  .bento-card--wide {
+    grid-column: span 2;
+  }
+}
+
+.bento-card {
+  position: relative;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-20);
+  border-radius: 20px;
+  background: var(--surface-obsidian);
+  box-shadow: var(--shadow-subtle-2), var(--shadow-sm);
+  overflow: hidden;
+  transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s ease;
+}
+/* Fade-up only when JS has armed the grid (data-anim). Without JS the
+   cards stay fully visible — they are never stuck at opacity:0. */
+.bento[data-anim] .bento-card {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.bento[data-anim] .bento-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.bento-card:nth-child(2) { transition-delay: 0.06s; }
+.bento-card:nth-child(3) { transition-delay: 0.12s; }
+.bento-card:nth-child(4) { transition-delay: 0.18s; }
+.bento-card:nth-child(5) { transition-delay: 0.24s; }
+
+.bento-title {
+  font-size: var(--text-body-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.1px;
+  color: var(--color-white);
+}
+.bento-desc {
+  margin-top: 4px;
+  max-width: 90%;
+  font-size: var(--text-caption);
+  line-height: 1.5;
+  color: var(--color-fog);
+}
+.bento-visual {
+  position: relative;
+  flex: 1;
+  margin-top: var(--spacing-12);
+  border-radius: 14px;
+  border: 1px solid var(--hairline-soft);
+  background: rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+}
+
+/* ── 1) Kariyer Pipeline ─────────────────────────────────────────── */
+.bp-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 16px 16px;
+  background-position: -1px -1px;
+}
+.bp-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.bp-link {
+  fill: none;
+  stroke: var(--hairline-strong);
+  stroke-width: 1.5;
+}
+.bp-pulse {
+  fill: none;
+  stroke: url(#bpFlow);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 26 220;
+  stroke-dashoffset: 246;
+  animation: bp-travel 2.4s linear infinite;
+}
+.bp-pulse-2 { animation-delay: 0.5s; }
+.bp-pulse-3 { animation-delay: 1s; }
+.bp-pulse-4 { animation-delay: 1.3s; }
+@keyframes bp-travel {
+  to { stroke-dashoffset: 0; }
+}
+.bp-node circle {
+  fill: var(--surface-charcoal);
+  stroke: var(--hairline-strong);
+  stroke-width: 1.5;
+  transition: stroke 0.4s ease, fill 0.4s ease, filter 0.4s ease;
+}
+.bp-node text {
+  fill: var(--color-mist);
+  font-family: var(--font-ui-monospace);
+  font-size: 9px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-anchor: middle;
+  text-transform: uppercase;
+  transition: fill 0.4s ease;
+}
+.bp-node.is-active text { fill: var(--color-white); }
+.bp-node.is-active circle { fill: rgba(255, 255, 255, 0.06); }
+.bp-node--blue.is-active circle   { stroke: var(--color-electric-signal); filter: drop-shadow(0 0 6px rgba(0,136,255,0.7)); }
+.bp-node--violet.is-active circle { stroke: var(--color-lavender-mist);   filter: drop-shadow(0 0 6px rgba(184,85,231,0.7)); }
+.bp-node--mint.is-active circle   { stroke: var(--color-vivid-mint);      filter: drop-shadow(0 0 6px rgba(39,201,63,0.7)); }
+.bp-node--amber.is-active circle  { stroke: var(--color-amber-glow);      filter: drop-shadow(0 0 6px rgba(255,183,100,0.7)); }
+.bp-node--pink.is-active circle   { stroke: var(--color-pink-static);     filter: drop-shadow(0 0 6px rgba(221,85,231,0.7)); }
+
+/* ── 2) Profil Ölçümü ────────────────────────────────────────────── */
+.bm-spark {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  width: calc(100% - 24px);
+  height: 22px;
+  opacity: 0.6;
+}
+.bm-spark polyline {
+  fill: none;
+  stroke: var(--color-sky-wash);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bm-bars {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  height: 96px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+}
+.bm-bar {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  /* hatched track behind */
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.05) 0 3px,
+    transparent 3px 6px
+  );
+  border-radius: 5px;
+}
+.bm-bar i {
+  display: block;
+  width: 100%;
+  height: var(--h);
+  border-radius: 5px 5px 3px 3px;
+  background: linear-gradient(180deg, var(--color-sky-wash), var(--color-lavender-mist));
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.25);
+  transform-origin: bottom;
+  animation: bm-breathe 3.4s ease-in-out infinite;
+}
+.bm-bar:nth-child(2) i { animation-delay: 0.25s; }
+.bm-bar:nth-child(3) i { animation-delay: 0.5s; }
+.bm-bar:nth-child(4) i { animation-delay: 0.75s; }
+.bm-bar:nth-child(5) i { animation-delay: 1s; }
+.bm-bar:nth-child(6) i { animation-delay: 1.25s; }
+@keyframes bm-breathe {
+  0%, 100% { transform: scaleY(0.82); }
+  50%      { transform: scaleY(1); }
+}
+.bm-bar b {
+  position: absolute;
+  bottom: -16px;
+  font-family: var(--font-ui-monospace);
+  font-size: 9px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fog);
+}
+/* leave room for the R/I/A/S/E/C micro-labels under the bars */
+.bm-visual { padding-bottom: 6px; }
+
+/* ── 3) Canlı Aktivite ───────────────────────────────────────────── */
+.bf-stack {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 14px;
+  height: 96px;
+}
+.bf-item {
+  --depth: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--surface-charcoal);
+  border: 1px solid var(--hairline-soft);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  transform: translateY(calc(var(--depth) * 13px)) scale(calc(1 - var(--depth) * 0.05));
+  opacity: calc(1 - var(--depth) * 0.28);
+  transform-origin: top center;
+  transition: transform 0.55s cubic-bezier(0.22, 1.4, 0.36, 1),
+    opacity 0.45s ease;
+}
+.bf-item.is-front {
+  border-color: var(--hairline-strong);
+}
+.bf-icn { font-size: 14px; line-height: 1; flex: none; }
+.bf-txt {
+  flex: 1;
+  min-width: 0;
+  font-size: 11px;
+  color: var(--color-pearl);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bf-chip {
+  flex: none;
+  font-family: var(--font-ui-monospace);
+  font-size: 8px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+.bf-chip--done { background: rgba(39, 201, 63, 0.16); color: var(--color-vivid-mint); }
+.bf-chip--run  { background: rgba(0, 136, 255, 0.16); color: var(--color-electric-signal); }
+.bf-chip--wait { background: rgba(255, 183, 100, 0.16); color: var(--color-amber-glow); }
+.bf-time {
+  flex: none;
+  font-family: var(--font-ui-monospace);
+  font-size: 8px;
+  color: var(--color-fog);
+}
+.bf-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.bf-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background: var(--hairline-strong);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.bf-dot.is-on {
+  background: var(--color-electric-signal);
+  transform: scale(1.25);
+}
+
+/* ── 4) 200 Meslek Keşfi ─────────────────────────────────────────── */
+.bk-visual {
+  display: flex;
+  padding: var(--spacing-12);
+  gap: var(--spacing-12);
+}
+.bk-cats {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.bk-cat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.62;
+  transition: opacity 0.4s ease;
+}
+.bk-cat.is-active { opacity: 1; }
+.bk-tile {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  box-shadow: var(--shadow-subtle-2);
+}
+.bk-tile--blue   { background: rgba(0, 136, 255, 0.16); }
+.bk-tile--mint   { background: rgba(39, 201, 63, 0.16); }
+.bk-tile--violet { background: rgba(184, 85, 231, 0.16); }
+.bk-tile--pink   { background: rgba(221, 85, 231, 0.16); }
+.bk-cat-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bk-cat-name {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-pearl);
+}
+.bk-fill {
+  position: relative;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.bk-fill i {
+  position: absolute;
+  inset: 0;
+  width: var(--w);
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--color-electric-signal), var(--color-sky-wash));
+}
+/* scanning light beam only on the active category */
+.bk-cat.is-active .bk-fill i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  animation: bk-scan 1.6s linear infinite;
+}
+@keyframes bk-scan {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+.bk-hits {
+  flex: none;
+  font-family: var(--font-ui-monospace);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-mist);
+}
+.bk-log {
+  width: 120px;
+  flex: none;
+  padding-left: var(--spacing-12);
+  border-left: 1px solid var(--hairline-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+}
+.bk-log-title {
+  font-family: var(--font-ui-monospace);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-fog);
+}
+.bk-queries {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.bk-queries li {
+  font-family: var(--font-ui-monospace);
+  font-size: 9px;
+  color: var(--color-slate);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.5;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+.bk-queries li::before {
+  content: "› ";
+  color: var(--color-electric-signal);
+  opacity: 0.6;
+}
+.bk-queries li.is-active {
+  color: var(--color-pearl);
+  opacity: 1;
+}
+
+/* ── 5) Araç Seti ────────────────────────────────────────────────── */
+.bt-visual { padding: var(--spacing-12); }
+.bt-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+}
+.bt-tile {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto;
+  align-items: center;
+  gap: 1px 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: var(--surface-charcoal);
+  border: 1px solid var(--hairline-soft);
+  opacity: 0;
+  transform: translateY(8px);
+  animation: bt-pop 0.5s ease forwards;
+}
+.bt-tile:nth-child(1) { animation-delay: 0.05s; }
+.bt-tile:nth-child(2) { animation-delay: 0.13s; }
+.bt-tile:nth-child(3) { animation-delay: 0.21s; }
+.bt-tile:nth-child(4) { animation-delay: 0.29s; }
+@keyframes bt-pop {
+  to { opacity: 1; transform: none; }
+}
+.bt-icn {
+  grid-row: 1 / 3;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  box-shadow: var(--shadow-subtle-2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.bt-icn--blue   { background: rgba(0, 136, 255, 0.18); }
+.bt-icn--mint   { background: rgba(39, 201, 63, 0.18); }
+.bt-icn--amber  { background: rgba(255, 183, 100, 0.18); }
+.bt-icn--violet { background: rgba(184, 85, 231, 0.18); }
+.bt-count {
+  grid-column: 2;
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+  line-height: 1;
+}
+.bt-label {
+  grid-column: 2;
+  font-size: 9px;
+  color: var(--color-mist);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bt-stat {
+  grid-column: 1 / 3;
+  margin-top: 2px;
+  font-family: var(--font-ui-monospace);
+  font-size: 8px;
+  color: var(--color-fog);
+}
+.bt-prog {
+  grid-column: 1 / 3;
+  position: relative;
+  height: 3px;
+  margin-top: 3px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.bt-prog i {
+  position: absolute;
+  inset: 0;
+  width: var(--w);
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--color-electric-signal), var(--color-lavender-mist));
+}
+
+/* ── Bento responsive tightening ─────────────────────────────────── */
+@media (max-width: 699px) {
+  .bento-card { height: 248px; }
+  .bk-log { display: none; }
+}
+
+/* ── Reduced motion: freeze loops, keep a complete static state ──── */
+@media (prefers-reduced-motion: reduce) {
+  .bento[data-anim] .bento-card { opacity: 1; transform: none; }
+  .bp-pulse { animation: none; opacity: 0; }
+  .bm-bar i { animation: none; transform: none; }
+  .bf-item { transition: none; }
+  .bk-cat.is-active .bk-fill i::after { animation: none; opacity: 0; }
+  .bt-tile { animation: none; opacity: 1; transform: none; }
+}
