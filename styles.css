@@ -2084,12 +2084,26 @@ section {
    Vanilla adaptation of the macOS-style Dock: cards scale by cursor
    proximity (magnify logic in script.js). Touch = static row.
    ════════════════════════════════════════════════════════════════════ */
+/* Floating macOS-style dock — pinned to the bottom of the VIEWPORT, follows
+   the scroll everywhere. The full-width wrap is click-through; only the dock
+   bar itself is interactive, so the side gutters don't block the page. */
 .dock-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  z-index: 90;
   display: flex;
   justify-content: center;
-  padding: var(--spacing-40) var(--spacing-24) var(--spacing-8);
+  padding: 0 var(--spacing-16);
+  pointer-events: none;
+}
+/* room so the page's last content clears the floating dock */
+body {
+  padding-bottom: 104px;
 }
 .dock {
+  pointer-events: auto;
   display: flex;
   align-items: flex-end;
   gap: 10px;
@@ -2153,13 +2167,17 @@ section {
   margin: 0 4px;
 }
 @media (max-width: 860px) {
+  body {
+    padding-bottom: 88px;
+  }
   .dock-wrap {
-    padding: var(--spacing-32) var(--spacing-16) var(--spacing-4);
-    justify-content: flex-start;
-    overflow-x: auto;
+    bottom: 12px;
+    padding: 0 var(--spacing-12);
   }
   .dock {
     gap: 8px;
+    overflow-x: auto;
+    max-width: calc(100vw - 24px);
   }
   .dock-card {
     width: 46px;
