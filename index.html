@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="superwhisper turns your voice into clean, formatted text anywhere — fast, private, and fully on-device." />
+  <title>superwhisper — your voice, perfectly written</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ════════════════════════════  NAV  ════════════════════════════ -->
+  <header class="nav-wrap">
+    <nav class="nav-pill" aria-label="Primary">
+      <a class="nav-brand" href="#top">
+        <span class="nav-brand-mark" aria-hidden="true"></span>
+        superwhisper
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link is-active">Home</a></li>
+        <li><a href="#how" class="nav-link">Docs</a></li>
+        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+      </ul>
+      <a class="nav-download" href="#download">Download</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ════════════════════════════  HERO  ════════════════════════════ -->
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-aurora" aria-hidden="true">
+          <span class="hero-lips"></span>
+          <span class="hero-laptop"></span>
+        </div>
+
+        <div class="hero-content">
+          <span class="hero-eyebrow">aurora dissolving over midnight glass</span>
+          <h1 class="display">Your voice,<br />perfectly written.</h1>
+          <p class="hero-sub">
+            superwhisper turns speech into clean, formatted text anywhere on your
+            machine — astonishingly fast, fully private, and entirely on-device.
+          </p>
+
+          <div class="button-row" id="download">
+            <a class="btn btn-white" href="#download">
+              <svg class="btn-glyph" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.18 8.5c-.02-1.7 1.39-2.52 1.45-2.56-.79-1.16-2.02-1.32-2.46-1.34-1.05-.1-2.04.61-2.57.61-.53 0-1.35-.6-2.21-.58-1.14.02-2.19.66-2.77 1.68-1.18 2.05-.3 5.08.85 6.74.56.81 1.23 1.72 2.11 1.69.85-.04 1.17-.55 2.2-.55s1.31.55 2.21.53c.91-.02 1.49-.83 2.05-1.64.65-.94.91-1.85.93-1.9-.02-.01-1.79-.69-1.8-2.72zM9.5 3.6c.47-.57.78-1.36.69-2.15-.67.03-1.49.45-1.97 1.01-.43.5-.81 1.31-.71 2.08.75.06 1.51-.38 1.99-.94z"/></svg>
+              Download for Mac
+            </a>
+            <a class="btn btn-dark" href="#download">
+              <svg class="btn-glyph" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 2.25 6.53 1.4v6.3H0V2.25zM7.32 1.29 16 0v7.6H7.32V1.29zM0 8.46h6.53v6.31L0 13.9V8.46zM7.32 8.46H16V16l-8.68-1.2V8.46z"/></svg>
+              Download for Windows
+            </a>
+          </div>
+
+          <p class="hero-fine">Free to try · macOS 13+ / Windows 11 · 100% on-device</p>
+
+          <a class="hero-inline-link" href="#download">Also available on iPhone <span aria-hidden="true">›</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  TRUST STRIP  ════════════════════════════ -->
+    <section class="strip" aria-label="Highlights">
+      <div class="strip-item"><span class="strip-num">99.4%</span><span class="strip-label">Whisper-grade accuracy</span></div>
+      <div class="strip-divider" aria-hidden="true"></div>
+      <div class="strip-item"><span class="strip-num">~140ms</span><span class="strip-label">Median transcription latency</span></div>
+      <div class="strip-divider" aria-hidden="true"></div>
+      <div class="strip-item"><span class="strip-num">0 bytes</span><span class="strip-label">Leave your device</span></div>
+    </section>
+
+    <!-- ════════════════════════════  FEATURES  ════════════════════════════ -->
+    <section class="features" id="features">
+      <div class="section-head">
+        <span class="section-eyebrow">Why superwhisper</span>
+        <h2 class="heading">Speak naturally.<br />Ship it written.</h2>
+        <p class="section-lead">
+          A dictation engine tuned for the way you actually talk — pauses,
+          corrections, jargon and all. It listens locally and writes like you
+          would.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- Card 1 — waveform feature, spans two columns -->
+        <article class="feature-card feature-card--navy feature-card--wide">
+          <div class="waveform" aria-hidden="true">
+            <svg viewBox="0 0 480 120" preserveAspectRatio="none" class="waveform-svg">
+              <path class="wave wave-1" d="M0,60 Q40,20 80,60 T160,60 T240,60 T320,60 T400,60 T480,60" />
+              <path class="wave wave-2" d="M0,60 Q60,95 120,60 T240,60 T360,60 T480,60" />
+            </svg>
+            <div class="waveform-bars">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="feature-icon feature-icon--blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><path d="M12 18v4"/></svg>
+          </div>
+          <h3 class="feature-title">Whisper-grade accuracy, on-device</h3>
+          <p class="feature-body">
+            A custom speech model runs entirely on your hardware — punctuation,
+            capitalization, and formatting handled in real time, even offline on
+            a plane.
+          </p>
+        </article>
+
+        <!-- Card 2 — privacy -->
+        <article class="feature-card feature-card--indigo">
+          <div class="feature-icon feature-icon--blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h3 class="feature-title">Private by design</h3>
+          <p class="feature-body">
+            Nothing is uploaded. No accounts, no servers, no transcripts in
+            someone else's cloud — your words never leave the glass.
+          </p>
+        </article>
+
+        <!-- Card 3 — works everywhere -->
+        <article class="feature-card feature-card--deepnavy">
+          <div class="feature-icon feature-icon--blue" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          </div>
+          <h3 class="feature-title">Works everywhere you type</h3>
+          <p class="feature-body">
+            Email, Slack, your editor, the address bar. One shortcut drops clean
+            text into any field on the system — no copy-paste dance.
+          </p>
+        </article>
+
+        <!-- Card 4 — shortcuts / code chip, spans two columns -->
+        <article class="feature-card feature-card--obsidian feature-card--wide">
+          <h3 class="feature-title">Modes &amp; shortcuts for everything</h3>
+          <p class="feature-body">
+            Build custom modes — a focused email voice, a code-comment voice, a
+            quick-note voice — and trigger any of them with a key you choose.
+          </p>
+          <div class="chip-row">
+            <span class="code-chip">Hold <b>fn</b> to dictate</span>
+            <span class="code-chip">Send with <b>⌘⏎</b></span>
+            <span class="code-chip">Switch mode <b>⌥␣</b></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  HOW IT WORKS  ════════════════════════════ -->
+    <section class="how" id="how">
+      <div class="section-head">
+        <span class="section-eyebrow">How it works</span>
+        <h2 class="heading">Three keystrokes from<br />thought to text.</h2>
+      </div>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">01</span>
+          <h3 class="step-title">Press &amp; hold</h3>
+          <p class="step-body">Tap your hotkey anywhere. A quiet aurora pill appears — superwhisper is listening, locally.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">02</span>
+          <h3 class="step-title">Just talk</h3>
+          <p class="step-body">Speak the way you think. Ramble, pause, correct yourself — the model cleans it up as you go.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">03</span>
+          <h3 class="step-title">Release</h3>
+          <p class="step-body">Formatted text lands exactly where your cursor is. No window to switch to, nothing to paste.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ════════════════════════════  PRICING  ════════════════════════════ -->
+    <section class="pricing" id="pricing">
+      <div class="section-head">
+        <span class="section-eyebrow">Pricing</span>
+        <h2 class="heading">Pay once. Talk forever.</h2>
+        <p class="section-lead">No subscription required for the on-device engine. Pro unlocks cloud-grade models when you want them.</p>
+      </div>
+
+      <div class="price-grid">
+        <article class="price-card">
+          <span class="price-tier">Free</span>
+          <div class="price-amount">$0</div>
+          <p class="price-note">For everyday dictation on your own device.</p>
+          <ul class="price-list">
+            <li>On-device speech model</li>
+            <li>Unlimited transcription</li>
+            <li>System-wide shortcut</li>
+            <li>One custom mode</li>
+          </ul>
+          <a class="btn btn-dark btn-block" href="#download">Download</a>
+        </article>
+
+        <article class="price-card price-card--featured">
+          <span class="price-tier">Pro</span>
+          <div class="price-amount">$8<span class="price-per">/mo</span></div>
+          <p class="price-note">For people who live inside their keyboard.</p>
+          <ul class="price-list">
+            <li>Everything in Free</li>
+            <li>Cloud + on-device models</li>
+            <li>Unlimited custom modes</li>
+            <li>Context-aware formatting</li>
+            <li>Priority model updates</li>
+          </ul>
+          <a class="btn btn-white btn-block" href="#download">Start free trial</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════  FINAL CTA  ════════════════════════════ -->
+    <section class="cta">
+      <div class="cta-card">
+        <div class="cta-aurora" aria-hidden="true"></div>
+        <div class="cta-content">
+          <h2 class="heading-lg">Stop typing.<br />Start talking.</h2>
+          <p class="cta-sub">Your fastest interface was your voice all along.</p>
+          <div class="button-row button-row--center">
+            <a class="btn btn-white" href="#download">
+              <svg class="btn-glyph" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.18 8.5c-.02-1.7 1.39-2.52 1.45-2.56-.79-1.16-2.02-1.32-2.46-1.34-1.05-.1-2.04.61-2.57.61-.53 0-1.35-.6-2.21-.58-1.14.02-2.19.66-2.77 1.68-1.18 2.05-.3 5.08.85 6.74.56.81 1.23 1.72 2.11 1.69.85-.04 1.17-.55 2.2-.55s1.31.55 2.21.53c.91-.02 1.49-.83 2.05-1.64.65-.94.91-1.85.93-1.9-.02-.01-1.79-.69-1.8-2.72zM9.5 3.6c.47-.57.78-1.36.69-2.15-.67.03-1.49.45-1.97 1.01-.43.5-.81 1.31-.71 2.08.75.06 1.51-.38 1.99-.94z"/></svg>
+              Download for Mac
+            </a>
+            <a class="btn btn-dark" href="#download">
+              <svg class="btn-glyph" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 2.25 6.53 1.4v6.3H0V2.25zM7.32 1.29 16 0v7.6H7.32V1.29zM0 8.46h6.53v6.31L0 13.9V8.46zM7.32 8.46H16V16l-8.68-1.2V8.46z"/></svg>
+              Download for Windows
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════  FOOTER  ════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="nav-brand" href="#top">
+          <span class="nav-brand-mark" aria-hidden="true"></span>
+          superwhisper
+        </a>
+        <p class="footer-tag">aurora dissolving over midnight glass</p>
+      </div>
+      <nav class="footer-cols" aria-label="Footer">
+        <div class="footer-col">
+          <span class="footer-col-title">Product</span>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#download">Download</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Company</span>
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Legal</span>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Security</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>© 2026 superwhisper</span>
+      <span>Built on a #000000 canvas.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
