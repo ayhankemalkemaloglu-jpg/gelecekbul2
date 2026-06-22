@@ -85,8 +85,8 @@
           <div class="stat-label">Son test · 6 gün önce</div>
         </div>
         <div class="stat">
-          <div class="stat-num">%92</div>
-          <div class="stat-label">En yüksek eşleşme</div>
+          <div class="stat-num" id="gb-vd-top-pct">%92</div>
+          <div class="stat-label" id="gb-vd-top-label">En yüksek eşleşme</div>
         </div>
         <div class="stat">
           <div class="stat-num">Onaylı</div>
@@ -100,7 +100,7 @@
       <div class="section-head">
         <span class="eyebrow eyebrow--signal">ÇOCUĞUNUZUN PROFİLİ</span>
         <h2 class="heading">Araştırmacı Stratejist</h2>
-        <p class="section-lead">
+        <p class="section-lead" id="gb-vd-traits">
           Analiz etmeyi, derine inmeyi ve karar vermeden önce seçenekleri tartmayı
           seviyor. Sayısal motivasyonu güçlü; baskı altında aceleci değil, ölçülü.
         </p>
@@ -141,12 +141,12 @@
 
       <div class="grid-2">
         <article class="card card--featured">
-          <span class="badge badge--white">EN UYGUN BÖLÜM</span>
+          <span class="badge badge--white">EN UYGUN ALAN</span>
           <div class="plan-price">
-            <span class="plan-amount">Biyomedikal Müh.</span>
+            <span class="plan-amount" id="gb-vd-best-cat">Biyomedikal Müh.</span>
           </div>
-          <span class="badge badge--mint mt-16">Uyum %92</span>
-          <ul class="check-list mt-24">
+          <span class="badge badge--mint mt-16" id="gb-vd-best-pct">Uyum %92</span>
+          <ul class="check-list mt-24" id="gb-vd-cat-list">
             <li>Endüstri Mühendisliği — uyum %88</li>
             <li>Veri Bilimi — uyum %85</li>
             <li>Yazılım Mühendisliği — uyum %81</li>
@@ -210,6 +210,7 @@
             <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
             Rota planını onayla
           </button>
+          <button class="btn btn-dark" type="button" data-action="atlas">💬 Atlas'a Sor</button>
           <a class="btn btn-dark" href="aile.html">Aile Alanı'na geç</a>
         </div>
       </div>
@@ -276,6 +277,58 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- Page-local: çocuğun gerçek test profili varsa eşleşme/uyum değerlerini canlı doldur -->
+  <script>
+    (function () {
+      var GB = window.GB;
+      if (!GB || !GB.hasProfile || !GB.hasProfile()) return; // profil yoksa demo değerler kalır
+
+      var CAT_TR = {
+        "mühendislik": "Mühendislik", "sağlık": "Sağlık", "sosyal": "Sosyal Bilimler",
+        "eğitim": "Eğitim", "iktisat": "İktisat / İşletme", "hukuk": "Hukuk",
+        "sanat": "Sanat / Tasarım", "hizmet": "Hizmet"
+      };
+      function catLabel(c) { return CAT_TR[c] || c; }
+
+      var top = GB.topCategories(3);
+      var dims = GB.topDims();
+
+      // 1) En yüksek eşleşme (özet stat) → gerçek en uyumlu alan %
+      if (top[0]) {
+        var pctEl = document.getElementById("gb-vd-top-pct");
+        var labelEl = document.getElementById("gb-vd-top-label");
+        if (pctEl) pctEl.textContent = "%" + top[0].pct;
+        if (labelEl) labelEl.textContent = "En yüksek eşleşme · " + catLabel(top[0].cat);
+      }
+
+      // 2) En uygun alan kartı → gerçek 1. alan + uyum %
+      if (top[0]) {
+        var bestCat = document.getElementById("gb-vd-best-cat");
+        var bestPct = document.getElementById("gb-vd-best-pct");
+        if (bestCat) bestCat.textContent = catLabel(top[0].cat);
+        if (bestPct) bestPct.textContent = "Uyum %" + top[0].pct;
+      }
+
+      // 3) En uyumlu alanlar listesi (top 3) → "Alan — uyum %NN"
+      var listEl = document.getElementById("gb-vd-cat-list");
+      if (listEl && top.length) {
+        listEl.innerHTML = "";
+        top.forEach(function (c) {
+          var li = document.createElement("li");
+          li.textContent = catLabel(c.cat) + " — uyum %" + c.pct;
+          listEl.appendChild(li);
+        });
+      }
+
+      // 4) Profil özeti → baskın RIASEC yönleri
+      var traitsEl = document.getElementById("gb-vd-traits");
+      if (traitsEl && dims.length) {
+        var topTr = dims.slice(0, 3).map(function (k) { return GB.DIM_TR[k] || k; });
+        traitsEl.textContent = "Baskın yönleri: " + topTr.join(", ") +
+          ". Bu profil, çocuğunuzun testteki gerçek cevaplarından çıkarıldı.";
+      }
+    })();
+  </script>
   <!-- Page-local: demo aksiyon butonları için inline başarı mesajı -->
   <script>
     (function () {

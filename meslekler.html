@@ -241,6 +241,7 @@
         <h3 class="subheading" id="m-name" style="margin-top:12px;">—</h3>
         <p class="fine" id="m-name-en">—</p>
         <div id="m-badges" style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px;"></div>
+        <div id="m-match-callout" class="callout callout--info mt-16" style="text-align:center;"></div>
       </div>
 
       <!-- Intro teaser -->
@@ -317,7 +318,10 @@
       <!-- CTA -->
       <div class="callout callout--info mt-24" style="text-align:center;">
         <p style="margin-bottom:12px;">Profilin bu mesleğe uyuyor mu? Ücretsiz kariyer testi ile öğren.</p>
-        <a class="btn btn-white" href="test.html">⚡ Ücretsiz teste gir</a>
+        <div class="button-row button-row--center">
+          <a class="btn btn-white" href="test.html">⚡ Ücretsiz teste gir</a>
+          <button class="btn btn-dark" type="button" data-action="atlas">💬 Bu mesleği Atlas'a sor</button>
+        </div>
       </div>
     </div>
   </div>
@@ -458,11 +462,19 @@
     function growthText(g) { return g === "yüksek" ? "Hızlı büyüyor" : g === "orta" ? "Stabil" : "Yavaş büyüyor"; }
     function growthPct(g) { return g === "yüksek" ? 88 : g === "orta" ? 55 : 28; }
 
-    /* ── DNA MATCH (deterministic per slug) ────────────────────────── */
+    /* ── DNA MATCH (real profile via GB.matchCat) ──────────────────────
+       GB.matchCat(category, slug) → 45-99 from the user's test profile, or
+       null when no test taken yet. We NEVER display a fabricated number:
+       cards/modal show "Testi yap" instead. matchScore() stays only as a
+       neutral comparison default (arena weighting, never displayed). ─── */
+    function realMatch(o) {
+      return (window.GB && GB.matchCat) ? GB.matchCat(o.category, o.slug) : null;
+    }
+    // Neutral comparison-only score (used where a number is needed but never
+    // shown to the user as "their" match, e.g. arena vote weighting).
     function matchScore(o) {
-      var h = 0, s = o.slug || o.name_tr || "";
-      for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
-      return 62 + (h % 37); // 62–98
+      var m = realMatch(o);
+      return (m === null) ? 70 : m;
     }
 
     /* ── TOAST ─────────────────────────────────────────────────────── */
@@ -513,7 +525,10 @@
       if (!grid) return;
       grid.innerHTML = filtered.map(function (o, i) {
         var meta = CAT_META[o.category] || { icon:"💼", color:"#94a3b8" };
-        var dna = matchScore(o);
+        var dna = realMatch(o);
+        var dnaBadge = (dna !== null)
+          ? '<span class="badge sc-dna" style="color:' + meta.color + ';background:' + meta.color + '1f;">🧬 %' + dna + '</span>'
+          : '<a class="badge sc-dna" href="test.html" style="color:' + meta.color + ';background:' + meta.color + '1f;text-decoration:none;" title="Uyumunu görmek için testi yap">🧬 Testi yap</a>';
         var duelSel = duelSlots.indexOf(o.slug) !== -1;
         var aiCls = o.ai_automation_risk <= 30 ? "badge--mint" : o.ai_automation_risk <= 60 ? "badge--amber" : "";
         var cat = o.category ? o.category.charAt(0).toUpperCase() + o.category.slice(1) : "";
@@ -521,7 +536,7 @@
         return '<article class="shift-card" data-idx="' + i + '" tabindex="0" aria-label="' + escapeHtml(o.name_tr) + '">'
           + '<div class="sc-top">'
           +   '<span class="sc-cat"><span class="sc-dot" style="background:' + meta.color + ';"></span>' + meta.icon + ' ' + escapeHtml(cat) + '</span>'
-          +   '<span class="badge sc-dna" style="color:' + meta.color + ';background:' + meta.color + '1f;">🧬 %' + dna + '</span>'
+          +   dnaBadge
           + '</div>'
           + '<div class="sc-ghost" aria-hidden="true"></div>'
           + '<div class="sc-thumb" aria-hidden="true">' + o.icon + '</div>'
@@ -551,7 +566,7 @@
       // card click / Enter → modal (ignore the duel button; "Detayı Aç" bubbles up)
       grid.querySelectorAll(".shift-card").forEach(function (card) {
         card.addEventListener("click", function (e) {
-          if (e.target.closest(".duel-btn")) return;
+          if (e.target.closest(".duel-btn") || e.target.closest("a.sc-dna")) return;
           openModal(parseInt(card.getAttribute("data-idx"), 10));
         });
         card.addEventListener("keydown", function (e) {
@@ -738,16 +753,13 @@
       }
     }
     function loadPlan() {
-      // No backend in this static port: try /api/auth/me, fall back to anonim (free → masked).
+      // Static port — no backend. Read an optional locally-stored plan
+      // (set elsewhere in the app); anonim/free → masked upsell numbers.
       try {
-        fetch("/api/auth/me", { credentials:"include" })
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .then(function (d) {
-            userPlan = (d && d.user && (d.user.effectivePlan || d.user.plan)) || null;
-            if (currentOcc) renderGated(currentOcc);
-          })
-          .catch(function () { userPlan = null; });
+        var p = localStorage.getItem("gb_plan");
+        userPlan = (p === "pro" || p === "promax") ? p : null;
       } catch (e) { userPlan = null; }
+      if (currentOcc) renderGated(currentOcc);
     }
 
     /* ── DETAIL MODAL ──────────────────────────────────────────────── */
@@ -773,11 +785,30 @@
       $("m-name").textContent = o.name_tr;
       $("m-name-en").textContent = o.name_en || "";
 
-      var dna = matchScore(o);
+      var dna = realMatch(o);
       $("m-badges").innerHTML =
         badge("badge--blue", CAT_META[o.category] ? (CAT_META[o.category].icon + " " + o.category) : o.category)
-        + badge("badge--mint", "🧬 %" + dna + " DNA uyumu")
+        + (dna !== null
+            ? badge("badge--mint", "🧬 %" + dna + " DNA uyumu")
+            : '<a class="badge badge--mint" href="test.html" style="text-decoration:none;">🧬 Uyumun? Testi yap</a>')
         + (o.min_yks_score ? badge("badge--amber", "🎓 YKS ~" + o.min_yks_score) : "");
+
+      // Prominent real match / no-profile callout under the hero
+      var matchEl = $("m-match-callout");
+      if (matchEl) {
+        if (dna !== null) {
+          matchEl.className = "callout callout--mint mt-16";
+          matchEl.style.textAlign = "center";
+          matchEl.innerHTML = 'Profiline göre <strong>' + escapeHtml(o.name_tr)
+            + '</strong> ile uyumun <strong>%' + dna + '</strong>. '
+            + (dna >= 80 ? 'Güçlü bir eşleşme 💜' : dna >= 65 ? 'Bakmaya değer bir yön 👀' : 'Keşfetmeye açık bir alan.');
+        } else {
+          matchEl.className = "callout callout--info mt-16";
+          matchEl.style.textAlign = "center";
+          matchEl.innerHTML = '🧬 Testi yaparsan bu mesleğe uyumunu görürsün. '
+            + '<a href="test.html" style="text-decoration:underline;color:inherit;">4 dakikada başla →</a>';
+        }
+      }
 
       $("m-tagline").innerHTML = buildTagline(o);
 
@@ -861,13 +892,29 @@
     function fetchLetter() {
       if (!currentOcc || letterFetched) return;
       letterFetched = true;
+      var o = currentOcc;
       var placeholder = $("m-letter-placeholder"), text = $("m-letter-text");
       placeholder.style.display = "none";
       text.textContent = "Mektup yazılıyor…";
       text.style.display = "";
-      setTimeout(function () {
-        text.textContent = buildLetterSample(currentOcc);
-      }, 600);
+      // Ask Atlas (Gemini) for a personalised letter; fall back to the local
+      // template if there is no API key / on error / if GB is unavailable.
+      var fallback = buildLetterSample(o);
+      if (!(window.GB && GB.atlasAsk)) { text.textContent = fallback; return; }
+      var system =
+        "Sen, öğrencinin 5 yıl sonraki '" + o.name_tr + "' (" + (o.name_en || "") + ") olmuş halisin. "
+        + "Bugünün öğrencisine sıcak, samimi, klişesiz bir mektup yazıyorsun. Türkçe, küçük bir paragraf-iki, "
+        + "umut verici ama gerçekçi. İmza olarak '— Gelecekteki sen 💜' kullan. Türkiye bağlamını bil.";
+      var user =
+        "Meslek: " + o.name_tr + " (" + o.category + "). Ne yapar: " + (o.long_desc || o.short_desc || "") + "\n"
+        + "Öğrenci profili: " + GB.profileSummary() + "\n"
+        + "Bu mesleğe uyumu: " + (realMatch(o) !== null ? "%" + realMatch(o) : "henüz testini yapmadı") + ".\n"
+        + "Lütfen bu öğrenciye geleceğinden kısa bir mektup yaz.";
+      GB.atlasAsk(system, user).then(function (ans) {
+        // guard: only write if this occupation is still the active one
+        if (currentOcc !== o) return;
+        text.textContent = ans || fallback;
+      }).catch(function () { if (currentOcc === o) text.textContent = fallback; });
     }
 
     /* ── ŞANSINI DENE / KADER ÇARKI (slot) ─────────────────────────── */

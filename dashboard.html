@@ -72,6 +72,7 @@
         <div class="button-row button-row--center mt-24">
           <span class="badge badge--blue">Plan: Pro Max</span>
           <a class="btn btn-white" href="#" data-action="pay" data-plan="promax">Planı yükselt</a>
+          <button class="btn btn-dark" type="button" data-action="atlas">💬 Atlas'a Sor</button>
         </div>
       </div>
     </section>
@@ -100,8 +101,8 @@
       </div>
       <div class="stat-grid">
         <div class="stat">
-          <div class="stat-num">%78</div>
-          <div class="stat-label">Karar güveni · yüksek</div>
+          <div class="stat-num" id="gb-top-pct">%78</div>
+          <div class="stat-label" id="gb-top-label">Karar güveni · yüksek</div>
         </div>
         <div class="stat">
           <div class="stat-num">%24</div>
@@ -154,8 +155,8 @@
       <div class="grid-3">
         <article class="card card--navy">
           <span class="badge badge--blue" style="align-self:flex-start;">Plan A</span>
-          <h3 class="card-title mt-16">Bilgisayar Mühendisliği</h3>
-          <p class="card-body">Güven: %82 · SAY · Boğaziçi / ODTÜ / İTÜ eşleşmesi.</p>
+          <h3 class="card-title mt-16" id="gb-plana-title">Bilgisayar Mühendisliği</h3>
+          <p class="card-body" id="gb-plana-body">Güven: %82 · SAY · Boğaziçi / ODTÜ / İTÜ eşleşmesi.</p>
         </article>
         <article class="card card--indigo">
           <span class="badge" style="align-self:flex-start;">Plan B</span>
@@ -183,7 +184,7 @@
         <div class="callout" style="border:none;border-radius:var(--radius-xl);background:transparent;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
           <div>
             <strong style="color:var(--color-white);">Araştırmacı · KARAR_SAHIBI</strong><br />
-            <span class="fine">22 Haziran 2026 · 42 soru · eşleşme %88</span>
+            <span class="fine" id="gb-hist-recent">22 Haziran 2026 · 42 soru · eşleşme %88</span>
           </div>
           <span class="badge badge--blue">Adaptif</span>
         </div>
@@ -313,5 +314,48 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- Page-local: gerçek test profili varsa eşleşme/uyum değerlerini canlı doldur -->
+  <script>
+    (function () {
+      var GB = window.GB;
+      if (!GB || !GB.hasProfile || !GB.hasProfile()) return; // profil yoksa demo değerler kalır
+
+      var CAT_TR = {
+        "mühendislik": "Mühendislik", "sağlık": "Sağlık", "sosyal": "Sosyal Bilimler",
+        "eğitim": "Eğitim", "iktisat": "İktisat / İşletme", "hukuk": "Hukuk",
+        "sanat": "Sanat / Tasarım", "hizmet": "Hizmet"
+      };
+      function catLabel(c) { return CAT_TR[c] || c; }
+
+      var top = GB.topCategories(3);
+      var dims = GB.topDims();
+
+      // 1) En yüksek eşleşme (ölçer) → baskın yön + en uyumlu alan %
+      if (top[0]) {
+        var pctEl = document.getElementById("gb-top-pct");
+        var labelEl = document.getElementById("gb-top-label");
+        if (pctEl) pctEl.textContent = "%" + top[0].pct;
+        if (labelEl) labelEl.textContent = "En yüksek eşleşme · " + catLabel(top[0].cat);
+      }
+
+      // 2) Plan A → gerçek en uyumlu alan + baskın yön
+      if (top[0]) {
+        var paTitle = document.getElementById("gb-plana-title");
+        var paBody = document.getElementById("gb-plana-body");
+        if (paTitle) paTitle.textContent = catLabel(top[0].cat);
+        if (paBody) {
+          var domTr = (dims[0] && GB.DIM_TR[dims[0]]) ? GB.DIM_TR[dims[0]] : "";
+          paBody.textContent = "Eşleşme: %" + top[0].pct +
+            (domTr ? " · baskın yön: " + domTr : "") + " · test sonucundan üretildi.";
+        }
+      }
+
+      // 3) En son test geçmişi satırı → gerçek en yüksek eşleşme %
+      if (top[0]) {
+        var histEl = document.getElementById("gb-hist-recent");
+        if (histEl) histEl.textContent = "Profilinden · " + catLabel(top[0].cat) + " · eşleşme %" + top[0].pct;
+      }
+    })();
+  </script>
 </body>
 </html>

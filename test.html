@@ -170,13 +170,37 @@
           Bilgiyi toplar, hızlı karar verir ve yoluna güvenirsin. Net hedefler ve özerklik seni besler.
         </p>
         <div class="mt-24" style="margin-top:var(--spacing-24);">
-          <span class="fine">Sana en yakın 3 bölüm</span>
+          <span class="fine">Sana en uygun 3 alan</span>
           <div class="button-row" style="margin-top:var(--spacing-12);gap:var(--spacing-8);">
-            <span class="badge badge--blue" id="match-1">Bilgisayar Müh.</span>
-            <span class="badge badge--blue" id="match-2">Endüstri Müh.</span>
-            <span class="badge badge--blue" id="match-3">Ekonomi</span>
+            <span class="badge badge--blue" id="match-1">Mühendislik · %87</span>
+            <span class="badge badge--blue" id="match-2">İktisat · %82</span>
+            <span class="badge badge--blue" id="match-3">Sağlık · %78</span>
           </div>
         </div>
+      </article>
+
+      <!-- Gerçek RIASEC profili (kilitsiz) -->
+      <article class="card mt-24" style="max-width:760px;margin:var(--spacing-24) auto 0;">
+        <div class="plan-head">
+          <span class="badge badge--mint">İLGİ PROFİLİN · RIASEC</span>
+        </div>
+        <p class="card-body" style="margin-top:var(--spacing-8);">Cevaplarından çıkan altı boyutlu ilgi profilin — baskından zayıfa.</p>
+        <div id="riasec-bars" class="mt-16" style="margin-top:var(--spacing-16);display:flex;flex-direction:column;gap:var(--spacing-12);"></div>
+        <div class="button-row mt-24" style="margin-top:var(--spacing-24);gap:var(--spacing-12);">
+          <a class="btn btn-white" href="meslekler.html">
+            200 Mesleği Keşfet
+            <svg class="btn-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <button type="button" class="btn btn-dark" data-action="atlas">💬 Atlas'a Sor</button>
+        </div>
+      </article>
+
+      <!-- Atlas AI yorumu (kilitsiz) -->
+      <article class="card mt-24" style="max-width:760px;margin:var(--spacing-24) auto 0;">
+        <div class="plan-head">
+          <span class="badge badge--white">✦ ATLAS YORUMU</span>
+        </div>
+        <p class="card-body mt-16" id="atlas-comment" style="margin-top:var(--spacing-16);white-space:pre-wrap;">…</p>
       </article>
 
       <!-- Bulanık profil grafiği teaser -->
@@ -363,13 +387,15 @@
     var $ = function (id) { return document.getElementById(id); };
 
     // ── Durum ─────────────────────────────────────────────────────
+    function emptySums() { return { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 }; }
     var state = {
       grade: "lise_12",
       track: null,
       idx: 0,
       answers: [],
       value: null,        // mevcut sorunun seçilen değeri
-      quit: false
+      quit: false,
+      sums: emptySums()   // RIASEC ham birikimi (cevaplar işlendikçe artar)
     };
 
     // ── Faz / boyut etiketleri ────────────────────────────────────
@@ -377,80 +403,89 @@
 
     // ── Örnek soru dizisi (TR) — tüm tipleri kapsar ───────────────
     // type: likert5 | forced2 | scenario | categorical | choice | multi | open
+    // RIASEC etiketleme:
+    //   likert5  → soru düzeyinde `riasec` ağırlıkları; katkı = w × (value-3)
+    //   forced2/scenario/categorical/choice → seçilen seçeneğin `riasec`'i eklenir
+    //   multi    → işaretlenen her seçeneğin `riasec`'i eklenir
+    //   open     → atlanır (RIASEC katkısı yok)
     var QUESTIONS = [
       {
         id: "I-01", phase: "core", dim: "İLGİ", type: "likert5",
         text: "Bir problemi parçalara ayırıp mantıkla çözmek bana keyif verir.",
-        scaleLow: "Hiç katılmıyorum", scaleHigh: "Tamamen katılıyorum"
+        scaleLow: "Hiç katılmıyorum", scaleHigh: "Tamamen katılıyorum",
+        riasec: { I: 3, C: 1 } // analiz/mantık → Araştırmacı (+ biraz düzen)
       },
       {
         id: "B-04", phase: "core", dim: "KİŞİLİK", type: "likert5",
         text: "Yeni insanlarla tanışmak beni enerjik hissettirir.",
-        scaleLow: "Hiç katılmıyorum", scaleHigh: "Tamamen katılıyorum"
+        scaleLow: "Hiç katılmıyorum", scaleHigh: "Tamamen katılıyorum",
+        riasec: { S: 3, E: 2 } // sosyallik/iletişim → Sosyal + Girişimci
       },
       {
         id: "V-02", phase: "core", dim: "DEĞER", type: "forced2",
         text: "İkisinden birini seçmen gerekse hangisi sana daha yakın?",
         options: [
-          { value: "a", text: "İşimde özgür ve esnek olmak" },
-          { value: "b", text: "Net bir düzen ve güvenli bir gelir" }
+          { value: "a", text: "İşimde özgür ve esnek olmak", riasec: { A: 3, E: 2 } },
+          { value: "b", text: "Net bir düzen ve güvenli bir gelir", riasec: { C: 3, R: 1 } }
         ]
       },
       {
         id: "I-12", phase: "core", dim: "İLGİ", type: "categorical",
         text: "Boş bir cumartesi günü hangisini yapmayı tercih edersin?",
         options: [
-          { value: "build", text: "🛠️ Bir şey tasarlamak / kurmak" },
-          { value: "people", text: "🤝 İnsanlarla vakit geçirmek, organize etmek" },
-          { value: "analyze", text: "📊 Bir konuyu araştırıp veriye dalmak" },
-          { value: "create", text: "🎨 Yaratıcı bir şey üretmek" }
+          { value: "build", text: "🛠️ Bir şey tasarlamak / kurmak", riasec: { R: 3, I: 1 } },
+          { value: "people", text: "🤝 İnsanlarla vakit geçirmek, organize etmek", riasec: { S: 3, E: 2 } },
+          { value: "analyze", text: "📊 Bir konuyu araştırıp veriye dalmak", riasec: { I: 3, C: 1 } },
+          { value: "create", text: "🎨 Yaratıcı bir şey üretmek", riasec: { A: 3 } }
         ]
       },
       {
         id: "S-07", phase: "deep", dim: "KARAR", type: "scenario",
         text: "Önemli bir karar öncesi kendini en çok hangisinde bulursun?",
         options: [
-          { value: "fast", text: "Yeterince bilgi var, hızlı karar veririm" },
-          { value: "wait", text: "Emin olana kadar beklerim, acele etmem" }
+          { value: "fast", text: "Yeterince bilgi var, hızlı karar veririm", riasec: { E: 3 } },
+          { value: "wait", text: "Emin olana kadar beklerim, acele etmem", riasec: { C: 2, I: 1 } }
         ]
       },
       {
         id: "B-09", phase: "deep", dim: "KİŞİLİK", type: "likert5",
         text: "Plan yapıp ona sadık kalmak benim için kolaydır.",
-        scaleLow: "Bana hiç uymuyor", scaleHigh: "Tam bana göre"
+        scaleLow: "Bana hiç uymuyor", scaleHigh: "Tam bana göre",
+        riasec: { C: 3 } // planlama/düzen → Kuralcı
       },
       {
         id: "AD-03", phase: "context", dim: "BAĞLAM", type: "choice",
         text: "Bölüm seçiminde ailenin etkisi senin için nasıl?",
         options: [
-          { id: "high", text: "Ailem güçlü bir şekilde yönlendiriyor" },
-          { id: "balance", text: "Fikirlerini alıyorum ama kararı ben veriyorum" },
-          { id: "low", text: "Tamamen kendi kararım" }
+          { id: "high", text: "Ailem güçlü bir şekilde yönlendiriyor", riasec: { C: 1 } },
+          { id: "balance", text: "Fikirlerini alıyorum ama kararı ben veriyorum", riasec: { S: 1 } },
+          { id: "low", text: "Tamamen kendi kararım", riasec: { E: 2 } }
         ]
       },
       {
         id: "I-20", phase: "deep", dim: "İLGİ", type: "multi",
         text: "Seni heyecanlandıran alanları seç (birden fazla olabilir).",
         options: [
-          { value: "tech", text: "💻 Teknoloji & yazılım" },
-          { value: "health", text: "🩺 Sağlık & insan" },
-          { value: "design", text: "✏️ Tasarım & sanat" },
-          { value: "biz", text: "📈 İş & girişimcilik" },
-          { value: "science", text: "🔬 Bilim & araştırma" }
+          { value: "tech", text: "💻 Teknoloji & yazılım", riasec: { R: 2, I: 2 } },
+          { value: "health", text: "🩺 Sağlık & insan", riasec: { S: 2, I: 2 } },
+          { value: "design", text: "✏️ Tasarım & sanat", riasec: { A: 3 } },
+          { value: "biz", text: "📈 İş & girişimcilik", riasec: { E: 3 } },
+          { value: "science", text: "🔬 Bilim & araştırma", riasec: { I: 3 } }
         ]
       },
       {
         id: "E-02", phase: "tie", dim: "KARAR", type: "scenario",
         text: "Risk içeren ama getirisi yüksek bir fırsat çıktı. Ne yaparsın?",
         options: [
-          { value: "go", text: "Hesaplı bir risk alır, denerim" },
-          { value: "safe", text: "Güvenli olanı tercih ederim" }
+          { value: "go", text: "Hesaplı bir risk alır, denerim", riasec: { E: 3 } },
+          { value: "safe", text: "Güvenli olanı tercih ederim", riasec: { C: 3 } }
         ]
       },
       {
         id: "O-01", phase: "context", dim: "AÇIK UÇLU", type: "open",
         text: "Gelecekte kendini nerede / nasıl bir işte hayal ediyorsun? (opsiyonel)",
         placeholder: "Birkaç cümle yazabilirsin…"
+        // open → RIASEC katkısı yok
       }
     ];
 
@@ -664,26 +699,155 @@
       else renderQuestion();
     }
 
+    // ── RIASEC birikimi ───────────────────────────────────────────
+    // Bir ağırlık nesnesini (faktör ile çarparak) toplam birikime ekler.
+    function addRiasec(sums, weights, factor) {
+      if (!weights) return;
+      if (factor === undefined) factor = 1;
+      ["R", "I", "A", "S", "E", "C"].forEach(function (k) {
+        if (weights[k]) sums[k] += weights[k] * factor;
+      });
+    }
+    // Verilen cevap listesinden ham RIASEC toplamlarını yeniden hesaplar.
+    // (Yeniden hesap → geri/yeni test/erken bitirmede çift sayım olmaz.)
+    function computeSums(answers) {
+      var sums = emptySums();
+      var byId = {};
+      QUESTIONS.forEach(function (q) { byId[q.id] = q; });
+      answers.forEach(function (a) {
+        var q = byId[a.id];
+        if (!q) return;
+        if (q.type === "likert5") {
+          // Likert: w × (value-3) → 1=-2 … 5=+2
+          var v = Number(a.value);
+          if (!isNaN(v)) addRiasec(sums, q.riasec, v - 3);
+        } else if (q.type === "multi") {
+          // Çoklu: işaretlenen her seçeneğin ağırlığı
+          var picks = Array.isArray(a.value) ? a.value : [];
+          (q.options || []).forEach(function (o) {
+            if (picks.indexOf(o.value) !== -1) addRiasec(sums, o.riasec, 1);
+          });
+        } else if (q.type !== "open") {
+          // forced2 / scenario / categorical / choice: seçilen seçenek
+          (q.options || []).forEach(function (o) {
+            var val = (o.value !== undefined) ? o.value : o.id;
+            if (val === a.value) addRiasec(sums, o.riasec, 1);
+          });
+        }
+        // open → katkı yok
+      });
+      return sums;
+    }
+
     // ── Sonuç ─────────────────────────────────────────────────────
     function finalize(isPartial) {
       state.quit = !!isPartial;
-      // Basit deterministik seçim: cevap sayısına göre arketip varyasyonu
-      var r = RESULTS[state.answers.length % RESULTS.length];
 
-      $("archetype-badge").textContent = r.badge;
-      $("archetype-title").textContent = r.title;
-      $("match-badge").textContent = "%" + (isPartial ? Math.max(r.match - 18, 55) : r.match) + " uyum";
-      $("archetype-desc").textContent = r.desc;
-      $("match-1").textContent = r.progs[0];
-      $("match-2").textContent = r.progs[1];
-      $("match-3").textContent = r.progs[2];
+      // 1) Ham RIASEC toplamları → 0-100 profil; sakla.
+      state.sums = computeSums(state.answers);
+      var profile = window.GB ? GB.profileFromSums(state.sums) : null;
+      if (profile && window.GB) GB.setProfile(profile);
+
+      renderResult(profile, isPartial);
+      show("result");
+      runAtlasCommentary();
+    }
+
+    // ── Sonuç ekranını gerçek profille doldur ─────────────────────
+    function renderResult(profile, isPartial) {
+      // GB yoksa (script.js yüklenemediyse) eski örnek veriye düş.
+      if (!profile || !window.GB) {
+        var r = RESULTS[state.answers.length % RESULTS.length];
+        $("archetype-badge").textContent = r.badge;
+        $("archetype-title").textContent = r.title;
+        $("match-badge").textContent = "%" + r.match + " uyum";
+        $("archetype-desc").textContent = r.desc;
+        $("match-1").textContent = r.progs[0];
+        $("match-2").textContent = r.progs[1];
+        $("match-3").textContent = r.progs[2];
+      } else {
+        var tops = GB.topDims(profile);               // ["I","S",...] desc
+        var topCats = GB.topCategories(3);            // [{cat,pct}]
+        var bestCat = topCats[0] || { cat: "—", pct: 0 };
+        var topName = GB.DIM_TR[tops[0]] || "—";
+
+        // Başlık kartı: baskın yön + en uyumlu alanın eşleşme %'si
+        $("archetype-badge").textContent = "RIASEC · " + profile.code;
+        $("archetype-title").textContent = topName + " baskın profil";
+        $("match-badge").textContent = "%" + bestCat.pct + " uyum";
+        $("archetype-desc").textContent =
+          "Baskın yönlerin " +
+          tops.slice(0, 3).map(function (k) { return GB.DIM_TR[k]; }).join(", ") +
+          ". Cevapların seni en çok " +
+          topCats.map(function (c) { return capWord(c.cat); }).join(", ") +
+          " alanlarına yaklaştırıyor.";
+
+        // "Sana en yakın 3 bölüm" rozetleri → en uyumlu 3 alan + %
+        ["match-1", "match-2", "match-3"].forEach(function (id, i) {
+          var c = topCats[i];
+          $(id).textContent = c ? capWord(c.cat) + " · %" + c.pct : "—";
+        });
+
+        renderDimBars(profile);
+      }
 
       $("partial-banner").hidden = !isPartial;
       $("result-lead").textContent = isPartial
         ? "Erken bitirdiğin için bu kısmi bir önizleme. Tam profil için testi tamamla."
-        : "Cevaplarına göre öne çıkan karar arketipin ve sana en yakın bölümler aşağıda.";
+        : "Cevaplarına göre RIASEC profilin, sana en uygun alanlar ve Atlas'ın yorumu aşağıda.";
+    }
 
-      show("result");
+    // Açık (kilitsiz) RIASEC çubuk satırlarını üretir.
+    function renderDimBars(profile) {
+      var host = $("riasec-bars");
+      if (!host) return;
+      var tops = GB.topDims(profile);
+      var COLORS = { R: "#34d399", I: "#60a5fa", A: "#a887dc", S: "#f472b6", E: "#fbbf24", C: "#38bdf8" };
+      host.innerHTML = "";
+      tops.forEach(function (k) {
+        var pct = profile.riasec[k] || 0;
+        var barW = Math.max(0, Math.min(100, pct)); // çubuk negatif/taşma olmasın
+        var row = document.createElement("div");
+        var head = document.createElement("div");
+        head.style.cssText = "display:flex;justify-content:space-between;align-items:baseline;";
+        var name = document.createElement("span");
+        name.className = "fine";
+        name.textContent = GB.DIM_TR[k] + " (" + k + ")";
+        var val = document.createElement("span");
+        val.className = "fine";
+        val.style.color = "var(--color-white)";
+        val.textContent = "%" + pct;
+        head.appendChild(name); head.appendChild(val);
+        var track = document.createElement("div");
+        track.style.cssText = "height:8px;border-radius:var(--radius-full);background:rgba(255,255,255,.08);margin-top:4px;";
+        var fill = document.createElement("div");
+        fill.style.cssText = "height:100%;width:" + barW + "%;border-radius:var(--radius-full);background:" + (COLORS[k] || "#60a5fa") + ";transition:width .5s ease;";
+        track.appendChild(fill);
+        row.appendChild(head); row.appendChild(track);
+        host.appendChild(row);
+      });
+    }
+
+    // İlk harfi büyüt (kategori adları script.js'te küçük harf).
+    function capWord(s) {
+      s = String(s || "");
+      return s.charAt(0).toLocaleUpperCase("tr-TR") + s.slice(1);
+    }
+
+    // ── Atlas yorumu (Gemini varsa gerçek, yoksa şablon) ──────────
+    function runAtlasCommentary() {
+      var el = $("atlas-comment");
+      if (!el || !window.GB) return;
+      el.textContent = "Atlas profilini okuyor…";
+      (async function () {
+        try {
+          var sys = "Sen Atlas'sın, Gelecek Bul kariyer danışmanı AI. Türk lise öğrencisine sıcak, net, klişesiz, kısa yorum yap.";
+          var txt = await GB.atlasAsk(sys, "Şu profili yorumla ve 2 somut adım öner: " + GB.profileSummary());
+          el.textContent = txt || GB.atlasFallback();
+        } catch (e) {
+          el.textContent = GB.atlasFallback();
+        }
+      })();
     }
 
     // ── Olaylar ───────────────────────────────────────────────────
@@ -692,6 +856,7 @@
       state.idx = 0;
       state.answers = [];
       state.quit = false;
+      state.sums = emptySums();
       show("question");
       renderQuestion();
     });
@@ -715,6 +880,7 @@
       state.answers = [];
       state.value = null;
       state.quit = false;
+      state.sums = emptySums();
       show("start");
     });
 

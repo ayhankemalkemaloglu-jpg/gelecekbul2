@@ -279,4 +279,219 @@
       });
     });
   });
+
+  /* ════════════════════════════════════════════════════════════════════
+     GB — client-side profile + match + Atlas AI (no backend)
+     The test writes a RIASEC profile to localStorage; every "uyum %" reads
+     it, so ratios reflect the user's real answers. Atlas calls Gemini
+     directly with a key the user pastes (kept only in their browser); with
+     no key it returns a deterministic, profile-aware templated answer.
+     ════════════════════════════════════════════════════════════════════ */
+  var GB = (window.GB = window.GB || {});
+  GB.DIMS = ["R", "I", "A", "S", "E", "C"];
+  GB.DIM_TR = { R: "Gerçekçi", I: "Araştırmacı", A: "Sanatsal", S: "Sosyal", E: "Girişimci", C: "Kuralcı" };
+  // Category → Holland/RIASEC weights (0-100)
+  GB.CAT_RIASEC = {
+    "mühendislik": { R: 90, I: 85, A: 20, S: 25, E: 45, C: 65 },
+    "sağlık":      { R: 45, I: 85, A: 20, S: 90, E: 30, C: 55 },
+    "sosyal":      { R: 20, I: 60, A: 55, S: 92, E: 55, C: 30 },
+    "eğitim":      { R: 25, I: 55, A: 55, S: 90, E: 45, C: 45 },
+    "iktisat":     { R: 20, I: 65, A: 20, S: 35, E: 85, C: 90 },
+    "hukuk":       { R: 15, I: 65, A: 35, S: 55, E: 82, C: 85 },
+    "sanat":       { R: 30, I: 45, A: 95, S: 45, E: 55, C: 20 },
+    "hizmet":      { R: 55, I: 30, A: 45, S: 72, E: 75, C: 55 }
+  };
+  GB.getProfile = function () {
+    try { return JSON.parse(localStorage.getItem("gb_profile") || "null"); } catch (e) { return null; }
+  };
+  GB.setProfile = function (p) {
+    try { localStorage.setItem("gb_profile", JSON.stringify(p)); } catch (e) {}
+    return p;
+  };
+  GB.hasProfile = function () { var p = GB.getProfile(); return !!(p && p.riasec); };
+  GB.cosine = function (a, b) {
+    var d = 0, na = 0, nb = 0;
+    for (var i = 0; i < a.length; i++) { d += a[i] * b[i]; na += a[i] * a[i]; nb += b[i] * b[i]; }
+    return (na && nb) ? d / (Math.sqrt(na) * Math.sqrt(nb)) : 0;
+  };
+  // Match % (45-99) for a category from the stored profile; null if no test yet
+  GB.matchCat = function (catKey, seed) {
+    var p = GB.getProfile();
+    if (!p || !p.riasec) return null;
+    var w = GB.CAT_RIASEC[catKey];
+    if (!w) return null;
+    var u = GB.DIMS.map(function (k) { return p.riasec[k] || 0; });
+    var v = GB.DIMS.map(function (k) { return w[k] || 0; });
+    var base = 55 + GB.cosine(u, v) * 43, jit = 0;
+    if (seed) { var h = 0; for (var i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0; jit = (h % 7) - 3; }
+    return Math.max(45, Math.min(99, Math.round(base + jit)));
+  };
+  GB.topDims = function (p) {
+    p = p || GB.getProfile();
+    if (!p || !p.riasec) return [];
+    return GB.DIMS.slice().sort(function (a, b) { return (p.riasec[b] || 0) - (p.riasec[a] || 0); });
+  };
+  // Build a 0-100 RIASEC profile from raw accumulated sums {R:..,I:..}
+  GB.profileFromSums = function (sums) {
+    var max = 1;
+    GB.DIMS.forEach(function (k) { var v = Math.max(0, sums[k] || 0); if (v > max) max = v; });
+    var riasec = {};
+    GB.DIMS.forEach(function (k) { riasec[k] = Math.round((Math.max(0, sums[k] || 0) / max) * 100); });
+    var top = GB.DIMS.slice().sort(function (a, b) { return riasec[b] - riasec[a]; });
+    return { riasec: riasec, top3: top.slice(0, 3), code: top.slice(0, 3).join(""), ts: Date.now() };
+  };
+  // Top categories for the stored profile → [{cat, pct}]
+  GB.topCategories = function (n) {
+    if (!GB.hasProfile()) return [];
+    return Object.keys(GB.CAT_RIASEC)
+      .map(function (c) { return { cat: c, pct: GB.matchCat(c) }; })
+      .sort(function (a, b) { return b.pct - a.pct; })
+      .slice(0, n || 3);
+  };
+
+  /* ── Atlas AI ────────────────────────────────────────────────────────── */
+  GB.atlasKey = function (v) {
+    if (v === undefined) { try { return localStorage.getItem("gb_gemini_key") || ""; } catch (e) { return ""; } }
+    try { localStorage.setItem("gb_gemini_key", v || ""); } catch (e) {}
+    return v;
+  };
+  GB.profileSummary = function () {
+    var p = GB.getProfile();
+    if (!p || !p.riasec) return "Kullanıcı henüz testi yapmadı (profil yok).";
+    var t = GB.topDims(p).slice(0, 3).map(function (k) { return GB.DIM_TR[k] + " (%" + p.riasec[k] + ")"; });
+    var cats = GB.topCategories(3).map(function (c) { return c.cat + " %" + c.pct; });
+    return "RIASEC kodu " + p.code + ". Baskın yönler: " + t.join(", ") + ". En uyumlu alanlar: " + cats.join(", ") + ".";
+  };
+  // Returns Gemini text, or null when no key / on error (caller shows fallback)
+  GB.atlasAsk = async function (system, user) {
+    var key = GB.atlasKey();
+    if (!key) return null;
+    try {
+      var r = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + encodeURIComponent(key),
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: system }] },
+            contents: [{ role: "user", parts: [{ text: user }] }],
+            generationConfig: { temperature: 0.85, maxOutputTokens: 600 }
+          })
+        }
+      );
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      var j = await r.json();
+      var c = j && j.candidates && j.candidates[0];
+      var t = c && c.content && c.content.parts && c.content.parts[0] && c.content.parts[0].text;
+      return t || null;
+    } catch (e) { return null; }
+  };
+  // Deterministic, profile-aware fallback when there is no API key
+  GB.atlasFallback = function (userMsg) {
+    var p = GB.getProfile();
+    var head;
+    if (p && p.riasec) {
+      var tops = GB.topDims(p).slice(0, 3).map(function (k) { return GB.DIM_TR[k]; });
+      var cats = GB.topCategories(2).map(function (c) { return c.cat; });
+      head = "Profiline göre baskın yönlerin " + tops.join(", ") + ". Bu da seni en çok " +
+        cats.join(" ve ") + " alanlarına yaklaştırıyor. ";
+    } else {
+      head = "Henüz testini yapmamışsın — birkaç dakikalık testi bitirirsen sana özel konuşabilirim. ";
+    }
+    var tail = "(Gerçek, sohbet eden Atlas için sağ üstten kendi Gemini anahtarını ekleyebilirsin — anahtar yalnızca senin tarayıcında saklanır.)";
+    return head + (userMsg ? "Sorduğun “" + userMsg + "” konusunda: önce ilgini en çok çeken 2-3 alanı yaz, üzerine birlikte daraltalım. " : "") + tail;
+  };
+
+  /* Atlas chat modal — injected once, opened by [data-action="atlas"] */
+  function ensureAtlasModal() {
+    var overlay = document.getElementById("atlas-modal");
+    if (overlay) return overlay;
+    overlay = document.createElement("div");
+    overlay.className = "modal-overlay";
+    overlay.id = "atlas-modal";
+    overlay.innerHTML = [
+      '<div class="modal" role="dialog" aria-modal="true" aria-label="Atlas AI" style="max-width:480px;">',
+      '  <button class="modal-close" type="button" data-close aria-label="Kapat">×</button>',
+      '  <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">',
+      '    <span class="icon-chip" style="margin:0;width:38px;height:38px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></span>',
+      '    <div><h3 class="subheading" style="font-size:var(--text-body-lg);">Atlas AI</h3><p class="fine" id="atlas-status"></p></div>',
+      "  </div>",
+      '  <div id="atlas-log" style="max-height:46vh;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin:14px 0;padding-right:4px;"></div>',
+      '  <form id="atlas-form" style="display:flex;gap:8px;">',
+      '    <input class="input" id="atlas-input" placeholder="Atlas\'a bir şey sor…" autocomplete="off" style="flex:1;" />',
+      '    <button class="btn btn-white" type="submit" style="padding:10px 16px;">Gönder</button>',
+      "  </form>",
+      '  <button class="fine" id="atlas-key-btn" type="button" style="margin-top:10px;background:none;border:none;color:var(--color-sky-wash);text-decoration:underline;cursor:pointer;font-family:inherit;"></button>',
+      "</div>"
+    ].join("");
+    document.body.appendChild(overlay);
+
+    var log = overlay.querySelector("#atlas-log");
+    var statusEl = overlay.querySelector("#atlas-status");
+    var keyBtn = overlay.querySelector("#atlas-key-btn");
+    function refreshStatus() {
+      var has = !!GB.atlasKey();
+      statusEl.textContent = has ? "Gemini bağlı · sana özel" : "Şablon modu · profil-temelli";
+      keyBtn.textContent = has ? "Gemini anahtarını değiştir / kaldır" : "Gemini anahtarı ekle → gerçek AI";
+    }
+    function bubble(text, who) {
+      var b = document.createElement("div");
+      b.style.cssText =
+        "max-width:88%;padding:10px 12px;border-radius:14px;font-size:var(--text-body-sm);line-height:1.5;white-space:pre-wrap;" +
+        (who === "me"
+          ? "align-self:flex-end;background:var(--color-white);color:#0f1115;"
+          : "align-self:flex-start;background:var(--surface-charcoal);color:var(--color-pearl);border:1px solid var(--hairline-soft);");
+      b.textContent = text;
+      log.appendChild(b);
+      log.scrollTop = log.scrollHeight;
+      return b;
+    }
+    keyBtn.addEventListener("click", function () {
+      var cur = GB.atlasKey();
+      var v = window.prompt(
+        "Google Gemini API anahtarını yapıştır (yalnızca bu tarayıcıda saklanır, sunucuya/repoya gitmez). Boş bırakıp kaydedersen şablon moduna döner.\nAnahtar: aistudio.google.com/apikey",
+        cur
+      );
+      if (v !== null) { GB.atlasKey(v.trim()); refreshStatus(); bubble(v.trim() ? "Anahtar kaydedildi — artık gerçek Atlas konuşuyor." : "Anahtar kaldırıldı — şablon moduna döndüm.", "atlas"); }
+    });
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay || e.target.closest("[data-close]")) overlay.classList.remove("is-open");
+    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") overlay.classList.remove("is-open"); });
+
+    var SYSTEM =
+      "Sen 'Atlas'sın: Gelecek Bul platformunun Türk lise öğrencilerine yönelik kariyer danışmanı AI'ısın. " +
+      "Sıcak, net, klişesiz konuş; Türkiye bağlamını (YKS, bölümler, YÖK Atlas) bil. Kısa ve somut yanıt ver.";
+    overlay.querySelector("#atlas-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      var inp = overlay.querySelector("#atlas-input");
+      var msg = inp.value.trim();
+      if (!msg) return;
+      bubble(msg, "me");
+      inp.value = "";
+      var thinking = bubble("…", "atlas");
+      var ans = await GB.atlasAsk(SYSTEM, "Öğrenci profili: " + GB.profileSummary() + "\n\nSoru: " + msg);
+      thinking.textContent = ans || GB.atlasFallback(msg);
+      log.scrollTop = log.scrollHeight;
+    });
+
+    overlay._open = function () {
+      refreshStatus();
+      if (!log.childElementCount) {
+        bubble(
+          "Selam, ben Atlas 👋 " +
+            (GB.hasProfile()
+              ? GB.profileSummary() + " Ne sormak istersin — bölüm, üniversite, ya da bir meslek?"
+              : "Önce kısa testi yaparsan sana özel konuşabilirim. Yine de genel sorularını yanıtlayabilirim."),
+          "atlas"
+        );
+      }
+    };
+    return overlay;
+  }
+  GB.openAtlas = function () { var m = ensureAtlasModal(); m._open(); m.classList.add("is-open"); };
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest('[data-action="atlas"]');
+    if (t) { e.preventDefault(); GB.openAtlas(); }
+  });
 })();
